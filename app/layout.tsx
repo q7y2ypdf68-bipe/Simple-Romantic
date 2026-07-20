@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="pt-BR" style={{ colorScheme: "light", backgroundColor: "#fffefe" }}><head><meta name="color-scheme" content="only light" /><meta name="supported-color-schemes" content="light" /><meta name="theme-color" content="#fffefe" /></head><body style={{ backgroundColor: "#fffefe", color: "#3b2636" }}>{children}</body></html>;
+  return <html lang="pt-BR" data-theme="light" style={{ colorScheme: "light", backgroundColor: "#fffefe" }}><head><meta name="darkreader-lock" /><meta name="color-scheme" content="light" /><meta name="supported-color-schemes" content="light" /><meta name="theme-color" content="#fffefe" /><script dangerouslySetInnerHTML={{ __html: "document.documentElement.dataset.theme='light';document.documentElement.style.colorScheme='light';" }} /></head><body style={{ backgroundColor: "#fffefe", color: "#3b2636" }}>{children}</body></html>;
 }
