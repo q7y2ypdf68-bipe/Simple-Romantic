@@ -65,3 +65,42 @@ footer>small,footer>div{font-size:12px}
   .hero-text{font-size:18px}
 }
 .button.primary,.button.primary span,.choices input:checked+span{color:#fff!important;-webkit-text-fill-color:#fff!important}
+
+/* Unified typography and contrast system across every content block. */
+.section-heading .eyebrow,.guide-copy .eyebrow{font-size:14px;line-height:1.25;letter-spacing:.18em}
+.section-heading>p:not(.eyebrow),.guide-copy>p:not(.eyebrow):not(.form-message){font-size:20px;line-height:1.6}
+.button,.quiet-link{font-size:16px}
+.proof{font-size:14px}
+.picnic-card small,.picnic-card span{font-size:12px;line-height:1.35}
+.picnic-card strong{font-size:26px}
+
+.finder-form strong,.finder-form legend{font-size:19px;line-height:1.35}
+.location-field input{font-size:20px}
+.choices label span{font-size:17px;font-weight:600}
+
+.place-copy h3{font-size:30px;line-height:1.12}
+.place-copy p{font-size:17px;line-height:1.6}
+.place-copy a{font-size:15px}
+.place-art small{font-size:12px}
+
+.how .section-heading .eyebrow{color:#4b233f!important;-webkit-text-fill-color:#4b233f!important}
+.how .section-heading h2{color:#3b2636!important;-webkit-text-fill-color:#3b2636!important}
+.steps h3{font-size:27px;line-height:1.2;color:#fff}
+.steps p{font-size:18px;line-height:1.65;color:rgba(255,255,255,.96)}
+.steps span{font-size:27px}
+
+.guide-copy>p:not(.eyebrow):not(.form-message){font-size:20px}
+.guide-copy input{font-size:20px}
+.guide-copy button{font-size:16px}
+.guide-cover small{font-size:14px;line-height:1.3}
+
+footer>p{font-size:22px}
+footer>small,footer>div{font-size:14px;line-height:1.5}
+
+@media(max-width:700px){
+  .section-heading .eyebrow,.guide-copy .eyebrow{font-size:12px}
+  .section-heading>p:not(.eyebrow),.guide-copy>p:not(.eyebrow):not(.form-message){font-size:18px}
+  .button,.quiet-link{font-size:15px}
+  .steps h3{font-size:25px}
+  .steps p{font-size:17px}
+}
