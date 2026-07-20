@@ -2,12 +2,14 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { blogPosts } from "./blog/posts";
 
 type Language = "pt" | "en";
 
 const copy = {
   pt: {
-    nav: ["Encontrar uma ideia", "Lugares", "Como funciona", "Guias"],
+    nav: ["Encontrar uma ideia", "Lugares", "Como funciona", "Guias", "Blog"],
     heroKicker: "ROMANCE ACESSÍVEL · MOMENTOS REAIS",
     heroTitleA: "Romance não precisa",
     heroTitleB: "ser caro.",
@@ -60,7 +62,7 @@ const copy = {
     sent: "Perfeito! Você vai saber em primeira mão.",
   },
   en: {
-    nav: ["Find an idea", "Places", "How it works", "Guides"],
+    nav: ["Find an idea", "Places", "How it works", "Guides", "Blog"],
     heroKicker: "AFFORDABLE ROMANCE · REAL MOMENTS",
     heroTitleA: "Romance doesn't have",
     heroTitleB: "to be expensive.",
@@ -139,7 +141,7 @@ export default function Home() {
           <span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span>
         </a>
         <nav aria-label="Navegação principal">
-          <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><a href="#guias">{t.nav[3]}</a>
+          <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><a href="#guias">{t.nav[3]}</a><a href="#blog">{t.nav[4]}</a>
         </nav>
         <div className="language" aria-label="Idioma">
           <button className={language === "pt" ? "active" : ""} onClick={() => setLanguage("pt")}>PT-BR</button>
@@ -188,6 +190,27 @@ export default function Home() {
           <div className="place-art"><Image src={index === 0 ? "/images/hero-park.png" : index === 1 ? "/images/beach-walk.png" : "/images/viewpoint-surprise.png"} alt={card[0]} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 34vw" /><small>{card[2]}</small></div>
           <div className="place-copy"><small>0{index + 1}</small><h3>{card[0]}</h3><p>{card[1]}</p><a href="#encontrar">{card[3]} →</a></div>
         </article>)}</div>
+      </section>
+
+      <section className="home-blog section" id="blog">
+        <div className="blog-welcome">
+          <p className="eyebrow">ROMANCE PARA A VIDA REAL</p>
+          <h2>O amor não precisa esperar uma ocasião especial.</h2>
+          <div className="blog-welcome-copy">
+            <p>O <strong>Simple & Romantic</strong> nasceu para casais que desejam viver mais momentos juntos sem depender de restaurantes caros, viagens distantes ou grandes produções.</p>
+            <p>Aqui você encontra ideias de encontros, lugares públicos bonitos, pequenas surpresas e guias práticos para transformar um dia comum em uma memória que vale guardar.</p>
+            <p>Porque romantismo não é quanto se gasta. É perceber, preparar e estar presente.</p>
+          </div>
+          <Link className="button primary" href="/blog">Conhecer o blog <span>→</span></Link>
+        </div>
+        <div className="section-heading split blog-heading"><div><p className="eyebrow">CONTEÚDOS PARA INSPIRAR</p><h2>Comece por uma ideia simples.</h2></div><p>Leituras rápidas e úteis para planejar encontros possíveis, preparar surpresas e cuidar da conexão.</p></div>
+        <div className="blog-grid">
+          {blogPosts.map((post) => <article className="blog-card" key={post.slug}>
+            <Link className="blog-card-image" href={`/blog/${post.slug}`}><Image src={post.image} alt={post.imageAlt} fill sizes="(max-width: 700px) 100vw, 33vw" /></Link>
+            <div className="blog-card-copy"><p className="eyebrow">{post.category}</p><h3><Link href={`/blog/${post.slug}`}>{post.title}</Link></h3><p>{post.excerpt}</p><div className="blog-card-meta"><span>{post.readTime}</span><Link href={`/blog/${post.slug}`}>Ler artigo →</Link></div></div>
+          </article>)}
+        </div>
+        <div className="blog-all"><Link className="quiet-link" href="/blog">Ver todos os conteúdos →</Link></div>
       </section>
 
       <section className="how section" id="como">

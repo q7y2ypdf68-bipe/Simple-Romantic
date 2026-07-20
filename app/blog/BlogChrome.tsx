@@ -1,0 +1,9 @@
+import Link from "next/link";
+
+export function BlogHeader() {
+  return <header className="site-header blog-site-header"><Link className="brand" href="/"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span></Link><nav aria-label="Navegação principal"><Link href="/#encontrar">Encontrar uma ideia</Link><Link href="/#lugares">Lugares</Link><Link href="/#como">Como funciona</Link><Link href="/blog">Blog</Link></nav><Link className="back-home" href="/">Início</Link></header>;
+}
+
+export function BlogFooter() {
+  return <footer><Link className="brand footer-brand" href="/"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></Link><p>Momentos simples. Memórias bonitas.</p><small>Feito para casais reais, com orçamentos reais.</small><div><Link href="/">Início</Link><Link href="/blog">Blog</Link><a href="#">Privacidade</a></div></footer>;
+}
