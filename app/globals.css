@@ -31,22 +31,22 @@ html,body,main{background-color:#fffefe!important;color:#3b2636!important}
 .hero-text,.section-heading>p:not(.eyebrow),.place-copy p{color:#755f6d!important;-webkit-text-fill-color:#755f6d!important}
 
 /* Readability pass: slightly larger supporting typography. */
-.brand-name strong{font-size:25px}
-.brand-name i{font-size:26px}
-.brand-name small{top:31px;font-size:8px}
-.site-header nav{font-size:14px}
+.brand-name strong{font-size:30px}
+.brand-name i{font-size:31px}
+.brand-name small{top:36px;font-size:9px}
+.site-header nav{font-size:20px}
 .language button{font-size:12px}
 .eyebrow{font-size:12px}
-.hero-text{font-size:20px}
+.hero-text{font-size:25px}
 .button,.quiet-link{font-size:14px}
 .proof{font-size:12px}
 .picnic-card small,.picnic-card span{font-size:10px}
 .picnic-card strong{font-size:25px}
 .section-heading>p:not(.eyebrow){font-size:18px}
-.finder-form strong,.finder-form legend{font-size:16px}
-.finder-form strong span,.finder-form legend span{font-size:19px}
-.location-field input{font-size:17px}
-.choices label span{font-size:14px}
+.finder-form strong,.finder-form legend{font-size:19px}
+.finder-form strong span,.finder-form legend span{font-size:22px}
+.location-field input{font-size:20px}
+.choices label span{font-size:17px}
 .result-copy>p:not(.eyebrow),.result-tip p{font-size:15px}
 .result-meta span{font-size:11px}
 .place-art small{font-size:11px}
