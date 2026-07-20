@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import Image from "next/image";
 
 type Language = "pt" | "en";
 
@@ -14,15 +15,15 @@ const copy = {
       "Descubra lugares bonitos, encontros simples e pequenas surpresas para viver a dois — perto de você e dentro do seu orçamento.",
     heroCta: "Encontrar uma ideia",
     explore: "Explorar lugares",
-    proof: ["Ideias a partir de €0", "Sem complicações", "Para casais reais"],
+    proof: ["Ideias gratuitas", "Sem complicação", "Para casais reais"],
     finderKicker: "O PLANO COMEÇA AQUI",
     finderTitle: "O que vocês gostariam de viver hoje?",
-    finderText: "Conte-nos o essencial. Nós transformamos isso num encontro possível.",
+    finderText: "Conte o essencial. A gente transforma isso em um encontro possível.",
     location: "Onde vocês estão?",
-    locationPlaceholder: "Ex.: Lisboa, Porto, São Paulo…",
-    budget: "Quanto querem gastar?",
-    budgets: ["Grátis", "Até €10", "Até €25"],
-    time: "Quanto tempo têm?",
+    locationPlaceholder: "Ex.: São Paulo, Salvador, Lisboa…",
+    budget: "Quanto vocês querem gastar?",
+    budgets: ["Grátis", "Baixo custo", "Um pouco mais"],
+    time: "Quanto tempo vocês têm?",
     times: ["1 hora", "Uma tarde", "Um dia"],
     occasion: "Qual é a ocasião?",
     occasions: ["Encontro casual", "Uma surpresa", "Reconectar"],
@@ -30,33 +31,33 @@ const copy = {
     resultKicker: "UMA IDEIA PARA VOCÊS",
     resultTitle: "Piquenique ao pôr do sol",
     resultText:
-      "Escolham um jardim ou miradouro próximo. Levem uma manta, duas bebidas e três músicas que contem a história de vocês. Cheguem 30 minutos antes do pôr do sol.",
-    resultMeta: ["€0–€10", "1–2 horas", "Ao ar livre"],
+      "Escolham um parque ou mirante próximo. Levem uma toalha, duas bebidas e três músicas que contem a história de vocês. Cheguem 30 minutos antes do pôr do sol.",
+    resultMeta: ["Grátis ou baixo custo", "1–2 horas", "Ao ar livre"],
     resultTip: "Pequeno detalhe",
     resultTipText: "Escreva uma frase num papel e entregue apenas quando o sol começar a desaparecer.",
     placesKicker: "PERTO DE VOCÊ",
     placesTitle: "Lugares simples. Memórias bonitas.",
-    placesText: "Começamos por espaços públicos: bonitos, acessíveis e perfeitos para desacelerar juntos.",
+    placesText: "A gente começa pelos espaços públicos: bonitos, acessíveis e perfeitos para desacelerar juntos.",
     cards: [
       ["Jardins e parques", "Manta, fruta, uma bebida e tempo sem notificações.", "GRÁTIS", "Ver ideias"],
-      ["Praias e marginais", "Uma caminhada, música partilhada e o melhor lugar para ver o céu mudar.", "€0–€10", "Ver ideias"],
-      ["Miradouros e praças", "Uma surpresa pequena com uma vista que faz o resto do trabalho.", "GRÁTIS", "Ver ideias"],
+      ["Praias e orlas", "Uma caminhada, uma playlist compartilhada e o melhor lugar para ver o céu mudar.", "BAIXO CUSTO", "Ver ideias"],
+      ["Mirantes e praças", "Uma surpresa pequena com uma vista que faz o resto do trabalho.", "GRÁTIS", "Ver ideias"],
     ],
     howKicker: "SIMPLES, COMO DEVE SER",
-    howTitle: "Menos tempo a planear. Mais tempo juntos.",
+    howTitle: "Menos tempo planejando. Mais tempo juntos.",
     steps: [
-      ["01", "Diga-nos o essencial", "Localização, orçamento, tempo disponível e o momento que querem criar."],
+      ["01", "Conte o essencial", "Localização, orçamento, tempo disponível e o momento que vocês querem criar."],
       ["02", "Receba um plano possível", "Uma ideia clara, com lista do que levar e alternativas para o clima."],
-      ["03", "Torne-o pessoal", "Acrescente uma música, uma frase ou uma memória que só pertence a vocês."],
+      ["03", "Deixe com a cara de vocês", "Acrescente uma música, uma frase ou uma memória que só pertence ao casal."],
     ],
     guideKicker: "PARA GUARDAR E REPETIR",
-    guideTitle: "30 encontros simples por menos de €20",
-    guideText: "O nosso primeiro guia reúne planos rápidos, listas práticas e pequenas surpresas para todas as semanas.",
-    guideCta: "Avise-me quando estiver pronto",
-    mailPlaceholder: "O seu melhor e-mail",
+    guideTitle: "30 encontros simples gastando pouco",
+    guideText: "Nosso primeiro guia reúne planos rápidos, listas práticas e pequenas surpresas para todas as semanas.",
+    guideCta: "Quero receber o guia",
+    mailPlaceholder: "Seu melhor e-mail",
     footer: "Momentos simples. Memórias bonitas.",
     footerNote: "Feito para casais reais, com orçamentos reais.",
-    sent: "Perfeito! Vamos avisar você em primeira mão.",
+    sent: "Perfeito! Você vai saber em primeira mão.",
   },
   en: {
     nav: ["Find an idea", "Places", "How it works", "Guides"],
@@ -134,14 +135,14 @@ export default function Home() {
     <main>
       <header className="site-header">
         <a className="brand" href="#inicio" aria-label="Simple and Romantic — início">
-          <span className="brand-heart" aria-hidden="true">S<span>&</span>R</span>
-          <span className="brand-name">Simple <i>&</i> Romantic<small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span>
+          <span className="brand-heart" aria-hidden="true">♥</span>
+          <span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span>
         </a>
         <nav aria-label="Navegação principal">
           <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><a href="#guias">{t.nav[3]}</a>
         </nav>
         <div className="language" aria-label="Idioma">
-          <button className={language === "pt" ? "active" : ""} onClick={() => setLanguage("pt")}>PT</button>
+          <button className={language === "pt" ? "active" : ""} onClick={() => setLanguage("pt")}>PT-BR</button>
           <span>/</span>
           <button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>EN</button>
         </div>
@@ -158,12 +159,10 @@ export default function Home() {
           </div>
           <div className="proof">{t.proof.map((item) => <span key={item}>✓ {item}</span>)}</div>
         </div>
-        <div className="hero-scene" role="img" aria-label="Casal num jardim ao pôr do sol">
-          <div className="sun" /><div className="cloud cloud-one" /><div className="cloud cloud-two" />
-          <div className="hill hill-back" /><div className="hill hill-front" />
-          <div className="tree"><span /><i /></div>
-          <div className="couple person-one"><span /></div><div className="couple person-two"><span /></div>
-          <div className="picnic-card"><small>THIS WEEKEND</small><strong>Sunset, a blanket<br />and no rush.</strong><span>€0 — €10</span></div>
+        <div className="hero-scene">
+          <Image src="/images/hero-park.png" alt={language === "pt" ? "Casal sorrindo durante um piquenique em um parque" : "Couple smiling during a picnic in a park"} fill priority sizes="(max-width: 1000px) 100vw, 49vw" />
+          <div className="photo-wash" />
+          <div className="picnic-card"><small>{language === "pt" ? "NESTE FIM DE SEMANA" : "THIS WEEKEND"}</small><strong>{language === "pt" ? <>Um pôr do sol,<br />uma toalha e calma.</> : <>Sunset, a blanket<br />and no rush.</>}</strong><span>{language === "pt" ? "GRÁTIS OU BAIXO CUSTO" : "FREE OR LOW COST"}</span></div>
         </div>
       </section>
 
@@ -186,7 +185,7 @@ export default function Home() {
       <section className="places section" id="lugares">
         <div className="section-heading split"><div><p className="eyebrow">{t.placesKicker}</p><h2>{t.placesTitle}</h2></div><p>{t.placesText}</p></div>
         <div className="place-grid">{t.cards.map((card, index) => <article className={`place-card place-${index + 1}`} key={card[0]}>
-          <div className="place-art"><span>{index === 0 ? "✿" : index === 1 ? "≈" : "◒"}</span><small>{card[2]}</small></div>
+          <div className="place-art"><Image src={index === 0 ? "/images/hero-park.png" : index === 1 ? "/images/beach-walk.png" : "/images/viewpoint-surprise.png"} alt={card[0]} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 34vw" /><small>{card[2]}</small></div>
           <div className="place-copy"><small>0{index + 1}</small><h3>{card[0]}</h3><p>{card[1]}</p><a href="#encontrar">{card[3]} →</a></div>
         </article>)}</div>
       </section>
@@ -197,14 +196,14 @@ export default function Home() {
       </section>
 
       <section className="guide section" id="guias">
-        <div className="guide-cover"><span>30</span><strong>Simple<br />Dates</strong><small>UNDER €20</small></div>
+        <div className="guide-cover"><span>30</span><strong>{language === "pt" ? <>Encontros<br />simples</> : <>Simple<br />dates</>}</strong><small>{language === "pt" ? "PARA GASTAR POUCO" : "ON A SMALL BUDGET"}</small></div>
         <div className="guide-copy"><p className="eyebrow">{t.guideKicker}</p><h2>{t.guideTitle}</h2><p>{t.guideText}</p>
           <form onSubmit={joinList}><input type="email" required placeholder={t.mailPlaceholder} aria-label={t.mailPlaceholder} /><button type="submit">{t.guideCta} →</button></form>
           <p className="form-message" aria-live="polite">{message}</p>
         </div>
       </section>
 
-      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">S<span>&</span>R</span><span className="brand-name">Simple <i>&</i> Romantic</span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">Privacy</a></div></footer>
+      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">Privacidade</a></div></footer>
     </main>
   );
 }
