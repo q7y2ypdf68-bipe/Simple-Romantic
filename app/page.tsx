@@ -9,7 +9,7 @@ type Language = "pt" | "en";
 
 const copy = {
   pt: {
-    nav: ["Encontrar uma ideia", "Lugares", "Como funciona", "Guias", "Blog"],
+    nav: ["Encontrar uma ideia", "Lugares", "Como funciona", "Guias", "Blog", "Comunidade"],
     heroKicker: "ROMANCE ACESSÍVEL · MOMENTOS REAIS",
     heroTitleA: "Romance não precisa",
     heroTitleB: "ser caro.",
@@ -60,9 +60,30 @@ const copy = {
     footer: "Momentos simples. Memórias bonitas.",
     footerNote: "Feito para casais reais, com orçamentos reais.",
     sent: "Perfeito! Você vai saber em primeira mão.",
+    communityKicker: "HISTÓRIAS QUE APROXIMAM",
+    communityTitle: "Sua história também pode inspirar alguém.",
+    communityText: "Conte um momento especial, compartilhe uma ideia de encontro ou aquela surpresa simples que deu certo. Sua contribuição pode ajudar outros casais a criarem novas memórias.",
+    communityTypes: ["Nossa história", "Ideia de encontro", "Uma surpresa"],
+    communityName: "Seu nome ou apelido (opcional)",
+    communityEmail: "Seu e-mail",
+    communityEmailHelp: "O e-mail é privado e nunca será publicado.",
+    communityTitleField: "Dê um título à sua contribuição",
+    communityStory: "Conte sua história ou ideia",
+    communityStoryHint: "Inclua os detalhes que podem ajudar ou inspirar outro casal.",
+    communityLocation: "Cidade e país (opcional)",
+    communityAnonymous: "Quero que minha contribuição seja publicada anonimamente.",
+    communityConsent: "Autorizo a equipe do Simple & Romantic a revisar e, se selecionada, publicar esta contribuição.",
+    communitySubmit: "Compartilhar com a gente",
+    communitySuccess: "Recebemos sua contribuição! Ela será revisada com carinho antes de qualquer publicação.",
+    communityError: "Não foi possível enviar agora. Confira os campos e tente novamente.",
+    communitySteps: [
+      ["01", "Você compartilha", "Conte do seu jeito. Não precisa escrever perfeitamente."],
+      ["02", "A gente revisa", "Toda contribuição passa por moderação antes de aparecer no blog."],
+      ["03", "Outros se inspiram", "Se publicada, sua experiência poderá ajudar casais em qualquer lugar."],
+    ],
   },
   en: {
-    nav: ["Find an idea", "Places", "How it works", "Guides", "Blog"],
+    nav: ["Find an idea", "Places", "How it works", "Guides", "Blog", "Community"],
     heroKicker: "AFFORDABLE ROMANCE · REAL MOMENTS",
     heroTitleA: "Romance doesn't have",
     heroTitleB: "to be expensive.",
@@ -113,6 +134,27 @@ const copy = {
     footer: "Simple moments. Beautiful memories.",
     footerNote: "Made for real couples with real budgets.",
     sent: "Perfect! You'll be the first to know.",
+    communityKicker: "STORIES THAT BRING US CLOSER",
+    communityTitle: "Your story can inspire someone too.",
+    communityText: "Tell us about a special moment, share a date idea or a simple surprise that worked. Your contribution may help other couples create new memories.",
+    communityTypes: ["Our story", "Date idea", "A surprise"],
+    communityName: "Your name or nickname (optional)",
+    communityEmail: "Your email",
+    communityEmailHelp: "Your email stays private and is never published.",
+    communityTitleField: "Give your contribution a title",
+    communityStory: "Tell your story or share your idea",
+    communityStoryHint: "Include details that may help or inspire another couple.",
+    communityLocation: "City and country (optional)",
+    communityAnonymous: "Publish my contribution anonymously.",
+    communityConsent: "I allow the Simple & Romantic team to review and, if selected, publish this contribution.",
+    communitySubmit: "Share with us",
+    communitySuccess: "We received your contribution! It will be carefully reviewed before anything is published.",
+    communityError: "We couldn't send it right now. Check the fields and try again.",
+    communitySteps: [
+      ["01", "You share", "Tell it your way. It doesn't need to be perfectly written."],
+      ["02", "We review", "Every contribution is moderated before it appears on the blog."],
+      ["03", "Others get inspired", "If published, your experience may help couples anywhere."],
+    ],
   },
 };
 
@@ -120,6 +162,7 @@ export default function Home() {
   const [language, setLanguage] = useState<Language>("pt");
   const [resultVisible, setResultVisible] = useState(false);
   const [message, setMessage] = useState("");
+  const [communityStatus, setCommunityStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const t = useMemo(() => copy[language], [language]);
 
   function createDate(event: FormEvent<HTMLFormElement>) {
@@ -133,6 +176,37 @@ export default function Home() {
     setMessage(t.sent);
   }
 
+  async function shareWithCommunity(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setCommunityStatus("sending");
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch("/api/community", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          kind: data.get("kind"),
+          authorName: data.get("authorName"),
+          email: data.get("email"),
+          title: data.get("title"),
+          content: data.get("content"),
+          location: data.get("location"),
+          anonymous: data.get("anonymous") === "on",
+          consent: data.get("consent") === "on",
+          website: data.get("website"),
+        }),
+      });
+
+      if (!response.ok) throw new Error("submission failed");
+      form.reset();
+      setCommunityStatus("success");
+    } catch {
+      setCommunityStatus("error");
+    }
+  }
+
   return (
     <main>
       <header className="site-header">
@@ -141,7 +215,7 @@ export default function Home() {
           <span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span>
         </a>
         <nav aria-label="Navegação principal">
-          <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><a href="#guias">{t.nav[3]}</a><a href="#blog">{t.nav[4]}</a>
+          <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><a href="#guias">{t.nav[3]}</a><a href="#blog">{t.nav[4]}</a><a href="#comunidade">{t.nav[5]}</a>
         </nav>
         <div className="language" aria-label="Idioma">
           <button className={language === "pt" ? "active" : ""} onClick={() => setLanguage("pt")}>PT-BR</button>
@@ -216,6 +290,35 @@ export default function Home() {
       <section className="how section" id="como">
         <div className="section-heading centered light"><p className="eyebrow">{t.howKicker}</p><h2>{t.howTitle}</h2></div>
         <div className="steps">{t.steps.map(step => <article key={step[0]}><span>{step[0]}</span><h3>{step[1]}</h3><p>{step[2]}</p></article>)}</div>
+      </section>
+
+      <section className="community section" id="comunidade">
+        <div className="community-intro">
+          <p className="eyebrow">{t.communityKicker}</p>
+          <h2>{t.communityTitle}</h2>
+          <p>{t.communityText}</p>
+          <div className="community-steps">
+            {t.communitySteps.map((step) => <article key={step[0]}><span>{step[0]}</span><div><h3>{step[1]}</h3><p>{step[2]}</p></div></article>)}
+          </div>
+        </div>
+        <form className="community-form" onSubmit={shareWithCommunity}>
+          <fieldset className="community-type">
+            <legend>{language === "pt" ? "O que você quer compartilhar?" : "What would you like to share?"}</legend>
+            <div>{t.communityTypes.map((label, index) => <label key={label}><input type="radio" name="kind" value={["story", "idea", "surprise"][index]} defaultChecked={index === 0} /><span>{label}</span></label>)}</div>
+          </fieldset>
+          <div className="community-row">
+            <label><span>{t.communityName}</span><input name="authorName" autoComplete="name" maxLength={80} /></label>
+            <label><span>{t.communityEmail}</span><input name="email" type="email" autoComplete="email" maxLength={160} required /><small>{t.communityEmailHelp}</small></label>
+          </div>
+          <label><span>{t.communityTitleField}</span><input name="title" minLength={4} maxLength={120} required /></label>
+          <label><span>{t.communityStory}</span><textarea name="content" minLength={40} maxLength={3000} rows={7} required /><small>{t.communityStoryHint}</small></label>
+          <label><span>{t.communityLocation}</span><input name="location" autoComplete="address-level2" maxLength={120} /></label>
+          <label className="community-check"><input name="anonymous" type="checkbox" /><span>{t.communityAnonymous}</span></label>
+          <label className="community-check"><input name="consent" type="checkbox" required /><span>{t.communityConsent}</span></label>
+          <label className="community-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
+          <button className="button primary" type="submit" disabled={communityStatus === "sending"}>{communityStatus === "sending" ? (language === "pt" ? "Enviando…" : "Sending…") : t.communitySubmit}<span>→</span></button>
+          <p className={`community-message ${communityStatus}`} role="status" aria-live="polite">{communityStatus === "success" ? t.communitySuccess : communityStatus === "error" ? t.communityError : ""}</p>
+        </form>
       </section>
 
       <section className="guide section" id="guias">
