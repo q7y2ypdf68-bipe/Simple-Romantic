@@ -17,7 +17,7 @@ const copy = {
       "Descubra lugares bonitos, encontros simples e pequenas surpresas para viver a dois — perto de você e dentro do seu orçamento.",
     heroCta: "Encontrar uma ideia",
     explore: "Explorar lugares",
-    proof: ["Ideias gratuitas", "Sem complicação", "Para casais reais"],
+    proof: ["Conteúdo 100% gratuito", "Sem complicação", "Para casais reais"],
     finderKicker: "O PLANO COMEÇA AQUI",
     finderTitle: "O que vocês gostariam de viver hoje?",
     finderText: "Conte o essencial. A gente transforma isso em um encontro possível.",
@@ -54,11 +54,11 @@ const copy = {
     ],
     guideKicker: "PARA GUARDAR E REPETIR",
     guideTitle: "30 encontros simples gastando pouco",
-    guideText: "Nosso primeiro guia reúne planos rápidos, listas práticas e pequenas surpresas para todas as semanas.",
+    guideText: "Nosso primeiro guia gratuito reúne planos rápidos, listas práticas e pequenas surpresas para todas as semanas.",
     guideCta: "Quero receber o guia",
     mailPlaceholder: "Seu melhor e-mail",
     footer: "Momentos simples. Memórias bonitas.",
-    footerNote: "Feito para casais reais, com orçamentos reais.",
+    footerNote: "Conteúdo gratuito para casais reais, com orçamentos reais.",
     sent: "Perfeito! Você vai saber em primeira mão.",
     communityKicker: "HISTÓRIAS QUE APROXIMAM",
     communityTitle: "Sua história também pode inspirar alguém.",
@@ -91,7 +91,7 @@ const copy = {
       "Discover beautiful places, simple dates and thoughtful surprises to enjoy together — near you and within your budget.",
     heroCta: "Find an idea",
     explore: "Explore places",
-    proof: ["Ideas from €0", "No complications", "For real couples"],
+    proof: ["100% free content", "No complications", "For real couples"],
     finderKicker: "YOUR PLAN STARTS HERE",
     finderTitle: "What would you like to experience today?",
     finderText: "Tell us the essentials. We'll turn them into a date you can actually enjoy.",
@@ -128,11 +128,11 @@ const copy = {
     ],
     guideKicker: "SAVE IT. REPEAT IT.",
     guideTitle: "30 simple dates under €20",
-    guideText: "Our first guide brings together quick plans, practical lists and thoughtful surprises for every week.",
+    guideText: "Our first free guide brings together quick plans, practical lists and thoughtful surprises for every week.",
     guideCta: "Tell me when it's ready",
     mailPlaceholder: "Your best email",
     footer: "Simple moments. Beautiful memories.",
-    footerNote: "Made for real couples with real budgets.",
+    footerNote: "Free content for real couples with real budgets.",
     sent: "Perfect! You'll be the first to know.",
     communityKicker: "STORIES THAT BRING US CLOSER",
     communityTitle: "Your story can inspire someone too.",
@@ -286,7 +286,7 @@ export default function Home() {
         </div>
         <div className="section-heading split blog-heading"><div><p className="eyebrow">CONTEÚDOS PARA INSPIRAR</p><h2>Comece por uma ideia simples.</h2></div><p>Leituras rápidas e úteis para planejar encontros possíveis, preparar surpresas e cuidar da conexão.</p></div>
         <div className="blog-grid">
-          {blogPosts.map((post) => <article className="blog-card" key={post.slug}>
+          {blogPosts.slice(0, 3).map((post) => <article className="blog-card" key={post.slug}>
             <Link className="blog-card-image" href={`/blog/${post.slug}`}><Image src={post.image} alt={post.imageAlt} fill sizes="(max-width: 700px) 100vw, 33vw" /></Link>
             <div className="blog-card-copy"><p className="eyebrow">{post.category}</p><h3><Link href={`/blog/${post.slug}`}>{post.title}</Link></h3><p>{post.excerpt}</p><div className="blog-card-meta"><span>{post.readTime}</span><Link href={`/blog/${post.slug}`}>Ler artigo →</Link></div></div>
           </article>)}

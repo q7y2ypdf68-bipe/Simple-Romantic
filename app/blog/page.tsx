@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Blog | Simple & Romantic",
-  description: "Ideias de encontros românticos, surpresas simples e lugares bonitos para casais que querem viver mais gastando pouco.",
+  description: "Conteúdo gratuito com ideias de encontros românticos, surpresas simples e lugares bonitos para casais.",
 };
 
 export default async function BlogPage() {
@@ -20,7 +20,7 @@ export default async function BlogPage() {
       <section className="blog-hero section">
         <p className="eyebrow">ROMANCE PARA A VIDA REAL</p>
         <h1>Ideias simples para criar<br />memórias bonitas.</h1>
-        <p>Conteúdo prático para casais que querem sair da rotina, aproveitar lugares públicos, preparar pequenas surpresas e viver momentos especiais sem gastar muito.</p>
+        <p>Conteúdo gratuito e prático para casais que querem sair da rotina, aproveitar lugares públicos, preparar pequenas surpresas e viver momentos especiais sem gastar muito.</p>
       </section>
       <section className="blog-list section" aria-label="Artigos do blog">
         <div className="blog-grid blog-grid-page">
