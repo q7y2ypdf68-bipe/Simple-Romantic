@@ -259,3 +259,118 @@ footer>small,footer>div{font-size:14px;line-height:1.5}
   .article-body h2{font-size:35px}
   .article-cta{padding:32px 24px}
 }
+
+/* Stronger color hierarchy for the interactive and editorial blocks. */
+.finder{
+  background:linear-gradient(135deg,#ffe7ae 0%,#ffd4e3 48%,#dff6ff 100%)!important;
+}
+.finder:before{color:#f45b8f;opacity:.24}
+.finder-form{
+  border:2px solid #e85586;
+  background:linear-gradient(145deg,#fffdf8 0%,#fff4f8 100%)!important;
+  box-shadow:0 28px 70px rgba(173,35,91,.2),0 0 0 8px rgba(255,255,255,.42);
+}
+.location-field input{
+  border:2px solid #e9bb45;
+  background:#fff4c9;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75);
+}
+.location-field input::placeholder{color:#705a60;opacity:.78}
+.choices label span{
+  border:2px solid #e8a8bf;
+  background:#fff0f5;
+  color:#482c3f;
+  box-shadow:0 6px 15px rgba(116,42,74,.06);
+}
+.choices label span:hover{
+  border-color:#d71f63;
+  background:#ffe1ec;
+  transform:translateY(-2px);
+}
+.choices input:focus-visible+span{outline:3px solid #ffd45b;outline-offset:3px}
+.choices input:checked+span{
+  border-color:#bd174f;
+  background:linear-gradient(135deg,#c81d5b,#e54a58);
+  box-shadow:0 12px 24px rgba(190,26,82,.28);
+}
+.finder-button,.blog-welcome>.button,.community-form>.button{
+  background:linear-gradient(135deg,#c91d5c 0%,#e64c58 100%)!important;
+  box-shadow:0 14px 30px rgba(190,27,82,.3)!important;
+}
+
+.home-blog{background:linear-gradient(180deg,#fffefe 0%,#fff7ed 100%)}
+.blog-welcome{
+  border:2px solid #e95683;
+  background:linear-gradient(125deg,#ffe5a7 0%,#ffd2df 58%,#e5f8ff 100%);
+  box-shadow:0 28px 70px rgba(167,42,91,.18);
+}
+.blog-welcome-copy{
+  padding:32px 36px;
+  border:1px solid rgba(192,36,91,.18);
+  border-radius:22px;
+  background:rgba(255,255,255,.74);
+  box-shadow:0 14px 35px rgba(126,53,82,.09);
+}
+.blog-welcome-copy p{color:#5e4052}
+.blog-welcome>.eyebrow{color:#bd174f!important;-webkit-text-fill-color:#bd174f!important}
+
+.community{
+  background:linear-gradient(135deg,#ffdfa0 0%,#ffcbdc 52%,#d8f4ff 100%);
+}
+.community-intro>p:not(.eyebrow){color:#5d4051}
+.community-steps article{
+  padding:22px;
+  border:1px solid rgba(197,31,91,.18);
+  border-radius:18px;
+  background:rgba(255,255,255,.6);
+  box-shadow:0 10px 26px rgba(123,43,75,.07);
+}
+.community-steps article:nth-child(1){background:rgba(255,241,196,.78)}
+.community-steps article:nth-child(2){background:rgba(255,228,239,.8)}
+.community-steps article:nth-child(3){background:rgba(224,247,255,.82)}
+.community-steps article>span{color:#c51f5b}
+.community-form{
+  border:2px solid #db3b73;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 30px 75px rgba(161,31,84,.22),0 0 0 9px rgba(255,255,255,.35);
+}
+.community-form label>span,.community-form legend{color:#41293a}
+.community-type label span{
+  border:2px solid #e4a5bd;
+  background:#fff0f5;
+  color:#5b354a;
+  box-shadow:0 6px 15px rgba(116,42,74,.06);
+}
+.community-type label span:hover{border-color:#cb1f5c;background:#ffe1eb}
+.community-type input:focus-visible+span{outline:3px solid #ffd45b;outline-offset:3px}
+.community-type input:checked+span{
+  border-color:#bd174f;
+  background:linear-gradient(135deg,#c81d5b,#e64a58);
+  color:#fff;
+  box-shadow:0 12px 24px rgba(190,26,82,.25);
+}
+.community-form input:not([type=radio]):not([type=checkbox]),.community-form textarea{
+  border:2px solid #e4afc1;
+  background:#fff1f6;
+  color:#3b2636;
+}
+.community-row label:first-child input{background:#fff0f5}
+.community-row label:last-child input{border-color:#9fcfdd;background:#ecfaff}
+.community-form>label:nth-of-type(1) input{border-color:#e5b94f;background:#fff5cf}
+.community-form>label:nth-of-type(2) textarea{border-color:#e18cac;background:#fff0f5}
+.community-form>label:nth-of-type(3) input{border-color:#97cbd9;background:#ebfaff}
+.community-form input:not([type=radio]):not([type=checkbox]):focus,.community-form textarea:focus{
+  border-color:#c61e59;
+  background:#fff;
+  box-shadow:0 0 0 4px rgba(237,63,120,.2);
+}
+.community-check input{
+  border:2px solid #c73a6d;
+  accent-color:#c61e59;
+}
+
+@media(max-width:700px){
+  .blog-welcome-copy{padding:24px 20px}
+  .community-steps article{padding:18px}
+  .finder-form,.community-form{box-shadow:0 20px 45px rgba(161,31,84,.16)}
+}
