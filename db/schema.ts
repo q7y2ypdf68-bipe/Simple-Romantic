@@ -11,4 +11,6 @@ export const communitySubmissions = sqliteTable("community_submissions", {
   anonymous: integer("anonymous", { mode: "boolean" }).notNull().default(false),
   status: text("status").notNull().default("pending"),
   createdAt: text("created_at").notNull(),
+  updatedAt: text("updated_at"),
+  publishedAt: text("published_at"),
 });
