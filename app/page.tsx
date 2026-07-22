@@ -171,9 +171,16 @@ export default function Home() {
     requestAnimationFrame(() => document.querySelector("#resultado")?.scrollIntoView({ behavior: "smooth", block: "center" }));
   }
 
-  function joinList(event: FormEvent<HTMLFormElement>) {
+  async function joinList(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setMessage(t.sent);
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setMessage(language === "pt" ? "Enviando…" : "Sending…");
+    try {
+      const response = await fetch("/api/guide", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: data.get("email"), language, consent: data.get("guideConsent") === "on", website: data.get("website") }) });
+      if (!response.ok) throw new Error();
+      form.reset(); setMessage(t.sent);
+    } catch { setMessage(language === "pt" ? "Não foi possível cadastrar agora. Tente novamente." : "We couldn't sign you up right now. Please try again."); }
   }
 
   async function shareWithCommunity(event: FormEvent<HTMLFormElement>) {
@@ -314,7 +321,7 @@ export default function Home() {
           <label><span>{t.communityStory}</span><textarea name="content" minLength={40} maxLength={3000} rows={7} required /><small>{t.communityStoryHint}</small></label>
           <label><span>{t.communityLocation}</span><input name="location" autoComplete="address-level2" maxLength={120} /></label>
           <label className="community-check"><input name="anonymous" type="checkbox" /><span>{t.communityAnonymous}</span></label>
-          <label className="community-check"><input name="consent" type="checkbox" required /><span>{t.communityConsent}</span></label>
+          <label className="community-check"><input name="consent" type="checkbox" required /><span>{t.communityConsent} {language === "pt" ? <>Li e aceito os <Link href="/termos">Termos de Uso</Link>, a <Link href="/privacidade">Política de Privacidade</Link> e as <Link href="/regras-da-comunidade">Regras da Comunidade</Link>.</> : <>I have read and accept the <Link href="/termos">Terms</Link>, <Link href="/privacidade">Privacy Policy</Link> and <Link href="/regras-da-comunidade">Community Rules</Link>.</>}</span></label>
           <label className="community-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
           <button className="button primary" type="submit" disabled={communityStatus === "sending"}>{communityStatus === "sending" ? (language === "pt" ? "Enviando…" : "Sending…") : t.communitySubmit}<span>→</span></button>
           <p className={`community-message ${communityStatus}`} role="status" aria-live="polite">{communityStatus === "success" ? t.communitySuccess : communityStatus === "error" ? t.communityError : ""}</p>
@@ -324,12 +331,13 @@ export default function Home() {
       <section className="guide section" id="guias">
         <div className="guide-cover"><span>30</span><strong>{language === "pt" ? <>Encontros<br />simples</> : <>Simple<br />dates</>}</strong><small>{language === "pt" ? "PARA GASTAR POUCO" : "ON A SMALL BUDGET"}</small></div>
         <div className="guide-copy"><p className="eyebrow">{t.guideKicker}</p><h2>{t.guideTitle}</h2><p>{t.guideText}</p>
-          <form onSubmit={joinList}><input type="email" required placeholder={t.mailPlaceholder} aria-label={t.mailPlaceholder} /><button type="submit">{t.guideCta} →</button></form>
+          <form id="guide-form" onSubmit={joinList}><input name="email" type="email" required placeholder={t.mailPlaceholder} aria-label={t.mailPlaceholder} /><button type="submit">{t.guideCta} →</button><label className="community-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label></form>
+          <label className="guide-consent"><input name="guideConsent" form="guide-form" type="checkbox" required /><span>{language === "pt" ? <>Quero receber o guia e aceito a <Link href="/privacidade">Política de Privacidade</Link>.</> : <>I want to receive the guide and accept the <Link href="/privacidade">Privacy Policy</Link>.</>}</span></label>
           <p className="form-message" aria-live="polite">{message}</p>
         </div>
       </section>
 
-      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">Privacidade</a></div></footer>
+      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><Link href="/privacidade">Privacidade</Link><Link href="/termos">Termos de Uso</Link><Link href="/regras-da-comunidade">Regras da Comunidade</Link><Link href="/contato">Contato</Link><Link href="/admin">Administração</Link></div></footer>
     </main>
   );
 }

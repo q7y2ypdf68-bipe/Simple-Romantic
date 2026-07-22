@@ -15,6 +15,13 @@
       "when": 1784738580121,
       "tag": "0001_awesome_bedlam",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1784740590030,
+      "tag": "0002_daffy_bloodstorm",
+      "breakpoints": true
     }
   ]
 }

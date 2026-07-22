@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { and, eq, gt } from "drizzle-orm";
 
 type SubmissionPayload = {
   kind?: unknown;
@@ -36,7 +37,10 @@ export async function POST(request: Request) {
     const anonymous = payload.anonymous === true;
     const consent = payload.consent === true;
 
-    if (!kinds.has(kind) || !email.includes("@") || title.length < 4 || content.length < 40 || !consent) {
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const linkCount = (content.match(/https?:\/\//gi) || []).length;
+
+    if (!kinds.has(kind) || !validEmail || title.length < 4 || content.length < 40 || !consent || linkCount > 3) {
       return NextResponse.json({ error: "Confira os campos obrigatórios antes de enviar." }, { status: 400 });
     }
 
@@ -45,7 +49,27 @@ export async function POST(request: Request) {
       import("../../../db/schema"),
     ]);
 
-    await getDb().insert(communitySubmissions).values({
+    const db = getDb();
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+    const recent = await db.select({ id: communitySubmissions.id })
+      .from(communitySubmissions)
+      .where(and(eq(communitySubmissions.email, email), gt(communitySubmissions.createdAt, oneHourAgo)))
+      .limit(3);
+
+    if (recent.length >= 3) {
+      return NextResponse.json({ error: "Muitos envios recentes. Tente novamente mais tarde." }, { status: 429 });
+    }
+
+    const duplicate = await db.select({ id: communitySubmissions.id })
+      .from(communitySubmissions)
+      .where(and(eq(communitySubmissions.email, email), eq(communitySubmissions.title, title), eq(communitySubmissions.content, content)))
+      .limit(1);
+
+    if (duplicate.length) {
+      return NextResponse.json({ ok: true }, { status: 200 });
+    }
+
+    await db.insert(communitySubmissions).values({
       kind,
       authorName: authorName || null,
       email,

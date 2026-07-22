@@ -5,5 +5,5 @@ export function BlogHeader() {
 }
 
 export function BlogFooter() {
-  return <footer><Link className="brand footer-brand" href="/"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></Link><p>Momentos simples. Memórias bonitas.</p><small>Feito para casais reais, com orçamentos reais.</small><div><Link href="/">Início</Link><Link href="/blog">Blog</Link><a href="#">Privacidade</a></div></footer>;
+  return <footer><Link className="brand footer-brand" href="/"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></Link><p>Momentos simples. Memórias bonitas.</p><small>Feito para casais reais, com orçamentos reais.</small><div><Link href="/">Início</Link><Link href="/blog">Blog</Link><Link href="/privacidade">Privacidade</Link><Link href="/termos">Termos</Link><Link href="/regras-da-comunidade">Regras</Link><Link href="/contato">Contato</Link></div></footer>;
 }
