@@ -20,7 +20,7 @@ export async function POST(request: Request) {
       const now = new Date().toISOString();
       await db.insert(guideSubscribers).values({ email, language, consentAt: now, createdAt: now });
     }
-    return NextResponse.json({ ok: true }, { status: 201 });
+    return NextResponse.json({ ok: true, downloadUrl: "/downloads/30-encontros-simples-gastando-pouco.pdf" }, { status: 201 });
   } catch (error) {
     console.error("Unable to save guide subscriber", error);
     return NextResponse.json({ error: "Não foi possível cadastrar agora." }, { status: 500 });

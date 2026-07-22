@@ -162,6 +162,7 @@ export default function Home() {
   const [language, setLanguage] = useState<Language>("pt");
   const [resultVisible, setResultVisible] = useState(false);
   const [message, setMessage] = useState("");
+  const [guideReady, setGuideReady] = useState(false);
   const [communityStatus, setCommunityStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const t = useMemo(() => copy[language], [language]);
 
@@ -175,11 +176,12 @@ export default function Home() {
     event.preventDefault();
     const form = event.currentTarget;
     const data = new FormData(form);
+    setGuideReady(false);
     setMessage(language === "pt" ? "Enviando…" : "Sending…");
     try {
       const response = await fetch("/api/guide", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: data.get("email"), language, consent: data.get("guideConsent") === "on", website: data.get("website") }) });
       if (!response.ok) throw new Error();
-      form.reset(); setMessage(t.sent);
+      form.reset(); setMessage(language === "pt" ? "Pronto! O guia gratuito já está disponível." : "Done! Your free guide is ready."); setGuideReady(true);
     } catch { setMessage(language === "pt" ? "Não foi possível cadastrar agora. Tente novamente." : "We couldn't sign you up right now. Please try again."); }
   }
 
@@ -334,10 +336,11 @@ export default function Home() {
           <form id="guide-form" onSubmit={joinList}><input name="email" type="email" required placeholder={t.mailPlaceholder} aria-label={t.mailPlaceholder} /><button type="submit">{t.guideCta} →</button><label className="community-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label></form>
           <label className="guide-consent"><input name="guideConsent" form="guide-form" type="checkbox" required /><span>{language === "pt" ? <>Quero receber o guia e aceito a <Link href="/privacidade">Política de Privacidade</Link>.</> : <>I want to receive the guide and accept the <Link href="/privacidade">Privacy Policy</Link>.</>}</span></label>
           <p className="form-message" aria-live="polite">{message}</p>
+          {guideReady && <div className="guide-ready"><a className="button primary" href="/downloads/30-encontros-simples-gastando-pouco.pdf" download>{language === "pt" ? "Baixar o PDF gratuito" : "Download the free PDF"} <span>↓</span></a><Link className="quiet-link" href="/guia">{language === "pt" ? "Ler no site" : "Read online"}</Link></div>}
         </div>
       </section>
 
-      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><Link href="/privacidade">Privacidade</Link><Link href="/termos">Termos de Uso</Link><Link href="/regras-da-comunidade">Regras da Comunidade</Link><Link href="/contato">Contato</Link><Link href="/admin">Administração</Link></div></footer>
+      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><Link href="/guia">Guia gratuito</Link><Link href="/privacidade">Privacidade</Link><Link href="/termos">Termos de Uso</Link><Link href="/regras-da-comunidade">Regras da Comunidade</Link><Link href="/contato">Contato</Link><Link href="/admin">Administração</Link></div></footer>
     </main>
   );
 }
