@@ -393,6 +393,22 @@ footer>small,footer>div{font-size:14px;line-height:1.5}
   accent-color:#c61e59;
 }
 
+/* Keep the guide's final CTA readable over the warm gradient. */
+.guide-final .button.primary,
+.guide-final .button.primary span{
+  background:#fff;
+  color:var(--pink-dark)!important;
+  -webkit-text-fill-color:var(--pink-dark)!important;
+}
+.guide-final .button.primary{
+  border:2px solid rgba(73,36,61,.16);
+  box-shadow:0 13px 30px rgba(73,36,61,.18);
+}
+.guide-final .button.primary:hover{
+  background:#fff8fb;
+  box-shadow:0 18px 38px rgba(73,36,61,.25);
+}
+
 @media(max-width:700px){
   .blog-welcome-copy{padding:24px 20px}
   .community-steps article{padding:18px}
