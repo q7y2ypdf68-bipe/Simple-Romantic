@@ -61,6 +61,9 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  verification: {
+    google: "kv-3Y3TxawyrnteVacXO6PSW-LteDXtNq-sY1IOaeqQ",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
