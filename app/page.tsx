@@ -4,6 +4,7 @@ import { FormEvent, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { blogPosts } from "./blog/posts";
+import { MobileMenu } from "./components/MobileMenu";
 
 type Language = "pt" | "en";
 
@@ -165,6 +166,14 @@ export default function Home() {
   const [guideReady, setGuideReady] = useState(false);
   const [communityStatus, setCommunityStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const t = useMemo(() => copy[language], [language]);
+  const mobileLinks = [
+    { href: "#encontrar", label: t.nav[0] },
+    { href: "#lugares", label: t.nav[1] },
+    { href: "#como", label: t.nav[2] },
+    { href: "/guia", label: t.nav[3] },
+    { href: "#blog", label: t.nav[4] },
+    { href: "#comunidade", label: t.nav[5] },
+  ];
 
   function createDate(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -226,10 +235,17 @@ export default function Home() {
         <nav aria-label="Navegação principal">
           <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><Link href="/guia">{t.nav[3]}</Link><a href="#blog">{t.nav[4]}</a><a href="#comunidade">{t.nav[5]}</a>
         </nav>
-        <div className="language" aria-label="Idioma">
-          <button className={language === "pt" ? "active" : ""} onClick={() => setLanguage("pt")}>PT-BR</button>
-          <span>/</span>
-          <button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>EN</button>
+        <div className="header-actions">
+          <div className="language" aria-label="Idioma">
+            <button className={language === "pt" ? "active" : ""} onClick={() => setLanguage("pt")}>PT-BR</button>
+            <span>/</span>
+            <button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>EN</button>
+          </div>
+          <MobileMenu
+            links={mobileLinks}
+            openLabel={language === "pt" ? "Abrir menu" : "Open menu"}
+            closeLabel={language === "pt" ? "Fechar menu" : "Close menu"}
+          />
         </div>
       </header>
 

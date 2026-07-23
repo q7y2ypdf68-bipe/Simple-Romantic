@@ -422,7 +422,75 @@ footer>small,footer>div{font-size:14px;line-height:1.5}
   box-shadow:0 8px 22px rgba(73,36,61,.12);
 }
 
+.header-actions{display:flex;align-items:center;gap:14px}
+.mobile-menu{display:none;position:relative}
+.mobile-menu-toggle{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-content:center;
+  gap:5px;
+  padding:0;
+  border:1px solid #efd7e2;
+  border-radius:50%;
+  background:#fff7fa;
+  color:var(--ink);
+  cursor:pointer;
+  box-shadow:0 8px 22px rgba(115,45,78,.1);
+}
+.mobile-menu-toggle span{
+  width:21px;
+  height:2px;
+  border-radius:2px;
+  background:currentColor;
+  transition:transform .2s ease,opacity .2s ease;
+}
+.mobile-menu.is-open .mobile-menu-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.mobile-menu.is-open .mobile-menu-toggle span:nth-child(2){opacity:0}
+.mobile-menu.is-open .mobile-menu-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu-panel{
+  width:min(360px,90vw);
+  position:absolute;
+  top:58px;
+  right:0;
+  display:grid!important;
+  gap:4px!important;
+  padding:14px;
+  border:1px solid #efd7e2;
+  border-radius:22px;
+  background:rgba(255,255,255,.98);
+  box-shadow:0 24px 60px rgba(91,35,66,.2);
+}
+.mobile-menu-panel[hidden]{display:none!important}
+.mobile-menu-panel a{
+  min-height:49px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:11px 15px!important;
+  border:0!important;
+  border-radius:13px;
+  color:var(--ink)!important;
+  font-size:16px;
+  font-weight:800;
+}
+.mobile-menu-panel a:hover,.mobile-menu-panel a:focus-visible{
+  background:#fff0f5;
+  color:var(--pink-dark)!important;
+  outline:none;
+}
+.mobile-menu-panel a span{color:var(--pink)}
+
+@media(max-width:1280px){
+  .mobile-menu{display:block}
+  .blog-site-header .back-home{display:none}
+}
+
 @media(max-width:700px){
+  .header-actions{gap:8px}
+  .mobile-menu-toggle{width:44px;height:44px}
+  .mobile-menu-panel{position:fixed;top:78px;left:5vw;right:5vw;width:auto}
   .blog-welcome-copy{padding:24px 20px}
   .community-steps article{padding:18px}
   .finder-form,.community-form{box-shadow:0 20px 45px rgba(161,31,84,.16)}

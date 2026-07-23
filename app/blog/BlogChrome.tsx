@@ -1,7 +1,17 @@
 import Link from "next/link";
+import { MobileMenu } from "../components/MobileMenu";
 
 export function BlogHeader() {
-  return <header className="site-header blog-site-header"><Link className="brand" href="/"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span></Link><nav aria-label="Navegação principal"><Link href="/#encontrar">Encontrar uma ideia</Link><Link href="/#lugares">Lugares</Link><Link href="/guia">Guia gratuito</Link><Link href="/blog">Blog</Link></nav><Link className="back-home" href="/">Início</Link></header>;
+  const links = [
+    { href: "/", label: "Início" },
+    { href: "/#encontrar", label: "Encontrar uma ideia" },
+    { href: "/#lugares", label: "Lugares" },
+    { href: "/guia", label: "Guia gratuito" },
+    { href: "/blog", label: "Blog" },
+    { href: "/#comunidade", label: "Comunidade" },
+  ];
+
+  return <header className="site-header blog-site-header"><Link className="brand" href="/"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span></Link><nav aria-label="Navegação principal"><Link href="/#encontrar">Encontrar uma ideia</Link><Link href="/#lugares">Lugares</Link><Link href="/guia">Guia gratuito</Link><Link href="/blog">Blog</Link></nav><div className="header-actions"><Link className="back-home" href="/">Início</Link><MobileMenu links={links} /></div></header>;
 }
 
 export function BlogFooter() {
