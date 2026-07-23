@@ -20,7 +20,12 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const story = await getStory(Number(id));
   if (!story) return {};
-  return { title: `${story.title} | Simple & Romantic`, description: story.content.slice(0, 155) };
+  return {
+    title: story.title,
+    description: story.content.slice(0, 155),
+    alternates: { canonical: `/blog/historias/${story.id}` },
+    robots: { index: true, follow: true },
+  };
 }
 
 export default async function CommunityStoryPage({ params }: { params: Promise<{ id: string }> }) {

@@ -13,15 +13,47 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  return { title: `${post.title} | Simple & Romantic`, description: post.excerpt };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      type: "article",
+      locale: "pt_BR",
+      url: `/blog/${post.slug}`,
+      siteName: "Simple & Romantic",
+      title: post.title,
+      description: post.excerpt,
+      images: [{ url: post.image, alt: post.imageAlt }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+    },
+  };
 }
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
+  const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: `${siteUrl}${post.image}`,
+    mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
+    author: { "@type": "Organization", name: "Simple & Romantic" },
+    publisher: { "@type": "Organization", name: "Simple & Romantic", logo: { "@type": "ImageObject", url: `${siteUrl}/favicon.svg` } },
+    inLanguage: "pt-BR",
+  };
 
   return <main className="article-page">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
     <BlogHeader />
     <article>
       <header className="article-header section"><Link className="article-back" href="/blog">← Voltar ao blog</Link><p className="eyebrow">{post.category}</p><h1>{post.title}</h1><p className="article-deck">{post.excerpt}</p><div className="article-meta"><span>{post.published}</span><span>{post.readTime}</span></div></header>

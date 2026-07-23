@@ -8,8 +8,16 @@ import { desc, eq } from "drizzle-orm";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Blog | Simple & Romantic",
+  title: "Blog",
   description: "Conteúdo gratuito com ideias de encontros românticos, surpresas simples e lugares bonitos para casais.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    type: "website",
+    url: "/blog",
+    title: "Blog Simple & Romantic",
+    description: "Ideias de encontros, surpresas e lugares bonitos para viver a dois sem gastar muito.",
+    images: [{ url: "/images/viewpoint-surprise.png", alt: "Casal vivendo uma surpresa romântica em um mirante" }],
+  },
 };
 
 export default async function BlogPage() {

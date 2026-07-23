@@ -6,6 +6,14 @@ import guide from "../../content/guide-pt-br.json";
 export const metadata: Metadata = {
   title: "30 encontros simples gastando pouco | Guia gratuito",
   description: "Guia gratuito com 30 encontros simples, roteiros, pequenos detalhes e planos alternativos para casais.",
+  alternates: { canonical: "/guia" },
+  openGraph: {
+    type: "article",
+    url: "/guia",
+    title: "30 encontros simples gastando pouco",
+    description: "Guia gratuito com ideias possíveis, roteiros e planos alternativos para casais.",
+    images: [{ url: "/images/hero-park.png", alt: "Casal aproveitando um encontro simples em um parque" }],
+  },
 };
 
 export default function GuidePage() {

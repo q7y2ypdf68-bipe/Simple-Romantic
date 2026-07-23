@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPage } from "../legal/LegalPage";
 
-export const metadata: Metadata = { title: "Termos de Uso | Simple & Romantic", description: "Condições de uso do conteúdo e das ferramentas do Simple & Romantic." };
+export const metadata: Metadata = { title: "Termos de Uso", description: "Condições de uso do conteúdo e das ferramentas do Simple & Romantic.", alternates: { canonical: "/termos" } };
 
 export default function TermsPage() {
   return <LegalPage kicker="UMA EXPERIÊNCIA RESPEITOSA" title="Termos de Uso" intro="Ao usar o site, você concorda com estas condições. Última atualização: 22 de julho de 2026.">

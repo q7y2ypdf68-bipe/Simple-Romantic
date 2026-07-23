@@ -1,9 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { desc } from "drizzle-orm";
 import { requireAdminUser } from "./admin-auth";
 import AdminDashboard from "./AdminDashboard";
 
 export const dynamic = "force-dynamic";
+export const metadata: Metadata = {
+  title: "Administração",
+  robots: { index: false, follow: false, noarchive: true },
+};
 
 export default async function AdminPage() {
   const user = await requireAdminUser("/admin");
