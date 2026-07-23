@@ -9,7 +9,7 @@ type Language = "pt" | "en";
 
 const copy = {
   pt: {
-    nav: ["Encontrar uma ideia", "Lugares", "Como funciona", "Guias", "Blog", "Comunidade"],
+    nav: ["Encontrar uma ideia", "Lugares", "Como funciona", "Guia gratuito", "Blog", "Comunidade"],
     heroKicker: "ROMANCE ACESSÍVEL · MOMENTOS REAIS",
     heroTitleA: "Romance não precisa",
     heroTitleB: "ser caro.",
@@ -83,7 +83,7 @@ const copy = {
     ],
   },
   en: {
-    nav: ["Find an idea", "Places", "How it works", "Guides", "Blog", "Community"],
+    nav: ["Find an idea", "Places", "How it works", "Free guide", "Blog", "Community"],
     heroKicker: "AFFORDABLE ROMANCE · REAL MOMENTS",
     heroTitleA: "Romance doesn't have",
     heroTitleB: "to be expensive.",
@@ -224,7 +224,7 @@ export default function Home() {
           <span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span>
         </a>
         <nav aria-label="Navegação principal">
-          <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><a href="#guias">{t.nav[3]}</a><a href="#blog">{t.nav[4]}</a><a href="#comunidade">{t.nav[5]}</a>
+          <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><Link href="/guia">{t.nav[3]}</Link><a href="#blog">{t.nav[4]}</a><a href="#comunidade">{t.nav[5]}</a>
         </nav>
         <div className="language" aria-label="Idioma">
           <button className={language === "pt" ? "active" : ""} onClick={() => setLanguage("pt")}>PT-BR</button>
