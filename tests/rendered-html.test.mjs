@@ -1,10 +1,20 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
 const googleVerificationMeta =
   /<meta(?=[^>]*\bname=["']google-site-verification["'])(?=[^>]*\bcontent=["']kv-3Y3TxawyrnteVacXO6PSW-LteDXtNq-sY1IOaeqQ["'])[^>]*>/i;
+
+test("uses one unique image for every editorial blog article", async () => {
+  const source = await readFile(new URL("../app/blog/posts.ts", import.meta.url), "utf8");
+  const imagePaths = [...source.matchAll(/\bimage:\s*"([^"]+)"/g)].map((match) => match[1]);
+
+  assert.equal(imagePaths.length, 11);
+  assert.equal(new Set(imagePaths).size, imagePaths.length);
+  assert.ok(imagePaths.every((path) => path.startsWith("/images/blog/") && path.endsWith(".webp")));
+});
 
 test("renders development preview metadata", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);

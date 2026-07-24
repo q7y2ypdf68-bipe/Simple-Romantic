@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: "/blog",
     title: "Blog Simple & Romantic",
     description: "Ideias de encontros, surpresas e lugares bonitos para viver a dois sem gastar muito.",
-    images: [{ url: "/images/viewpoint-surprise.png", alt: "Casal vivendo uma surpresa romântica em um mirante" }],
+    images: [{ url: "/images/blog/01-encontros-gratuitos.webp", alt: "Casal jovem adulto caminhando e sorrindo em um jardim público" }],
   },
 };
 
