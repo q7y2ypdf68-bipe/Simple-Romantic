@@ -30,6 +30,16 @@ const worker = {
     const url = new URL(request.url);
 
     if (url.pathname === "/_vinext/image") {
+      // The supervised development preview does not expose the production
+      // image bindings. In that environment, serve only same-origin public
+      // assets directly; production continues through the optimizer below.
+      if (!env?.ASSETS || !env?.IMAGES) {
+        const source = url.searchParams.get("url");
+        if (!source || !source.startsWith("/") || source.startsWith("//")) {
+          return new Response("Invalid image source", { status: 400 });
+        }
+        return fetch(new Request(new URL(source, request.url), { headers: request.headers }));
+      }
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
       return handleImageOptimization(request, {
         fetchAsset: (path) => env.ASSETS.fetch(new Request(new URL(path, request.url))),

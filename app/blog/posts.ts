@@ -12,12 +12,67 @@ export type BlogPost = {
   image: string;
   imageAlt: string;
   published: string;
+  publishedIso?: string;
   readTime: string;
   intro: string[];
   sections: BlogSection[];
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "encontros-romanticos-gratuitos-sair-da-rotina",
+    title: "15 ideias de encontros românticos gratuitos para sair da rotina",
+    excerpt: "Planos carinhosos para viver momentos diferentes usando espaços públicos e o que vocês já têm.",
+    category: "ENCONTROS GRATUITOS",
+    image: "/images/beach-walk.png",
+    imageAlt: "Casal caminhando junto à praia durante um encontro romântico gratuito",
+    published: "24 de julho de 2026",
+    publishedIso: "2026-07-24",
+    readTime: "8 min de leitura",
+    intro: [
+      "Sair da rotina não exige comprar ingressos, reservar uma mesa ou viajar para longe. Um encontro começa quando duas pessoas escolhem interromper o automático e dedicar atenção verdadeira uma à outra.",
+      "As quinze ideias abaixo foram pensadas para não exigir gastos. Adaptem cada proposta à cidade, ao clima, à mobilidade e aos limites de vocês. Antes de sair, confiram as regras, os horários e a segurança dos espaços públicos.",
+    ],
+    sections: [
+      {
+        heading: "Cinco encontros gratuitos ao ar livre",
+        items: [
+          "Escolham um parque e façam uma caminhada sem destino apressado, alternando quem decide o próximo caminho.",
+          "Assistam ao pôr do sol em uma praça, praia, orla ou mirante seguro e de acesso gratuito.",
+          "Façam um passeio fotográfico com o celular e registrem cinco detalhes bonitos que normalmente passariam despercebidos.",
+          "Visitem um jardim público e escolham juntos o canto mais tranquilo para conversar por trinta minutos.",
+          "Percorram uma rota conhecida como se fossem turistas, observando fachadas, histórias e pequenos detalhes do bairro.",
+        ],
+      },
+      {
+        heading: "Cinco ideias usando apenas o que vocês já têm",
+        items: [
+          "Levem água de casa e uma toalha para descansar em um espaço verde, sem transformar o encontro em uma lista de compras.",
+          "Criem uma playlist curta com músicas ligadas à história do casal e escutem durante uma caminhada.",
+          "Separem fotografias antigas no celular e contem o que cada lembrança ainda significa.",
+          "Escrevam três qualidades um do outro em pequenos papéis e troquem no fim do encontro.",
+          "Preparem em casa uma bebida simples e levem em uma garrafa reutilizável para apreciar em um lugar bonito.",
+        ],
+      },
+      {
+        heading: "Cinco encontros para conversar e se reconectar",
+        items: [
+          "Sentem em um banco de praça e respondam: o que poderíamos tornar mais leve nesta semana?",
+          "Revisitem o local do primeiro encontro ou outro lugar importante e contem o que cada um lembra daquele período.",
+          "Façam uma hora sem notificações, com os celulares guardados e atenção inteira na conversa.",
+          "Escolham uma biblioteca ou centro cultural gratuito e indiquem um livro, uma exposição ou uma ideia um para o outro.",
+          "Terminem o encontro criando juntos o próximo plano gratuito e marquem uma data possível no calendário.",
+        ],
+      },
+      {
+        heading: "Como transformar uma ideia gratuita em um encontro especial",
+        paragraphs: [
+          "Escolham apenas uma proposta e acrescentem um detalhe pessoal: uma música, uma pergunta, uma fotografia ou uma frase escrita à mão. O que torna o encontro romântico não é a quantidade de atividades, mas a intenção colocada no momento.",
+          "Também vale preparar um plano alternativo para chuva, lotação ou mudança de horário. Se o passeio precisar ser adiado, isso não diminui o cuidado. O melhor encontro é aquele em que as duas pessoas se sentem seguras, respeitadas e presentes.",
+        ],
+      },
+    ],
+  },
   {
     slug: "encontros-romanticos-gastando-pouco",
     title: "15 ideias de encontros românticos gastando pouco",

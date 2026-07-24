@@ -50,6 +50,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     author: { "@type": "Organization", name: "Simple & Romantic" },
     publisher: { "@type": "Organization", name: "Simple & Romantic", logo: { "@type": "ImageObject", url: `${siteUrl}/favicon.svg` } },
     inLanguage: "pt-BR",
+    ...(post.publishedIso ? { datePublished: post.publishedIso, dateModified: post.publishedIso } : {}),
   };
 
   return <main className="article-page">
@@ -61,7 +62,15 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <div className="article-body">
         {post.intro.map((paragraph) => <p className="article-intro" key={paragraph}>{paragraph}</p>)}
         {post.sections.map((section) => <section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>}</section>)}
-        <aside className="article-cta"><p className="eyebrow">TRANSFORME A IDEIA EM UM ENCONTRO</p><h2>Quer um plano simples para viver a dois?</h2><p>Informe o essencial e use nosso criador de encontros para começar.</p><Link className="button primary" href="/#encontrar">Criar nosso encontro <span>→</span></Link></aside>
+        <aside className="article-cta">
+          <p className="eyebrow">TRANSFORME A IDEIA EM UM ENCONTRO</p>
+          <h2>Quer um plano simples para viver a dois?</h2>
+          <p>Use nosso criador de encontros ou consulte gratuitamente os 30 roteiros prontos do guia.</p>
+          <div className="article-cta-actions">
+            <Link className="button primary" href="/#encontrar">Criar nosso encontro <span>→</span></Link>
+            <Link className="article-guide-link" href="/guia">Abrir o Guia Gratuito <span>→</span></Link>
+          </div>
+        </aside>
       </div>
     </article>
     <BlogFooter />

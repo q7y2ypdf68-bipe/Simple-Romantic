@@ -254,7 +254,10 @@ footer>small,footer>div{font-size:14px;line-height:1.5}
 .article-cta{margin-top:85px;padding:50px;border-radius:28px;background:linear-gradient(135deg,#fff4da,#ffe6ef);text-align:left}
 .article-cta .eyebrow{font-size:12px}
 .article-cta h2{font-size:38px}
-.article-cta .button{margin-top:15px;color:#fff}
+.article-cta-actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:22px}
+.article-cta .button{color:#fff}
+.article-guide-link{padding:11px 0;border-bottom:2px solid #ffd45b;color:var(--pink-dark);font-size:16px;font-weight:800}
+.article-guide-link:hover{color:#b71951}
 
 @media(max-width:1280px){.site-header nav{display:none}}
 @media(max-width:900px){
@@ -282,6 +285,7 @@ footer>small,footer>div{font-size:14px;line-height:1.5}
   .article-body .article-intro{font-size:20px}
   .article-body h2{font-size:35px}
   .article-cta{padding:32px 24px}
+  .article-cta-actions{align-items:flex-start;flex-direction:column}
 }
 
 /* Stronger color hierarchy for the interactive and editorial blocks. */
