@@ -621,3 +621,36 @@ footer>small,footer>div{font-size:14px;line-height:1.5}
       linear-gradient(150deg,#ffe9a9 0%,#ffc5d8 58%,#c9eef5 100%);
   }
 }
+
+/* More visible gradients on the free guide, without changing other pages. */
+.online-guide{
+  background:
+    linear-gradient(180deg,#fff9ed 0%,#fff5f9 48%,#f1fbfd 100%);
+}
+.online-guide .guide-hero{
+  background:
+    radial-gradient(circle at 12% 16%,rgba(255,212,91,.48),transparent 30%),
+    radial-gradient(circle at 88% 18%,rgba(137,215,234,.5),transparent 31%),
+    linear-gradient(135deg,#ffe29a 0%,#ffc5d9 54%,#bce9f3 100%);
+}
+.online-guide .guide-principles{
+  background:
+    linear-gradient(120deg,#fff4c9 0%,#ffe5ee 52%,#e0f6fb 100%);
+}
+.online-guide .guide-list{
+  background:
+    radial-gradient(circle at 8% 20%,rgba(255,212,91,.25),transparent 24%),
+    radial-gradient(circle at 92% 74%,rgba(137,215,234,.28),transparent 26%),
+    linear-gradient(180deg,#fff1bd 0%,#ffdae8 50%,#d7f2f8 100%);
+}
+.online-guide .guide-card:nth-child(3n+1) .guide-card-head{background:#ffe3ed}
+.online-guide .guide-card:nth-child(3n+2) .guide-card-head{background:#ffefb5}
+.online-guide .guide-card:nth-child(3n) .guide-card-head{background:#d8f3f8}
+
+@media(max-width:700px){
+  .online-guide .guide-hero{
+    background:
+      radial-gradient(circle at 8% 8%,rgba(255,212,91,.5),transparent 33%),
+      linear-gradient(150deg,#ffe5a7 0%,#ffc7db 58%,#beeaf4 100%);
+  }
+}
