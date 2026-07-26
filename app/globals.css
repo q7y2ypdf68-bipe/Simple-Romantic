@@ -526,3 +526,98 @@ footer>small,footer>div{font-size:14px;line-height:1.5}
   .analytics-cards{grid-template-columns:1fr}.analytics-heading{align-items:flex-start;flex-direction:column}.analytics-panel{padding:22px 18px}
   .admin-table-wrap{overflow-x:auto}.admin-table{min-width:700px}
 }
+
+/* Stronger, cheerful color identity for the blog index only. */
+.blog-page{
+  background:
+    radial-gradient(circle at 8% 27%,rgba(255,212,91,.24),transparent 25%),
+    radial-gradient(circle at 92% 46%,rgba(137,215,234,.24),transparent 27%),
+    #fff9fb;
+}
+.blog-page .blog-hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 12% 18%,rgba(255,212,91,.78),transparent 28%),
+    radial-gradient(circle at 88% 14%,rgba(137,215,234,.62),transparent 29%),
+    linear-gradient(135deg,#fff1b8 0%,#ffcad9 52%,#c9eef5 100%);
+}
+.blog-page .blog-hero:before,
+.blog-page .blog-hero:after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+}
+.blog-page .blog-hero:before{
+  width:260px;
+  height:260px;
+  left:-105px;
+  bottom:-130px;
+  border:42px solid rgba(237,63,120,.15);
+}
+.blog-page .blog-hero:after{
+  width:190px;
+  height:190px;
+  right:-58px;
+  top:-78px;
+  border:32px solid rgba(40,125,153,.13);
+}
+.blog-page .blog-hero>*{position:relative;z-index:1}
+.blog-page .blog-hero .eyebrow{color:#b51650!important;-webkit-text-fill-color:#b51650!important}
+.blog-page .blog-hero>p:not(.eyebrow){color:#624656}
+.blog-page .blog-list{
+  background:
+    linear-gradient(180deg,rgba(255,250,224,.92) 0%,rgba(255,236,244,.92) 46%,rgba(229,248,252,.94) 100%);
+}
+.blog-page .blog-tools{
+  border:2px solid rgba(237,63,120,.28);
+  background:
+    linear-gradient(120deg,rgba(255,214,91,.42),rgba(255,166,190,.38) 52%,rgba(137,215,234,.42));
+  box-shadow:0 18px 45px rgba(112,42,75,.12);
+}
+.blog-page .blog-search>div{
+  border-color:#df83a5;
+  background:rgba(255,255,255,.92);
+  box-shadow:0 8px 20px rgba(113,39,76,.07);
+}
+.blog-page .blog-categories button{
+  border-color:rgba(119,59,91,.24);
+  background:rgba(255,255,255,.88);
+}
+.blog-page .blog-categories button:hover,
+.blog-page .blog-categories button.active{
+  border-color:#ca245e;
+  background:linear-gradient(135deg,#ed3f78,#ff7b6b);
+  box-shadow:0 8px 18px rgba(202,36,94,.22);
+}
+.blog-page .blog-results{color:#694252}
+.blog-page .blog-card{
+  border-width:2px;
+  box-shadow:0 18px 46px rgba(111,43,76,.11);
+}
+.blog-page .blog-card:nth-child(3n+1){
+  border-color:#ef9fbb;
+  background:linear-gradient(180deg,#fff 0%,#fff0f5 100%);
+}
+.blog-page .blog-card:nth-child(3n+2){
+  border-color:#e7c757;
+  background:linear-gradient(180deg,#fff 0%,#fff7d7 100%);
+}
+.blog-page .blog-card:nth-child(3n){
+  border-color:#80c9da;
+  background:linear-gradient(180deg,#fff 0%,#eaf9fd 100%);
+}
+.blog-page .blog-card-copy{background:transparent}
+.blog-page .blog-card:nth-child(3n+1) .eyebrow{color:#c31d59!important;-webkit-text-fill-color:#c31d59!important}
+.blog-page .blog-card:nth-child(3n+2) .eyebrow{color:#9a6b00!important;-webkit-text-fill-color:#9a6b00!important}
+.blog-page .blog-card:nth-child(3n) .eyebrow{color:#16748f!important;-webkit-text-fill-color:#16748f!important}
+.blog-page .blog-card-meta{border-top-color:rgba(86,39,64,.18)}
+
+@media(max-width:700px){
+  .blog-page .blog-hero{
+    background:
+      radial-gradient(circle at 10% 10%,rgba(255,212,91,.7),transparent 32%),
+      linear-gradient(150deg,#ffe9a9 0%,#ffc5d8 58%,#c9eef5 100%);
+  }
+}
