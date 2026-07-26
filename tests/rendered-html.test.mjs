@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 const developmentPreviewMeta =
@@ -71,6 +71,9 @@ test("renders the new free-date article with both internal actions", async () =>
   assert.match(html, /15 ideias de encontros românticos gratuitos para sair da rotina/i);
   assert.match(html, /href=["']\/#encontrar["']/i);
   assert.match(html, /href=["']\/guia["']/i);
+  assert.match(html, /Compartilhar este artigo/i);
+  assert.match(html, /Artigos relacionados/i);
+  assert.match(html, /Caminho da página/i);
 });
 
 test("includes the new article in the sitemap", async () => {
@@ -123,4 +126,82 @@ test("rejects incomplete form submissions before persistence", async () => {
     );
     assert.equal(response.status, 400, `${path} should reject an incomplete submission`);
   }
+});
+
+test("renders blog discovery tools and collection structured data", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("blog-tools-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const response = await worker.fetch(
+    new Request("http://localhost/blog", { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Pesquisar no blog/i);
+  assert.match(html, /Mostrar mais conteúdos/i);
+  assert.match(html, /ItemList/);
+});
+
+test("serves a discoverable RSS feed with every editorial article", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("rss-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const response = await worker.fetch(
+    new Request("http://localhost/rss.xml"),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /application\/rss\+xml/);
+  const xml = await response.text();
+  assert.equal((xml.match(/<item>/g) || []).length, 11);
+  assert.match(xml, /Blog Simple &amp; Romantic/);
+});
+
+test("serves lightweight WebP images for the main visual areas", async () => {
+  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  for (const filename of ["hero-park.webp", "beach-walk.webp", "viewpoint-surprise.webp"]) {
+    assert.match(page, new RegExp(filename.replace(".", "\\.")));
+    const details = await stat(new URL(`../public/images/${filename}`, import.meta.url));
+    assert.ok(details.size < 500_000, `${filename} should remain lightweight`);
+  }
+  assert.doesNotMatch(page, /hero-park\.png|beach-walk\.png|viewpoint-surprise\.png/);
+});
+
+test("accepts harmless honeypot requests without writing personal data", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("honeypot-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+  const ctx = { waitUntil() {}, passThroughOnException() {} };
+  for (const path of ["/api/guide", "/api/community", "/api/contact"]) {
+    const response = await worker.fetch(
+      new Request(`http://localhost${path}`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ website: "bot.example" }),
+      }),
+      env,
+      ctx,
+    );
+    assert.ok(response.status === 200 || response.status === 201);
+  }
+});
+
+test("analytics ignores private routes without requiring persistence", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("analytics-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const response = await worker.fetch(
+    new Request("http://localhost/api/analytics", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ path: "/admin", source: "Direto" }),
+    }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  assert.equal(response.status, 202);
 });

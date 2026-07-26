@@ -1,4 +1,4 @@
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
 
 export const communitySubmissions = sqliteTable("community_submissions", {
   id: integer("id").primaryKey({ autoIncrement: true }),
@@ -33,3 +33,13 @@ export const contactRequests = sqliteTable("contact_requests", {
   status: text("status").notNull().default("new"),
   createdAt: text("created_at").notNull(),
 });
+
+export const analyticsDaily = sqliteTable("analytics_daily", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  day: text("day").notNull(),
+  path: text("path").notNull(),
+  source: text("source").notNull().default("Direto"),
+  views: integer("views").notNull().default(0),
+}, (table) => [
+  uniqueIndex("analytics_daily_day_path_source_unique").on(table.day, table.path, table.source),
+]);

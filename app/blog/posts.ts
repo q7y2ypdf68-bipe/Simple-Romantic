@@ -81,6 +81,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/02-gastando-pouco.webp",
     imageAlt: "Duas mulheres adultas compartilhando um lanche simples em uma praça",
     published: "20 de julho de 2026",
+    publishedIso: "2026-07-20",
     readTime: "7 min de leitura",
     intro: [
       "Um encontro marcante não depende do preço do restaurante, do tamanho do presente ou de uma viagem distante. Na maioria das vezes, o que fica na memória é a sensação de ter sido lembrado, ouvido e escolhido.",
@@ -134,6 +135,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/03-piquenique.webp",
     imageAlt: "Casal adulto aproveitando um piquenique simples à beira do lago",
     published: "20 de julho de 2026",
+    publishedIso: "2026-07-20",
     readTime: "6 min de leitura",
     intro: [
       "O piquenique é um dos encontros mais fáceis de personalizar. Pode acontecer em um parque, jardim, praia, mirante ou até no quintal de casa. Com planejamento simples, ele se transforma em uma pausa bonita no meio da rotina.",
@@ -181,6 +183,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/04-surpresas-simples.webp",
     imageAlt: "Dois homens adultos trocando um bilhete romântico em casa",
     published: "20 de julho de 2026",
+    publishedIso: "2026-07-20",
     readTime: "5 min de leitura",
     intro: [
       "Surpresa não precisa significar segredo elaborado ou presente caro. Ela acontece quando alguém percebe que houve intenção: uma mensagem enviada na hora certa, uma música escolhida com cuidado ou um plano feito pensando na outra pessoa.",
@@ -226,6 +229,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/05-encontro-parque.webp",
     imageAlt: "Casal adulto passeando junto por um parque acessível",
     published: "22 de julho de 2026",
+    publishedIso: "2026-07-22",
     readTime: "6 min de leitura",
     intro: [
       "Parques são espaços democráticos: permitem caminhar, conversar, observar a paisagem e fazer uma pausa sem obrigação de consumir. Com um pouco de intenção, um passeio comum pode se tornar um encontro que realmente aproxima.",
@@ -245,6 +249,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/06-dia-de-chuva.webp",
     imageAlt: "Casal adulto jogando e conversando em casa durante um dia de chuva",
     published: "22 de julho de 2026",
+    publishedIso: "2026-07-22",
     readTime: "5 min de leitura",
     intro: [
       "A chuva pode cancelar um piquenique, mas não precisa cancelar o encontro. O segredo é abandonar a ideia de uma programação perfeita e criar uma experiência confortável com o espaço e os recursos disponíveis.",
@@ -264,6 +269,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/07-reconectar.webp",
     imageAlt: "Casal adulto de mãos dadas durante uma conversa à beira do rio",
     published: "22 de julho de 2026",
+    publishedIso: "2026-07-22",
     readTime: "7 min de leitura",
     intro: [
       "A distância dentro de uma relação nem sempre aparece como uma grande briga. Às vezes, ela se instala em conversas apressadas, cansaço, tarefas e dias inteiros vividos no modo automático.",
@@ -283,6 +289,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/08-passeio-fotografico.webp",
     imageAlt: "Casal adulto fotografando detalhes durante um passeio pela cidade",
     published: "22 de julho de 2026",
+    publishedIso: "2026-07-22",
     readTime: "5 min de leitura",
     intro: [
       "Um passeio fotográfico transforma uma caminhada em jogo de observação. Não é preciso câmera profissional: o celular já basta. A proposta é desacelerar e descobrir juntos detalhes que normalmente passariam despercebidos.",
@@ -302,6 +309,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/09-encontro-em-casa.webp",
     imageAlt: "Casal adulto preparando uma refeição simples em casa",
     published: "22 de julho de 2026",
+    publishedIso: "2026-07-22",
     readTime: "6 min de leitura",
     intro: [
       "Ficar em casa não precisa significar repetir a rotina. Uma mudança de intenção, ambiente e atenção pode transformar algumas horas comuns em um encontro íntimo e divertido.",
@@ -320,6 +328,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/10-perguntas-conversa.webp",
     imageAlt: "Dois homens adultos conversando durante uma caminhada à beira-mar",
     published: "22 de julho de 2026",
+    publishedIso: "2026-07-22",
     readTime: "8 min de leitura",
     intro: [
       "Boas perguntas criam caminhos para histórias que a rotina não costuma alcançar. Elas não são testes e não precisam ser respondidas rapidamente. O mais importante é escutar sem transformar cada resposta em debate.",
@@ -339,6 +348,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/blog/11-seguranca-publica.webp",
     imageAlt: "Casal idoso consultando uma rota antes de um passeio em local público",
     published: "22 de julho de 2026",
+    publishedIso: "2026-07-22",
     readTime: "6 min de leitura",
     intro: [
       "Espaços públicos permitem encontros bonitos e acessíveis, mas cada lugar exige atenção ao horário, transporte, clima e regras locais. Planejar esses detalhes não diminui a espontaneidade: protege o momento.",

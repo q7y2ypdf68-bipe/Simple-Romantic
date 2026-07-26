@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AnalyticsTracker } from "./components/AnalyticsTracker";
+import { serializeStructuredData } from "./structured-data";
 
 const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
 
@@ -26,6 +28,9 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/",
+    types: {
+      "application/rss+xml": "/rss.xml",
+    },
   },
   openGraph: {
     type: "website",
@@ -35,7 +40,7 @@ export const metadata: Metadata = {
     title: "Simple & Romantic — Momentos simples, memórias bonitas",
     description: "Ideias gratuitas e de baixo custo para casais criarem encontros, surpresas e memórias bonitas.",
     images: [{
-      url: "/images/hero-park.png",
+      url: "/images/hero-park.webp",
       width: 1200,
       height: 630,
       alt: "Casal vivendo um momento simples e romântico em um parque",
@@ -45,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Simple & Romantic — Momentos simples, memórias bonitas",
     description: "Ideias gratuitas e de baixo custo para casais criarem encontros, surpresas e memórias bonitas.",
-    images: ["/images/hero-park.png"],
+    images: ["/images/hero-park.webp"],
   },
   icons: {
     icon: "/favicon.svg",
@@ -89,5 +94,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     ],
   };
 
-  return <html lang="pt-BR" data-theme="light" style={{ colorScheme: "light", backgroundColor: "#fffefe" }}><head><meta name="codex-preview" content="development" /><meta name="darkreader-lock" /><meta name="color-scheme" content="light" /><meta name="supported-color-schemes" content="light" /><meta name="theme-color" content="#fffefe" /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} /><script dangerouslySetInnerHTML={{ __html: "document.documentElement.dataset.theme='light';document.documentElement.style.colorScheme='light';" }} /></head><body style={{ backgroundColor: "#fffefe", color: "#3b2636" }}>{children}</body></html>;
+  return <html lang="pt-BR" data-theme="light" style={{ colorScheme: "light", backgroundColor: "#fffefe" }}><head><meta name="codex-preview" content="development" /><meta name="darkreader-lock" /><meta name="color-scheme" content="light" /><meta name="supported-color-schemes" content="light" /><meta name="theme-color" content="#fffefe" /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} /><script dangerouslySetInnerHTML={{ __html: "document.documentElement.dataset.theme='light';document.documentElement.style.colorScheme='light';" }} /></head><body style={{ backgroundColor: "#fffefe", color: "#3b2636" }}><AnalyticsTracker />{children}</body></html>;
 }

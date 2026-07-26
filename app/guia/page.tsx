@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     url: "/guia",
     title: "30 encontros simples gastando pouco",
     description: "Guia gratuito com ideias possíveis, roteiros e planos alternativos para casais.",
-    images: [{ url: "/images/hero-park.png", alt: "Casal aproveitando um encontro simples em um parque" }],
+    images: [{ url: "/images/hero-park.webp", alt: "Casal aproveitando um encontro simples em um parque" }],
   },
 };
 

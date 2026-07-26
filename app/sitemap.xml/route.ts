@@ -1,7 +1,7 @@
 import { blogPosts } from "../blog/posts";
 
 const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
-const lastModified = "2026-07-24";
+const lastModified = "2026-07-26";
 
 const staticPages = [
   { path: "", frequency: "weekly", priority: "1.0" },
@@ -34,7 +34,7 @@ export async function GET() {
     })),
     ...blogPosts.map((post) => ({
       url: `${siteUrl}/blog/${post.slug}`,
-      lastModified,
+      lastModified: post.publishedIso || lastModified,
       frequency: "monthly",
       priority: "0.8",
       image: `${siteUrl}${post.image}`,

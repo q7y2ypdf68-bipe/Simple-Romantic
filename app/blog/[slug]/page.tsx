@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BlogFooter, BlogHeader } from "../BlogChrome";
 import { blogPosts, getPost } from "../posts";
+import { ShareButtons } from "../ShareButtons";
+import { serializeStructuredData } from "../../structured-data";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -40,26 +42,49 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const post = getPost(slug);
   if (!post) notFound();
   const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
+  const currentIndex = blogPosts.findIndex((item) => item.slug === post.slug);
+  const relatedPosts = blogPosts
+    .filter((item) => item.slug !== post.slug)
+    .sort((a, b) => {
+      const categoryScoreA = a.category === post.category ? 0 : 1;
+      const categoryScoreB = b.category === post.category ? 0 : 1;
+      if (categoryScoreA !== categoryScoreB) return categoryScoreA - categoryScoreB;
+      return Math.abs(blogPosts.indexOf(a) - currentIndex) - Math.abs(blogPosts.indexOf(b) - currentIndex);
+    })
+    .slice(0, 3);
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    image: `${siteUrl}${post.image}`,
-    mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
-    author: { "@type": "Organization", name: "Simple & Romantic" },
-    publisher: { "@type": "Organization", name: "Simple & Romantic", logo: { "@type": "ImageObject", url: `${siteUrl}/favicon.svg` } },
-    inLanguage: "pt-BR",
-    ...(post.publishedIso ? { datePublished: post.publishedIso, dateModified: post.publishedIso } : {}),
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.excerpt,
+        image: `${siteUrl}${post.image}`,
+        mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
+        author: { "@type": "Organization", name: "Simple & Romantic" },
+        publisher: { "@type": "Organization", name: "Simple & Romantic", logo: { "@type": "ImageObject", url: `${siteUrl}/favicon.svg` } },
+        inLanguage: "pt-BR",
+        ...(post.publishedIso ? { datePublished: post.publishedIso, dateModified: post.publishedIso } : {}),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Início", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog` },
+          { "@type": "ListItem", position: 3, name: post.title, item: `${siteUrl}/blog/${post.slug}` },
+        ],
+      },
+    ],
   };
 
   return <main className="article-page">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} />
     <BlogHeader />
     <article>
-      <header className="article-header section"><Link className="article-back" href="/blog">← Voltar ao blog</Link><p className="eyebrow">{post.category}</p><h1>{post.title}</h1><p className="article-deck">{post.excerpt}</p><div className="article-meta"><span>{post.published}</span><span>{post.readTime}</span></div></header>
-      <div className="article-hero-image"><Image src={post.image} alt={post.imageAlt} fill priority sizes="100vw" /></div>
+      <header className="article-header section"><nav className="article-breadcrumbs" aria-label="Caminho da página"><Link href="/">Início</Link><span>›</span><Link href="/blog">Blog</Link><span>›</span><span aria-current="page">{post.category}</span></nav><Link className="article-back" href="/blog">← Voltar ao blog</Link><p className="eyebrow">{post.category}</p><h1>{post.title}</h1><p className="article-deck">{post.excerpt}</p><div className="article-meta"><span>{post.published}</span><span>{post.readTime}</span></div></header>
+      <div className="article-hero-image"><Image unoptimized src={post.image} alt={post.imageAlt} fill priority sizes="100vw" /></div>
       <div className="article-body">
+        <ShareButtons title={post.title} path={`/blog/${post.slug}`} />
         {post.intro.map((paragraph) => <p className="article-intro" key={paragraph}>{paragraph}</p>)}
         {post.sections.map((section) => <section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>}</section>)}
         <aside className="article-cta">
@@ -69,9 +94,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <div className="article-cta-actions">
             <Link className="button primary" href="/#encontrar">Criar nosso encontro <span>→</span></Link>
             <Link className="article-guide-link" href="/guia">Abrir o Guia Gratuito <span>→</span></Link>
+            <Link className="article-guide-link" href="/#comunidade">Compartilhar sua história <span>→</span></Link>
           </div>
         </aside>
       </div>
+      <aside className="related-posts section" aria-label="Artigos relacionados">
+        <div className="section-heading split"><div><p className="eyebrow">CONTINUE SE INSPIRANDO</p><h2>Outras ideias para vocês.</h2></div><p>Escolha uma próxima leitura e transforme uma ideia simples em tempo de qualidade.</p></div>
+        <div className="related-grid">{relatedPosts.map((related) => <article key={related.slug}><Link className="related-image" href={`/blog/${related.slug}`}><Image unoptimized src={related.image} alt={related.imageAlt} fill sizes="(max-width: 700px) 100vw, 33vw" /></Link><div><p className="eyebrow">{related.category}</p><h3><Link href={`/blog/${related.slug}`}>{related.title}</Link></h3><Link className="related-link" href={`/blog/${related.slug}`}>Ler artigo →</Link></div></article>)}</div>
+      </aside>
     </article>
     <BlogFooter />
   </main>;

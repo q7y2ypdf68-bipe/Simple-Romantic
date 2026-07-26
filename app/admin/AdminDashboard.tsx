@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { AdminNavigation } from "./AdminNavigation";
 
 type Status = "pending" | "approved" | "published" | "rejected";
 type Kind = "story" | "idea" | "surprise";
@@ -90,7 +91,7 @@ export default function AdminDashboard({ initialSubmissions, userName }: { initi
   return <main className="admin-shell">
     <header className="admin-header">
       <Link className="brand" href="/"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i><small>PAINEL ADMINISTRATIVO</small></span></Link>
-      <nav><Link href="/">Ver site</Link><Link href="/blog">Ver blog</Link><a href="/signout-with-chatgpt?return_to=/">Sair</a></nav>
+      <AdminNavigation active="community" />
     </header>
 
     <section className="admin-main">

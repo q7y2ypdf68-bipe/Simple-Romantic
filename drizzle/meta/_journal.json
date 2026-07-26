@@ -22,6 +22,13 @@
       "when": 1784740590030,
       "tag": "0002_daffy_bloodstorm",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1785067577866,
+      "tag": "0003_mature_garia",
+      "breakpoints": true
     }
   ]
 }

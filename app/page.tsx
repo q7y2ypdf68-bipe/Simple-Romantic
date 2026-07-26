@@ -165,6 +165,7 @@ export default function Home() {
   const [message, setMessage] = useState("");
   const [guideReady, setGuideReady] = useState(false);
   const [communityStatus, setCommunityStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [communityError, setCommunityError] = useState("");
   const t = useMemo(() => copy[language], [language]);
   const mobileLinks = [
     { href: "#encontrar", label: t.nav[0] },
@@ -189,14 +190,16 @@ export default function Home() {
     setMessage(language === "pt" ? "Enviando…" : "Sending…");
     try {
       const response = await fetch("/api/guide", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: data.get("email"), language, consent: data.get("guideConsent") === "on", website: data.get("website") }) });
-      if (!response.ok) throw new Error();
+      const result = await response.json().catch(() => ({})) as { error?: string };
+      if (!response.ok) throw new Error(result.error);
       form.reset(); setMessage(language === "pt" ? "Pronto! O guia gratuito já está disponível." : "Done! Your free guide is ready."); setGuideReady(true);
-    } catch { setMessage(language === "pt" ? "Não foi possível cadastrar agora. Tente novamente." : "We couldn't sign you up right now. Please try again."); }
+    } catch (error) { setMessage(error instanceof Error && error.message ? error.message : language === "pt" ? "Não foi possível cadastrar agora. Tente novamente." : "We couldn't sign you up right now. Please try again."); }
   }
 
   async function shareWithCommunity(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setCommunityStatus("sending");
+    setCommunityError("");
     const form = event.currentTarget;
     const data = new FormData(form);
 
@@ -217,10 +220,12 @@ export default function Home() {
         }),
       });
 
-      if (!response.ok) throw new Error("submission failed");
+      const result = await response.json().catch(() => ({})) as { error?: string };
+      if (!response.ok) throw new Error(result.error || "submission failed");
       form.reset();
       setCommunityStatus("success");
-    } catch {
+    } catch (error) {
+      setCommunityError(error instanceof Error && error.message !== "submission failed" ? error.message : "");
       setCommunityStatus("error");
     }
   }
@@ -261,7 +266,7 @@ export default function Home() {
           <div className="proof">{t.proof.map((item) => <span key={item}>✓ {item}</span>)}</div>
         </div>
         <div className="hero-scene">
-          <Image src="/images/hero-park.png" alt={language === "pt" ? "Casal sorrindo durante um piquenique em um parque" : "Couple smiling during a picnic in a park"} fill priority sizes="(max-width: 1000px) 100vw, 49vw" />
+          <Image unoptimized src="/images/hero-park.webp" alt={language === "pt" ? "Casal sorrindo durante um piquenique em um parque" : "Couple smiling during a picnic in a park"} fill priority sizes="(max-width: 1000px) 100vw, 49vw" />
           <div className="photo-wash" />
           <div className="picnic-card"><small>{language === "pt" ? "NESTE FIM DE SEMANA" : "THIS WEEKEND"}</small><strong>{language === "pt" ? <>Um pôr do sol,<br />uma toalha e calma.</> : <>Sunset, a blanket<br />and no rush.</>}</strong><span>{language === "pt" ? "GRÁTIS OU BAIXO CUSTO" : "FREE OR LOW COST"}</span></div>
         </div>
@@ -286,7 +291,7 @@ export default function Home() {
       <section className="places section" id="lugares">
         <div className="section-heading split"><div><p className="eyebrow">{t.placesKicker}</p><h2>{t.placesTitle}</h2></div><p>{t.placesText}</p></div>
         <div className="place-grid">{t.cards.map((card, index) => <article className={`place-card place-${index + 1}`} key={card[0]}>
-          <div className="place-art"><Image src={index === 0 ? "/images/hero-park.png" : index === 1 ? "/images/beach-walk.png" : "/images/viewpoint-surprise.png"} alt={card[0]} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 34vw" /><small>{card[2]}</small></div>
+          <div className="place-art"><Image unoptimized src={index === 0 ? "/images/hero-park.webp" : index === 1 ? "/images/beach-walk.webp" : "/images/viewpoint-surprise.webp"} alt={card[0]} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 34vw" /><small>{card[2]}</small></div>
           <div className="place-copy"><small>0{index + 1}</small><h3>{card[0]}</h3><p>{card[1]}</p><a href="#encontrar">{card[3]} →</a></div>
         </article>)}</div>
       </section>
@@ -305,7 +310,7 @@ export default function Home() {
         <div className="section-heading split blog-heading"><div><p className="eyebrow">CONTEÚDOS PARA INSPIRAR</p><h2>Comece por uma ideia simples.</h2></div><p>Leituras rápidas e úteis para planejar encontros possíveis, preparar surpresas e cuidar da conexão.</p></div>
         <div className="blog-grid">
           {blogPosts.slice(0, 3).map((post) => <article className="blog-card" key={post.slug}>
-            <Link className="blog-card-image" href={`/blog/${post.slug}`}><Image src={post.image} alt={post.imageAlt} fill sizes="(max-width: 700px) 100vw, 33vw" /></Link>
+            <Link className="blog-card-image" href={`/blog/${post.slug}`}><Image unoptimized src={post.image} alt={post.imageAlt} fill sizes="(max-width: 700px) 100vw, 33vw" /></Link>
             <div className="blog-card-copy"><p className="eyebrow">{post.category}</p><h3><Link href={`/blog/${post.slug}`}>{post.title}</Link></h3><p>{post.excerpt}</p><div className="blog-card-meta"><span>{post.readTime}</span><Link href={`/blog/${post.slug}`}>Ler artigo →</Link></div></div>
           </article>)}
         </div>
@@ -342,7 +347,7 @@ export default function Home() {
           <label className="community-check"><input name="consent" type="checkbox" required /><span>{t.communityConsent} {language === "pt" ? <>Li e aceito os <Link href="/termos">Termos de Uso</Link>, a <Link href="/privacidade">Política de Privacidade</Link> e as <Link href="/regras-da-comunidade">Regras da Comunidade</Link>.</> : <>I have read and accept the <Link href="/termos">Terms</Link>, <Link href="/privacidade">Privacy Policy</Link> and <Link href="/regras-da-comunidade">Community Rules</Link>.</>}</span></label>
           <label className="community-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
           <button className="button primary" type="submit" disabled={communityStatus === "sending"}>{communityStatus === "sending" ? (language === "pt" ? "Enviando…" : "Sending…") : t.communitySubmit}<span>→</span></button>
-          <p className={`community-message ${communityStatus}`} role="status" aria-live="polite">{communityStatus === "success" ? t.communitySuccess : communityStatus === "error" ? t.communityError : ""}</p>
+          <p className={`community-message ${communityStatus}`} role="status" aria-live="polite">{communityStatus === "success" ? t.communitySuccess : communityStatus === "error" ? communityError || t.communityError : ""}</p>
         </form>
       </section>
 
