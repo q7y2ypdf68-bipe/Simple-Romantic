@@ -76,6 +76,18 @@ export default async function BlogPage() {
         <h1>Ideias simples para criar<br />memórias bonitas.</h1>
         <p>Conteúdo gratuito e prático para casais que querem sair da rotina, aproveitar lugares públicos, preparar pequenas surpresas e viver momentos especiais sem gastar muito.</p>
       </section>
+      <section className="editorial-schedule section" aria-labelledby="editorial-schedule-title">
+        <div className="editorial-schedule-heading">
+          <p className="eyebrow">NOSSO RITMO SEMANAL</p>
+          <h2 id="editorial-schedule-title">Sempre há algo novo para viver e ler a dois.</h2>
+          <p>Três encontros por semana com ideias, orientação e histórias. Os contos são sempre identificados como ficção, inspiração em fatos ou relato real.</p>
+        </div>
+        <div className="editorial-schedule-grid">
+          <article><span>TER</span><div><p>Conselho da semana</p><small>Uma orientação breve, prática e acolhedora.</small></div></article>
+          <article><span>QUI</span><div><p>Ideias e guias</p><small>Planos possíveis para colocar em prática.</small></div></article>
+          <article><span>DOM</span><div><p>Contos de casais</p><small>Ficção, fatos inspiradores e histórias da comunidade.</small></div></article>
+        </div>
+      </section>
       <section className="blog-list section" aria-label="Artigos do blog">
         <BlogExplorer items={items} />
       </section>

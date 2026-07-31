@@ -16,14 +16,106 @@ export type BlogPost = {
   readTime: string;
   intro: string[];
   sections: BlogSection[];
+  series?: "CONSELHO DA SEMANA" | "IDEIAS E GUIAS" | "CONTOS";
+  contentNotice?: {
+    label: "CONTO FICTÍCIO" | "INSPIRADO EM FATOS" | "HISTÓRIA REAL";
+    text: string;
+  };
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "conselho-da-semana-dez-minutos-de-presenca",
+    title: "Conselho da semana: dez minutos de presença valem mais que um plano perfeito",
+    excerpt: "Uma prática curta para interromper o automático, escutar com atenção e cuidar da relação no meio de uma semana comum.",
+    category: "CONSELHO DA SEMANA",
+    series: "CONSELHO DA SEMANA",
+    image: "/images/blog/07-reconectar.webp",
+    imageAlt: "Casal adulto conversando com atenção e de mãos dadas à beira do rio",
+    published: "31 de julho de 2026",
+    publishedIso: "2026-07-31",
+    readTime: "4 min de leitura",
+    intro: [
+      "Nem toda semana oferece tempo para um encontro longo. Ainda assim, quase sempre existe uma pequena janela em que duas pessoas podem sair do automático e voltar a se perceber.",
+      "O conselho desta terça-feira é simples: reservem dez minutos de presença inteira. Não para organizar tarefas ou resolver todos os problemas, mas para saber como a pessoa ao lado realmente está.",
+    ],
+    sections: [
+      {
+        heading: "Como fazer o encontro de dez minutos",
+        items: [
+          "Escolham um momento possível e deixem os celulares fora do alcance.",
+          "Durante cinco minutos, uma pessoa fala e a outra apenas escuta, sem interromper ou preparar uma resposta.",
+          "Depois, troquem os papéis pelos cinco minutos restantes.",
+          "Terminem dizendo uma coisa pequena que poderia tornar a semana mais leve para os dois.",
+        ],
+      },
+      {
+        heading: "Uma pergunta para começar",
+        paragraphs: [
+          "Se não souberem por onde iniciar, experimentem: “o que ocupou mais espaço dentro de você hoje?”. A pergunta não exige uma resposta perfeita e abre caminho para falar de cansaço, alegria, preocupação ou expectativa.",
+          "Escutar não significa concordar com tudo nem encontrar imediatamente uma solução. Significa oferecer atenção antes de oferecer conselho.",
+        ],
+      },
+      {
+        heading: "O pequeno compromisso da semana",
+        paragraphs: [
+          "Escolham um gesto realista a partir da conversa: dividir uma tarefa, caminhar juntos, preparar um café ou simplesmente repetir os dez minutos em outro dia.",
+          "Relacionamentos não se sustentam apenas em grandes planos. Muitas vezes, são esses pequenos espaços de presença que lembram aos dois que continuam no mesmo time.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "conto-a-mesa-perto-da-janela",
+    title: "A mesa perto da janela",
+    excerpt: "Um conto sobre duas pessoas, um jantar que quase não aconteceu e a delicadeza de voltar a prestar atenção.",
+    category: "CONTOS",
+    series: "CONTOS",
+    contentNotice: {
+      label: "CONTO FICTÍCIO",
+      text: "Esta história é uma obra de ficção. Personagens e acontecimentos foram criados para esta publicação.",
+    },
+    image: "/images/blog/06-dia-de-chuva.webp",
+    imageAlt: "Casal adulto conversando em casa enquanto a chuva cai do lado de fora",
+    published: "31 de julho de 2026",
+    publishedIso: "2026-07-31",
+    readTime: "6 min de leitura",
+    intro: [
+      "Quando Clara chegou, a chuva já tinha apagado os contornos dos prédios do outro lado da rua. Encontrou Miguel na cozinha, imóvel diante de duas panelas e de uma receita aberta no celular.",
+      "— Eu ia fazer aquele jantar — disse ele, olhando para o molho que claramente não tinha colaborado. Clara pousou a bolsa, provou uma gota com a ponta da colher e tentou não rir. Não conseguiu. Miguel riu também, primeiro sem vontade, depois como quem finalmente soltava o peso do dia.",
+    ],
+    sections: [
+      {
+        heading: "O plano que deu errado",
+        paragraphs: [
+          "A reserva havia sido cancelada por causa da tempestade. Miguel quis salvar a noite reproduzindo em casa o prato do restaurante. Não encontrou dois ingredientes, queimou o alho e deixou cair metade do sal sobre a bancada.",
+          "Clara poderia ter aberto o aplicativo de entregas. Em vez disso, tirou da geladeira os ovos, um tomate e o pedaço de queijo que restava. — Vamos jantar o que a casa permitir — propôs.",
+          "Prepararam uma omelete torta, dividiram o último pão e levaram tudo para a pequena mesa perto da janela. Nenhum dos dois se lembrava da última vez em que tinham se sentado ali sem computador, contas ou uma lista de tarefas entre eles.",
+        ],
+      },
+      {
+        heading: "A pergunta esquecida",
+        paragraphs: [
+          "Por alguns minutos, observaram a água descendo pelo vidro. Miguel contou que vinha dormindo mal. Clara confessou que sentia saudade de conversar sem que cada frase precisasse resultar numa decisão.",
+          "— Em que momento ficamos tão ocupados? — ela perguntou. Miguel não soube responder. Estendeu a mão sobre a mesa e deixou que o silêncio fizesse o que as respostas não conseguiam.",
+          "Não resolveram naquela noite o trabalho atrasado, o orçamento apertado nem a viagem que continuava sem data. Combinaram apenas uma coisa: toda quarta-feira, jantariam naquela mesa, ainda que houvesse apenas pão, ovos e vinte minutos disponíveis.",
+        ],
+      },
+      {
+        heading: "Depois da chuva",
+        paragraphs: [
+          "A tempestade diminuiu antes da sobremesa, que foi uma maçã cortada ao meio. Miguel guardou o celular. Clara acendeu o pequeno abajur da sala. A cidade voltou a aparecer atrás da janela, brilhando molhada e imperfeita.",
+          "O jantar que quase não aconteceu terminou sem fotografia. Mesmo assim, semanas depois, quando alguém perguntava sobre uma noite especial, os dois pensavam na omelete torta, na chuva e na mesa que os ensinara a caber novamente na vida um do outro.",
+        ],
+      },
+    ],
+  },
   {
     slug: "encontro-romantico-de-ultima-hora",
     title: "Encontro romântico de última hora: 12 ideias fáceis para hoje",
     excerpt: "Planos simples e possíveis para transformar algumas horas livres em um momento especial, sem reservas, compras complicadas ou muito dinheiro.",
     category: "IDEIAS PARA CASAIS",
+    series: "IDEIAS E GUIAS",
     image: "/images/blog/12-encontro-ultima-hora.webp",
     imageAlt: "Casal adulto preparando junto um encontro romântico simples de última hora",
     published: "31 de julho de 2026",

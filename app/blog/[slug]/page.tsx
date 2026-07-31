@@ -85,6 +85,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <div className="article-hero-image"><Image unoptimized src={post.image} alt={post.imageAlt} fill priority sizes="100vw" /></div>
       <div className="article-body">
         <ShareButtons title={post.title} path={`/blog/${post.slug}`} />
+        {post.contentNotice && <aside className="article-content-notice" aria-label="Identificação do conteúdo"><strong>{post.contentNotice.label}</strong><p>{post.contentNotice.text}</p></aside>}
         {post.intro.map((paragraph) => <p className="article-intro" key={paragraph}>{paragraph}</p>)}
         {post.sections.map((section) => <section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>}</section>)}
         <aside className="article-cta">
