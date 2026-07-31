@@ -1,7 +1,7 @@
 import { blogPosts } from "../blog/posts";
 
 const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
-const lastModified = "2026-07-26";
+const lastModified = "2026-07-31";
 
 const staticPages = [
   { path: "", frequency: "weekly", priority: "1.0" },

@@ -20,6 +20,121 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "encontro-romantico-de-ultima-hora",
+    title: "Encontro romântico de última hora: 12 ideias fáceis para hoje",
+    excerpt: "Planos simples e possíveis para transformar algumas horas livres em um momento especial, sem reservas, compras complicadas ou muito dinheiro.",
+    category: "IDEIAS PARA CASAIS",
+    image: "/images/blog/12-encontro-ultima-hora.webp",
+    imageAlt: "Casal adulto preparando junto um encontro romântico simples de última hora",
+    published: "31 de julho de 2026",
+    publishedIso: "2026-07-31",
+    readTime: "9 min de leitura",
+    intro: [
+      "Uma mensagem no meio da tarde, algumas horas livres que apareceram de repente ou apenas a vontade de interromper a rotina: um encontro romântico não precisa ser planejado com semanas de antecedência para ser cuidadoso e especial.",
+      "Espontaneidade não significa ignorar o conforto da outra pessoa. Antes de escolher o plano, confirmem o tempo disponível, a energia do dia, o orçamento e a previsão do tempo. A melhor ideia para hoje é aquela que os dois conseguem aproveitar sem pressa, pressão ou gastos desnecessários.",
+    ],
+    sections: [
+      {
+        heading: "Antes de escolher: façam um check-in de dois minutos",
+        paragraphs: [
+          "Perguntem um ao outro: queremos sair ou ficar em casa? Preferimos conversar, caminhar, comer alguma coisa ou simplesmente descansar juntos? Existe algum limite de horário, mobilidade, alimentação ou dinheiro que precisa ser considerado?",
+          "Com essas respostas, eliminem o que não combina com o momento e escolham apenas uma proposta. Não tentem encaixar muitas atividades na mesma noite. Um plano simples, vivido com presença, costuma ser mais agradável do que uma programação cheia de etapas.",
+        ],
+      },
+      {
+        heading: "1. Caminhada ao pôr do sol com uma pergunta para cada um",
+        paragraphs: [
+          "Escolham uma praça, parque, orla ou rua tranquila que já conheçam. Levem água, confiram o horário e façam uma caminhada curta. Durante o percurso, cada pessoa escolhe uma pergunta que gostaria de responder com calma.",
+          "Pode ser algo leve, como “qual foi a melhor parte da sua semana?”, ou algo sobre o casal, como “que momento simples você gostaria de repetir?”. A pergunta dá intenção ao passeio sem transformar a conversa em entrevista.",
+        ],
+      },
+      {
+        heading: "2. Piquenique improvisado com o que já existe em casa",
+        paragraphs: [
+          "Não é necessário montar uma cesta perfeita. Separem uma manta ou toalha, água, frutas, sanduíches, biscoitos ou qualquer alimento fácil de transportar que vocês já tenham. Um parque próximo, o quintal, a varanda ou até o chão da sala podem receber o encontro.",
+          "Se forem a um espaço público, verifiquem horário, iluminação e regras do local. Levem um saco para recolher o lixo e tenham uma alternativa coberta se o tempo mudar.",
+        ],
+      },
+      {
+        heading: "3. Passeio pelo bairro como se vocês fossem visitantes",
+        paragraphs: [
+          "Escolham uma rua segura onde normalmente passam com pressa e caminhem observando fachadas, jardins, praças e pequenos comércios. Cada pessoa aponta três detalhes que nunca tinha reparado.",
+          "O encontro funciona porque muda o olhar sobre um lugar conhecido. Se quiserem, terminem em um banco de praça ou dividam um café, um doce ou uma bebida levada de casa.",
+        ],
+      },
+      {
+        heading: "4. Degustação simples de café, chá ou sobremesa em casa",
+        paragraphs: [
+          "Escolham duas opções disponíveis em casa e sirvam em pequenas porções. Podem comparar cafés, chás, frutas, chocolates ou receitas muito simples. Inventem critérios divertidos: aroma, apresentação, sabor e qual combina mais com uma lembrança do casal.",
+          "Uma mesa organizada, luz mais suave e celulares guardados já mudam a atmosfera. O objetivo não é avaliar como especialistas, mas transformar algo cotidiano em experiência compartilhada.",
+        ],
+      },
+      {
+        heading: "5. Uma hora sem notificações",
+        paragraphs: [
+          "Definam um período possível — trinta minutos também servem — e deixem os celulares no silencioso, fora do alcance. Usem esse tempo para conversar, ouvir música, cozinhar ou simplesmente descansar juntos.",
+          "Para evitar o silêncio constrangedor, comecem contando uma coisa boa, uma coisa difícil e uma coisa que desejam para os próximos dias. Presença inteira é um dos gestos mais românticos que cabem em uma noite comum.",
+        ],
+      },
+      {
+        heading: "6. Playlist de cinco lembranças",
+        paragraphs: [
+          "Cada pessoa escolhe duas músicas ligadas a momentos do relacionamento; a quinta é escolhida em conjunto para representar a fase atual. Escutem na ordem em que as lembranças aconteceram e contem por que cada escolha importa.",
+          "Se moram longe ou não conseguem se encontrar hoje, façam a seleção juntos por chamada e marquem um horário para ouvir. O encontro de última hora também pode acontecer à distância.",
+        ],
+      },
+      {
+        heading: "7. Banco com vista e conversa sem roteiro rígido",
+        paragraphs: [
+          "Procurem um banco em um lugar seguro: praça movimentada, jardim, orla ou mirante de acesso fácil. Levem uma bebida de casa, sentem lado a lado e observem o movimento antes de começar a conversar.",
+          "Uma pergunta basta para abrir espaço: “o que você gostaria que fosse mais leve entre nós nesta semana?”. Escutem sem interromper e sem sentir obrigação de resolver tudo naquele momento.",
+        ],
+      },
+      {
+        heading: "8. Jantar de despensa feito em dupla",
+        paragraphs: [
+          "Antes de comprar qualquer coisa, vejam o que há no armário e na geladeira. Escolham uma receita simples ou improvisem uma combinação possível. Dividam as tarefas de acordo com o gosto e o conforto de cada pessoa.",
+          "Para deixar o jantar diferente, deem um nome divertido ao prato, arrumem a mesa e escolham uma música para o preparo. Se a receita não ficar perfeita, a história ainda pode ser ótima.",
+        ],
+      },
+      {
+        heading: "9. Cinema em casa com escolha compartilhada",
+        paragraphs: [
+          "Escolham um filme que já esteja disponível, preparem um lanche simples e ajustem o ambiente para ficar confortável. Em vez de perder quarenta minutos discutindo títulos, cada pessoa indica uma opção e vocês decidem por sorteio ou acordo rápido.",
+          "Durante o filme, não existe obrigação de criar uma produção elaborada. Uma manta, luz baixa e a decisão de assistir juntos — sem continuar trabalhando ou navegando no celular — já transformam a sessão.",
+        ],
+      },
+      {
+        heading: "10. Três bilhetes escondidos pela casa",
+        paragraphs: [
+          "Escreva três mensagens curtas: uma lembrança feliz, uma qualidade que você admira e um convite para fazer algo juntos. Esconda os papéis em lugares fáceis de encontrar e dê a primeira pista.",
+          "O gesto pode ser preparado em poucos minutos e não exige comprar nada. Evite mensagens que criem cobrança; prefira palavras verdadeiras, específicas e carinhosas.",
+        ],
+      },
+      {
+        heading: "11. Desafio fotográfico durante uma caminhada",
+        paragraphs: [
+          "Saiam com o celular e combinem cinco temas: uma cor bonita, algo que lembre o casal, uma textura, uma sombra e um detalhe engraçado. Cada pessoa registra sua interpretação e, no final, vocês escolhem as fotografias favoritas.",
+          "Não é necessário publicar. Criem uma pequena pasta particular com a data e uma frase sobre o passeio. A lembrança ganha valor porque nasceu de um olhar compartilhado, não da perfeição das imagens.",
+        ],
+      },
+      {
+        heading: "12. Céu, varanda e o próximo pequeno plano",
+        paragraphs: [
+          "Se a noite estiver agradável, sentem na varanda, no quintal ou em um espaço público permitido para observar o céu. Se não for possível sair, apaguem as luzes fortes, abram a janela e criem alguns minutos de pausa.",
+          "Cada pessoa diz algo pelo qual sente gratidão e sugere um encontro simples para a próxima semana. Escolham uma ideia realista e coloquem a data no calendário. Assim, a noite espontânea deixa também uma pequena promessa de continuidade.",
+        ],
+      },
+      {
+        heading: "Se o plano mudar, o encontro não fracassou",
+        paragraphs: [
+          "Chuva, cansaço, trânsito, lotação ou uma mudança de humor podem pedir outra escolha. Tenham sempre uma versão menor do plano: caminhada vira conversa em casa; piquenique vai para a sala; saída longa se transforma em meia hora de café.",
+          "Romance de última hora não é fazer qualquer coisa. É perceber uma oportunidade de estar junto e cuidar do momento possível. Escolham com respeito, adaptem sem culpa e deixem que a presença seja a parte principal da programação.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "encontros-romanticos-gratuitos-sair-da-rotina",
     title: "15 ideias de encontros românticos gratuitos para sair da rotina",
     excerpt: "Planos carinhosos para viver momentos diferentes usando espaços públicos e o que vocês já têm.",

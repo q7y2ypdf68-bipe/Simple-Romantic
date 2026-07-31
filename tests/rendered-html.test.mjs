@@ -11,7 +11,7 @@ test("uses one unique image for every editorial blog article", async () => {
   const source = await readFile(new URL("../app/blog/posts.ts", import.meta.url), "utf8");
   const imagePaths = [...source.matchAll(/\bimage:\s*"([^"]+)"/g)].map((match) => match[1]);
 
-  assert.equal(imagePaths.length, 11);
+  assert.equal(imagePaths.length, 12);
   assert.equal(new Set(imagePaths).size, imagePaths.length);
   assert.ok(imagePaths.every((path) => path.startsWith("/images/blog/") && path.endsWith(".webp")));
 });
@@ -46,13 +46,13 @@ test("renders development preview metadata", async () => {
   assert.match(html, googleVerificationMeta);
 });
 
-test("renders the new free-date article with both internal actions", async () => {
+test("renders the newest last-minute date article with both internal actions", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("article-test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   const response = await worker.fetch(
-    new Request("http://localhost/blog/encontros-romanticos-gratuitos-sair-da-rotina", {
+    new Request("http://localhost/blog/encontro-romantico-de-ultima-hora", {
       headers: { accept: "text/html" },
     }),
     {
@@ -68,7 +68,7 @@ test("renders the new free-date article with both internal actions", async () =>
 
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /15 ideias de encontros românticos gratuitos para sair da rotina/i);
+  assert.match(html, /Encontro romântico de última hora: 12 ideias fáceis para hoje/i);
   assert.match(html, /href=["']\/#encontrar["']/i);
   assert.match(html, /href=["']\/guia["']/i);
   assert.match(html, /Compartilhar este artigo/i);
@@ -76,7 +76,7 @@ test("renders the new free-date article with both internal actions", async () =>
   assert.match(html, /Caminho da página/i);
 });
 
-test("includes the new article in the sitemap", async () => {
+test("includes the newest article in the sitemap", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("sitemap-test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
@@ -96,8 +96,8 @@ test("includes the new article in the sitemap", async () => {
 
   assert.equal(response.status, 200);
   const xml = await response.text();
-  assert.match(xml, /\/blog\/encontros-romanticos-gratuitos-sair-da-rotina/);
-  assert.match(xml, /<lastmod>2026-07-24<\/lastmod>/);
+  assert.match(xml, /\/blog\/encontro-romantico-de-ultima-hora/);
+  assert.match(xml, /<lastmod>2026-07-31<\/lastmod>/);
 });
 
 test("rejects incomplete form submissions before persistence", async () => {
@@ -156,7 +156,7 @@ test("serves a discoverable RSS feed with every editorial article", async () => 
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /application\/rss\+xml/);
   const xml = await response.text();
-  assert.equal((xml.match(/<item>/g) || []).length, 11);
+  assert.equal((xml.match(/<item>/g) || []).length, 12);
   assert.match(xml, /Blog Simple &amp; Romantic/);
 });
 
