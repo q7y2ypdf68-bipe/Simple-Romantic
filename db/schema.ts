@@ -34,6 +34,20 @@ export const contactRequests = sqliteTable("contact_requests", {
   createdAt: text("created_at").notNull(),
 });
 
+export const listeningSubmissions = sqliteTable("listening_submissions", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  accessCode: text("access_code").notNull().unique(),
+  alias: text("alias"),
+  need: text("need").notNull(),
+  message: text("message").notNull(),
+  publicationConsent: integer("publication_consent", { mode: "boolean" }).notNull().default(false),
+  status: text("status").notNull().default("new"),
+  response: text("response"),
+  createdAt: text("created_at").notNull(),
+  updatedAt: text("updated_at"),
+  respondedAt: text("responded_at"),
+});
+
 export const analyticsDaily = sqliteTable("analytics_daily", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   day: text("day").notNull(),

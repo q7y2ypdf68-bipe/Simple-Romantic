@@ -1,12 +1,13 @@
 import { blogPosts } from "../blog/posts";
 
 const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
-const lastModified = "2026-07-31";
+const lastModified = "2026-08-01";
 
 const staticPages = [
   { path: "", frequency: "weekly", priority: "1.0" },
   { path: "/blog", frequency: "weekly", priority: "0.9" },
   { path: "/guia", frequency: "monthly", priority: "0.9" },
+  { path: "/entre-nos", frequency: "weekly", priority: "0.9" },
   { path: "/contato", frequency: "yearly", priority: "0.4" },
   { path: "/privacidade", frequency: "yearly", priority: "0.2" },
   { path: "/termos", frequency: "yearly", priority: "0.2" },

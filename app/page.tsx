@@ -10,7 +10,7 @@ type Language = "pt" | "en";
 
 const copy = {
   pt: {
-    nav: ["Encontrar uma ideia", "Lugares", "Como funciona", "Guia gratuito", "Blog", "Comunidade"],
+    nav: ["Encontrar uma ideia", "Lugares", "Como funciona", "Guia gratuito", "Blog", "Comunidade", "Entre nós"],
     heroKicker: "ROMANCE ACESSÍVEL · MOMENTOS REAIS",
     heroTitleA: "Romance não precisa",
     heroTitleB: "ser caro.",
@@ -82,9 +82,14 @@ const copy = {
       ["02", "A gente revisa", "Toda contribuição passa por moderação antes de aparecer no blog."],
       ["03", "Outros se inspiram", "Se publicada, sua experiência poderá ajudar casais em qualquer lugar."],
     ],
+    listeningKicker: "ENTRE NÓS · UM ESPAÇO DE ESCUTA",
+    listeningTitle: "Tem algo preso no seu coração?",
+    listeningText: "Você pode escrever de forma privada, sem informar e-mail ou nome. Nós vamos ler com respeito e, se você quiser, deixar uma palavra de acolhimento.",
+    listeningCta: "Quero ser ouvido",
+    listeningLookup: "Já tenho um código",
   },
   en: {
-    nav: ["Find an idea", "Places", "How it works", "Free guide", "Blog", "Community"],
+    nav: ["Find an idea", "Places", "How it works", "Free guide", "Blog", "Community", "Between us"],
     heroKicker: "AFFORDABLE ROMANCE · REAL MOMENTS",
     heroTitleA: "Romance doesn't have",
     heroTitleB: "to be expensive.",
@@ -156,6 +161,11 @@ const copy = {
       ["02", "We review", "Every contribution is moderated before it appears on the blog."],
       ["03", "Others get inspired", "If published, your experience may help couples anywhere."],
     ],
+    listeningKicker: "BETWEEN US · A LISTENING SPACE",
+    listeningTitle: "Is something weighing on your heart?",
+    listeningText: "You may write privately without sharing your email or name. We will read with respect and, if you choose, leave a thoughtful word of support.",
+    listeningCta: "I want to be heard",
+    listeningLookup: "I already have a code",
   },
 };
 
@@ -174,6 +184,7 @@ export default function Home() {
     { href: "/guia", label: t.nav[3] },
     { href: "#blog", label: t.nav[4] },
     { href: "#comunidade", label: t.nav[5] },
+    { href: "/entre-nos", label: t.nav[6] },
   ];
 
   function createDate(event: FormEvent<HTMLFormElement>) {
@@ -238,7 +249,7 @@ export default function Home() {
           <span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span>
         </a>
         <nav aria-label="Navegação principal">
-          <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><Link href="/guia">{t.nav[3]}</Link><a href="#blog">{t.nav[4]}</a><a href="#comunidade">{t.nav[5]}</a>
+          <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><Link href="/guia">{t.nav[3]}</Link><a href="#blog">{t.nav[4]}</a><a href="#comunidade">{t.nav[5]}</a><Link href="/entre-nos">{t.nav[6]}</Link>
         </nav>
         <div className="header-actions">
           <div className="language" aria-label="Idioma">
@@ -322,6 +333,16 @@ export default function Home() {
         <div className="steps">{t.steps.map(step => <article key={step[0]}><span>{step[0]}</span><h3>{step[1]}</h3><p>{step[2]}</p></article>)}</div>
       </section>
 
+      <section className="home-listening section" aria-labelledby="home-listening-title">
+        <div className="home-listening-symbol" aria-hidden="true">♡</div>
+        <div>
+          <p className="eyebrow">{t.listeningKicker}</p>
+          <h2 id="home-listening-title">{t.listeningTitle}</h2>
+          <p>{t.listeningText}</p>
+          <div><Link className="button primary" href="/entre-nos">{t.listeningCta} <span>→</span></Link><Link className="quiet-link" href="/entre-nos/resposta">{t.listeningLookup}</Link></div>
+        </div>
+      </section>
+
       <section className="community section" id="comunidade">
         <div className="community-intro">
           <p className="eyebrow">{t.communityKicker}</p>
@@ -361,7 +382,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><Link href="/guia">Guia gratuito</Link><Link href="/privacidade">Privacidade</Link><Link href="/termos">Termos de Uso</Link><Link href="/regras-da-comunidade">Regras da Comunidade</Link><Link href="/contato">Contato</Link><Link href="/admin">Administração</Link></div></footer>
+      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><Link href="/guia">Guia gratuito</Link><Link href="/entre-nos">Entre nós</Link><Link href="/privacidade">Privacidade</Link><Link href="/termos">Termos de Uso</Link><Link href="/regras-da-comunidade">Regras da Comunidade</Link><Link href="/contato">Contato</Link><Link href="/admin">Administração</Link></div></footer>
     </main>
   );
 }
