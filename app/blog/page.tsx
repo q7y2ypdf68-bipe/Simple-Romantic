@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { BlogFooter, BlogHeader } from "./BlogChrome";
-import { blogPosts } from "./posts";
+import { getVisibleBlogPosts } from "./posts";
 import { BlogExplorer, type BlogListItem } from "./BlogExplorer";
 import { desc, eq } from "drizzle-orm";
 import { serializeStructuredData } from "../structured-data";
@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Blog",
   description: "Conteúdo gratuito com ideias de encontros românticos, surpresas simples e lugares bonitos para casais.",
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: "/blog", languages: { "pt-BR": "/blog", "es-ES": "/es/blog" } },
   openGraph: {
     type: "website",
     url: "/blog",
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
+  const blogPosts = getVisibleBlogPosts();
   const communityStories = await getPublishedStories();
   const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
   const items: BlogListItem[] = [

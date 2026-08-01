@@ -1,4 +1,5 @@
-import { blogPosts } from "../blog/posts";
+import { getVisibleBlogPosts } from "../blog/posts";
+import { getVisibleBlogPostsEs } from "../es/blog/posts-es";
 
 const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
 const lastModified = "2026-08-01";
@@ -12,6 +13,8 @@ const staticPages = [
   { path: "/privacidade", frequency: "yearly", priority: "0.2" },
   { path: "/termos", frequency: "yearly", priority: "0.2" },
   { path: "/regras-da-comunidade", frequency: "yearly", priority: "0.3" },
+  { path: "/es", frequency: "weekly", priority: "0.9" },
+  { path: "/es/blog", frequency: "weekly", priority: "0.9" },
 ];
 
 function escapeXml(value: string) {
@@ -25,6 +28,8 @@ function escapeXml(value: string) {
 }
 
 export async function GET() {
+  const blogPosts = getVisibleBlogPosts();
+  const blogPostsEs = getVisibleBlogPostsEs();
   const pages = [
     ...staticPages.map((page) => ({
       url: `${siteUrl}${page.path}`,
@@ -35,6 +40,13 @@ export async function GET() {
     })),
     ...blogPosts.map((post) => ({
       url: `${siteUrl}/blog/${post.slug}`,
+      lastModified: post.publishedIso || lastModified,
+      frequency: "monthly",
+      priority: "0.8",
+      image: `${siteUrl}${post.image}`,
+    })),
+    ...blogPostsEs.map((post) => ({
+      url: `${siteUrl}/es/blog/${post.slug}`,
       lastModified: post.publishedIso || lastModified,
       frequency: "monthly",
       priority: "0.8",

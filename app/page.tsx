@@ -3,8 +3,9 @@
 import { FormEvent, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { blogPosts } from "./blog/posts";
+import { getVisibleBlogPosts } from "./blog/posts";
 import { MobileMenu } from "./components/MobileMenu";
+import { ThemeToggle } from "./components/ThemeToggle";
 
 type Language = "pt" | "en";
 
@@ -170,6 +171,7 @@ const copy = {
 };
 
 export default function Home() {
+  const blogPosts = getVisibleBlogPosts();
   const [language, setLanguage] = useState<Language>("pt");
   const [resultVisible, setResultVisible] = useState(false);
   const [message, setMessage] = useState("");
@@ -252,10 +254,13 @@ export default function Home() {
           <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><Link href="/guia">{t.nav[3]}</Link><a href="#blog">{t.nav[4]}</a><a href="#comunidade">{t.nav[5]}</a><Link href="/entre-nos">{t.nav[6]}</Link>
         </nav>
         <div className="header-actions">
+          <ThemeToggle />
           <div className="language" aria-label="Idioma">
             <button className={language === "pt" ? "active" : ""} onClick={() => setLanguage("pt")}>PT-BR</button>
             <span>/</span>
             <button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>EN</button>
+            <span>/</span>
+            <Link className="language-mobile-switch" href="/es" hrefLang="es-ES">ES</Link>
           </div>
           <MobileMenu
             links={mobileLinks}
@@ -382,7 +387,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><Link href="/guia">Guia gratuito</Link><Link href="/entre-nos">Entre nós</Link><Link href="/privacidade">Privacidade</Link><Link href="/termos">Termos de Uso</Link><Link href="/regras-da-comunidade">Regras da Comunidade</Link><Link href="/contato">Contato</Link><Link href="/admin">Administração</Link></div></footer>
+      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><Link href="/guia">Guia gratuito</Link><Link href="/entre-nos">Entre nós</Link><Link href="/privacidade">Privacidade</Link><Link href="/termos">Termos de Uso</Link><Link href="/regras-da-comunidade">Regras da Comunidade</Link><Link href="/contato">Contato</Link><Link href="/admin/painel">Administração</Link></div></footer>
     </main>
   );
 }

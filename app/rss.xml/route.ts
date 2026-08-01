@@ -1,4 +1,4 @@
-import { blogPosts } from "../blog/posts";
+import { getVisibleBlogPosts } from "../blog/posts";
 
 const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
 
@@ -13,6 +13,7 @@ function escapeXml(value: string) {
 }
 
 export async function GET() {
+  const blogPosts = getVisibleBlogPosts();
   const items = blogPosts.map((post) => `<item>
     <title>${escapeXml(post.title)}</title>
     <link>${siteUrl}/blog/${post.slug}</link>

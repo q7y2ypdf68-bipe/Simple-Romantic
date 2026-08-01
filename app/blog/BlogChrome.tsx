@@ -1,18 +1,20 @@
 import Link from "next/link";
 import { MobileMenu } from "../components/MobileMenu";
+import { ThemeToggle } from "../components/ThemeToggle";
 
 export function BlogHeader() {
   const links = [
     { href: "/", label: "Início" },
     { href: "/#encontrar", label: "Encontrar uma ideia" },
     { href: "/#lugares", label: "Lugares" },
+    { href: "/#como", label: "Como funciona" },
     { href: "/guia", label: "Guia gratuito" },
     { href: "/blog", label: "Blog" },
-    { href: "/entre-nos", label: "Entre nós" },
     { href: "/#comunidade", label: "Comunidade" },
+    { href: "/entre-nos", label: "Entre nós" },
   ];
 
-  return <header className="site-header blog-site-header"><Link className="brand" href="/"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span></Link><nav aria-label="Navegação principal"><Link href="/#encontrar">Encontrar uma ideia</Link><Link href="/guia">Guia gratuito</Link><Link href="/blog">Blog</Link><Link href="/entre-nos">Entre nós</Link></nav><div className="header-actions"><Link className="back-home" href="/">Início</Link><MobileMenu links={links} /></div></header>;
+  return <header className="site-header blog-site-header"><Link className="brand" href="/"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span></Link><nav aria-label="Navegação principal"><Link href="/#encontrar">Encontrar uma ideia</Link><Link href="/#lugares">Lugares</Link><Link href="/#como">Como funciona</Link><Link href="/guia">Guia gratuito</Link><Link href="/blog">Blog</Link><Link href="/#comunidade">Comunidade</Link><Link href="/entre-nos">Entre nós</Link></nav><div className="header-actions"><ThemeToggle /><Link className="language-shortcut" href="/es" hrefLang="es-ES" aria-label="Ver site em espanhol">ES</Link><Link className="back-home" href="/">Início</Link><MobileMenu links={links} /></div></header>;
 }
 
 export function BlogFooter() {

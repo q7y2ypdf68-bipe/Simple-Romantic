@@ -18,12 +18,65 @@ export type BlogPost = {
   sections: BlogSection[];
   series?: "CONSELHO DA SEMANA" | "IDEIAS E GUIAS" | "CONTOS";
   contentNotice?: {
-    label: "CONTO FICTÍCIO" | "INSPIRADO EM FATOS" | "HISTÓRIA REAL";
+    label: "CONTO FICTÍCIO" | "INSPIRADO EM FATOS" | "HISTÓRIA REAL" | "CUENTO FICTICIO" | "INSPIRADO EN HECHOS" | "HISTORIA REAL";
     text: string;
   };
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "conto-o-olhar-que-ficou",
+    title: "O olhar que ficou",
+    excerpt: "Um conto sobre duas pessoas que quase se perderam na pressa e reencontraram, num simples olhar, a coragem de voltar a escolher uma à outra.",
+    category: "CONTOS",
+    series: "CONTOS",
+    contentNotice: {
+      label: "CONTO FICTÍCIO",
+      text: "Esta história é uma obra de ficção. Personagens e acontecimentos foram criados para esta publicação.",
+    },
+    image: "/images/blog/13-o-olhar-que-ficou.webp",
+    imageAlt: "Casal adulto de mãos dadas e trocando um olhar carinhoso numa esplanada junto ao mar",
+    published: "2 de agosto de 2026",
+    publishedIso: "2026-08-02",
+    readTime: "7 min de leitura",
+    intro: [
+      "Helena percebeu que Rafael já não a olhava como antes. Não era falta de amor, pensava. Era pressa. Os dois tinham aprendido a conversar enquanto procuravam chaves, respondiam mensagens e conferiam a hora. Até os beijos pareciam saber que o autocarro não esperaria.",
+      "Naquele domingo, sentaram-se numa pequena esplanada diante do mar. Não havia aniversário, pedido de desculpas nem uma decisão importante para tomar. Apenas duas chávenas, o fim de tarde e um silêncio que, pela primeira vez em muito tempo, nenhum dos dois tentou preencher depressa.",
+    ],
+    sections: [
+      {
+        heading: "Um segundo a mais",
+        paragraphs: [
+          "Rafael levantou os olhos quando Helena afastou uma mecha de cabelo levada pelo vento. Ela sustentou o olhar. Um segundo. Depois outro. Não era um desafio nem uma pergunta. Era o reconhecimento quase esquecido de quem conhece o rosto à sua frente e, ainda assim, pode voltar a descobri-lo.",
+          "Ele sorriu de lado, como fazia no início. Helena sentiu vontade de rir, mas não desviou. A cidade continuou atrás deles — copos sobre mesas, passos no passeio, uma bicicleta passando — e, por alguns instantes, tudo pareceu acontecer mais longe.",
+          "— Há quanto tempo não fazemos isso? — ela perguntou. Rafael não fingiu não entender. Pousou o telemóvel virado para baixo e respondeu: — Há tempo demais.",
+        ],
+      },
+      {
+        heading: "A mão sobre a mesa",
+        paragraphs: [
+          "Helena contou que sentia saudade de ser percebida antes de precisar pedir. Não queria gestos grandiosos. Queria que ele notasse quando ela chegava cansada, que perguntasse sem olhar para um ecrã e que permanecesse perto o bastante para ouvir a resposta inteira.",
+          "Rafael escutou sem se defender. Depois confessou que também sentia falta dela, embora dormissem na mesma cama. Tinha medo de que toda tentativa de aproximação chegasse numa hora errada e, por isso, esperava por um momento perfeito que nunca aparecia.",
+          "A mão dele avançou devagar sobre a mesa. Não agarrou a dela; apenas ficou ali, oferecendo espaço. Helena aproximou os dedos e entrelaçou-os aos seus. O gesto era pequeno, mas dizia com clareza: eu ainda estou aqui.",
+        ],
+      },
+      {
+        heading: "O caminho de volta",
+        paragraphs: [
+          "Quando deixaram a esplanada, o céu já misturava rosa e azul. Caminharam sem pressa. Rafael abriu a porta do carro e Helena brincou que aquela gentileza parecia saída de outra época. — Então vamos trazê-la de volta — disse ele.",
+          "Antes de entrar, ela tocou o rosto dele e deu-lhe um beijo na testa. Não como recompensa, mas como resposta. Rafael fechou os olhos por um instante. Depois voltou a olhá-la — inteiro, atento, sem procurar a próxima tarefa.",
+          "Não prometeram nunca mais se distrair. Prometeram algo mais honesto: reconhecer quando estivessem a desaparecer um do olhar do outro e criar, mesmo num dia comum, alguns minutos para regressar.",
+        ],
+      },
+      {
+        heading: "Para levar desta história",
+        paragraphs: [
+          "Intimidade também se constrói no modo como duas pessoas se veem. Um olhar demorado, uma mão oferecida, um beijo na testa ou uma pergunta feita com atenção podem devolver presença a uma relação cansada pela rotina.",
+          "Nesta semana, experimentem guardar os telemóveis por dez minutos e olhar um para o outro sem pressa. Não é preciso transformar o momento em declaração ou resolver tudo. Comecem apenas dizendo: “Estou aqui. Como você está, de verdade?”.",
+        ],
+      },
+    ],
+  },
   {
     slug: "conselho-da-semana-dez-minutos-de-presenca",
     title: "Conselho da semana: dez minutos de presença valem mais que um plano perfeito",
@@ -571,4 +624,14 @@ export const blogPosts: BlogPost[] = [
 
 export function getPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
+}
+
+export function getVisibleBlogPosts(now = new Date()) {
+  const today = new Intl.DateTimeFormat("sv-SE", {
+    timeZone: "Europe/Lisbon",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(now);
+  return blogPosts.filter((post) => !post.publishedIso || post.publishedIso <= today);
 }

@@ -56,6 +56,10 @@ function friendlyPath(path: string) {
   if (path === "/") return "Página inicial";
   if (path === "/blog") return "Blog";
   if (path === "/guia") return "Guia gratuito";
+  if (path === "/es") return "Página inicial (espanhol)";
+  if (path === "/es/blog") return "Blog (espanhol)";
+  if (path.startsWith("/es/blog/")) return `${path.replace(/^\/es\/blog\//, "").replaceAll("-", " ")} (espanhol)`;
+  if (path === "/entre-nos") return "Entre nós";
   return path.replace(/^\/blog\//, "").replaceAll("-", " ");
 }
 

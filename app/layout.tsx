@@ -28,6 +28,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/",
+    languages: { "pt-BR": "/", "es-ES": "/es" },
     types: {
       "application/rss+xml": "/rss.xml",
     },
@@ -94,5 +95,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     ],
   };
 
-  return <html lang="pt-BR" data-theme="light" style={{ colorScheme: "light", backgroundColor: "#fffefe" }}><head><meta name="codex-preview" content="development" /><meta name="darkreader-lock" /><meta name="color-scheme" content="light" /><meta name="supported-color-schemes" content="light" /><meta name="theme-color" content="#fffefe" /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} /><script dangerouslySetInnerHTML={{ __html: "document.documentElement.dataset.theme='light';document.documentElement.style.colorScheme='light';" }} /></head><body style={{ backgroundColor: "#fffefe", color: "#3b2636" }}><AnalyticsTracker />{children}</body></html>;
+  const themeScript = `(function(){try{var saved=localStorage.getItem('simple-romantic-theme');var theme=saved==='dark'||saved==='light'?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=theme;document.documentElement.style.colorScheme=theme;}catch(e){document.documentElement.dataset.theme='light';}})();`;
+
+  return <html lang="pt-BR" data-theme="light" suppressHydrationWarning><head><meta name="codex-preview" content="development" /><meta name="color-scheme" content="light dark" /><meta name="supported-color-schemes" content="light dark" /><meta name="theme-color" media="(prefers-color-scheme: light)" content="#fffefe" /><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#171116" /><script dangerouslySetInnerHTML={{ __html: themeScript }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} /></head><body><AnalyticsTracker />{children}</body></html>;
 }

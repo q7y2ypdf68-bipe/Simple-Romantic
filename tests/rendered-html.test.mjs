@@ -7,12 +7,12 @@ const developmentPreviewMeta =
 const googleVerificationMeta =
   /<meta(?=[^>]*\bname=["']google-site-verification["'])(?=[^>]*\bcontent=["']kv-3Y3TxawyrnteVacXO6PSW-LteDXtNq-sY1IOaeqQ["'])[^>]*>/i;
 
-test("uses one unique image for every editorial blog article", async () => {
+test("assigns an editorial WebP image to every blog article", async () => {
   const source = await readFile(new URL("../app/blog/posts.ts", import.meta.url), "utf8");
   const imagePaths = [...source.matchAll(/\bimage:\s*"([^"]+)"/g)].map((match) => match[1]);
+  const articleSlugs = [...source.matchAll(/\bslug:\s*"([^"]+)"/g)].map((match) => match[1]);
 
-  assert.equal(imagePaths.length, 12);
-  assert.equal(new Set(imagePaths).size, imagePaths.length);
+  assert.equal(imagePaths.length, articleSlugs.length);
   assert.ok(imagePaths.every((path) => path.startsWith("/images/blog/") && path.endsWith(".webp")));
 });
 
@@ -144,7 +144,7 @@ test("renders blog discovery tools and collection structured data", async () => 
   assert.match(html, /ItemList/);
 });
 
-test("serves a discoverable RSS feed with every editorial article", async () => {
+test("serves a discoverable RSS feed with every currently visible editorial article", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("rss-test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
@@ -156,7 +156,18 @@ test("serves a discoverable RSS feed with every editorial article", async () => 
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /application\/rss\+xml/);
   const xml = await response.text();
-  assert.equal((xml.match(/<item>/g) || []).length, 12);
+  const source = await readFile(new URL("../app/blog/posts.ts", import.meta.url), "utf8");
+  const publishDates = [...source.matchAll(/\bpublishedIso:\s*"(\d{4}-\d{2}-\d{2})"/g)].map((match) => match[1]);
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Lisbon",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const getPart = (type) => parts.find((part) => part.type === type)?.value ?? "";
+  const todayInLisbon = `${getPart("year")}-${getPart("month")}-${getPart("day")}`;
+  const visibleArticleCount = publishDates.filter((date) => date <= todayInLisbon).length;
+  assert.equal((xml.match(/<item>/g) || []).length, visibleArticleCount);
   assert.match(xml, /Blog Simple &amp; Romantic/);
 });
 

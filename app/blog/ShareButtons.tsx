@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export function ShareButtons({ title, path }: { title: string; path: string }) {
+export function ShareButtons({ title, path, locale = "pt" }: { title: string; path: string; locale?: "pt" | "es" }) {
   const [copied, setCopied] = useState(false);
   const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
   const url = `${siteUrl}${path}`;
@@ -27,17 +27,17 @@ export function ShareButtons({ title, path }: { title: string; path: string }) {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2200);
     } catch {
-      window.prompt("Copie o endereço do artigo:", url);
+      window.prompt(locale === "es" ? "Copia la dirección del artículo:" : "Copie o endereço do artigo:", url);
     }
   }
 
-  return <aside className="article-share" aria-label="Compartilhar este artigo">
-    <div><p className="eyebrow">GOSTOU DA IDEIA?</p><strong>Compartilhe com quem você quer viver esse momento.</strong></div>
+  return <aside className="article-share" aria-label={locale === "es" ? "Compartir este artículo" : "Compartilhar este artigo"}>
+    <div><p className="eyebrow">{locale === "es" ? "¿TE HA GUSTADO?" : "GOSTOU DA IDEIA?"}</p><strong>{locale === "es" ? "Compártelo con la persona con quien quieres vivir este momento." : "Compartilhe com quem você quer viver esse momento."}</strong></div>
     <div className="share-actions">
-      <button className="share-main" type="button" onClick={share}>Compartilhar <span>↗</span></button>
-      <a href={`https://wa.me/?text=${encodedText}%20${encodedUrl}`} target="_blank" rel="noopener noreferrer" aria-label="Compartilhar no WhatsApp">WhatsApp</a>
-      <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer" aria-label="Compartilhar no Facebook">Facebook</a>
-      <button type="button" onClick={copy}>{copied ? "Link copiado ✓" : "Copiar link"}</button>
+      <button className="share-main" type="button" onClick={share}>{locale === "es" ? "Compartir" : "Compartilhar"} <span>↗</span></button>
+      <a href={`https://wa.me/?text=${encodedText}%20${encodedUrl}`} target="_blank" rel="noopener noreferrer" aria-label={locale === "es" ? "Compartir en WhatsApp" : "Compartilhar no WhatsApp"}>WhatsApp</a>
+      <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer" aria-label={locale === "es" ? "Compartir en Facebook" : "Compartilhar no Facebook"}>Facebook</a>
+      <button type="button" onClick={copy}>{copied ? (locale === "es" ? "Enlace copiado ✓" : "Link copiado ✓") : (locale === "es" ? "Copiar enlace" : "Copiar link")}</button>
     </div>
   </aside>;
 }
