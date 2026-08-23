@@ -364,3 +364,23 @@ test("covers every high-risk surface in the final dark-theme cascade", async () 
   assert.match(audit, /input::placeholder/);
   assert.match(audit, /\.how \.section-heading h2/);
 });
+
+test("locks finder and listening contrast in both themes", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const packageStart = css.indexOf("Contrast package — finder and listening form");
+  assert.ok(packageStart > 0, "contrast package must exist");
+  const packageCss = css.slice(packageStart);
+  for (const selector of [
+    ".finder .section-heading h2",
+    ".finder-form strong",
+    "html[data-theme=\"dark\"] .finder",
+    "html[data-theme=\"dark\"] .finder-form",
+    "html[data-theme=\"dark\"] .location-field input",
+    ".listening-form-intro",
+    ".listening-form",
+    "html[data-theme=\"dark\"] .listening-form-intro",
+    "html[data-theme=\"dark\"] .listening-form",
+  ]) assert.ok(packageCss.includes(selector), `missing scoped contrast rule for ${selector}`);
+  assert.match(packageCss, /html\[data-theme="dark"\] \.finder\{[^}]*!important/);
+  assert.match(packageCss, /html\[data-theme="dark"\] \.finder-form\{[^}]*!important/);
+});
