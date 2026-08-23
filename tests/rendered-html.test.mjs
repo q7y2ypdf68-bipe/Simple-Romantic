@@ -301,3 +301,25 @@ test("adds every public Spanish service page to the sitemap", async () => {
     assert.match(source, new RegExp(route.replaceAll("/", "\\/")));
   }
 });
+
+test("covers every high-risk surface in the final dark-theme cascade", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const auditStart = css.indexOf("Dark-theme audit: final cascade layer");
+  assert.ok(auditStart > 0);
+  const audit = css.slice(auditStart);
+  for (const selector of [
+    ".blog-welcome-copy",
+    ".community-steps article",
+    ".community-form label>span",
+    ".blog-page .blog-card:nth-child(3n+1)",
+    ".blog-categories button.active",
+    ".listening-success",
+    ".listening-code",
+    ".admin-stats button.active",
+    ".submission-actions button",
+    ".submission-edit textarea",
+    ".admin-denied>div",
+  ]) assert.ok(audit.includes(selector), `missing final dark override for ${selector}`);
+  assert.match(audit, /input::placeholder/);
+  assert.match(audit, /\.how \.section-heading h2/);
+});

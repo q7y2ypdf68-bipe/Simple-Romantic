@@ -1005,3 +1005,108 @@ html[data-theme="dark"] .listening-retention-note{background:#302914;border-colo
 html[data-theme="dark"] .response-delete{border-color:#855550;color:#ffaaa3}
 html[data-theme="dark"] .response-delete:hover,html[data-theme="dark"] .response-delete:focus-visible{background:#3b201f}
 html[data-theme="dark"] .response-deleted{background:#173023;border-color:#3e7b5a;color:#bce8cf}
+
+/* Dark-theme audit: final cascade layer for every public and administrative surface. */
+html[data-theme="dark"]{
+  --ink:#fff5fa;
+  --muted:#d6c2ce;
+  --pink:#ff6b9d;
+  --pink-dark:#ff9fbe;
+  --line:rgba(255,235,245,.2);
+  --dark-bg:#171116;
+  --dark-surface:#251b23;
+  --dark-surface-raised:#2d2029;
+  --dark-field:#1c151a;
+}
+html[data-theme="dark"] body,
+html[data-theme="dark"] main{background:var(--dark-bg);color:var(--ink)}
+html[data-theme="dark"] ::selection{background:#8f2d55;color:#fff}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder{color:#bba6b2;opacity:1}
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] textarea:focus,
+html[data-theme="dark"] select:focus,
+html[data-theme="dark"] button:focus-visible,
+html[data-theme="dark"] a:focus-visible{outline-color:#f4c94f}
+
+html[data-theme="dark"] .mobile-menu-toggle{background:var(--dark-surface-raised);border-color:#6a465a;color:var(--ink);box-shadow:0 8px 22px rgba(0,0,0,.3)}
+html[data-theme="dark"] .mobile-menu-panel a{color:var(--ink)!important}
+html[data-theme="dark"] .site-header nav a:hover,
+html[data-theme="dark"] .site-header nav a:focus-visible{color:#ffb2cb;border-color:#ff6b9d}
+html[data-theme="dark"] .blog-site-header .back-home,
+html[data-theme="dark"] .admin-header nav a:last-child{border-color:#765064;color:var(--pink-dark)}
+
+html[data-theme="dark"] .how .section-heading .eyebrow{color:#ffe07b!important;-webkit-text-fill-color:#ffe07b!important}
+html[data-theme="dark"] .how .section-heading h2{color:#fff5fa!important;-webkit-text-fill-color:#fff5fa!important}
+html[data-theme="dark"] .finder:before{color:#ff6b9d;opacity:.18}
+html[data-theme="dark"] .finder-form{box-shadow:0 28px 70px rgba(0,0,0,.42),0 0 0 8px rgba(255,255,255,.035)}
+html[data-theme="dark"] .location-field input::placeholder{color:#c5b1bc}
+html[data-theme="dark"] .guide-consent{color:var(--muted)}
+
+html[data-theme="dark"] .blog-welcome-copy{background:rgba(23,17,22,.76);border-color:#694356;box-shadow:0 14px 35px rgba(0,0,0,.25)}
+html[data-theme="dark"] .blog-welcome-copy p,
+html[data-theme="dark"] .community-intro>p:not(.eyebrow){color:var(--muted)}
+html[data-theme="dark"] .blog-welcome>.eyebrow{color:var(--pink-dark)!important;-webkit-text-fill-color:var(--pink-dark)!important}
+html[data-theme="dark"] .community-steps article{background:rgba(37,27,35,.92)!important;border-color:#644052;box-shadow:0 10px 26px rgba(0,0,0,.22)}
+html[data-theme="dark"] .community-steps article:nth-child(2){background:rgba(48,42,24,.92)!important;border-color:#75642b}
+html[data-theme="dark"] .community-steps article:nth-child(3){background:rgba(24,48,56,.92)!important;border-color:#386d78}
+html[data-theme="dark"] .community-form{box-shadow:0 30px 75px rgba(0,0,0,.42),0 0 0 9px rgba(255,255,255,.025)}
+html[data-theme="dark"] .community-form label>span,
+html[data-theme="dark"] .community-form legend{color:var(--ink)}
+html[data-theme="dark"] .community-form select{min-height:56px;width:100%;padding:0 16px;border:2px solid #654357;border-radius:14px;background:var(--dark-field);color:var(--ink)}
+html[data-theme="dark"] .community-type label span:hover{background:#3a2330;border-color:var(--pink)}
+html[data-theme="dark"] .community-type input:checked+span,
+html[data-theme="dark"] .choices input:checked+span{background:linear-gradient(135deg,#c52c61,#d94d58);border-color:#ff7ca8;color:#fff}
+
+html[data-theme="dark"] .blog-page .blog-hero .eyebrow{color:#ff9fbe!important;-webkit-text-fill-color:#ff9fbe!important}
+html[data-theme="dark"] .blog-page .blog-hero>p:not(.eyebrow),
+html[data-theme="dark"] .blog-page .blog-results{color:var(--muted)}
+html[data-theme="dark"] .blog-page .blog-card:nth-child(3n+1){border-color:#714057;background:linear-gradient(180deg,#2a1d25,#321c27)}
+html[data-theme="dark"] .blog-page .blog-card:nth-child(3n+2){border-color:#75642b;background:linear-gradient(180deg,#29251b,#302a18)}
+html[data-theme="dark"] .blog-page .blog-card:nth-child(3n){border-color:#386d78;background:linear-gradient(180deg,#1c292d,#183038)}
+html[data-theme="dark"] .blog-page .blog-card:nth-child(3n+1) .eyebrow{color:#ff9fbe!important;-webkit-text-fill-color:#ff9fbe!important}
+html[data-theme="dark"] .blog-page .blog-card:nth-child(3n+2) .eyebrow{color:#ffe07b!important;-webkit-text-fill-color:#ffe07b!important}
+html[data-theme="dark"] .blog-page .blog-card:nth-child(3n) .eyebrow{color:#8de1f2!important;-webkit-text-fill-color:#8de1f2!important}
+html[data-theme="dark"] .blog-categories button:hover,
+html[data-theme="dark"] .blog-categories button.active{background:linear-gradient(135deg,#c52c61,#d94d58);border-color:#ff7ca8;color:#fff}
+html[data-theme="dark"] .share-actions .share-main{background:linear-gradient(135deg,#c52c61,#d94d58);border-color:#ff7ca8;color:#fff}
+html[data-theme="dark"] .blog-empty button{background:var(--dark-surface-raised);border-color:#765064;color:var(--pink-dark)}
+html[data-theme="dark"] .article-content-notice strong{color:#ffe07b}
+html[data-theme="dark"] .guide-card dl>div{border-top-color:var(--line)}
+
+html[data-theme="dark"] .listening-hero-copy h1 em{color:#ff7ca8}
+html[data-theme="dark"] .home-listening-symbol{color:#ff7ca8}
+html[data-theme="dark"] .listening-form>label>span>small,
+html[data-theme="dark"] .listening-form>label>small,
+html[data-theme="dark"] .listening-needs small,
+html[data-theme="dark"] .response-help{color:var(--muted)}
+html[data-theme="dark"] .listening-needs label:nth-child(2)>span{background:#302a18;border-color:#75642b}
+html[data-theme="dark"] .listening-needs label:nth-child(3)>span{background:#183038;border-color:#386d78}
+html[data-theme="dark"] .listening-needs input:checked+span{background:#3a2030;border-color:#ff6b9d;box-shadow:inset 0 0 0 1px #ff6b9d,0 8px 20px rgba(0,0,0,.24)}
+html[data-theme="dark"] .listening-form-message,
+html[data-theme="dark"] .listening-code-warning{color:#ffaaa3}
+html[data-theme="dark"] .listening-success{background:linear-gradient(140deg,#302914 0%,#321d28 58%,#183038 100%);border-color:#8c7429;color:var(--ink);box-shadow:0 24px 70px rgba(0,0,0,.38)}
+html[data-theme="dark"] .listening-success>p:not(.eyebrow):not(.listening-code-warning){color:var(--muted)}
+html[data-theme="dark"] .listening-code{background:var(--dark-field);border-color:#ff6b9d;color:var(--ink)}
+html[data-theme="dark"] .response-error{background:#3b201f;color:#ffb5ae}
+
+html[data-theme="dark"] .admin-stats button.active{background:#3a2030;border-color:#ff6b9d;box-shadow:inset 0 0 0 1px #ff6b9d}
+html[data-theme="dark"] .submission-tags>span{background:#332730;color:#e4d1dc}
+html[data-theme="dark"] .submission-tags .status.pending,
+html[data-theme="dark"] .submission-tags .status.listening-new{background:#3a3117;color:#ffe49a}
+html[data-theme="dark"] .submission-tags .status.approved,
+html[data-theme="dark"] .submission-tags .status.listening-responded{background:#173326;color:#bce8cf}
+html[data-theme="dark"] .submission-tags .status.published,
+html[data-theme="dark"] .submission-tags .status.listening-read{background:#17323a;color:#afe4ef}
+html[data-theme="dark"] .submission-tags .status.rejected{background:#3b201f;color:#ffb5ae}
+html[data-theme="dark"] .submission-tags .status.listening-archived{background:#332c31;color:#dccbd4}
+html[data-theme="dark"] .submission-actions button,
+html[data-theme="dark"] .edit-actions button{background:var(--dark-surface-raised);border-color:#684759;color:var(--ink)}
+html[data-theme="dark"] .submission-actions .publish,
+html[data-theme="dark"] .edit-actions .publish{background:#c52c61;border-color:#ff6b9d;color:#fff}
+html[data-theme="dark"] .submission-actions .danger{border-color:#855550;color:#ffaaa3}
+html[data-theme="dark"] .submission-edit input:not([type=checkbox]),
+html[data-theme="dark"] .submission-edit textarea{background:var(--dark-field);border-color:#654357;color:var(--ink)}
+html[data-theme="dark"] .listening-admin-response{background:#321d28;border-color:#714057}
+html[data-theme="dark"] .admin-denied{background:linear-gradient(135deg,#2b2115,#321c27)}
+html[data-theme="dark"] .admin-denied>div{background:var(--dark-surface);border-color:var(--line);color:var(--ink)}
