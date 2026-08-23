@@ -11,6 +11,7 @@ type SubmissionPayload = {
   anonymous?: unknown;
   consent?: unknown;
   website?: unknown;
+  language?: unknown;
 };
 
 const kinds = new Set(["story", "idea", "surprise"]);
@@ -35,6 +36,7 @@ export async function POST(request: Request) {
     const content = clean(payload.content, 3000);
     const location = clean(payload.location, 120);
     const anonymous = payload.anonymous === true;
+    const language = clean(payload.language, 10) === "es-ES" ? "es-ES" : "pt-BR";
     const consent = payload.consent === true;
 
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -76,6 +78,7 @@ export async function POST(request: Request) {
       title,
       content,
       location: location || null,
+      language,
       anonymous,
       status: "pending",
       createdAt: new Date().toISOString(),

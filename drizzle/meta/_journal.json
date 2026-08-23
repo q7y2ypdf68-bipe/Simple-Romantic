@@ -43,6 +43,13 @@
       "when": 1787501243312,
       "tag": "0005_woozy_mastermind",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1787503675353,
+      "tag": "0006_small_mastermind",
+      "breakpoints": true
     }
   ]
 }

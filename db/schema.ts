@@ -8,6 +8,7 @@ export const communitySubmissions = sqliteTable("community_submissions", {
   title: text("title").notNull(),
   content: text("content").notNull(),
   location: text("location"),
+  language: text("language").notNull().default("pt-BR"),
   anonymous: integer("anonymous", { mode: "boolean" }).notNull().default(false),
   status: text("status").notNull().default("pending"),
   createdAt: text("created_at").notNull(),
@@ -30,6 +31,7 @@ export const contactRequests = sqliteTable("contact_requests", {
   email: text("email").notNull(),
   subject: text("subject").notNull(),
   message: text("message").notNull(),
+  language: text("language").notNull().default("pt-BR"),
   status: text("status").notNull().default("new"),
   createdAt: text("created_at").notNull(),
 });
@@ -40,6 +42,7 @@ export const listeningSubmissions = sqliteTable("listening_submissions", {
   alias: text("alias"),
   need: text("need").notNull(),
   message: text("message").notNull(),
+  language: text("language").notNull().default("pt-BR"),
   publicationConsent: integer("publication_consent", { mode: "boolean" }).notNull().default(false),
   consentVersion: text("consent_version"),
   consentAt: text("consent_at"),

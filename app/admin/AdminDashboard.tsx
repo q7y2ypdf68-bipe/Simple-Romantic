@@ -15,6 +15,7 @@ export type Submission = {
   title: string;
   content: string;
   location: string | null;
+  language: string;
   anonymous: boolean;
   status: string;
   createdAt: string;
@@ -106,7 +107,7 @@ export default function AdminDashboard({ initialSubmissions, userName }: { initi
       <div className="admin-list">
         {visible.length === 0 && <div className="admin-empty"><span>♡</span><h2>Nenhuma contribuição aqui.</h2><p>Quando houver novos envios, eles aparecerão nesta área.</p></div>}
         {visible.map((item) => <article className="submission-card" key={item.id}>
-          <div className="submission-card-top"><div className="submission-tags"><span className={`status ${item.status}`}>{statusLabels[item.status as Status] || item.status}</span><span>{kindLabels[item.kind as Kind] || item.kind}</span>{item.anonymous && <span>Anônima</span>}</div><time>{formatDate(item.createdAt)}</time></div>
+          <div className="submission-card-top"><div className="submission-tags"><span className={`status ${item.status}`}>{statusLabels[item.status as Status] || item.status}</span><span>{item.language === "es-ES" ? "Espanhol (Espanha)" : "Português"}</span><span>{kindLabels[item.kind as Kind] || item.kind}</span>{item.anonymous && <span>Anônima</span>}</div><time>{formatDate(item.createdAt)}</time></div>
           {editingId === item.id ? <EditForm item={item} disabled={busyId === item.id} onCancel={() => setEditingId(null)} onSave={(changes) => updateSubmission(item.id, changes, "Alterações salvas.")} /> : <>
             <h2>{item.title}</h2>
             <p className="submission-content">{item.content}</p>

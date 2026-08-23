@@ -1,0 +1,17 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { LanguageSetter } from "../../components/LanguageSetter";
+import { BlogFooterEs, BlogHeaderEs } from "../blog/BlogChromeEs";
+import { ListeningFormEs } from "./ListeningFormEs";
+
+export const metadata: Metadata = { title: "Entre nosotros — un espacio para ser escuchado", description: "Un espacio privado de escucha y apoyo para personas adultas que necesitan poner en palabras lo que sienten.", alternates: { canonical: "/es/entre-nos", languages: { "pt-BR": "/entre-nos", "es-ES": "/es/entre-nos" } } };
+
+export default function ListeningPageEs() {
+  return <main className="listening-page"><LanguageSetter lang="es-ES" /><BlogHeaderEs />
+    <section className="listening-hero section"><div className="listening-hero-copy"><p className="eyebrow">ENTRE NOSOTROS · UN ESPACIO PARA SER ESCUCHADO</p><h1>Puedes hablar.<br /><em>Tu historia importa.</em></h1><p>A veces, poner en palabras lo que llevamos dentro es el comienzo de un poco de alivio. Escribe a tu manera. Te leeremos con respeto.</p><div className="listening-hero-actions"><a className="button primary" href="#desahogarme">Quiero desahogarme <span>↓</span></a><Link className="quiet-link" href="/es/entre-nos/respuesta">Consultar respuesta</Link></div></div><div className="listening-promise" aria-label="Nuestro compromiso"><span aria-hidden="true">♡</span><p>Nuestra promesa</p><strong>Escuchar antes de responder.</strong><small>Sin juicios. Sin publicación automática. Sin respuestas vacías.</small></div></section>
+    <section className="listening-principles section" aria-label="Cómo funciona"><article><span>01</span><h2>Privado por defecto</h2><p>Tu relato entra en un área reservada y nunca aparece públicamente de forma automática.</p></article><article><span>02</span><h2>Tú eliges</h2><p>Puedes limitarte a desahogarte o pedir una palabra de apoyo y reflexión.</p></article><article><span>03</span><h2>Respuesta humana</h2><p>Cada mensaje se revisa de forma individual. Nada se responde automáticamente.</p></article></section>
+    <section className="listening-form-section section" id="desahogarme"><div className="listening-form-intro"><p className="eyebrow">ESTE MOMENTO ES TUYO</p><h2>¿Qué tienes en el corazón?</h2><p>No tienes que escribir bien ni explicarlo todo. Evita nombres completos, teléfonos, direcciones, documentos y detalles que identifiquen a otras personas.</p><aside className="listening-safety"><strong>Este no es un servicio de emergencias.</strong><p>Los mensajes no se supervisan en tiempo real. Si existe un peligro inmediato en España, llama al 112.</p><div><span><b>Emergencias:</b> <a href="tel:112">112</a></span><span><b>Atención a la conducta suicida:</b> <a href="tel:024">024</a></span><span><b>Violencia contra las mujeres:</b> <a href="tel:016">016</a></span></div><small>El 024 y el 016 son servicios oficiales, gratuitos y confidenciales. Si no estás en España, contacta con los servicios de emergencia de tu país.</small></aside></div><ListeningFormEs /></section>
+    <section className="listening-aftercare section"><p className="eyebrow">QUÉ OCURRE DESPUÉS</p><h2>No tienes que quedarte esperando delante de la pantalla.</h2><p>Tras el envío recibirás un código privado. Guárdalo para consultar si el relato se ha leído y si hemos dejado una palabra para ti.</p><Link className="button primary" href="/es/entre-nos/respuesta">Ya tengo un código <span>→</span></Link></section>
+    <BlogFooterEs />
+  </main>;
+}

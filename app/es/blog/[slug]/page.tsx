@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LanguageSetter } from "../../../components/LanguageSetter";
 import { ShareButtons } from "../../../blog/ShareButtons";
+import { blogPosts } from "../../../blog/posts";
 import { serializeStructuredData } from "../../../structured-data";
 import { BlogFooterEs, BlogHeaderEs } from "../BlogChromeEs";
 import { blogPostsEs, getPostEs } from "../posts-es";
@@ -13,7 +14,9 @@ export function generateStaticParams() { return blogPostsEs.map((post) => ({ slu
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const post = getPostEs((await params).slug);
   if (!post) return {};
-  return { title: post.title, description: post.excerpt, alternates: { canonical: `/es/blog/${post.slug}`, languages: { "es-ES": `/es/blog/${post.slug}` } }, openGraph: { type: "article", locale: "es_ES", url: `/es/blog/${post.slug}`, siteName: "Simple & Romantic", title: post.title, description: post.excerpt, images: [{ url: post.image, alt: post.imageAlt }] } };
+  const index = blogPostsEs.findIndex((item) => item.slug === post.slug);
+  const portuguesePost = blogPosts[index];
+  return { title: post.title, description: post.excerpt, alternates: { canonical: `/es/blog/${post.slug}`, languages: { ...(portuguesePost ? { "pt-BR": `/blog/${portuguesePost.slug}` } : {}), "es-ES": `/es/blog/${post.slug}` } }, openGraph: { type: "article", locale: "es_ES", url: `/es/blog/${post.slug}`, siteName: "Simple & Romantic", title: post.title, description: post.excerpt, images: [{ url: post.image, alt: post.imageAlt }] } };
 }
 
 export default async function ArticlePageEs({ params }: { params: Promise<{ slug: string }> }) {

@@ -50,7 +50,14 @@ const worker = {
       }, allowedWidths);
     }
 
-    return handler.fetch(request, env, ctx);
+    const response = await handler.fetch(request, env, ctx);
+    if ((url.pathname === "/es" || url.pathname.startsWith("/es/")) && response.headers.get("content-type")?.includes("text/html")) {
+      const headers = new Headers(response.headers);
+      headers.delete("content-length");
+      const html = (await response.text()).replace('<html lang="pt-BR"', '<html lang="es-ES"');
+      return new Response(html, { status: response.status, statusText: response.statusText, headers });
+    }
+    return response;
   },
 };
 

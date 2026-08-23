@@ -10,6 +10,7 @@ type ListeningPayload = {
   adult?: unknown;
   consent?: unknown;
   website?: unknown;
+  language?: unknown;
 };
 
 const needs = new Set(["listen", "comfort", "reflection"]);
@@ -32,6 +33,7 @@ export async function POST(request: Request) {
     const need = clean(payload.need, 20);
     const message = clean(payload.message, 5000);
     const publicationConsent = payload.publicationConsent === true;
+    const language = clean(payload.language, 10) === "es-ES" ? "es-ES" : "pt-BR";
     const adult = payload.adult === true;
     const consent = payload.consent === true;
 
@@ -60,6 +62,7 @@ export async function POST(request: Request) {
       alias: alias || null,
       need,
       message,
+      language,
       publicationConsent,
       consentVersion: LISTENING_CONSENT_VERSION,
       consentAt: now.toISOString(),

@@ -15,6 +15,13 @@ const staticPages = [
   { path: "/regras-da-comunidade", frequency: "yearly", priority: "0.3" },
   { path: "/es", frequency: "weekly", priority: "0.9" },
   { path: "/es/blog", frequency: "weekly", priority: "0.9" },
+  { path: "/es/guia", frequency: "monthly", priority: "0.9" },
+  { path: "/es/comunidad", frequency: "monthly", priority: "0.6" },
+  { path: "/es/entre-nos", frequency: "weekly", priority: "0.9" },
+  { path: "/es/contacto", frequency: "yearly", priority: "0.4" },
+  { path: "/es/privacidad", frequency: "yearly", priority: "0.2" },
+  { path: "/es/terminos", frequency: "yearly", priority: "0.2" },
+  { path: "/es/normas-de-la-comunidad", frequency: "yearly", priority: "0.3" },
 ];
 
 function escapeXml(value: string) {

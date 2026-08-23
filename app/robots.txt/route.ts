@@ -7,6 +7,7 @@ export async function GET() {
     "Disallow: /admin",
     "Disallow: /api/",
     "Disallow: /entre-nos/resposta",
+    "Disallow: /es/entre-nos/respuesta",
     `Sitemap: ${siteUrl}/sitemap.xml`,
     `Host: ${siteUrl}`,
     "",

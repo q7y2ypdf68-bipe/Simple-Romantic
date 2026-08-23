@@ -1,0 +1,8 @@
+"use client";
+import { FormEvent, useState } from "react";
+
+export function ContactFormEs() {
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  async function submit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); setStatus("sending"); const form = event.currentTarget; const data = new FormData(form); try { const response = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...Object.fromEntries(data), language: "es-ES" }) }); if (!response.ok) throw new Error(); form.reset(); setStatus("success"); } catch { setStatus("error"); } }
+  return <form className="contact-form" onSubmit={submit}><label><span>Nombre o alias (opcional)</span><input name="name" maxLength={80} autoComplete="name" /></label><label><span>Tu correo electrónico</span><input name="email" type="email" maxLength={160} required autoComplete="email" /></label><label><span>Asunto</span><input name="subject" minLength={4} maxLength={120} required /></label><label><span>Mensaje</span><textarea name="message" minLength={20} maxLength={2000} rows={7} required /></label><label className="community-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label><button className="button primary" disabled={status === "sending"}>{status === "sending" ? "Enviando…" : "Enviar mensaje"} <span>→</span></button><p className={`community-message ${status}`} role="status" aria-live="polite">{status === "success" ? "Mensaje recibido. Gracias por escribirnos." : status === "error" ? "No hemos podido enviarlo ahora. Inténtalo de nuevo." : ""}</p></form>;
+}

@@ -13,6 +13,7 @@ export type ListeningEntry = {
   alias: string | null;
   need: string;
   message: string;
+  language: string;
   publicationConsent: boolean;
   status: string;
   response: string | null;
@@ -107,7 +108,7 @@ export default function ListeningDashboard({ initialEntries, userName }: { initi
       <div className="admin-list">
         {visible.length === 0 && <div className="admin-empty"><span>♡</span><h2>Nenhum relato aqui.</h2><p>Quando alguém escrever, a mensagem aparecerá nesta área privada.</p></div>}
         {visible.map((entry) => <article className="submission-card listening-admin-card" key={entry.id}>
-          <div className="submission-card-top"><div className="submission-tags"><span className={`status listening-${entry.status}`}>{statusLabels[entry.status as Status] || entry.status}</span><span>{needLabels[entry.need as Need] || entry.need}</span>{entry.publicationConsent && <span>Consente publicação anônima</span>}</div><time>{formatDate(entry.createdAt)}</time></div>
+          <div className="submission-card-top"><div className="submission-tags"><span className={`status listening-${entry.status}`}>{statusLabels[entry.status as Status] || entry.status}</span><span>{entry.language === "es-ES" ? "Espanhol (Espanha)" : "Português"}</span><span>{needLabels[entry.need as Need] || entry.need}</span>{entry.publicationConsent && <span>Consente publicação anônima</span>}</div><time>{formatDate(entry.createdAt)}</time></div>
           <h2>{entry.alias || "Pessoa anônima"}</h2>
           <p className="submission-content">{entry.message}</p>
           <dl><div><dt>Código particular</dt><dd>{entry.accessCode}</dd></div><div><dt>Pedido</dt><dd>{needLabels[entry.need as Need] || entry.need}</dd></div><div><dt>Publicação futura</dt><dd>{entry.publicationConsent ? "Autorizou consideração anônima" : "Não autorizou"}</dd></div></dl>
