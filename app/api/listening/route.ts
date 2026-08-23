@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { desc, eq, gt } from "drizzle-orm";
+import { desc, eq, gt, lt } from "drizzle-orm";
+import { LISTENING_CONSENT_VERSION, listeningExpiryForStatus } from "../../listening-retention";
 
 type ListeningPayload = {
   alias?: unknown;
@@ -47,19 +48,24 @@ export async function POST(request: Request) {
 
     const [{ getDb }, { listeningSubmissions }] = await Promise.all([import("../../../db"), import("../../../db/schema")]);
     const db = getDb();
+    await db.delete(listeningSubmissions).where(lt(listeningSubmissions.expiresAt, new Date().toISOString()));
     const oneMinuteAgo = new Date(Date.now() - 60 * 1000).toISOString();
     const recent = await db.select({ id: listeningSubmissions.id }).from(listeningSubmissions).where(gt(listeningSubmissions.createdAt, oneMinuteAgo)).orderBy(desc(listeningSubmissions.createdAt)).limit(61);
     if (recent.length >= 60) return NextResponse.json({ error: "Recebemos muitas mensagens agora. Tente novamente em alguns minutos." }, { status: 429 });
 
     const accessCode = makeAccessCode();
+    const now = new Date();
     await db.insert(listeningSubmissions).values({
       accessCode,
       alias: alias || null,
       need,
       message,
       publicationConsent,
+      consentVersion: LISTENING_CONSENT_VERSION,
+      consentAt: now.toISOString(),
       status: "new",
-      createdAt: new Date().toISOString(),
+      createdAt: now.toISOString(),
+      expiresAt: listeningExpiryForStatus("new", now),
     });
     return NextResponse.json({ accessCode }, { status: 201 });
   } catch (error) {
@@ -74,14 +80,37 @@ export async function GET(request: Request) {
 
   try {
     const [{ getDb }, { listeningSubmissions }] = await Promise.all([import("../../../db"), import("../../../db/schema")]);
-    const [entry] = await getDb().select({ status: listeningSubmissions.status, response: listeningSubmissions.response, respondedAt: listeningSubmissions.respondedAt, alias: listeningSubmissions.alias }).from(listeningSubmissions).where(eq(listeningSubmissions.accessCode, code)).limit(1);
+    const db = getDb();
+    const [entry] = await db.select({ status: listeningSubmissions.status, response: listeningSubmissions.response, respondedAt: listeningSubmissions.respondedAt, alias: listeningSubmissions.alias, expiresAt: listeningSubmissions.expiresAt }).from(listeningSubmissions).where(eq(listeningSubmissions.accessCode, code)).limit(1);
     if (!entry) return NextResponse.json({ error: "Não encontramos um relato com esse código." }, { status: 404 });
+    if (entry.expiresAt && entry.expiresAt <= new Date().toISOString()) {
+      await db.delete(listeningSubmissions).where(eq(listeningSubmissions.accessCode, code));
+      return NextResponse.json({ error: "Este relato chegou ao fim do prazo de conservação e foi eliminado." }, { status: 410 });
+    }
     return NextResponse.json({
-      ...entry,
+      status: entry.status,
+      respondedAt: entry.respondedAt,
+      alias: entry.alias,
+      expiresAt: entry.expiresAt,
       response: entry.status === "responded" ? entry.response : null,
     }, { headers: { "cache-control": "no-store" } });
   } catch (error) {
     console.error("Unable to retrieve listening response", error);
     return NextResponse.json({ error: "Não foi possível consultar agora. Tente novamente em instantes." }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: Request) {
+  const code = new URL(request.url).searchParams.get("code")?.trim().toUpperCase().slice(0, 40) || "";
+  if (!/^SR-(?:[A-F0-9]{4}-){4}[A-F0-9]{4}$/.test(code)) return NextResponse.json({ error: "Confira o código e tente novamente." }, { status: 400 });
+
+  try {
+    const [{ getDb }, { listeningSubmissions }] = await Promise.all([import("../../../db"), import("../../../db/schema")]);
+    const deleted = await getDb().delete(listeningSubmissions).where(eq(listeningSubmissions.accessCode, code)).returning({ id: listeningSubmissions.id });
+    if (!deleted.length) return NextResponse.json({ error: "Não encontramos um relato com esse código." }, { status: 404 });
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    console.error("Unable to delete listening submission", error);
+    return NextResponse.json({ error: "Não foi possível eliminar agora. Tente novamente em instantes." }, { status: 500 });
   }
 }

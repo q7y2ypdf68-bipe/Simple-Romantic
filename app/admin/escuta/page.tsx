@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { desc } from "drizzle-orm";
+import { desc, lt } from "drizzle-orm";
 import { requireAdminUser } from "../admin-auth";
 import ListeningDashboard from "./ListeningDashboard";
 
@@ -21,7 +21,9 @@ export default async function ListeningAdminPage() {
     import("../../../db"),
     import("../../../db/schema"),
   ]);
-  const entries = await getDb().select().from(listeningSubmissions).orderBy(desc(listeningSubmissions.createdAt));
+  const db = getDb();
+  await db.delete(listeningSubmissions).where(lt(listeningSubmissions.expiresAt, new Date().toISOString()));
+  const entries = await db.select().from(listeningSubmissions).orderBy(desc(listeningSubmissions.createdAt));
 
   return <ListeningDashboard initialEntries={entries} userName={user.displayName} />;
 }

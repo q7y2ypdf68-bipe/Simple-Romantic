@@ -41,11 +41,14 @@ export const listeningSubmissions = sqliteTable("listening_submissions", {
   need: text("need").notNull(),
   message: text("message").notNull(),
   publicationConsent: integer("publication_consent", { mode: "boolean" }).notNull().default(false),
+  consentVersion: text("consent_version"),
+  consentAt: text("consent_at"),
   status: text("status").notNull().default("new"),
   response: text("response"),
   createdAt: text("created_at").notNull(),
   updatedAt: text("updated_at"),
   respondedAt: text("responded_at"),
+  expiresAt: text("expires_at"),
 });
 
 export const analyticsDaily = sqliteTable("analytics_daily", {

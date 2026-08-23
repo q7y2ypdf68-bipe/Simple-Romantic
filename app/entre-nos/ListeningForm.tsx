@@ -70,9 +70,10 @@ export function ListeningForm() {
     <label><span>Conte o que está no seu coração</span><textarea name="message" minLength={80} maxLength={5000} rows={10} required placeholder="Escreva no seu tempo. Não precisa organizar tudo antes de começar…" /><small>De 80 a 5.000 caracteres. Não inclua dados pessoais ou informações que identifiquem terceiros.</small></label>
     <label className="listening-check optional"><input name="publicationConsent" type="checkbox" /><span><strong>Talvez minha experiência possa ajudar alguém.</strong> Autorizo que o relato seja considerado para publicação anônima, depois de revisado e sem detalhes identificáveis. Esta escolha é opcional e não garante publicação.</span></label>
     <label className="listening-check"><input name="adult" type="checkbox" required /><span>Confirmo que tenho 18 anos ou mais.</span></label>
-    <label className="listening-check"><input name="consent" type="checkbox" required /><span>Entendi que este é um espaço de acolhimento, não um serviço de emergência ou atendimento profissional. Li e aceito os <Link href="/termos">Termos</Link> e a <Link href="/privacidade">Política de Privacidade</Link>.</span></label>
+    <label className="listening-check"><input name="consent" type="checkbox" required /><span>Autorizo expressamente o tratamento deste relato, que pode conter informações íntimas, para que ele seja lido e, quando solicitado, respondido. Entendi os prazos de eliminação, sei que posso apagar o relato antes usando meu código e li os <Link href="/termos">Termos</Link> e a <Link href="/privacidade">Política de Privacidade</Link>.</span></label>
     <label className="community-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
     <button className="button primary" type="submit" disabled={state === "sending"}>{state === "sending" ? "Enviando com cuidado…" : "Enviar meu relato"}<span>→</span></button>
+    <p className="listening-retention-note">Relatos aguardando leitura são conservados por até 180 dias. Depois de uma resposta, por até 90 dias. Você pode eliminá-los antes usando o código particular.</p>
     <p className="listening-form-message" role="status" aria-live="polite">{state === "error" ? error : ""}</p>
   </form>;
 }

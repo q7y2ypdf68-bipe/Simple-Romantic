@@ -1,6 +1,7 @@
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { getAdminUser } from "../../../../admin/admin-auth";
+import { listeningExpiryForStatus } from "../../../../listening-retention";
 
 const statuses = new Set(["new", "read", "responded", "archived"]);
 function clean(value: unknown, maxLength: number) { return typeof value === "string" ? value.trim().slice(0, maxLength) : undefined; }
@@ -20,8 +21,11 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
     changes.status = status;
     if (status === "responded") {
       if (!response || response.length < 20) return NextResponse.json({ error: "Escreva uma resposta antes de concluir o acolhimento." }, { status: 400 });
-      changes.respondedAt = new Date().toISOString();
+      const respondedAt = new Date();
+      changes.respondedAt = respondedAt.toISOString();
+      changes.expiresAt = listeningExpiryForStatus("responded", respondedAt);
     }
+    if (status === "archived") changes.expiresAt = listeningExpiryForStatus("archived");
   }
 
   const [{ getDb }, { listeningSubmissions }] = await Promise.all([import("../../../../../db"), import("../../../../../db/schema")]);

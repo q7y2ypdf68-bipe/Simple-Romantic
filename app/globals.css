@@ -994,3 +994,14 @@ html[data-theme="dark"] .home-blog{background:radial-gradient(circle at 92% 88%,
   .place-grid{grid-template-columns:1fr}
   .place-copy{padding:27px 24px}
 }
+
+/* Retention and self-service deletion for private listening submissions. */
+.listening-retention-note{margin:0;padding:15px 18px;border:1px solid #e3c65d;border-radius:14px;background:#fff8d8;color:#5e4930;font-size:14px;line-height:1.55}
+.response-expiry{margin-top:25px!important;padding-top:18px;border-top:1px solid var(--line);font-size:14px!important}
+.response-delete{margin-top:16px;padding:11px 16px;border:1px solid #d9a09d;border-radius:99px;background:transparent;color:#9f2e25;font-weight:800;cursor:pointer}
+.response-delete:hover,.response-delete:focus-visible{border-color:#b42318;background:#fff0ef;outline:none}
+.response-deleted{padding:20px;border:1px solid #8ccbad;border-radius:16px;background:#edf9f2;color:#17613f;font-weight:800;line-height:1.55}
+html[data-theme="dark"] .listening-retention-note{background:#302914;border-color:#7c6827;color:var(--muted)}
+html[data-theme="dark"] .response-delete{border-color:#855550;color:#ffaaa3}
+html[data-theme="dark"] .response-delete:hover,html[data-theme="dark"] .response-delete:focus-visible{background:#3b201f}
+html[data-theme="dark"] .response-deleted{background:#173023;border-color:#3e7b5a;color:#bce8cf}

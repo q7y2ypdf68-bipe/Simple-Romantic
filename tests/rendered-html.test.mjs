@@ -216,3 +216,30 @@ test("analytics ignores private routes without requiring persistence", async () 
   );
   assert.equal(response.status, 202);
 });
+
+test("documents listening retention and exposes self-service deletion", async () => {
+  const [privacy, form, lookup, retention] = await Promise.all([
+    readFile(new URL("../app/privacidade/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/entre-nos/ListeningForm.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/entre-nos/resposta/ResponseLookup.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/listening-retention.ts", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(privacy, /até 180 dias depois do envio/i);
+  assert.match(privacy, /até 90 dias depois da resposta/i);
+  assert.match(form, /Autorizo expressamente o tratamento deste relato/i);
+  assert.match(lookup, /Eliminar meu relato agora/i);
+  assert.match(retention, /LISTENING_CONSENT_VERSION/);
+});
+
+test("rejects deletion attempts without a valid private listening code", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("listening-delete-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const response = await worker.fetch(
+    new Request("http://localhost/api/listening?code=invalido", { method: "DELETE" }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+  assert.equal(response.status, 400);
+});
