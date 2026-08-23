@@ -1164,3 +1164,13 @@ html[data-theme="dark"] .listening-form input::placeholder,html[data-theme="dark
 html[data-theme="dark"] .listening-check.optional,html[data-theme="dark"] .listening-retention-note{border-color:#75642b;background:#302a18;color:#eadba8}
 
 @media(max-width:700px){.listening-form-intro{position:static;padding:27px 22px;border-left-width:4px;border-radius:0 20px 20px 0}}
+
+/* Header controls — stronger hierarchy in light mode without changing dark mode. */
+.blog-site-header .theme-toggle{border:2px solid #d5a2b6;background:#fff;color:#41293a;box-shadow:0 8px 20px rgba(103,38,69,.13)}
+.blog-site-header .language-shortcut{padding:9px 12px;border:2px solid #e987aa;background:#fff0f6;color:#b71951;box-shadow:0 7px 17px rgba(183,25,81,.1)}
+.blog-site-header .back-home{padding:9px 18px;border:2px solid #c91d5c;background:linear-gradient(135deg,#c91d5c,#e64c58);color:#fff;box-shadow:0 9px 20px rgba(190,27,82,.22)}
+.blog-site-header .theme-toggle:hover,.blog-site-header .language-shortcut:hover,.blog-site-header .back-home:hover,
+.blog-site-header .theme-toggle:focus-visible,.blog-site-header .language-shortcut:focus-visible,.blog-site-header .back-home:focus-visible{transform:translateY(-2px);outline:3px solid #ffd45b;outline-offset:3px}
+html[data-theme="dark"] .blog-site-header .theme-toggle{border-color:#765064;background:#2a1f28;color:#ffe07b;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+html[data-theme="dark"] .blog-site-header .language-shortcut{border-color:#765064;background:#30212a;color:#ffb2cb;box-shadow:none}
+html[data-theme="dark"] .blog-site-header .back-home{border-color:#765064;background:#30212a;color:#ffb2cb;box-shadow:none}

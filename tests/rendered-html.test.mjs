@@ -217,6 +217,16 @@ test("analytics ignores private routes without requiring persistence", async () 
   assert.equal(response.status, 202);
 });
 
+test("tracks every public service area while excluding private response lookups", async () => {
+  const source = await readFile(new URL("../app/api/analytics/route.ts", import.meta.url), "utf8");
+  for (const route of ["loja", "tienda", "comunidad", "contacto", "privacidad", "normas-de-la-comunidad"]) {
+    assert.match(source, new RegExp(route));
+  }
+  const tracker = await readFile(new URL("../app/components/AnalyticsTracker.tsx", import.meta.url), "utf8");
+  assert.match(tracker, /\/entre-nos\/resposta/);
+  assert.match(tracker, /\/es\/entre-nos\/respuesta/);
+});
+
 test("documents listening retention and exposes self-service deletion", async () => {
   const [privacy, form, lookup, retention] = await Promise.all([
     readFile(new URL("../app/privacidade/page.tsx", import.meta.url), "utf8"),
@@ -383,4 +393,21 @@ test("locks finder and listening contrast in both themes", async () => {
   ]) assert.ok(packageCss.includes(selector), `missing scoped contrast rule for ${selector}`);
   assert.match(packageCss, /html\[data-theme="dark"\] \.finder\{[^}]*!important/);
   assert.match(packageCss, /html\[data-theme="dark"\] \.finder-form\{[^}]*!important/);
+});
+
+test("keeps the secondary header controls prominent in light mode and scoped in dark mode", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const controlsStart = css.indexOf("Header controls — stronger hierarchy in light mode");
+  assert.ok(controlsStart > 0);
+  const controls = css.slice(controlsStart);
+  for (const selector of [
+    ".blog-site-header .theme-toggle",
+    ".blog-site-header .language-shortcut",
+    ".blog-site-header .back-home",
+    "html[data-theme=\"dark\"] .blog-site-header .theme-toggle",
+    "html[data-theme=\"dark\"] .blog-site-header .language-shortcut",
+    "html[data-theme=\"dark\"] .blog-site-header .back-home",
+  ]) assert.ok(controls.includes(selector), `missing header-control rule for ${selector}`);
+  assert.match(controls, /\.blog-site-header \.back-home\{[^}]*color:#fff/);
+  assert.match(controls, /outline:3px solid #ffd45b/);
 });

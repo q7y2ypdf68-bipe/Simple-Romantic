@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 type Payload = { path?: unknown; source?: unknown };
-const TRACKABLE_PATH = /^\/(?:$|blog(?:\/(?:historias\/\d+|[a-z0-9-]+))?|es(?:\/blog(?:\/[a-z0-9-]+)?)?|guia|entre-nos(?:\/resposta)?|contato|privacidade|termos|regras-da-comunidade)$/;
+const TRACKABLE_PATH = /^\/(?:$|blog(?:\/(?:historias\/\d+|[a-z0-9-]+))?|guia|loja|entre-nos|contato|privacidade|termos|regras-da-comunidade|es(?:\/(?:blog(?:\/[a-z0-9-]+)?|guia|tienda|comunidad|entre-nos|contacto|privacidad|terminos|normas-de-la-comunidad))?)$/;
 const HOSTNAME = /^(?:[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?\.)*[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$/i;
 
 function clean(value: unknown, maxLength: number) {
