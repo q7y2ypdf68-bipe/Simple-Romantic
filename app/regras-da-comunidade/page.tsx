@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPage } from "../legal/LegalPage";
 
-export const metadata: Metadata = { title: "Regras da Comunidade", description: "Regras para compartilhar histórias e ideias com respeito e segurança.", alternates: { canonical: "/regras-da-comunidade" } };
+export const metadata: Metadata = { title: "Regras da Comunidade", description: "Regras para compartilhar histórias e ideias com respeito e segurança.", alternates: { canonical: "/regras-da-comunidade", languages: { "pt-BR": "/regras-da-comunidade", "es-ES": "/es/normas-de-la-comunidad", "x-default": "/regras-da-comunidade" } } };
 
 export default function RulesPage() {
   return <LegalPage kicker="HISTÓRIAS QUE APROXIMAM" title="Regras da Comunidade" intro="Queremos histórias verdadeiras, úteis e acolhedoras. Estas regras protegem quem compartilha e quem lê.">

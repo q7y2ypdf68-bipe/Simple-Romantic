@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Blog en español",
   description: "Ideas de citas románticas, pequeños gestos y cuentos para parejas reales, en español de España.",
-  alternates: { canonical: "/es/blog", languages: { "pt-BR": "/blog", "es-ES": "/es/blog" } },
+  alternates: { canonical: "/es/blog", languages: { "pt-BR": "/blog", "es-ES": "/es/blog", "x-default": "/blog" } },
   openGraph: { type: "website", locale: "es_ES", url: "/es/blog", title: "Blog Simple & Romantic", description: "Ideas sencillas para crear recuerdos bonitos en pareja.", images: [{ url: "/images/blog/13-o-olhar-que-ficou.webp", alt: "Pareja adulta mirándose junto al mar" }] },
 };
 

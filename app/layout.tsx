@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/",
-    languages: { "pt-BR": "/", "es-ES": "/es" },
+    languages: { "pt-BR": "/", "es-ES": "/es", "x-default": "/" },
     types: {
       "application/rss+xml": "/rss.xml",
     },
@@ -89,7 +89,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         url: siteUrl,
         name: "Simple & Romantic",
         description: "Ideias gratuitas e de baixo custo para encontros românticos, surpresas e momentos a dois.",
-        inLanguage: "pt-BR",
+        inLanguage: ["pt-BR", "es-ES"],
         publisher: { "@id": `${siteUrl}/#organization` },
       },
     ],

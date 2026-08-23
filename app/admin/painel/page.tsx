@@ -35,6 +35,7 @@ export default async function AdminOverviewPage() {
         <Link href="/admin/inscritos"><span>↓</span><strong>{subscribers.length}</strong><h2>Inscritos no guia</h2><p>Pessoas que aceitaram receber o guia, com idioma e data de inscrição.</p><small>Ver inscritos →</small></Link>
         <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer"><span>G</span><strong>Google</strong><h2>Pesquisa Google</h2><p>Impressões, cliques e consultas que fizeram o site aparecer no Google.</p><small>Abrir Search Console ↗</small></a>
       </div>
+      <section className="analytics-explainer" aria-labelledby="analytics-explainer-title"><div><p className="eyebrow">COMO LER OS NÚMEROS</p><h2 id="analytics-explainer-title">Três métricas, três significados.</h2></div><article><strong>Visualizações internas</strong><p>Contam páginas abertas. A mesma pessoa pode gerar várias visualizações ao navegar ou voltar ao site.</p></article><article><strong>Visitantes únicos</strong><p>Não são identificados internamente, porque a medição respeita a privacidade e não cria perfis individuais.</p></article><article><strong>Cliques no Google</strong><p>São medidos no Search Console e mostram quantas visitas chegaram a partir dos resultados da Pesquisa Google.</p></article></section>
       <aside className="admin-access-note"><div><p className="eyebrow">O SEU ACESSO</p><h2>Guarde este endereço nos favoritos</h2><p><strong>Central privada:</strong> <Link href="/admin/painel">/admin/painel</Link></p><p>Se não estiver autenticado, o site pedirá o início de sessão da conta autorizada. Visitantes comuns não conseguem ver este painel nem os relatos recebidos.</p></div><Link className="button primary" href="/">Ver o site público <span>→</span></Link></aside>
     </section>
   </main>;
@@ -42,4 +43,3 @@ export default async function AdminOverviewPage() {
 
 function dayOffset(offset: number) { const date = new Date(); date.setUTCDate(date.getUTCDate() + offset); return new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Lisbon", year: "numeric", month: "2-digit", day: "2-digit" }).format(date); }
 function Denied() { return <main className="admin-denied"><div><span>♥</span><p>ÁREA PRIVADA</p><h1>Acesso restrito.</h1><p>Esta área é reservada à administração do Simple & Romantic.</p><Link className="button primary" href="/">Voltar ao site</Link></div></main>; }
-

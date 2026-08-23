@@ -11,7 +11,7 @@ type Language = "pt" | "en";
 
 const copy = {
   pt: {
-    nav: ["Encontrar uma ideia", "Lugares", "Como funciona", "Guia gratuito", "Blog", "Comunidade", "Entre nós"],
+    nav: ["Encontrar uma ideia", "Lugares", "Como funciona", "Guia gratuito", "Blog", "Loja", "Comunidade", "Entre nós"],
     heroKicker: "ROMANCE ACESSÍVEL · MOMENTOS REAIS",
     heroTitleA: "Romance não precisa",
     heroTitleB: "ser caro.",
@@ -90,7 +90,7 @@ const copy = {
     listeningLookup: "Já tenho um código",
   },
   en: {
-    nav: ["Find an idea", "Places", "How it works", "Free guide", "Blog", "Community", "Between us"],
+    nav: ["Find an idea", "Places", "How it works", "Free guide", "Blog", "Shop", "Community", "Between us"],
     heroKicker: "AFFORDABLE ROMANCE · REAL MOMENTS",
     heroTitleA: "Romance doesn't have",
     heroTitleB: "to be expensive.",
@@ -185,8 +185,9 @@ export default function Home() {
     { href: "#como", label: t.nav[2] },
     { href: "/guia", label: t.nav[3] },
     { href: "#blog", label: t.nav[4] },
-    { href: "#comunidade", label: t.nav[5] },
-    { href: "/entre-nos", label: t.nav[6] },
+    { href: "/loja", label: t.nav[5] },
+    { href: "#comunidade", label: t.nav[6] },
+    { href: "/entre-nos", label: t.nav[7] },
   ];
 
   function createDate(event: FormEvent<HTMLFormElement>) {
@@ -251,7 +252,7 @@ export default function Home() {
           <span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span>
         </a>
         <nav aria-label="Navegação principal">
-          <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><Link href="/guia">{t.nav[3]}</Link><a href="#blog">{t.nav[4]}</a><a href="#comunidade">{t.nav[5]}</a><Link href="/entre-nos">{t.nav[6]}</Link>
+          <a href="#encontrar">{t.nav[0]}</a><a href="#lugares">{t.nav[1]}</a><a href="#como">{t.nav[2]}</a><Link href="/guia">{t.nav[3]}</Link><a href="#blog">{t.nav[4]}</a><Link href="/loja">{t.nav[5]}</Link><a href="#comunidade">{t.nav[6]}</a><Link href="/entre-nos">{t.nav[7]}</Link>
         </nav>
         <div className="header-actions">
           <ThemeToggle />
@@ -387,7 +388,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><Link href="/guia">Guia gratuito</Link><Link href="/entre-nos">Entre nós</Link><Link href="/privacidade">Privacidade</Link><Link href="/termos">Termos de Uso</Link><Link href="/regras-da-comunidade">Regras da Comunidade</Link><Link href="/contato">Contato</Link><Link href="/admin/painel">Administração</Link></div></footer>
+      <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><Link href="/guia">Guia gratuito</Link><Link href="/loja">Loja</Link><Link href="/entre-nos">Entre nós</Link><Link href="/privacidade">Privacidade</Link><Link href="/termos">Termos de Uso</Link><Link href="/regras-da-comunidade">Regras da Comunidade</Link><Link href="/contato">Contato</Link><Link href="/admin/painel">Administração</Link></div></footer>
     </main>
   );
 }

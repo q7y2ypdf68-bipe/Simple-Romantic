@@ -2,11 +2,12 @@ import { getVisibleBlogPosts } from "../blog/posts";
 import { getVisibleBlogPostsEs } from "../es/blog/posts-es";
 
 const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
-const lastModified = "2026-08-01";
+const lastModified = "2026-08-23";
 
 const staticPages = [
   { path: "", frequency: "weekly", priority: "1.0" },
   { path: "/blog", frequency: "weekly", priority: "0.9" },
+  { path: "/loja", frequency: "monthly", priority: "0.6" },
   { path: "/guia", frequency: "monthly", priority: "0.9" },
   { path: "/entre-nos", frequency: "weekly", priority: "0.9" },
   { path: "/contato", frequency: "yearly", priority: "0.4" },
@@ -15,6 +16,7 @@ const staticPages = [
   { path: "/regras-da-comunidade", frequency: "yearly", priority: "0.3" },
   { path: "/es", frequency: "weekly", priority: "0.9" },
   { path: "/es/blog", frequency: "weekly", priority: "0.9" },
+  { path: "/es/tienda", frequency: "monthly", priority: "0.6" },
   { path: "/es/guia", frequency: "monthly", priority: "0.9" },
   { path: "/es/comunidad", frequency: "monthly", priority: "0.6" },
   { path: "/es/entre-nos", frequency: "weekly", priority: "0.9" },

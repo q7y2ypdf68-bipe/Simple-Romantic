@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BlogFooter, BlogHeader } from "../BlogChrome";
 import { blogPosts, getPost } from "../posts";
+import { blogPostsEs } from "../../es/blog/posts-es";
 import { ShareButtons } from "../ShareButtons";
 import { serializeStructuredData } from "../../structured-data";
 
@@ -15,10 +16,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
+  const index = blogPosts.findIndex((item) => item.slug === post.slug);
+  const spanishPost = blogPostsEs[index];
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: { canonical: `/blog/${post.slug}`, languages: { "pt-BR": `/blog/${post.slug}`, ...(spanishPost ? { "es-ES": `/es/blog/${spanishPost.slug}` } : {}), "x-default": `/blog/${post.slug}` } },
     openGraph: {
       type: "article",
       locale: "pt_BR",

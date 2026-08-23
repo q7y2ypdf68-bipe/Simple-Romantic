@@ -8,7 +8,8 @@ export function AnalyticsTracker() {
   const lastTrackedPath = useRef("");
 
   useEffect(() => {
-    if (!pathname || pathname.startsWith("/admin") || lastTrackedPath.current === pathname) return;
+    const privatePaths = ["/entre-nos/resposta", "/es/entre-nos/respuesta"];
+    if (!pathname || pathname.startsWith("/admin") || privatePaths.some((path) => pathname.startsWith(path)) || lastTrackedPath.current === pathname) return;
     lastTrackedPath.current = pathname;
 
     let source = "Direto";

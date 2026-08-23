@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Blog",
   description: "Conteúdo gratuito com ideias de encontros românticos, surpresas simples e lugares bonitos para casais.",
-  alternates: { canonical: "/blog", languages: { "pt-BR": "/blog", "es-ES": "/es/blog" } },
+  alternates: { canonical: "/blog", languages: { "pt-BR": "/blog", "es-ES": "/es/blog", "x-default": "/blog" } },
   openGraph: {
     type: "website",
     url: "/blog",

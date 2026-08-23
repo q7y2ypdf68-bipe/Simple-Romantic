@@ -6,7 +6,7 @@ import guide from "../../content/guide-pt-br.json";
 export const metadata: Metadata = {
   title: "30 encontros simples gastando pouco | Guia gratuito",
   description: "Guia gratuito com 30 encontros simples, roteiros, pequenos detalhes e planos alternativos para casais.",
-  alternates: { canonical: "/guia" },
+  alternates: { canonical: "/guia", languages: { "pt-BR": "/guia", "es-ES": "/es/guia", "x-default": "/guia" } },
   openGraph: {
     type: "article",
     url: "/guia",

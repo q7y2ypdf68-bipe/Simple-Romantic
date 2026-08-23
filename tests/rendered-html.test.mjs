@@ -302,6 +302,47 @@ test("adds every public Spanish service page to the sitemap", async () => {
   }
 });
 
+test("publishes a bilingual store foundation without pretending commerce is active", async () => {
+  const [portuguese, spanish, sitemap, ptChrome, esChrome] = await Promise.all([
+    readFile(new URL("../app/loja/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/es/tienda/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/sitemap.xml/route.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/blog/BlogChrome.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/es/blog/BlogChromeEs.tsx", import.meta.url), "utf8"),
+  ]);
+  assert.match(portuguese, /ainda não existem vendas nem encomendas/i);
+  assert.match(spanish, /todavía no hay ventas ni pedidos/i);
+  assert.match(portuguese, /Intimidade e bem-estar 18\+/);
+  assert.match(spanish, /Intimidad y bienestar 18\+/);
+  assert.doesNotMatch(`${portuguese}\n${spanish}`, /checkout|adicionar ao carrinho|añadir al carrito/i);
+  for (const [source, route] of [[sitemap, "/loja"], [sitemap, "/es/tienda"], [ptChrome, "/loja"], [esChrome, "/es/tienda"]]) {
+    assert.match(source, new RegExp(route.replaceAll("/", "\\/")));
+  }
+});
+
+test("keeps SEO language pairs reciprocal and private analytics paths untracked", async () => {
+  const [guide, privacy, article, tracker] = await Promise.all([
+    readFile(new URL("../app/guia/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/privacidade/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/blog/[slug]/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/AnalyticsTracker.tsx", import.meta.url), "utf8"),
+  ]);
+  for (const source of [guide, privacy, article]) {
+    assert.match(source, /"pt-BR"/);
+    assert.match(source, /"es-ES"/);
+  }
+  assert.match(tracker, /\/entre-nos\/resposta/);
+  assert.match(tracker, /\/es\/entre-nos\/respuesta/);
+});
+
+test("explains internal views, unique visitors and Google clicks in the private dashboard", async () => {
+  const dashboard = await readFile(new URL("../app/admin/painel/page.tsx", import.meta.url), "utf8");
+  assert.match(dashboard, /Visualizações internas/);
+  assert.match(dashboard, /Visitantes únicos/);
+  assert.match(dashboard, /Cliques no Google/);
+  assert.match(dashboard, /Search Console/);
+});
+
 test("covers every high-risk surface in the final dark-theme cascade", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   const auditStart = css.indexOf("Dark-theme audit: final cascade layer");
