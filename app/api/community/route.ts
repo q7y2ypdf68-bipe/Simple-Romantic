@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { and, eq, gt } from "drizzle-orm";
+import { adminLinks, escapeEmailHtml, sendBrevoNotification } from "../../brevo";
 
 type SubmissionPayload = {
   kind?: unknown;
@@ -83,6 +84,16 @@ export async function POST(request: Request) {
       status: "pending",
       createdAt: new Date().toISOString(),
     });
+
+    try {
+      await sendBrevoNotification({
+        subject: `Novo conto para revisão: ${title}`,
+        text: `Nova contribuição recebida.\n\nTipo: ${kind}\nTítulo: ${title}\nAutor: ${authorName || "Não informado"}\nE-mail: ${email}\n\nConteúdo:\n${content}\n\nAbrir painel: ${adminLinks.community}`,
+        html: `<p>Nova contribuição recebida.</p><p><strong>Tipo:</strong> ${escapeEmailHtml(kind)}<br><strong>Título:</strong> ${escapeEmailHtml(title)}<br><strong>Autor:</strong> ${escapeEmailHtml(authorName || "Não informado")}<br><strong>E-mail:</strong> ${escapeEmailHtml(email)}</p><p>${escapeEmailHtml(content).replace(/\n/g, "<br>")}</p><p><a href="${adminLinks.community}">Abrir painel editorial</a></p>`,
+      });
+    } catch (error) {
+      console.error("Unable to send community notification", error);
+    }
 
     return NextResponse.json({ ok: true }, { status: 201 });
   } catch (error) {

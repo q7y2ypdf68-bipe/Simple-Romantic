@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { desc, eq, gt, lt } from "drizzle-orm";
 import { LISTENING_CONSENT_VERSION, listeningExpiryForStatus } from "../../listening-retention";
+import { adminLinks, sendBrevoNotification } from "../../brevo";
 
 type ListeningPayload = {
   alias?: unknown;
@@ -70,6 +71,15 @@ export async function POST(request: Request) {
       createdAt: now.toISOString(),
       expiresAt: listeningExpiryForStatus("new", now),
     });
+    try {
+      await sendBrevoNotification({
+        subject: "Novo relato privado no Entre nós",
+        text: `Há um novo relato privado para ler no painel.\n\nCódigo: ${accessCode}\n\nO conteúdo não foi incluído neste e-mail para preservar a privacidade.\n\nAbrir painel: ${adminLinks.listening}`,
+        html: `<p>Há um novo relato privado para ler no painel.</p><p><strong>Código:</strong> ${accessCode}</p><p>O conteúdo não foi incluído neste e-mail para preservar a privacidade.</p><p><a href="${adminLinks.listening}">Abrir painel de escuta</a></p>`,
+      });
+    } catch (error) {
+      console.error("Unable to send listening notification", error);
+    }
     return NextResponse.json({ accessCode }, { status: 201 });
   } catch (error) {
     console.error("Unable to save listening submission", error);
