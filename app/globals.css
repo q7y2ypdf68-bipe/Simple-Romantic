@@ -998,14 +998,17 @@ html[data-theme="dark"] .home-blog{background:radial-gradient(circle at 92% 88%,
 /* Home hero and brand refinement: keep the two areas close without changing the mobile composition. */
 @media(min-width:1001px){
   .site-header{height:92px;padding-right:4.5vw;padding-left:4.5vw;gap:24px}
-  .site-header .brand{gap:12px}
+  .site-header .brand{gap:13px}
+  .site-header .brand-heart{width:46px;height:46px;font-size:38px}
   .site-header .brand-name{min-width:265px;padding-bottom:8px}
-  .site-header .brand-name small{top:39px;font-size:9px;letter-spacing:.14em;color:#a14d70}
+  .site-header .brand-name strong{font-size:32px}
+  .site-header .brand-name i{font-size:33px}
+  .site-header .brand-name small{top:41px;font-size:10px;letter-spacing:.14em;color:#a14d70}
 
   .hero{grid-template-columns:48% 52%}
   .hero-copy{padding-left:8vw;padding-right:4.5vw}
   .hero-copy:before{width:128px;height:128px;left:-34px;top:52px}
-  .hero-scene>img{object-position:58% center}
+  .hero-scene>img{object-position:61% center}
   .hero-scene:after{width:220px;height:220px;border-width:22px;right:-62px;top:-72px}
 }
 
