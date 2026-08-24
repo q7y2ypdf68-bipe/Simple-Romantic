@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const index = blogPosts.findIndex((item) => item.slug === post.slug);
   const spanishPost = blogPostsEs[index];
   return {
-    title: post.title,
+    title: post.seoTitle || post.title,
     description: post.excerpt,
     alternates: { canonical: `/blog/${post.slug}`, languages: { "pt-BR": `/blog/${post.slug}`, ...(spanishPost ? { "es-ES": `/es/blog/${spanishPost.slug}` } : {}), "x-default": `/blog/${post.slug}` } },
     openGraph: {
@@ -90,7 +90,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <ShareButtons title={post.title} path={`/blog/${post.slug}`} />
         {post.contentNotice && <aside className="article-content-notice" aria-label="Identificação do conteúdo"><strong>{post.contentNotice.label}</strong><p>{post.contentNotice.text}</p></aside>}
         {post.intro.map((paragraph) => <p className="article-intro" key={paragraph}>{paragraph}</p>)}
-        {post.sections.map((section) => <section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>}</section>)}
+        {post.sections.map((section) => <section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.paragraphLink && <p>{section.paragraphLink.before}<Link href={section.paragraphLink.href}>{section.paragraphLink.linkText}</Link>{section.paragraphLink.after}</p>}{section.afterParagraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>}</section>)}
         <aside className="article-cta">
           <p className="eyebrow">TRANSFORME A IDEIA EM UM ENCONTRO</p>
           <h2>Quer um plano simples para viver a dois?</h2>

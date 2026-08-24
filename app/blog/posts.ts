@@ -1,12 +1,15 @@
 export type BlogSection = {
   heading: string;
   paragraphs?: string[];
+  paragraphLink?: { before: string; linkText: string; href: string; after: string };
+  afterParagraphs?: string[];
   items?: string[];
 };
 
 export type BlogPost = {
   slug: string;
   title: string;
+  seoTitle?: string;
   excerpt: string;
   category: string;
   image: string;
@@ -24,6 +27,75 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "pequenos-gestos-de-amor",
+    title: "25 pequenos gestos de amor que cabem num dia comum",
+    seoTitle: "25 pequenos gestos de amor para fazer no dia a dia",
+    excerpt: "Descubra 25 gestos simples e carinhosos para demonstrar amor no cotidiano, fortalecer a conexão e transformar dias comuns em pequenas memórias.",
+    category: "AFETO COTIDIANO",
+    series: "IDEIAS E GUIAS",
+    image: "/images/blog/04-surpresas-simples.webp",
+    imageAlt: "Casal adulto trocando um gesto carinhoso numa varanda em fim de tarde",
+    published: "24 de agosto de 2026",
+    publishedIso: "2026-08-24",
+    readTime: "8 min de leitura",
+    intro: [
+      "Nem todo momento especial precisa começar com uma reserva, uma caixa de presente ou uma data marcada no calendário.",
+      "Às vezes, ele começa com um café deixado pronto.",
+      "Com uma mensagem no meio da tarde.",
+      "Com cinco minutos de atenção sem o celular por perto.",
+      "Os pequenos gestos têm uma vantagem bonita: eles cabem na vida real. Cabem numa terça-feira cansativa, entre duas tarefas, num orçamento apertado e até naquele dia em que ninguém acordou particularmente romântico.",
+      "Por isso, reunimos 25 ideias simples para demonstrar carinho sem transformar o amor em uma produção cinematográfica.",
+    ],
+    sections: [
+      { heading: "1. Prepare algo que a pessoa costuma fazer sozinha", paragraphs: ["Pode ser passar o café, encher a garrafa de água, organizar alguma coisa ou adiantar uma pequena tarefa.", "Não precisa anunciar.", "Às vezes, o carinho funciona melhor quando simplesmente aparece."] },
+      { heading: "2. Envie uma mensagem sem precisar de motivo", paragraphs: ["Não espere aniversário, saudade extrema ou alguma grande notícia.", "Um simples “lembrei de você agora” pode interromper um dia comum de um jeito muito bom."] },
+      { heading: "3. Pergunte qual foi a melhor parte do dia", paragraphs: ["É uma pergunta pequena, mas abre uma janela.", "E, quando a resposta vier, escute de verdade."] },
+      { heading: "4. Deixe um bilhete escondido", paragraphs: ["Na carteira, dentro de um livro, na bolsa, no espelho ou em algum lugar que a pessoa só encontrará mais tarde.", "Pode ter apenas uma frase.", "O encanto está também na descoberta."] },
+      { heading: "5. Coloque uma música que faz parte da história de vocês", paragraphs: ["Sem explicação.", "Deixe os primeiros segundos fazerem o trabalho."] },
+      { heading: "6. Guarde o celular por alguns minutos", paragraphs: ["Não precisa decretar uma noite inteira sem tecnologia.", "Experimente apenas dez minutos de presença completa.", "Para um mundo que vive piscando notificações, atenção virou um presente raro."] },
+      { heading: "7. Leve alguma coisa que a pessoa gosta", paragraphs: ["Um chocolate, uma fruta, um café, um pão favorito.", "O valor está menos no objeto e mais na mensagem silenciosa:", "“Eu lembro do que você gosta.”"] },
+      { heading: "8. Faça um elogio específico", paragraphs: ["Em vez de apenas dizer “você está linda” ou “você está lindo”, escolha algo que realmente percebeu.", "“Gosto da forma como você sempre tenta deixar as pessoas à vontade.”", "“Você fica muito bonito quando está concentrado.”", "Especificidade transforma elogio em reconhecimento."] },
+      { heading: "9. Mande uma foto antiga de vocês", paragraphs: ["Escolha uma imagem esquecida na galeria e acrescente:", "“Lembra desse dia?”", "Uma fotografia antiga pode abrir uma conversa inteira."] },
+      { heading: "10. Abrace por alguns segundos a mais", paragraphs: ["Sem pressa para soltar.", "Sem precisar dizer nada.", "Só fique."] },
+      { heading: "11. Faça uma pergunta que normalmente não faria", paragraphs: ["“Tem alguma coisa que você gostaria de fazer comigo este mês?”", "“Qual lugar você gostaria de conhecer comigo?”", "“Do que você sente saudade ultimamente?”", "Relacionamentos também precisam de curiosidade."] },
+      { heading: "12. Prepare o espaço para a pessoa descansar", paragraphs: ["Arrume o sofá, diminua a luz, pegue uma manta ou coloque alguma música tranquila.", "Transformar um ambiente comum em acolhimento leva poucos minutos."] },
+      { heading: "13. Diga obrigado por algo cotidiano", paragraphs: ["Há coisas que, de tão frequentes, tornam-se invisíveis.", "“Obrigado por sempre lembrar disso.”", "“Obrigado por ter feito aquilo ontem.”", "Reconhecer o cotidiano impede que cuidado vire obrigação silenciosa."] },
+      { heading: "14. Divida algo engraçado que tenha a cara de vocês", paragraphs: ["Uma imagem, um vídeo, uma piada interna.", "Casais também constroem intimidade rindo das mesmas bobagens.", "E isso é ótimo."] },
+      { heading: "15. Faça companhia numa tarefa chata", paragraphs: ["Dobrar roupa, cozinhar, organizar a casa, ir ao mercado.", "Talvez a atividade continue chata.", "Mas vocês podem torná-la menos solitária."] },
+      { heading: "16. Pergunte: “Posso fazer alguma coisa para deixar seu dia mais leve?”", paragraphs: ["Nem sempre haverá uma grande resposta.", "Talvez seja apenas buscar alguma coisa, resolver uma tarefa ou oferecer alguns minutos de silêncio.", "Ainda assim, a pergunta comunica cuidado."] },
+      { heading: "17. Escolha uma pequena surpresa para o fim do dia", paragraphs: ["Uma sobremesa.", "Um passeio de dez minutos.", "Um chá.", "Uma música.", "Um episódio de alguma série.", "A surpresa não precisa ser grande para criar expectativa."] },
+      { heading: "18. Lembre uma qualidade que você admira", paragraphs: ["Não apenas aparência.", "Coragem, gentileza, humor, paciência, criatividade, responsabilidade, generosidade.", "Ser amado também é sentir-se visto."] },
+      { heading: "19. Recrie um pedacinho de uma memória", paragraphs: ["Compre algo que vocês comeram num encontro antigo.", "Volte a uma rua.", "Coloque uma música.", "Repita uma fotografia.", "Não é preciso reconstruir o dia inteiro. Um detalhe já pode trazer a memória de volta."] },
+      { heading: "20. Faça um mini-encontro improvisado", paragraphs: ["Pegue duas bebidas e sente na varanda.", "Caminhem pelo bairro.", "Comam alguma coisa no carro.", "Sentem num parque.", "Um encontro começa quando vocês decidem tratar aquele momento como encontro."] },
+      { heading: "21. Pergunte se a pessoa quer falar ou apenas companhia", paragraphs: ["Há dias em que queremos contar tudo.", "Em outros, queremos apenas alguém por perto.", "Saber a diferença é uma forma delicada de cuidado."] },
+      { heading: "22. Faça algo que facilite a manhã seguinte", paragraphs: ["Deixe alguma coisa preparada.", "Organize o café.", "Separe o que será necessário.", "O gesto acontece hoje, mas o carinho só será descoberto amanhã."] },
+      { heading: "23. Diga algo carinhoso antes de dormir", paragraphs: ["Não precisa ser uma declaração elaborada.", "“Gostei de estar com você hoje.”", "“Durma bem.”", "“Foi bom ter você aqui.”", "Algumas palavras simples fecham o dia com outra textura."] },
+      { heading: "24. Crie uma pequena tradição de vocês", paragraphs: ["Uma música aos domingos.", "Uma caminhada depois do jantar.", "Um café especial na sexta.", "Uma pergunta antes de dormir.", "Tradições não precisam ser antigas. Alguém precisa inventá-las primeiro."] },
+      { heading: "25. Pergunte: “O que nós poderíamos fazer juntos hoje?”", paragraphs: ["Talvez a resposta seja absolutamente simples.", "E esse é justamente o ponto."] },
+      {
+        heading: "O amor também mora nos intervalos",
+        paragraphs: [
+          "Grandes momentos são maravilhosos.",
+          "Viagens, aniversários, surpresas e encontros especiais merecem espaço.",
+          "Mas um relacionamento não acontece apenas nesses dias.",
+          "Ele acontece principalmente entre eles.",
+          "Na cozinha.",
+          "No caminho para casa.",
+          "Numa mensagem rápida.",
+          "Na forma como alguém percebe que o outro está cansado.",
+          "Num abraço antes de sair.",
+          "Nos pequenos sinais que dizem, repetidamente:",
+          "“Eu ainda vejo você.”",
+          "Você não precisa fazer os 25 gestos desta lista.",
+          "Escolha um.",
+          "Faça hoje.",
+        ],
+        paragraphLink: { before: "E, se quiser transformar outro dia comum em um pequeno encontro, conheça também o nosso guia ", linkText: "30 encontros simples gastando pouco", href: "/guia", after: "." },
+        afterParagraphs: ["Porque romance não precisa esperar uma ocasião especial.", "Às vezes, a ocasião é simplesmente hoje."],
+      },
+    ],
+  },
   {
     slug: "conto-o-olhar-que-ficou",
     title: "O olhar que ficou",
