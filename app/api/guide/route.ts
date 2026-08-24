@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
+import { syncGuideSubscriberToBrevo } from "../../brevo";
 
 type Payload = { email?: unknown; language?: unknown; consent?: unknown; website?: unknown };
 const clean = (value: unknown, max: number) => typeof value === "string" ? value.trim().slice(0, max) : "";
@@ -19,6 +20,13 @@ export async function POST(request: Request) {
     if (!existing.length) {
       const now = new Date().toISOString();
       await db.insert(guideSubscribers).values({ email, language, consentAt: now, createdAt: now });
+    }
+    try {
+      await syncGuideSubscriberToBrevo({ email });
+    } catch (error) {
+      // Keep the confirmed local subscription even if the external provider is
+      // temporarily unavailable; the public guide must remain available.
+      console.error("Unable to sync guide subscriber to Brevo", error);
     }
     return NextResponse.json({ ok: true, downloadUrl: "/downloads/30-encontros-simples-gastando-pouco.pdf" }, { status: 201 });
   } catch (error) {
