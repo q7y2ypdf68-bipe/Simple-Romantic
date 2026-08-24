@@ -748,5 +748,5 @@ export function getVisibleBlogPosts(now = new Date()) {
     month: "2-digit",
     day: "2-digit",
   }).format(now);
-  return blogPosts.filter((post) => !post.publishedIso || post.publishedIso <= today);
+  return blogPosts.filter((post) => !post.publishedIso || post.publishedIso <= today).sort((a, b) => (b.publishedIso || "").localeCompare(a.publishedIso || ""));
 }
