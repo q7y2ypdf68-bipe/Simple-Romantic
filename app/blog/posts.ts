@@ -598,7 +598,7 @@ export const blogPosts: BlogPost[] = [
     title: "Como reconectar com seu parceiro sem grandes planos",
     excerpt: "Práticas simples de presença e conversa para casais que sentem a rotina ocupando espaço demais.",
     category: "CONEXÃO",
-    image: "/images/blog/07-reconectar.webp",
+    image: "/images/blog/17-como-reconectar-com-parceiro.webp",
     imageAlt: "Casal adulto de mãos dadas durante uma conversa à beira do rio",
     published: "22 de julho de 2026",
     publishedIso: "2026-07-22",
