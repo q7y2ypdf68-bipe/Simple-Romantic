@@ -34,7 +34,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Descubra 25 gestos simples e carinhosos para demonstrar amor no cotidiano, fortalecer a conexão e transformar dias comuns em pequenas memórias.",
     category: "AFETO COTIDIANO",
     series: "IDEIAS E GUIAS",
-    image: "/images/blog/04-surpresas-simples.webp",
+    image: "/images/blog/15-pequenos-gestos-amor.webp",
     imageAlt: "Casal adulto trocando um gesto carinhoso numa varanda em fim de tarde",
     published: "24 de agosto de 2026",
     publishedIso: "2026-08-24",
