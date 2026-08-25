@@ -200,7 +200,7 @@ export const blogPosts: BlogPost[] = [
       label: "CONTO FICTÍCIO",
       text: "Esta história é uma obra de ficção. Personagens e acontecimentos foram criados para esta publicação.",
     },
-    image: "/images/blog/06-dia-de-chuva.webp",
+    image: "/images/blog/16-a-mesa-perto-da-janela.webp",
     imageAlt: "Casal adulto conversando em casa enquanto a chuva cai do lado de fora",
     published: "31 de julho de 2026",
     publishedIso: "2026-07-31",
