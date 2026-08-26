@@ -19,6 +19,19 @@ interface ExecutionContext {
   passThroughOnException(): void;
 }
 
+function withDefensiveSecurityHeaders(response: Response): Response {
+  const headers = new Headers(response.headers);
+  headers.set("x-content-type-options", "nosniff");
+  headers.set("referrer-policy", "strict-origin-when-cross-origin");
+  headers.set("x-frame-options", "DENY");
+  headers.set("permissions-policy", "camera=(), geolocation=(), microphone=()");
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 // Image security config. SVG sources with .svg extension auto-skip the
 // optimization endpoint on the client side (served directly, no proxy).
 // To route SVGs through the optimizer (with security headers), set
@@ -55,9 +68,9 @@ const worker = {
       const headers = new Headers(response.headers);
       headers.delete("content-length");
       const html = (await response.text()).replace('<html lang="pt-BR"', '<html lang="es-ES"');
-      return new Response(html, { status: response.status, statusText: response.statusText, headers });
+      return withDefensiveSecurityHeaders(new Response(html, { status: response.status, statusText: response.statusText, headers }));
     }
-    return response;
+    return withDefensiveSecurityHeaders(response);
   },
 };
 
