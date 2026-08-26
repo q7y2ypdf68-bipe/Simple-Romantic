@@ -50,7 +50,7 @@ export function BlogExplorer({ items, locale = "pt" }: { items: BlogListItem[]; 
         <div><span aria-hidden="true">⌕</span><input value={query} onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder={locale === "es" ? "Ej.: pícnic, lluvia, sorpresa…" : "Ex.: piquenique, chuva, surpresa…"} type="search" /></div>
       </label>
       <div className="blog-categories" aria-label={locale === "es" ? "Filtrar por categoría" : "Filtrar por categoria"}>
-        {categories.map((item) => <button className={category === item ? "active" : ""} type="button" key={item} onClick={() => chooseCategory(item)}>{item === allCategory ? (locale === "es" ? "Todos" : "Todos") : item}</button>)}
+        {categories.map((item) => <button aria-pressed={category === item} className={category === item ? "active" : ""} type="button" key={item} onClick={() => chooseCategory(item)}>{item === allCategory ? (locale === "es" ? "Todos" : "Todos") : item}</button>)}
       </div>
     </div>
 

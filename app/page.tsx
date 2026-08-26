@@ -257,9 +257,9 @@ export default function Home() {
         <div className="header-actions">
           <ThemeToggle />
           <div className="language" aria-label="Idioma">
-            <button className={language === "pt" ? "active" : ""} onClick={() => setLanguage("pt")}>PT-BR</button>
+            <button aria-pressed={language === "pt"} className={language === "pt" ? "active" : ""} onClick={() => setLanguage("pt")}>PT-BR</button>
             <span>/</span>
-            <button className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>EN</button>
+            <button aria-pressed={language === "en"} className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>EN</button>
             <span>/</span>
             <Link className="language-mobile-switch" href="/es" hrefLang="es-ES">ES</Link>
           </div>
