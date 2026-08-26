@@ -1213,3 +1213,34 @@ html[data-theme="dark"] .listening-check.optional,html[data-theme="dark"] .liste
 html[data-theme="dark"] .blog-site-header .theme-toggle{border-color:#765064;background:#2a1f28;color:#ffe07b;box-shadow:0 8px 20px rgba(0,0,0,.28)}
 html[data-theme="dark"] .blog-site-header .language-shortcut{border-color:#765064;background:#30212a;color:#ffb2cb;box-shadow:none}
 html[data-theme="dark"] .blog-site-header .back-home{border-color:#765064;background:#30212a;color:#ffb2cb;box-shadow:none}
+
+/* Light-mode balance refinement: preserve each existing pastel family with a little more presence. */
+html[data-theme="light"] .site-header{background:linear-gradient(90deg,rgba(255,220,234,.97) 0%,rgba(255,241,190,.97) 52%,rgba(215,241,248,.97) 100%)}
+html[data-theme="light"] .hero-copy{background:linear-gradient(135deg,#fff0d7 0%,#ffe5ef 100%)}
+html[data-theme="light"] .home-blog .blog-card:nth-child(3n+1),html[data-theme="light"] .place-card:nth-child(3n+1){background:linear-gradient(180deg,#fff 0%,#ffe5ee 100%)}
+html[data-theme="light"] .home-blog .blog-card:nth-child(3n+2),html[data-theme="light"] .place-card:nth-child(3n+2){background:linear-gradient(180deg,#fff 0%,#fff1ba 100%)}
+html[data-theme="light"] .home-blog .blog-card:nth-child(3n),html[data-theme="light"] .place-card:nth-child(3n){background:linear-gradient(180deg,#fff 0%,#ddf4f8 100%)}
+html[data-theme="light"] .online-guide .guide-card:nth-child(3n+1) .guide-card-head{background:#ffdce9}
+html[data-theme="light"] .online-guide .guide-card:nth-child(3n+2) .guide-card-head{background:#ffeaa1}
+html[data-theme="light"] .online-guide .guide-card:nth-child(3n) .guide-card-head{background:#cceff6}
+html[data-theme="light"] .blog-page .blog-card:nth-child(3n+1){background:linear-gradient(180deg,#fff 0%,#ffe5ee 100%)}
+html[data-theme="light"] .blog-page .blog-card:nth-child(3n+2){background:linear-gradient(180deg,#fff 0%,#fff1ba 100%)}
+html[data-theme="light"] .blog-page .blog-card:nth-child(3n){background:linear-gradient(180deg,#fff 0%,#ddf4f8 100%)}
+html[data-theme="light"] .editorial-schedule-grid p{font-size:21px}
+html[data-theme="light"] .editorial-schedule-grid small{font-size:16px}
+html[data-theme="light"] .shop-page{background:#fff7fa}
+html[data-theme="light"] .shop-hero{background:radial-gradient(circle at 12% 20%,rgba(244,201,79,.4),transparent 27%),radial-gradient(circle at 88% 75%,rgba(126,205,224,.34),transparent 28%),linear-gradient(145deg,#fff2c9,#ffe4ee 58%,#def4f8)}
+html[data-theme="light"] .shop-categories{background:#fffafc}
+html[data-theme="light"] .shop-category-grid article{background:linear-gradient(180deg,#fff,#ffe8ef)}
+html[data-theme="light"] .shop-category-grid article:nth-child(2){background:linear-gradient(180deg,#fff,#fff1bd)}
+html[data-theme="light"] .shop-category-grid article:nth-child(3){background:linear-gradient(180deg,#fff,#dff5f9)}
+html[data-theme="light"] .shop-category-grid article:nth-child(4){background:linear-gradient(180deg,#fff,#eee6fb)}
+html[data-theme="light"] .shop-readiness aside{background:#ffe5ef}
+html[data-theme="light"] .listening-form-section{background:radial-gradient(circle at 8% 78%,rgba(255,205,67,.54),transparent 28%),radial-gradient(circle at 92% 18%,rgba(91,194,216,.38),transparent 28%),linear-gradient(140deg,#fff0bd 0%,#ffdae9 56%,#d5f1f7 100%)}
+html[data-theme="light"] .listening-form{border-color:#cf618a;background:linear-gradient(145deg,#fffafd 0%,#ffebf4 62%,#e2f6fa 100%)}
+html[data-theme="light"] .listening-form input:not([type=radio]):not([type=checkbox]),html[data-theme="light"] .listening-form textarea{border-color:#cf7e9d;background:#fff8fb}
+html[data-theme="light"] .listening-needs label:nth-child(1)>span{border-color:#dc8dab;background:#fff0f6}
+html[data-theme="light"] .listening-needs label:nth-child(2)>span{border-color:#d9bd50;background:#fff4c8}
+html[data-theme="light"] .listening-needs label:nth-child(3)>span{border-color:#79bdcc;background:#def3f8}
+html[data-theme="light"] .listening-check.optional{border-color:#cfaa30;background:#fff0bd}
+html[data-theme="light"] .listening-retention-note{border-color:#cfaa30;background:#ffedb0}
