@@ -651,6 +651,7 @@ footer>small,footer>div{font-size:14px;line-height:1.5}
     linear-gradient(180deg,#fff1bd 0%,#ffdae8 50%,#d7f2f8 100%);
 }
 .online-guide .guide-card:nth-child(3n+1) .guide-card-head{background:#ffe3ed}
+.online-guide .guide-card:nth-child(3n+1) .guide-card-head>span,.online-guide .guide-card:nth-child(3n+1) .guide-card-head p,.online-guide .guide-card:nth-child(3n+1) .guide-card-head h2{color:#3b2636}
 .online-guide .guide-card:nth-child(3n+2) .guide-card-head{background:#ffefb5}
 .online-guide .guide-card:nth-child(3n) .guide-card-head{background:#d8f3f8}
 
