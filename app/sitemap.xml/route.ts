@@ -2,8 +2,6 @@ import { getVisibleBlogPosts } from "../blog/posts";
 import { getVisibleBlogPostsEs } from "../es/blog/posts-es";
 
 const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
-const lastModified = "2026-08-23";
-
 const staticPages = [
   { path: "", frequency: "weekly", priority: "1.0" },
   { path: "/blog", frequency: "weekly", priority: "0.9" },
@@ -42,21 +40,20 @@ export async function GET() {
   const pages = [
     ...staticPages.map((page) => ({
       url: `${siteUrl}${page.path}`,
-      lastModified,
       frequency: page.frequency,
       priority: page.priority,
       image: null,
     })),
     ...blogPosts.map((post) => ({
       url: `${siteUrl}/blog/${post.slug}`,
-      lastModified: post.publishedIso || lastModified,
+      lastModified: post.publishedIso,
       frequency: "monthly",
       priority: "0.8",
       image: `${siteUrl}${post.image}`,
     })),
     ...blogPostsEs.map((post) => ({
       url: `${siteUrl}/es/blog/${post.slug}`,
-      lastModified: post.publishedIso || lastModified,
+      lastModified: post.publishedIso,
       frequency: "monthly",
       priority: "0.8",
       image: `${siteUrl}${post.image}`,
@@ -66,7 +63,7 @@ export async function GET() {
   const urls = pages.map((page) => `
   <url>
     <loc>${escapeXml(page.url)}</loc>
-    <lastmod>${page.lastModified}</lastmod>
+    ${page.lastModified ? `<lastmod>${page.lastModified}</lastmod>` : ""}
     <changefreq>${page.frequency}</changefreq>
     <priority>${page.priority}</priority>${page.image ? `
     <image:image>
