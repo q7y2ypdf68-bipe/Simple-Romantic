@@ -44,6 +44,7 @@ footer{padding:55px 7vw;display:grid;grid-template-columns:1.3fr 1fr 1fr;align-i
 .community-message.success{color:#16704c}.community-message.error{color:#b42318}
 .community-honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
 .guide-consent{max-width:620px;margin:14px 0 0;display:flex;align-items:flex-start;gap:10px;color:#315b67;font-size:14px;line-height:1.5}.guide-consent input{flex:0 0 auto;width:19px;height:19px;margin-top:1px;accent-color:var(--pink)}
+.guide-consent input:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
 .guide-ready{display:flex;align-items:center;flex-wrap:wrap;gap:22px;margin-top:18px}.guide-ready .button{min-height:50px}.guide-ready .quiet-link{color:var(--ink)}
 
 /* Free guide: online reading and PDF download. */
