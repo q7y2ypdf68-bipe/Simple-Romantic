@@ -1216,7 +1216,7 @@ html[data-theme="dark"] .blog-site-header .back-home{border-color:#765064;backgr
 
 /* Light-mode balance refinement: preserve each existing pastel family with a little more presence. */
 html[data-theme="light"] .site-header{background:linear-gradient(90deg,rgba(255,220,234,.97) 0%,rgba(255,241,190,.97) 52%,rgba(215,241,248,.97) 100%)}
-html[data-theme="light"] .hero-copy{background:linear-gradient(135deg,#fff0d7 0%,#ffe5ef 100%)}
+html[data-theme="light"] .hero-copy{background:linear-gradient(135deg,#ffedd0 0%,#ffdfeb 100%)}
 html[data-theme="light"] .home-blog .blog-card:nth-child(3n+1),html[data-theme="light"] .place-card:nth-child(3n+1){background:linear-gradient(180deg,#fff 0%,#ffe5ee 100%)}
 html[data-theme="light"] .home-blog .blog-card:nth-child(3n+2),html[data-theme="light"] .place-card:nth-child(3n+2){background:linear-gradient(180deg,#fff 0%,#fff1ba 100%)}
 html[data-theme="light"] .home-blog .blog-card:nth-child(3n),html[data-theme="light"] .place-card:nth-child(3n){background:linear-gradient(180deg,#fff 0%,#ddf4f8 100%)}
