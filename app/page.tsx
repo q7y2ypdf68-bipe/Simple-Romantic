@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getVisibleBlogPosts } from "./blog/posts";
 import { MobileMenu } from "./components/MobileMenu";
 import { ThemeToggle } from "./components/ThemeToggle";
+import { recommend } from "./recommendations.mjs";
 
 type Language = "pt" | "en";
 
@@ -23,20 +24,16 @@ const copy = {
     finderKicker: "O PLANO COMEÇA AQUI",
     finderTitle: "O que vocês gostariam de viver hoje?",
     finderText: "Conte o essencial. A gente transforma isso em um encontro possível.",
-    location: "Onde vocês estão?",
-    locationPlaceholder: "Ex.: São Paulo, Salvador, Lisboa…",
+    environment: "Que tipo de programa vocês querem?",
+    environments: [{ value: "home", label: "Em casa" }, { value: "outdoors", label: "Ao ar livre" }, { value: "go-out", label: "Sair" }, { value: "any", label: "Tanto faz" }],
     budget: "Quanto vocês querem gastar?",
-    budgets: ["Grátis", "Baixo custo", "Um pouco mais"],
+    budgets: [{ value: "free", label: "Grátis" }, { value: "low", label: "Baixo custo" }, { value: "more", label: "Um pouco mais" }],
     time: "Quanto tempo vocês têm?",
-    times: ["1 hora", "Uma tarde", "Um dia"],
+    times: [{ value: "hour", label: "1 hora" }, { value: "afternoon", label: "Uma tarde" }, { value: "day", label: "Um dia" }],
     occasion: "Qual é a ocasião?",
-    occasions: ["Encontro casual", "Uma surpresa", "Reconectar"],
+    occasions: [{ value: "casual", label: "Encontro casual" }, { value: "surprise", label: "Uma surpresa" }, { value: "reconnect", label: "Reconectar" }],
     find: "Criar o nosso encontro",
     resultKicker: "UMA IDEIA PARA VOCÊS",
-    resultTitle: "Piquenique ao pôr do sol",
-    resultText:
-      "Escolham um parque ou mirante próximo. Levem uma toalha, duas bebidas e três músicas que contem a história de vocês. Cheguem 30 minutos antes do pôr do sol.",
-    resultMeta: ["Grátis ou baixo custo", "1–2 horas", "Ao ar livre"],
     resultTip: "Pequeno detalhe",
     resultTipText: "Escreva uma frase num papel e entregue apenas quando o sol começar a desaparecer.",
     placesKicker: "PERTO DE VOCÊ",
@@ -102,20 +99,16 @@ const copy = {
     finderKicker: "YOUR PLAN STARTS HERE",
     finderTitle: "What would you like to experience today?",
     finderText: "Tell us the essentials. We'll turn them into a date you can actually enjoy.",
-    location: "Where are you?",
-    locationPlaceholder: "E.g. Lisbon, London, New York…",
+    environment: "What kind of plan would you like?",
+    environments: [{ value: "home", label: "At home" }, { value: "outdoors", label: "Outdoors" }, { value: "go-out", label: "Going out" }, { value: "any", label: "Anything" }],
     budget: "How much would you like to spend?",
-    budgets: ["Free", "Up to €10", "Up to €25"],
+    budgets: [{ value: "free", label: "Free" }, { value: "low", label: "Up to €10" }, { value: "more", label: "Up to €25" }],
     time: "How much time do you have?",
-    times: ["1 hour", "An afternoon", "A day"],
+    times: [{ value: "hour", label: "1 hour" }, { value: "afternoon", label: "An afternoon" }, { value: "day", label: "A day" }],
     occasion: "What's the occasion?",
-    occasions: ["Casual date", "A surprise", "Reconnect"],
+    occasions: [{ value: "casual", label: "Casual date" }, { value: "surprise", label: "A surprise" }, { value: "reconnect", label: "Reconnect" }],
     find: "Create our date",
     resultKicker: "AN IDEA FOR YOU",
-    resultTitle: "Sunset picnic",
-    resultText:
-      "Choose a nearby garden or viewpoint. Bring a blanket, two drinks and three songs that tell your story. Arrive 30 minutes before sunset.",
-    resultMeta: ["€0–€10", "1–2 hours", "Outdoors"],
     resultTip: "A little detail",
     resultTipText: "Write one sentence on paper and share it only when the sun begins to disappear.",
     placesKicker: "NEAR YOU",
@@ -174,6 +167,7 @@ export default function Home() {
   const blogPosts = getVisibleBlogPosts();
   const [language, setLanguage] = useState<Language>("pt");
   const [resultVisible, setResultVisible] = useState(false);
+  const [recommendation, setRecommendation] = useState<ReturnType<typeof recommend> | null>(null);
   const [message, setMessage] = useState("");
   const [guideReady, setGuideReady] = useState(false);
   const [communityStatus, setCommunityStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -192,6 +186,14 @@ export default function Home() {
 
   function createDate(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const next = recommend({
+      environment: String(data.get("environment")),
+      budget: String(data.get("budget")),
+      duration: String(data.get("time")),
+      occasion: String(data.get("occasion")),
+    }, language);
+    setRecommendation(next);
     setResultVisible(true);
     requestAnimationFrame(() => document.querySelector("#resultado")?.scrollIntoView({ behavior: "smooth", block: "center" }));
   }
@@ -292,16 +294,16 @@ export default function Home() {
       <section className="finder section" id="encontrar">
         <div className="section-heading centered"><p className="eyebrow">{t.finderKicker}</p><h2>{t.finderTitle}</h2><p>{t.finderText}</p></div>
         <form className="finder-form" onSubmit={createDate}>
-          <label className="location-field"><span>01</span><strong>{t.location}</strong><input required placeholder={t.locationPlaceholder} /></label>
+          <Choice number="01" title={t.environment} name="environment" options={t.environments} />
           <Choice number="02" title={t.budget} name="budget" options={t.budgets} />
           <Choice number="03" title={t.time} name="time" options={t.times} />
           <Choice number="04" title={t.occasion} name="occasion" options={t.occasions} />
           <button className="button primary finder-button" type="submit">{t.find}<span>→</span></button>
         </form>
-        {resultVisible && <article className="date-result" id="resultado">
-          <div className="result-visual"><span>☀</span><small>{t.resultMeta[0]}</small></div>
-          <div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{t.resultTitle}</h3><p>{t.resultText}</p><div className="result-meta">{t.resultMeta.map(item => <span key={item}>{item}</span>)}</div></div>
-          <div className="result-tip"><span>♡</span><div><strong>{t.resultTip}</strong><p>{t.resultTipText}</p></div></div>
+        {resultVisible && recommendation && <article className="date-result" id="resultado">
+          <div className="result-visual"><span>☀</span><small>{recommendation.badges[0]}</small></div>
+          <div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{recommendation.title}</h3><p>{recommendation.description}</p><div className="result-meta">{recommendation.badges.map(item => <span key={item}>{item}</span>)}</div></div>
+          <div className="result-tip"><span>♡</span><div><strong>{t.resultTip}</strong><p>{recommendation.tip}</p></div></div>
         </article>}
       </section>
 
@@ -393,6 +395,6 @@ export default function Home() {
   );
 }
 
-function Choice({ number, title, name, options }: { number: string; title: string; name: string; options: string[] }) {
-  return <fieldset><legend><span>{number}</span>{title}</legend><div className="choices">{options.map((option, index) => <label key={option}><input type="radio" name={name} value={option} defaultChecked={index === 0} /><span>{option}</span></label>)}</div></fieldset>;
+function Choice({ number, title, name, options }: { number: string; title: string; name: string; options: Array<string | { value: string; label: string }> }) {
+  return <fieldset><legend><span>{number}</span>{title}</legend><div className="choices">{options.map((option, index) => { const item = typeof option === "string" ? { value: option, label: option } : option; return <label key={item.value}><input type="radio" name={name} value={item.value} defaultChecked={index === 0} /><span>{item.label}</span></label>; })}</div></fieldset>;
 }
