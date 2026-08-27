@@ -80,6 +80,38 @@ test("renders the newest last-minute date article with both internal actions", a
   assert.match(html, /Caminho da página/i);
 });
 
+test("renders the complete romantic night article with its exclusive image and guide links", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("sr-n-009-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+
+  const response = await worker.fetch(
+    new Request("http://localhost/blog/noite-romantica-em-casa-do-zero", {
+      headers: { accept: "text/html" },
+    }),
+    {
+      ASSETS: {
+        fetch: async () => new Response("Not found", { status: 404 }),
+      },
+    },
+    {
+      waitUntil() {},
+      passThroughOnException() {},
+    },
+  );
+
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Como criar uma noite romântica em casa do zero/i);
+  assert.match(html, /EM CASA/);
+  assert.match(html, /23-noite-romantica-em-casa\.webp/);
+  assert.match(html, /Plano B/i);
+  assert.match(html, /encontro-em-casa-sem-gastar/);
+  assert.match(html, /perguntas-para-casais-conversarem/);
+  assert.match(html, /href=["']\/guia["']/i);
+  assert.match(html, /BlogPosting/);
+});
+
 test("includes the newest article in the sitemap", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("sitemap-test", `${process.pid}-${Date.now()}`);
@@ -102,6 +134,8 @@ test("includes the newest article in the sitemap", async () => {
   const xml = await response.text();
   assert.match(xml, /\/blog\/encontro-romantico-de-ultima-hora/);
   assert.match(xml, /<lastmod>2026-07-31<\/lastmod>/);
+  assert.match(xml, /\/blog\/noite-romantica-em-casa-do-zero/);
+  assert.match(xml, /<lastmod>2026-08-27<\/lastmod>/);
 });
 
 test("rejects incomplete form submissions before persistence", async () => {

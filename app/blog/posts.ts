@@ -887,6 +887,163 @@ export const blogPosts: BlogPost[] = [
       { heading: "O relacionamento também mora nos dias comuns", paragraphs: ["Os dias cansados não são intervalo da vida do casal.", "Eles também são a vida do casal.", "É neles que aparecem pequenas oportunidades de cuidado:", "guardar um prato para o outro, oferecer água, perguntar como foi o dia, encostar os pés no sofá, rir de alguma coisa idiota ou ficar cinco minutos abraçados antes de dormir.", "Nenhuma dessas coisas parece grandiosa isoladamente.", "Mas relacionamento é construído em grande parte justamente por aquilo que acontece quando ninguém está tentando criar uma cena perfeita."], paragraphLink: { before: "Se vocês quiserem mais ideias simples para transformar pouco tempo em encontro, o nosso ", linkText: "Guia Gratuito com 30 encontros simples gastando pouco", href: "/guia", after: " pode ajudar." } },
     ],
   },
+  {
+    slug: "noite-romantica-em-casa-do-zero",
+    title: "Como criar uma noite romântica em casa do zero",
+    seoTitle: "Como criar uma noite romântica em casa do zero",
+    excerpt: "Aprenda a criar uma noite romântica em casa, do ambiente ao plano B, com presença e simplicidade.",
+    category: "EM CASA",
+    image: "/images/blog/23-noite-romantica-em-casa.webp",
+    imageAlt: "Casal adulto preparando juntos uma refeição simples numa cozinha acolhedora ao anoitecer",
+    published: "27 de agosto de 2026",
+    publishedIso: "2026-08-27",
+    readTime: "8 min de leitura",
+    intro: [
+      "Uma noite romântica em casa não começa quando a mesa está pronta. Ela começa quando vocês decidem prestar atenção no tipo de noite que faz sentido para os dois.",
+      "Isso pode significar cozinhar juntos, conversar sem pressa, ouvir músicas que lembram alguma fase da relação ou simplesmente ter algumas horas em que ninguém precisa resolver nada.",
+      "Não é necessário transformar o apartamento num restaurante, comprar ingredientes difíceis ou preparar uma surpresa que deixe a outra pessoa sem saber como reagir. Romance não depende de dinheiro, mas também não aparece por mágica: ele costuma nascer de intenção, cuidado e algumas escolhas feitas pensando naquele casal.",
+      "A seguir, você encontra um caminho completo, do primeiro planejamento ao encerramento. Adapte o que combinar com o momento e deixe de fora o que parecer trabalho demais.",
+    ],
+    sections: [
+      {
+        heading: "1. Comecem pela intenção da noite",
+        paragraphs: [
+          "Antes de decidir o cardápio ou a playlist, respondam a uma pergunta simples: o que vocês gostariam de sentir ao final da noite?",
+          "Talvez seja vontade de rir, matar a saudade, descansar perto um do outro ou voltar a conversar sobre coisas que não cabem na logística da semana. Uma noite pensada para reaproximar pode ter mais conversa; uma noite depois de dias muito puxados pode pedir comida fácil e pouca programação.",
+          "Escolher uma intenção evita que o encontro vire uma sequência de tarefas. Em vez de tentar fazer tudo, vocês passam a selecionar apenas o que ajuda aquela sensação a acontecer.",
+        ],
+      },
+      {
+        heading: "2. Ajustem o plano ao tempo, à energia e ao orçamento",
+        paragraphs: [
+          "Definam quanto tempo realmente existe. Uma noite de três horas pede um plano diferente de uma pausa de quarenta minutos antes de dormir. Também vale perguntar como cada um está chegando: alguém está com fome, cansado, precisando de banho ou ainda preso ao trabalho?",
+          "Combinem um limite de gasto e usem primeiro o que já existe em casa. Pão, ovos, uma massa, legumes, queijo, frutas e uma sobremesa pronta podem compor uma noite muito boa.",
+        ],
+        paragraphLink: { before: "Se vocês precisarem de ideias ainda mais econômicas, o artigo sobre ", linkText: "encontro em casa sem gastar dinheiro", href: "/blog/encontro-em-casa-sem-gastar", after: " traz opções que podem ser adaptadas ao que vocês têm disponível." },
+        afterParagraphs: [
+          "Não escondam restrições importantes para preservar uma surpresa. Cuidar da experiência também é respeitar alimentação, mobilidade, horário, crianças, vizinhos e o nível de energia de cada pessoa.",
+        ],
+      },
+      {
+        heading: "3. Preparem o ambiente sem fazer uma faxina de revista",
+        paragraphs: [
+          "Escolham um ponto da casa para receber a noite: a mesa, a varanda, o balcão da cozinha ou um canto confortável da sala. Organizem apenas o que estará à vista e retirem o que possa interromper a sensação de pausa. Não é preciso deixar o apartamento impecável.",
+          "Uma mesa limpa, dois lugares confortáveis, guardanapos e um objeto que tenha significado para vocês já criam uma mudança perceptível. Pode ser uma fotografia, um livro, uma flor do mercado ou um bilhete curto. O detalhe funciona melhor quando tem relação com a história do casal, não quando parece decoração obrigatória.",
+          "Se os dois chegam muito cansados, façam uma transição antes do encontro: trocar de roupa, tomar banho, guardar a mochila e beber água. É mais fácil estar presente quando o corpo entende que o dia mudou de ritmo.",
+        ],
+        paragraphLink: { before: "Para uma noite de energia baixa, veja também ", linkText: "como criar tempo de qualidade quando os dois estão cansados", href: "/blog/tempo-de-qualidade-quando-os-dois-estao-cansados", after: "." },
+      },
+      {
+        heading: "4. Prefiram luz indireta e conforto",
+        paragraphs: [
+          "A iluminação muda o ritmo de um ambiente mais rápido do que muitos objetos. Apaguem a luz branca mais forte e usem um abajur, uma luminária, uma luz de apoio ou a iluminação de outro cômodo deixada entreaberta.",
+          "O objetivo não é escurecer a sala nem encher tudo de velas. É retirar a aparência de expediente e deixar a conversa confortável. Confiram se ainda dá para enxergar a comida, circular sem tropeços e ler um bilhete, se houver.",
+          "Uma manta no sofá, cadeiras que não machucam e uma temperatura agradável parecem detalhes práticos, mas também comunicam cuidado. A atmosfera romântica não precisa ser teatral; ela precisa convidar vocês a ficar.",
+        ],
+      },
+      {
+        heading: "5. Façam uma comida simples, com uma parte para cada um",
+        paragraphs: [
+          "Escolham algo que vocês consigam preparar sem transformar a cozinha em prova de resistência. Uma massa com molho rápido, sanduíches quentes, uma tábua de pães e frutas, uma sopa, uma omelete ou comida pronta bem servida podem funcionar muito bem.",
+          "Dividam pequenas etapas: uma pessoa corta, a outra organiza a mesa; uma escolhe a sobremesa, a outra prepara a bebida. Cozinhar junto pode ser parte do encontro, mas não precisa ser a única atividade. Se a receita exigir atenção demais, adiantem o que for possível ou comprem um componente pronto.",
+          "Sirvam em pratos de verdade, mesmo que o jantar seja simples. Esse pequeno gesto transforma uma refeição comum em uma escolha consciente, sem fingir que vocês estão num lugar diferente do que estão.",
+        ],
+      },
+      {
+        heading: "6. Escolham uma bebida sem deixar que ela vire o assunto principal",
+        paragraphs: [
+          "Pode ser água com gás e limão, suco, chá gelado, café, uma cerveja ou um vinho, se fizer sentido para vocês. O importante é que a bebida acompanhe a noite, não dite o ritmo dela.",
+          "Deixem água disponível e não usem álcool como requisito para relaxar ou conversar. Um copo bonito, uma jarra na mesa e alguns minutos para brindar ao que vocês estão vivendo já são suficientes.",
+          "Se alguém não bebe, está dirigindo, tomando medicação ou simplesmente não quer, o encontro não perde nada. Presença não depende do que está no copo.",
+        ],
+      },
+      {
+        heading: "7. Montem uma trilha sonora pequena",
+        paragraphs: [
+          "Uma playlist curta costuma ser melhor do que procurar músicas durante toda a noite. Cada pessoa pode escolher duas faixas: uma ligada a uma memória e outra que gostaria de apresentar ao outro. Depois, deixem algumas músicas instrumentais ou tranquilas para preencher os intervalos.",
+          "Mantenham o volume baixo o bastante para que ninguém precise competir com a caixa de som. Se uma música trouxer uma lembrança, parem para contá-la; se não combinar com o momento, troquem sem cerimônia.",
+          "A música deve ajudar a noite a acontecer, não ocupar todos os espaços. Silêncio também pode fazer parte da trilha.",
+        ],
+      },
+      {
+        heading: "8. Criem uma sequência, não uma programação rígida",
+        paragraphs: [
+          "Uma sequência simples dá direção sem transformar o encontro em agenda. Por exemplo: dez minutos para chegar e desligar do dia, jantar, uma conversa ou jogo curto, sobremesa e um encerramento mais tranquilo no sofá ou na varanda.",
+          "Não é preciso anunciar cada etapa. Basta deixar os elementos preparados e permitir que a noite passe de um momento para o outro. Se a conversa estiver boa, fiquem nela. Se a comida demorar, sirvam algo pequeno antes. Se o filme parecer uma boa ideia, mudem o plano.",
+          "Ter uma ordem flexível reduz a ansiedade de decidir tudo na hora e, ao mesmo tempo, protege a espontaneidade que torna a experiência de vocês própria.",
+        ],
+      },
+      {
+        heading: "9. Abram espaço para conversa, sem transformar a noite em entrevista",
+        paragraphs: [
+          "Depois de falar sobre contas, horários e tarefas, uma pergunta diferente pode abrir outra porta: qual foi uma coisa boa que você quase não contou para ninguém? O que você gostaria de repetir este ano? Que lugar perto de casa desperta curiosidade?",
+          "Façam uma pergunta de cada vez e respondam também. Não usem o momento para testar o relacionamento, cobrar respostas ou resolver todos os assuntos difíceis acumulados. Uma conversa íntima pode ser leve, engraçada ou até silenciosa entre uma fala e outra.",
+        ],
+        paragraphLink: { before: "Quando faltar inspiração, o artigo com ", linkText: "25 perguntas para casais conversarem com mais presença", href: "/blog/perguntas-para-casais-conversarem", after: " reúne sugestões que vocês podem escolher sem seguir uma ordem." },
+      },
+      {
+        heading: "10. Guardem os celulares por um intervalo possível",
+        paragraphs: [
+          "Não precisa haver um decreto de noite inteira sem tecnologia. Combinar os primeiros quinze ou trinta minutos sem notificações já pode mudar a qualidade da atenção.",
+          "Coloquem os aparelhos para carregar longe da mesa, ativem o modo silencioso e avisem apenas quem realmente precisa encontrá-los. Se alguém estiver esperando uma ligação importante, mantenham o combinado com honestidade, sem culpa.",
+          "Presença não é ignorar o mundo. É decidir, por um período, qual parte dele merece a atenção de vocês.",
+        ],
+      },
+      {
+        heading: "11. Tenham um plano B antes de precisar dele",
+        paragraphs: [
+          "Comida pode queimar, a entrega pode atrasar, uma criança pode acordar, o vizinho pode fazer barulho ou um dos dois pode chegar sem energia para a atividade planejada. Antecipar uma alternativa reduz a frustração quando algo sair do lugar.",
+        ],
+        items: [
+          "trocar o prato elaborado por pão, fruta, queijo ou comida pronta;",
+          "diminuir a noite para uma bebida, uma música e quinze minutos de conversa;",
+          "mudar da mesa para o sofá, a varanda ou o chão da sala;",
+          "substituir o filme por três músicas ou um jogo curto;",
+          "adiar o encontro sem tratar o adiamento como falta de carinho.",
+        ],
+        afterParagraphs: [
+          "O plano B não é uma versão inferior da noite. Às vezes ele é exatamente a forma mais honesta de cuidar do momento que vocês têm.",
+        ],
+      },
+      {
+        heading: "12. Deixem o encerramento acontecer sem pressa",
+        paragraphs: [
+          "Uma boa noite não precisa terminar com uma grande declaração. Pode acabar com uma caminhada curta pelo quarteirão, uma sobremesa no sofá, um banho, uma fotografia que ficará só entre vocês ou um bilhete para a manhã seguinte.",
+          "Antes de guardar a louça, digam o que foi bom. Seja específico: a música escolhida, a história contada, a forma como alguém ajudou na cozinha ou o fato de vocês terem conseguido parar por alguns minutos.",
+          "Se ainda houver energia, combinem uma pequena continuação: repetir aquela receita, ouvir a outra playlist ou marcar a próxima pausa. O encerramento transforma uma noite isolada em uma lembrança que pode voltar para a rotina.",
+        ],
+      },
+      {
+        heading: "Erros comuns que deixam tudo mais pesado",
+        paragraphs: [
+          "Alguns excessos aparecem justamente quando a intenção é fazer algo especial. Reconhecê-los ajuda a ajustar o plano sem culpar ninguém.",
+        ],
+        items: [
+          "planejar tantas etapas que ninguém consegue aproveitar nenhuma;",
+          "tentar impressionar em vez de considerar o gosto e o cansaço do parceiro;",
+          "deixar compras, comida e arrumação para a última hora;",
+          "esperar uma noite cinematográfica e interpretar qualquer imprevisto como fracasso;",
+          "manter os celulares no centro da mesa e da conversa;",
+          "transformar o jantar em trabalho excessivo para apenas uma pessoa.",
+        ],
+        afterParagraphs: [
+          "Se vocês perceberem que a noite está ficando performática, voltem à intenção inicial. O encontro não precisa provar nada; ele só precisa fazer sentido para vocês.",
+        ],
+      },
+      {
+        heading: "Romance cabe na vida real",
+        paragraphs: [
+          "Criar uma noite romântica em casa do zero é menos sobre montar um cenário perfeito e mais sobre retirar alguns ruídos para que duas pessoas possam se encontrar de novo no mesmo espaço.",
+          "Uma mesa simples, uma comida possível, luz confortável, uma pergunta sincera e meia hora sem notificações já podem mudar a textura de uma noite. O esforço importa porque mostra intenção; o luxo não é necessário porque a conexão não depende dele.",
+          "Escolham o tamanho que cabe na vida de vocês hoje.",
+        ],
+        paragraphLink: { before: "Se quiserem continuar daqui com novas ideias, o ", linkText: "Guia Gratuito com 30 encontros simples gastando pouco", href: "/guia", after: " reúne roteiros para outros dias, orçamentos e níveis de energia." },
+        afterParagraphs: [
+          "No fim, a memória mais bonita talvez não seja a da mesa arrumada. Pode ser a sensação de que, por algumas horas, vocês escolheram estar ali de verdade.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {
