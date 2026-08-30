@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "pequenos-gestos-de-amor",
     title: "25 pequenos gestos de amor que cabem num dia comum",
-    seoTitle: "25 pequenos gestos de amor para fazer no dia a dia",
+    seoTitle: "25 pequenos gestos de amor",
     excerpt: "Descubra 25 gestos simples e carinhosos para demonstrar amor no cotidiano, fortalecer a conexão e transformar dias comuns em pequenas memórias.",
     category: "AFETO COTIDIANO",
     series: "IDEIAS E GUIAS",
@@ -152,6 +152,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "conselho-da-semana-dez-minutos-de-presenca",
     title: "Conselho da semana: dez minutos de presença valem mais que um plano perfeito",
+    seoTitle: "Dez minutos de presença para o casal",
     excerpt: "Uma prática curta para interromper o automático, escutar com atenção e cuidar da relação no meio de uma semana comum.",
     category: "CONSELHO DA SEMANA",
     series: "CONSELHO DA SEMANA",
@@ -238,6 +239,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "encontro-romantico-de-ultima-hora",
     title: "Encontro romântico de última hora: 12 ideias fáceis para hoje",
+    seoTitle: "Encontro romântico de última hora",
     excerpt: "Planos simples e possíveis para transformar algumas horas livres em um momento especial, sem reservas, compras complicadas ou muito dinheiro.",
     category: "IDEIAS PARA CASAIS",
     series: "IDEIAS E GUIAS",
@@ -354,6 +356,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "encontros-romanticos-gratuitos-sair-da-rotina",
     title: "15 ideias de encontros românticos gratuitos para sair da rotina",
+    seoTitle: "15 encontros românticos gratuitos",
     excerpt: "Planos carinhosos para viver momentos diferentes usando espaços públicos e o que vocês já têm.",
     category: "ENCONTROS GRATUITOS",
     image: "/images/blog/01-encontros-gratuitos.webp",
@@ -408,6 +411,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "encontros-romanticos-gastando-pouco",
     title: "15 ideias de encontros românticos gastando pouco",
+    seoTitle: "15 encontros românticos baratos",
     excerpt: "Planos simples, bonitos e possíveis para sair da rotina sem transformar carinho em uma conta alta.",
     category: "IDEIAS PARA CASAIS",
     image: "/images/blog/02-gastando-pouco.webp",
@@ -510,6 +514,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "surpresas-romanticas-sem-gastar",
     title: "12 surpresas românticas que não custam quase nada",
+    seoTitle: "Surpresas românticas sem gastar",
     excerpt: "Gestos pequenos para demonstrar carinho, reacender a conexão e deixar um dia comum mais especial.",
     category: "SURPRESAS SIMPLES",
     image: "/images/blog/04-surpresas-simples.webp",
@@ -556,6 +561,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "encontro-romantico-no-parque",
     title: "Encontro romântico no parque: roteiro gratuito e completo",
+    seoTitle: "Encontro romântico no parque",
     excerpt: "Um plano simples para transformar um parque próximo em cenário de conversa, descanso e conexão.",
     category: "LUGARES PÚBLICOS",
     image: "/images/blog/05-encontro-parque.webp",
@@ -596,6 +602,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "como-reconectar-com-parceiro",
     title: "Como reconectar com seu parceiro sem grandes planos",
+    seoTitle: "Como reconectar com seu parceiro",
     excerpt: "Práticas simples de presença e conversa para casais que sentem a rotina ocupando espaço demais.",
     category: "CONEXÃO",
     image: "/images/blog/17-como-reconectar-com-parceiro.webp",
@@ -616,6 +623,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "passeio-fotografico-para-casais",
     title: "Passeio fotográfico para casais: uma ideia gratuita",
+    seoTitle: "Passeio fotográfico para casais",
     excerpt: "Um encontro criativo usando apenas o celular, o bairro e um olhar mais atento para o caminho.",
     category: "ENCONTROS CRIATIVOS",
     image: "/images/blog/08-passeio-fotografico.webp",
@@ -636,6 +644,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "encontro-em-casa-sem-gastar",
     title: "10 ideias de encontro em casa sem gastar dinheiro",
+    seoTitle: "Encontro em casa sem gastar",
     excerpt: "Maneiras de sair do automático e criar uma noite especial usando apenas o que vocês já têm.",
     category: "EM CASA",
     image: "/images/blog/09-encontro-em-casa.webp",
@@ -655,6 +664,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "perguntas-para-casais-conversarem",
     title: "25 perguntas para casais conversarem com mais presença",
+    seoTitle: "Perguntas para casais conversarem",
     excerpt: "Perguntas leves, afetivas e profundas para acompanhar uma caminhada, um piquenique ou uma noite em casa.",
     category: "CONVERSAS",
     image: "/images/blog/10-perguntas-conversa.webp",
@@ -675,6 +685,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "seguranca-em-encontros-lugares-publicos",
     title: "Como planejar encontros seguros em lugares públicos",
+    seoTitle: "Encontros seguros em lugares públicos",
     excerpt: "Um checklist prático para aproveitar parques, praias, praças e mirantes com tranquilidade.",
     category: "SEGURANÇA E CUIDADO",
     image: "/images/blog/11-seguranca-publica.webp",
@@ -695,7 +706,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "namoro-a-distancia-como-continuar-presente",
     title: "Namoro à distância: 20 formas de continuar presente mesmo longe",
-    seoTitle: "Namoro à distância: 20 formas de continuar presente",
+    seoTitle: "Namoro à distância: como manter a conexão",
     excerpt: "Ideias simples e reais para manter carinho, presença e conexão em um namoro à distância, mesmo quando a rotina e os horários não ajudam.",
     category: "RELACIONAMENTO À DISTÂNCIA",
     image: "/images/blog/14-namoro-a-distancia.webp",
@@ -738,7 +749,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "como-sair-da-rotina-a-dois-sem-gastar-muito",
     title: "Como sair da rotina a dois sem precisar viajar ou gastar muito",
-    seoTitle: "Como sair da rotina a dois sem viajar ou gastar muito",
+    seoTitle: "Como sair da rotina a dois",
     excerpt: "Descubra maneiras simples de sair da rotina a dois sem precisar viajar ou gastar muito, criando novidade e conexão dentro da vida real.",
     category: "CONEXÃO", image: "/images/blog/22-como-sair-da-rotina-a-dois.webp", imageAlt: "Casal adulto jogando em casa numa noite acolhedora", published: "25 de agosto de 2026", publishedIso: "2026-08-25", readTime: "8 min de leitura",
     intro: ["Às vezes, a rotina de um casal não está ruim.", "Ela está apenas... igual.", "Acordar.", "Trabalhar.", "Resolver coisas.", "Jantar.", "Olhar o celular.", "Dormir.", "Repetir.", "Não aconteceu uma grande crise. Ninguém deixou de gostar de ninguém. Mas os dias começaram a passar com poucas coisas realmente novas entre vocês.", "E então aparece aquela sensação:", "“A gente precisava fazer alguma coisa diferente.”", "A primeira ideia costuma ser viajar, reservar um restaurante especial ou planejar um fim de semana fora.", "Tudo isso pode ser ótimo.", "Mas sair da rotina não depende necessariamente de distância, dinheiro ou grandes planos.", "Muitas vezes, basta mexer em pequenas peças de um dia que já existe."],
@@ -760,7 +771,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "depois-de-uma-discussao-como-voltar-a-se-aproximar",
     title: "Depois de uma discussão: 9 maneiras simples de voltar a se aproximar",
-    seoTitle: "Depois de uma discussão: 9 maneiras de voltar a se aproximar",
+    seoTitle: "Voltar a se aproximar após discussão",
     excerpt: "Veja 9 maneiras simples e respeitosas de retomar a proximidade depois de uma discussão, sem fingir que nada aconteceu nem transformar reconciliação em pressão.",
     category: "CONEXÃO",
     image: "/images/blog/21-depois-de-uma-discussao.webp",
@@ -785,7 +796,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "aniversario-de-namoro-sem-gastar-muito",
     title: "Como comemorar o aniversário de namoro sem gastar muito",
-    seoTitle: "Como comemorar o aniversário de namoro sem gastar muito",
+    seoTitle: "Aniversário de namoro sem gastar muito",
     excerpt: "Ideias simples e românticas para comemorar o aniversário de namoro sem gastar muito, com carinho, criatividade e momentos que fazem sentido para vocês.",
     category: "CELEBRAÇÕES SIMPLES",
     image: "/images/blog/20-aniversario-de-namoro-simples.webp",
@@ -817,7 +828,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "primeiro-encontro-simples-ideias-para-conversar",
     title: "Primeiro encontro simples: 15 ideias que ajudam a conversar de verdade",
-    seoTitle: "Primeiro encontro simples: 15 ideias que ajudam a conversar de verdade",
+    seoTitle: "Primeiro encontro: 15 ideias para conversar",
     excerpt: "Veja 15 ideias de primeiro encontro simples que ajudam a conversar com leveza, criar conexão de verdade e viver um momento especial sem gastar muito.",
     category: "PRIMEIRO ENCONTRO",
     image: "/images/blog/19-primeiro-encontro-simples.webp",
@@ -853,7 +864,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "tempo-de-qualidade-quando-os-dois-estao-cansados",
     title: "Como criar tempo de qualidade quando os dois estão cansados",
-    seoTitle: "Como criar tempo de qualidade quando os dois estão cansados",
+    seoTitle: "Tempo de qualidade para casal cansado",
     excerpt: "Ideias simples e realistas para casais criarem tempo de qualidade mesmo em dias de cansaço, pouco tempo e rotina pesada.",
     category: "CONEXÃO",
     image: "/images/blog/18-tempo-de-qualidade-casal-cansado.webp",
@@ -890,7 +901,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "noite-romantica-em-casa-do-zero",
     title: "Como criar uma noite romântica em casa do zero",
-    seoTitle: "Como criar uma noite romântica em casa do zero",
+    seoTitle: "Noite romântica em casa: guia simples",
     excerpt: "Aprenda a criar uma noite romântica em casa, do ambiente ao plano B, com presença e simplicidade.",
     category: "EM CASA",
     image: "/images/blog/23-noite-romantica-em-casa.webp",

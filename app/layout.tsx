@@ -86,7 +86,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         "@id": `${siteUrl}/#organization`,
         name: "Simple & Romantic",
         url: siteUrl,
-        logo: `${siteUrl}/favicon.svg`,
+        logo: `${siteUrl}/images/logo/logo-schema-512.png`,
       },
       {
         "@type": "WebSite",

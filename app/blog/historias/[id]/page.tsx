@@ -48,7 +48,7 @@ export default async function CommunityStoryPage({ params }: { params: Promise<{
         description: story.content.slice(0, 155),
         mainEntityOfPage: `${siteUrl}${path}`,
         author: { "@type": "Person", name: author },
-        publisher: { "@type": "Organization", name: "Simple & Romantic" },
+        publisher: { "@id": `${siteUrl}/#organization` },
         datePublished: story.publishedAt || story.createdAt,
         inLanguage: "pt-BR",
       },
