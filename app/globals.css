@@ -983,6 +983,9 @@ html[data-theme="dark"] .site-header{
 }
 .listening-aftercare .button.primary:hover{background:#321827}
 
+/* Keep the next-idea action legible on the white result-card button in both themes. */
+.date-result .button.secondary,.date-result .button.secondary:hover,.date-result .button.secondary:focus-visible,.date-result .button.secondary:active{color:#49243d}
+
 html[data-theme="dark"] .places{background:radial-gradient(circle at 4% 10%,rgba(255,212,91,.12),transparent 28%),linear-gradient(180deg,#241b17,#171116)}
 html[data-theme="dark"] .place-card:nth-child(3n+1),html[data-theme="dark"] .home-blog .blog-card:nth-child(3n+1){border-color:#714057;background:linear-gradient(180deg,#2a1d25,#321c27)}
 html[data-theme="dark"] .place-card:nth-child(3n+2),html[data-theme="dark"] .home-blog .blog-card:nth-child(3n+2){border-color:#75642b;background:linear-gradient(180deg,#29251b,#302a18)}
