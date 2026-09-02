@@ -1252,3 +1252,41 @@ html[data-theme="light"] .listening-retention-note{border-color:#cfaa30;backgrou
 .analytics-consent-banner{position:fixed;right:clamp(16px,4vw,64px);bottom:clamp(16px,3vw,34px);left:clamp(16px,4vw,64px);z-index:50;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:28px;width:min(980px,calc(100% - 32px));margin:auto;padding:22px 25px;border:2px solid #e85586;border-radius:22px;background:rgba(255,255,255,.98);box-shadow:0 22px 65px rgba(76,28,57,.25);color:var(--ink);backdrop-filter:blur(16px)}.analytics-consent-copy .eyebrow{margin-bottom:8px;color:var(--pink-dark)}.analytics-consent-copy h2{margin:0;font:600 22px/1.15 Georgia,serif;letter-spacing:-.025em}.analytics-consent-copy p:not(.eyebrow){max-width:650px;margin:9px 0 0;color:var(--muted);font-size:14px;line-height:1.5}.analytics-consent-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px}.analytics-consent-button{min-height:46px;padding:0 17px;border:2px solid #c91d5c;border-radius:99px;cursor:pointer;font-size:12px;font-weight:800;white-space:nowrap}.analytics-consent-button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}.analytics-consent-accept{background:linear-gradient(135deg,#c91d5c,#e64c58);color:#fff;box-shadow:0 9px 20px rgba(190,27,82,.2)}.analytics-consent-decline{background:#fff;color:#b71951}.analytics-consent-button:hover{transform:translateY(-2px)}
 html[data-theme="dark"] .analytics-consent-banner{border-color:#765064;background:rgba(37,27,35,.98);box-shadow:0 22px 65px rgba(0,0,0,.48);color:var(--ink)}html[data-theme="dark"] .analytics-consent-copy p:not(.eyebrow){color:var(--muted)}html[data-theme="dark"] .analytics-consent-decline{border-color:#765064;background:#2d2029;color:#ffb2cb}
 @media(max-width:700px){.analytics-consent-banner{grid-template-columns:1fr;gap:16px;padding:19px 18px}.analytics-consent-copy h2{font-size:20px}.analytics-consent-copy p:not(.eyebrow){font-size:13px}.analytics-consent-actions{display:grid;grid-template-columns:1fr 1fr;justify-content:stretch}.analytics-consent-button{width:100%;padding:0 10px}}
+
+/* Mobile consent banner: preserve both choices while reducing viewport coverage. */
+@media(max-width:700px){
+  .analytics-consent-banner{gap:10px;padding:14px 16px}
+  .analytics-consent-copy .eyebrow{margin-bottom:4px;font-size:9px;line-height:1.2}
+  .analytics-consent-copy h2{font-size:18px;line-height:1.15}
+  .analytics-consent-copy p:not(.eyebrow){margin-top:6px;font-size:12px;line-height:1.45}
+  .analytics-consent-actions{gap:8px}
+  .analytics-consent-button{min-height:44px;padding:0 8px;font-size:11px}
+}
+
+/* Mobile P1/P2: retain the editorial system while reducing vertical accumulation. */
+@media(max-width:700px){
+  .section{padding-top:64px;padding-bottom:64px}
+  .hero-copy{padding-top:64px;padding-bottom:64px}
+  .hero h1,.blog-hero h1{font-size:46px;line-height:.96}
+  .guide-hero h1,.listening-hero-copy h1{font-size:48px;line-height:.96}
+  .article-header h1{font-size:43px;line-height:1}
+  .shop-hero h1{font-size:40px;line-height:1.04}
+  .hero-text,.section-heading>p:not(.eyebrow),.home-listening>div:last-child>p:not(.eyebrow),.listening-hero-copy>p:not(.eyebrow){font-size:17px;line-height:1.6}
+  .blog-hero>p:not(.eyebrow),.shop-hero>p:not(.eyebrow){font-size:18px;line-height:1.58}
+  .guide-hero>p:not(.eyebrow),.article-deck{font-size:19px;line-height:1.58}
+  .blog-hero{padding-top:70px;padding-bottom:64px}
+  .shop-hero{padding-top:64px;padding-bottom:62px}
+  .article-header{padding-top:62px;padding-bottom:46px}
+  .listening-hero{gap:32px}
+  .finder .section-heading.centered{margin-bottom:36px}
+  .finder-form{padding:20px 14px;gap:20px}
+  .finder-form strong,.finder-form legend{margin-bottom:10px;font-size:17px;line-height:1.3}
+  .choices{gap:6px}
+  .choices label span{min-height:46px;padding:7px}
+  .shop-process>*,.shop-process-grid,.shop-process-grid article{min-width:0}
+  .shop-process h2{font-size:36px}
+}
+@media(min-width:390px) and (max-width:700px){
+  .finder-form{padding-right:20px;padding-left:20px}
+  .choices{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
