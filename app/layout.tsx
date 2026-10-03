@@ -69,7 +69,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "kv-3Y3TxawyrnteVacXO6PSW-LteDXtNq-sY1IOaeqQ",
+    google: [
+      "kv-3Y3TxawyrnteVacXO6PSW-LteDXtNq-sY1IOaeqQ",
+      "eblh4KPXZpVnuqPoC6tABiq8HXEgc2df2FJcbMgoSNM",
+    ],
     other: {
       "msvalidate.01": "D210218D1B79720F2974CD02D21AB4D5",
       "p:domain_verify": "5047f5b06b14c5c904769143d7f118c8",
