@@ -1294,3 +1294,9 @@ html[data-theme="dark"] .analytics-consent-banner{border-color:#765064;backgroun
   .finder-form{padding-right:20px;padding-left:20px}
   .choices{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+/* Painel do blog */
+.admin-login-form{display:grid;gap:14px;margin:24px auto;max-width:340px;text-align:left}.admin-login-form label,.blog-admin-form label{display:grid;gap:6px;font-weight:800;font-size:14px}.admin-login-form input,.blog-admin-form input,.blog-admin-form textarea,.blog-admin-form select{width:100%;padding:12px 14px;border:1px solid #e9d8df;border-radius:12px;background:#fff;color:var(--ink);font:inherit;font-weight:400}
+.admin-form-error{padding:12px 16px;border-radius:12px;background:#fde8ee;color:#a1224a;font-weight:700}.admin-form-ok{padding:12px 16px;border-radius:12px;background:#e6f6ea;color:#1d6b33;font-weight:700}
+.blog-admin-form{display:grid;gap:18px;max-width:880px}.blog-admin-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.blog-admin-form fieldset{border:1px dashed #e9bccb;border-radius:14px;padding:16px;display:grid;gap:12px}.blog-admin-help{color:var(--muted);font-size:14px}.blog-admin-delete{justify-self:start;border:0;background:none;color:#a1224a;text-decoration:underline;cursor:pointer}.admin-logout{border:0;background:none;color:inherit;font:inherit;cursor:pointer}
+html[data-theme="dark"] .admin-login-form input,html[data-theme="dark"] .blog-admin-form input,html[data-theme="dark"] .blog-admin-form textarea,html[data-theme="dark"] .blog-admin-form select{background:#251b23;border-color:var(--line)}

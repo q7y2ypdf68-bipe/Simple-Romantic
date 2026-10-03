@@ -50,6 +50,13 @@
       "when": 1787503675353,
       "tag": "0006_small_mastermind",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1790000000000,
+      "tag": "0007_blog_admin",
+      "breakpoints": true
     }
   ]
 }

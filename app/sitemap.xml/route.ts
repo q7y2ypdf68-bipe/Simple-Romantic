@@ -1,4 +1,4 @@
-import { getVisibleBlogPosts } from "../blog/posts";
+import { getVisiblePosts } from "../blog/posts-db";
 import { getVisibleBlogPostsEs } from "../es/blog/posts-es";
 
 const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
@@ -35,7 +35,7 @@ function escapeXml(value: string) {
 }
 
 export async function GET() {
-  const blogPosts = getVisibleBlogPosts();
+  const blogPosts = await getVisiblePosts();
   const blogPostsEs = getVisibleBlogPostsEs();
   const pages = [
     ...staticPages.map((page) => ({

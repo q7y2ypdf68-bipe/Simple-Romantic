@@ -3,19 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BlogFooter, BlogHeader } from "../BlogChrome";
-import { blogPosts, getPost } from "../posts";
+import { getPostBySlug, getVisiblePosts } from "../posts-db";
 import { blogPostsEs } from "../../es/blog/posts-es";
 import { ShareButtons } from "../ShareButtons";
 import { serializeStructuredData } from "../../structured-data";
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPostBySlug(slug);
   if (!post) return {};
+  const blogPosts = await getVisiblePosts();
   const index = blogPosts.findIndex((item) => item.slug === post.slug);
   const spanishPost = blogPostsEs[index];
   return {
@@ -42,8 +41,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
+  const blogPosts = await getVisiblePosts();
   const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
   const currentIndex = blogPosts.findIndex((item) => item.slug === post.slug);
   const relatedPosts = blogPosts

@@ -210,7 +210,7 @@ test("serves a discoverable RSS feed with every currently visible editorial arti
 });
 
 test("serves lightweight WebP images for the main visual areas", async () => {
-  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  const page = await readFile(new URL("../app/HomeClient.tsx", import.meta.url), "utf8");
   for (const filename of ["hero-park.webp", "beach-walk.webp", "viewpoint-surprise.webp"]) {
     assert.match(page, new RegExp(filename.replace(".", "\\.")));
     const details = await stat(new URL(`../public/images/${filename}`, import.meta.url));

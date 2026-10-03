@@ -63,3 +63,40 @@ export const analyticsDaily = sqliteTable("analytics_daily", {
 }, (table) => [
   uniqueIndex("analytics_daily_day_path_source_unique").on(table.day, table.path, table.source),
 ]);
+
+export const blogPosts = sqliteTable("blog_posts", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  slug: text("slug").notNull().unique(),
+  language: text("language").notNull().default("pt-BR"),
+  title: text("title").notNull(),
+  seoTitle: text("seo_title"),
+  excerpt: text("excerpt").notNull(),
+  category: text("category").notNull(),
+  series: text("series"),
+  image: text("image").notNull().default(""),
+  imageAlt: text("image_alt").notNull().default(""),
+  published: text("published").notNull().default(""),
+  publishedIso: text("published_iso"),
+  readTime: text("read_time").notNull().default(""),
+  intro: text("intro").notNull().default("[]"),
+  sections: text("sections").notNull().default("[]"),
+  contentNoticeLabel: text("content_notice_label"),
+  contentNoticeText: text("content_notice_text"),
+  status: text("status").notNull().default("published"),
+  createdAt: text("created_at").notNull(),
+  updatedAt: text("updated_at"),
+});
+
+export const blogImages = sqliteTable("blog_images", {
+  id: text("id").primaryKey(),
+  contentType: text("content_type").notNull(),
+  data: text("data").notNull(),
+  filename: text("filename"),
+  createdAt: text("created_at").notNull(),
+});
+
+export const adminLoginAttempts = sqliteTable("admin_login_attempts", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  ip: text("ip").notNull(),
+  createdAt: text("created_at").notNull(),
+});
