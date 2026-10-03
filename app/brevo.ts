@@ -12,7 +12,7 @@ type BrevoNotification = {
   html: string;
 };
 
-const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
+const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
 
 /**
  * Keeps the mailing provider behind a server-only boundary. The API key is

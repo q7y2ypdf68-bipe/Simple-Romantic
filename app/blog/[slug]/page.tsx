@@ -44,7 +44,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const post = await getPostBySlug(slug);
   if (!post) notFound();
   const blogPosts = await getVisiblePosts();
-  const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
+  const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
   const currentIndex = blogPosts.findIndex((item) => item.slug === post.slug);
   const relatedPosts = blogPosts
     .filter((item) => item.slug !== post.slug)

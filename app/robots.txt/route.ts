@@ -1,4 +1,4 @@
-const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
+const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
 
 export async function GET() {
   const body = [

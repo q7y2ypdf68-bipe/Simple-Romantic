@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 export default async function BlogPage() {
   const blogPosts = await getVisiblePosts();
   const communityStories = await getPublishedStories();
-  const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
+  const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
   const items: BlogListItem[] = [
     ...blogPosts.map((post) => ({
       id: post.slug,

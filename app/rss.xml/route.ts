@@ -1,6 +1,6 @@
 import { getVisiblePosts } from "../blog/posts-db";
 
-const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
+const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
 
 function escapeXml(value: string) {
   return value.replace(/[<>&'"]/g, (character) => ({

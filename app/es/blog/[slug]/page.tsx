@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ArticlePageEs({ params }: { params: Promise<{ slug: string }> }) {
   const post = getPostEs((await params).slug);
   if (!post) notFound();
-  const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
+  const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
   const currentIndex = blogPostsEs.findIndex((item) => item.slug === post.slug);
   const related = blogPostsEs.filter((item) => item.slug !== post.slug).sort((a, b) => (a.category === post.category ? 0 : 1) - (b.category === post.category ? 0 : 1) || Math.abs(blogPostsEs.indexOf(a) - currentIndex) - Math.abs(blogPostsEs.indexOf(b) - currentIndex)).slice(0, 3);
   const structuredData = { "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.excerpt, image: `${siteUrl}${post.image}`, mainEntityOfPage: `${siteUrl}/es/blog/${post.slug}`, author: { "@type": "Organization", name: "Simple & Romantic" }, publisher: { "@type": "Organization", name: "Simple & Romantic" }, inLanguage: "es-ES", datePublished: post.publishedIso, dateModified: post.publishedIso };

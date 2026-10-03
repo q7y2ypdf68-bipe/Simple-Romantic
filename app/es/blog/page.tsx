@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function BlogPageEs() {
   const posts = getVisibleBlogPostsEs();
-  const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
+  const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
   const items: BlogListItem[] = posts.map((post) => ({ id: post.slug, href: `/es/blog/${post.slug}`, title: post.title, excerpt: post.excerpt, category: post.category, meta: post.readTime, image: post.image, imageAlt: post.imageAlt }));
   const structuredData = { "@context": "https://schema.org", "@type": "Blog", url: `${siteUrl}/es/blog`, name: "Blog Simple & Romantic en español", description: metadata.description, inLanguage: "es-ES" };
 

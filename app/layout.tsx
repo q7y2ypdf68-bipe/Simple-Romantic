@@ -4,7 +4,7 @@ import { AnalyticsConsent } from "./components/AnalyticsConsent";
 import { AnalyticsTracker } from "./components/AnalyticsTracker";
 import { serializeStructuredData } from "./structured-data";
 
-const siteUrl = "https://simple-and-romantic.brunolivercard2.chatgpt.site";
+const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
