@@ -18,6 +18,7 @@ const c = JSON.parse(fs.readFileSync(p, "utf8"));
 c.d1_databases = [{ binding: "DB", database_name: "site-creator-d1", database_id: process.argv[1] }];
 c.assets = { ...(c.assets || {}), binding: "ASSETS" };
 c.images = { binding: "IMAGES" };
+c.observability = { enabled: true, logs: { enabled: true } };
 fs.writeFileSync(p, JSON.stringify(c));
 console.log("   banco:", c.d1_databases[0].database_id, "| imagens:", !!c.images, "| arquivos:", c.assets.binding);
 ' "$D1_ID"
