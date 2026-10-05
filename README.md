@@ -88,6 +88,24 @@ or enforce explicit server-side membership or allowlist checks.
 Use SIWC for account pages, user-specific dashboards, saved records, and write
 actions tied to the current ChatGPT user. Leave public content anonymous.
 
+## Governança e estado técnico
+
+- Esta raiz Git é a autoridade técnica viva: branch `main`, HEAD da missão
+  `9826f6b2c72ee93b49a24219f973b1121a884daf`.
+- Stack: Next.js, React, Vinext, Cloudflare/ChatGPT Sites, D1 e Drizzle.
+- Deploy e hosting são geridos pelo ChatGPT Sites; o site publicado é evidência
+  material do comportamento público.
+- D1 é a persistência configurada para o binding `DB`; integrações externas
+  respondem pelo próprio estado quando verificadas materialmente.
+- Brevo tem implementação server-side para sincronização/notificações. A
+  confirmação segura de configuração em produção permanece pendente e não deve
+  expor segredos.
+- HOME, HERO e HEADER permanecem congelados até autorização humana explícita.
+- Autoridade documental/editorial e de governança:
+  `/Users/brunocardoso/S&R/Simple_Romantic_Mapa_Mestre_Conteudo_2026-08-26_v20_AUDITORIA_CRUZADA_FINAL.xlsx`.
+- Em divergência técnica, prevalecem código, Git e estado publicado; em
+  divergência editorial/governança, prevalece o Mapa Mestre v20.
+
 ## Diagnostic Commands
 
 - `npm run install:ci`: perform the one bounded lockfile install
