@@ -20,6 +20,8 @@ c.assets = { ...(c.assets || {}), binding: "ASSETS" };
 c.images = { binding: "IMAGES" };
 c.observability = { enabled: true, logs: { enabled: true } };
 c.routes = [{ pattern: "simpleandromantic.com", custom_domain: true }];   // mantém o domínio próprio ligado
+c.workers_dev = true;   // endereço antigo continua respondendo (só para redirecionar)
+c.preview_urls = true;
 fs.writeFileSync(p, JSON.stringify(c));
 console.log("   banco:", c.d1_databases[0].database_id, "| imagens:", !!c.images, "| arquivos:", c.assets.binding);
 ' "$D1_ID"
