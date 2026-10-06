@@ -76,3 +76,25 @@ test("bloqueia conteúdo perigoso e respeita o limite por visitante", async () =
   await call(combo);
   assert.equal(n, gen, "não chama a IA depois do limite diário do visitante");
 });
+
+test("responde em espanhol e em inglês (reserva) quando a IA falha", async () => {
+  env.DB = fakeDb();
+  env.AI = { run: async () => { throw new Error("fora do ar"); } };
+  const es = await call({ ...combo, language: "es" });
+  assert.equal(es.json.source, "static");
+  assert.match(es.json.result.title, /[a-z]/i);
+  assert.doesNotMatch(es.json.result.title + es.json.result.whyItFits, /vocês|você|\bpara o\b/i);
+  const en = await call({ ...combo, language: "en" });
+  assert.match(en.json.result.whyItFits, /\b(the|and|you)\b/i);
+});
+
+test("cria ideia em espanhol e não aceita preço inventado", async () => {
+  env.DB = fakeDb();
+  let n = 0;
+  env.AI = { run: async () => ({ response: JSON.stringify(n++ === 0
+    ? { title: "Cena con 20 euros", whyItFits: "Cabe en un presupuesto de 20 euros.", howTo: ["Uno", "Dos", "Tres", "Cuatro"], smallDetail: "Detalle" }
+    : { title: "Tarde de dibujo", whyItFits: "Un plan tranquilo y gratis.", howTo: ["Uno", "Dos", "Tres", "Cuatro"], smallDetail: "Detalle", planB: "Si llueve, dibujad en casa." }) }) };
+  const res = await call({ ...combo, language: "es" });
+  assert.equal(res.json.source, "ai");
+  assert.equal(res.json.result.title, "Tarde de dibujo");
+});

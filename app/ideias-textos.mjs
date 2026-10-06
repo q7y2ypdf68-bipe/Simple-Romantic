@@ -2,7 +2,7 @@
 // O motor (recommendations.mjs) decide QUAL ideia combina com os filtros, com as regras de segurança,
 // custo e tempo dos arquivos de autoridade. Este arquivo só troca o TEXTO mostrado ao visitante.
 // Chave: "<familyId>@<minutos>" ou o id da variante (V2-0xx). Formato: [título, porquê, passos, detalhe, planB?]
-const T = {
+export const T = {
   // ───────── EM CASA · 1 hora ─────────
   "JOG-01@75": ["Noite de tabuleiro, com aposta carinhosa", "Um jogo simples já tem tudo: risada, provocação boa e a atenção inteira nos dois. Cabe numa hora e não custa nada.", ["Escolham um jogo que já tenham em casa (ou o que estiver mais empoeirado na prateleira).", "Combinem uma aposta carinhosa: quem perder faz o próximo café, uma massagem de 5 minutos ou escolhe a próxima música.", "Arrumem a mesa com uma luz mais baixa e algo para beliscar.", "Guardem os celulares longe, em outro cômodo.", "Joguem uma partida só, com calma, e comemorem o resultado como se fosse final de campeonato.", "Cumpram a aposta com capricho."], "Deixem uma pequena escolha para quem perdeu: ele ou ela decide a sobremesa."],
   "JOG-02@75": ["Rodada de cartas valendo um carinho", "Um baralho cabe em qualquer bolso e rende uma hora de conversa leve, sem preparação nenhuma.", ["Peguem um baralho (qualquer jogo vale: truco, buraco, rouba-monte, pôquer de brincadeira).", "Antes de começar, combinem o prêmio: o vencedor de cada rodada pede um pequeno gesto, como um abraço de 20 segundos ou um elogio sincero.", "Sentem frente a frente, com uma bebida quente ou gelada por perto.", "Joguem algumas rodadas rápidas, sem pressa para terminar.", "Na última rodada, quem ganhar escolhe uma lembrança boa para os dois contarem."], "Cada vitória vale um elogio específico, nada genérico."],
@@ -90,23 +90,33 @@ const T = {
 };
 
 // Surpresas: o tipo vem dos dados; aqui só o texto mostrado.
-const SURPRISE = {
+export const SURPRISE = {
+  "Cartas curtas escolhidas na biblioteca": "A surpresa é a carta: escreva a sua em segredo, antes, para entregar quando a pessoa menos esperar.",
+  "Um desenho surpresa na biblioteca": "A surpresa é o desenho: faça o retrato em segredo e entregue só no final, com uma frase no verso.",
+  "Colagem com envelope surpresa": "A surpresa é o envelope: prepare-o em segredo e só revele o conteúdo quando estiverem sentados, prontos para montar.",
+  "Decoração com envelope surpresa": "A surpresa é o envelope: prepare-o em segredo, com as ideias e o bilhete, e entregue quando chegarem ao lugar.",
   "Bilhete curto e específico": "Deixe um bilhete curto, escrito à mão, com uma lembrança específica dos dois (não um 'te amo' genérico) para ser lido na hora certa.",
   "Música dedicada": "Escolha em segredo uma música que fale de vocês dois e toque no momento certo, dizendo por que a escolheu.",
   "Postal escrito": "Escreva um postal curto, com uma frase só sua, e entregue sem aviso no meio do programa.",
 };
 
-const PLAN_B = {
+export const PLAN_B = {
   home: "Se alguma coisa der errado, façam a versão curta: música, algo gostoso para beliscar e uma conversa sem celular.",
   outdoors: "Se o tempo virar, levem a mesma ideia para dentro de casa: música, algo gostoso e uma conversa com a luz baixa.",
   "go-out": "Se o lugar estiver fechado ou lotado, escolham um café tranquilo ou uma caminhada pelo bairro e mantenham a ideia da conversa.",
 };
 
-export function editorialText(variant) {
-  const entry = T[variant.id] ?? T[`${variant.familyId}@${variant.durationMinutes}`];
+import * as en from "./ideias-textos-en.mjs";
+import * as es from "./ideias-textos-es.mjs";
+
+const PACKS = { pt: { T, SURPRISE, PLAN_B }, en, es };
+
+export function editorialText(variant, lang = "pt") {
+  const pack = PACKS[lang] ?? PACKS.pt;
+  const entry = pack.T[variant.id] ?? pack.T[`${variant.familyId}@${variant.durationMinutes}`];
   if (!entry) return null;
   const [title, whyItFits, howTo, smallDetail, planB] = entry;
   const key = String(variant.surprise ?? "").replace(/^Surpresa identificável:\s*/, "").replace(/\.$/, "");
-  const surprise = variant.surprise ? (SURPRISE[key] ?? undefined) : undefined;
-  return { title, whyItFits, howTo, smallDetail, planB: planB ?? PLAN_B[variant.environment], surprise };
+  const surprise = variant.surprise ? (pack.SURPRISE[key] ?? undefined) : undefined;
+  return { title, whyItFits, howTo, smallDetail, planB: planB ?? pack.PLAN_B[variant.environment], surprise };
 }

@@ -1,12 +1,12 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost } from "./blog/posts";
 import { MobileMenu } from "./components/MobileMenu";
 import { ThemeToggle } from "./components/ThemeToggle";
-import { recommend } from "./recommendations.mjs";
+import { IdeaFinder } from "./components/IdeaFinder";
 
 type Language = "pt" | "en";
 
@@ -177,12 +177,6 @@ const copy = {
 
 export default function Home({ blogPosts }: { blogPosts: BlogPost[] }) {
   const [language, setLanguage] = useState<Language>("pt");
-  const [resultVisible, setResultVisible] = useState(false);
-  const [recommendation, setRecommendation] = useState<ReturnType<typeof recommend> | null>(null);
-  const [recommendationSession, setRecommendationSession] = useState<{ displayed: Array<{ candidateId: string; familyId: string; mechanic: string; category: string; modifierIds?: string[]; gestureId?: string; timestamp: number }> }>({ displayed: [] });
-  const [aiShown, setAiShown] = useState<string[]>([]);
-  const [finding, setFinding] = useState(false);
-  const [trio, setTrio] = useState<Array<{ id: string; title: string; whyItFits: string; howTo: string[]; badges: string[]; planB?: { title: string }; surprise?: string }> | null>(null);
   const [message, setMessage] = useState("");
   const [guideReady, setGuideReady] = useState(false);
   const [communityStatus, setCommunityStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -198,127 +192,6 @@ export default function Home({ blogPosts }: { blogPosts: BlogPost[] }) {
     { href: "#comunidade", label: t.nav[6] },
     { href: "/entre-nos", label: t.nav[7] },
   ];
-
-  type Answers = { environment: string; budget: string; duration: string; occasion: string };
-
-  // Quando o motor curado não tem ideia para os filtros, a IA cria uma na hora (plano B).
-  // Nunca deixamos o visitante sem resposta.
-  async function resolveIdea(answers: Answers, session: typeof recommendationSession, shown: string[]) {
-    const next = recommend(answers, session);
-    if (next.status === "recommendation") {
-      setRecommendation(next);
-      setRecommendationSession((next.session as typeof recommendationSession | undefined) ?? { displayed: [] });
-      return;
-    }
-    setFinding(true);
-    try {
-      const response = await fetch("/api/ideia", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...answers, language, exclude: shown }) });
-      const body = await response.json();
-      if (response.ok && body?.status === "recommendation" && body.result) {
-        setRecommendation({ status: "recommendation", result: body.result, session } as unknown as ReturnType<typeof recommend>);
-        setAiShown((list) => [...list, String(body.result.id)]);
-        return;
-      }
-    } catch {
-      // cai no aviso abaixo
-    } finally {
-      setFinding(false);
-    }
-    setRecommendation(next);
-  }
-
-  function readAnswers(data: FormData): Answers {
-    return { environment: String(data.get("environment")), budget: String(data.get("budget")), duration: String(data.get("time")), occasion: String(data.get("occasion")) };
-  }
-
-
-  // Junta até 3 ideias diferentes (motor curado primeiro; IA/reserva quando faltar).
-  async function threeIdeas(answers: Answers) {
-    setRecommendation(null);
-    setTrio(null);
-    setResultVisible(true);
-    setFinding(true);
-    requestAnimationFrame(() => document.querySelector("#resultado")?.scrollIntoView({ behavior: "smooth", block: "center" }));
-    const found: NonNullable<typeof trio> = [];
-    let session: typeof recommendationSession = { displayed: [] };
-    const shown: string[] = [];
-    try {
-      for (let i = 0; i < 3; i++) {
-        const next = recommend(answers, session);
-        if (next.status === "recommendation" && next.result) {
-          session = (next.session as typeof recommendationSession | undefined) ?? session;
-          found.push(next.result as (typeof found)[number]);
-          continue;
-        }
-        try {
-          const response = await fetch("/api/ideia", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...answers, language, exclude: shown }) });
-          const body = await response.json();
-          if (response.ok && body?.result) {
-            shown.push(String(body.result.id));
-            found.push(body.result);
-          }
-        } catch {
-          // segue com o que já temos
-        }
-      }
-    } finally {
-      setFinding(false);
-    }
-    setTrio(found);
-  }
-
-  function pickThree() {
-    const form = document.querySelector<HTMLFormElement>(".finder-form");
-    if (form) void threeIdeas(readAnswers(new FormData(form)));
-  }
-
-  // Link com filtros (para posts nas redes): ?lugar=casa&orcamento=gratis&tempo=tarde&clima=surpresa[&ideias=3]
-  useEffect(() => {
-    try {
-      const q = new URLSearchParams(window.location.search);
-      const map: Record<string, Record<string, string>> = {
-        lugar: { casa: "home", home: "home", arlivre: "outdoors", outdoors: "outdoors", sair: "go-out", "go-out": "go-out", qualquer: "any", any: "any" },
-        orcamento: { gratis: "free", free: "free", baixo: "low", low: "low", mais: "more", more: "more" },
-        tempo: { hora: "hour", hour: "hour", tarde: "afternoon", afternoon: "afternoon", dia: "day", day: "day" },
-        clima: { casual: "casual", surpresa: "surprise", surprise: "surprise", reconectar: "reconnect", reconnect: "reconnect" },
-      };
-      const names: Record<string, string> = { lugar: "environment", orcamento: "budget", tempo: "time", clima: "occasion" };
-      let any = false;
-      for (const key of Object.keys(map)) {
-        const value = map[key][(q.get(key) ?? "").toLowerCase()];
-        if (!value) continue;
-        const input = document.querySelector<HTMLInputElement>(`.finder-form input[name="${names[key]}"][value="${value}"]`);
-        if (input) { input.checked = true; any = true; }
-      }
-      if (any || q.get("ideias")) {
-        const form = document.querySelector<HTMLFormElement>(".finder-form");
-        if (!form) return;
-        const answers = readAnswers(new FormData(form));
-        if (q.get("ideias") === "3") void threeIdeas(answers);
-        else { setAiShown([]); setResultVisible(true); void resolveIdea(answers, { displayed: [] }, []); }
-        document.querySelector("#encontrar")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    } catch {
-      /* sem link de filtros: tudo normal */
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  async function createDate(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const answers = readAnswers(new FormData(event.currentTarget));
-    setAiShown([]);
-    setTrio(null);
-    setResultVisible(true);
-    requestAnimationFrame(() => document.querySelector("#resultado")?.scrollIntoView({ behavior: "smooth", block: "center" }));
-    await resolveIdea(answers, { displayed: [] }, []);
-  }
-
-  async function anotherIdea() {
-    const form = document.querySelector<HTMLFormElement>(".finder-form");
-    if (!form) return;
-    await resolveIdea(readAnswers(new FormData(form)), recommendationSession, aiShown);
-  }
 
   async function joinList(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -413,24 +286,7 @@ export default function Home({ blogPosts }: { blogPosts: BlogPost[] }) {
         </div>
       </section>
 
-      <section className="finder section" id="encontrar">
-        <div className="section-heading centered"><p className="eyebrow">{t.finderKicker}</p><h2>{t.finderTitle}</h2><p>{t.finderText}</p></div>
-        <form className="finder-form" onSubmit={createDate}>
-          <Choice number="01" title={t.environment} name="environment" options={t.environments} />
-          <Choice number="02" title={t.budget} name="budget" options={t.budgets} />
-          <Choice number="03" title={t.time} name="time" options={t.times} />
-          <Choice number="04" title={t.occasion} name="occasion" options={t.occasions} />
-          <div className="finder-actions"><button className="button primary finder-button" type="submit">{t.find}<span>→</span></button><button className="button secondary finder-three" type="button" onClick={pickThree}>{t.three}</button></div>
-        </form>
-        {resultVisible && !finding && trio && trio.length > 0 && <div className="idea-trio" id="resultado" aria-live="polite"><p className="eyebrow">{t.threeTitle}</p><div className="idea-trio-grid">{trio.map((item) => <article key={item.id}><h3>{item.title}</h3><p>{item.whyItFits}</p><ol>{item.howTo.slice(0, 5).map((step: string) => <li key={step}>{step}</li>)}</ol><div className="result-meta">{item.badges.map((b: string) => <span key={b}>{b}</span>)}</div>{item.planB && <p><strong>Plano B:</strong> {item.planB.title}</p>}</article>)}</div></div>}
-        {resultVisible && !finding && !trio && recommendation?.status === "recommendation" && recommendation.result && <article className="date-result" id="resultado">
-          <div className="result-visual"><span>☀</span><small>{recommendation.result.badges[0]}</small></div>
-          <div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{recommendation.result.title}</h3>{(recommendation.result as { aiGenerated?: boolean }).aiGenerated && <p className="result-ai-note"><small>{t.aiNote}</small></p>}<p>{recommendation.result.whyItFits}</p><ol>{recommendation.result.howTo.map((step: string) => <li key={step}>{step}</li>)}</ol><div className="result-meta">{recommendation.result.badges.map(item => <span key={item}>{item}</span>)}</div>{recommendation.result.surprise && <p><strong>Surpresa:</strong> {recommendation.result.surprise}</p>}{recommendation.result.planB && <p><strong>Plano B:</strong> {recommendation.result.planB.title}</p>}{recommendation.result.confirmBefore && <p><strong>Confirme antes:</strong> {recommendation.result.requirements}</p>}<button className="button secondary" type="button" onClick={anotherIdea}>{t.anotherIdea}</button></div>
-          <div className="result-tip"><span>♡</span><div><strong>{t.resultTip}</strong><p>{recommendation.result.smallDetail}</p></div></div>
-        </article>}
-        {resultVisible && finding && <article className="date-result date-result-empty" id="resultado" aria-live="polite"><div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{t.finding}</h3></div></article>}
-        {resultVisible && !finding && !trio && recommendation?.status === "exhausted" && <article className="date-result date-result-empty" id="resultado"><div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{t.exhausted}</h3></div></article>}
-      </section>
+      <IdeaFinder lang={language} />
 
       <section className="places section" id="lugares">
         <div className="section-heading split"><div><p className="eyebrow">{t.placesKicker}</p><h2>{t.placesTitle}</h2></div><p>{t.placesText}</p></div>
@@ -518,8 +374,4 @@ export default function Home({ blogPosts }: { blogPosts: BlogPost[] }) {
       <footer><a className="brand footer-brand" href="#inicio"><span className="brand-heart">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i></span></a><p>{t.footer}</p><small>{t.footerNote}</small><div><Link href="/guia">Guia gratuito</Link><Link href="/loja">Loja</Link><Link href="/entre-nos">Entre nós</Link><Link href="/privacidade">Privacidade</Link><Link href="/termos">Termos de Uso</Link><Link href="/regras-da-comunidade">Regras da Comunidade</Link><Link href="/contato">Contato</Link><Link href="/admin/painel">Administração</Link></div></footer>
     </main>
   );
-}
-
-function Choice({ number, title, name, options }: { number: string; title: string; name: string; options: Array<string | { value: string; label: string }> }) {
-  return <fieldset><legend><span>{number}</span>{title}</legend><div className="choices">{options.map((option, index) => { const item = typeof option === "string" ? { value: option, label: option } : option; return <label key={item.value}><input type="radio" name={name} value={item.value} defaultChecked={index === 0} /><span>{item.label}</span></label>; })}</div></fieldset>;
 }

@@ -33,6 +33,12 @@ const THEMES: Record<Lang, Record<string, string[]>> = {
     "go-out": ["a new neighborhood: wander and choose places on impulse", "a museum, gallery or exhibition (free if possible)", "a local cafe or bakery with a conversation challenge", "a market to pick ingredients, then cook", "a viewpoint or city garden", "a bookstore: each picks a book for the other", "a cheap snack crawl across several places", "a neighborhood cinema, theater or open-air screening", "a free open class, workshop or city event", "a public-transport trip to somewhere unknown"],
     any: ["a mix of home and town with a fun challenge", "a day of firsts: something neither has done", "a tribute to your first date", "a project for two that leaves a keepsake", "build a small couple tradition"],
   },
+  es: {
+    home: ["cocinar juntos un plato que ninguno haya hecho nunca", "noche de juegos con torneo y premio tonto", "spa casero con masaje, música y luz tenue", "cartas y recuerdos: releer mensajes antiguos y fotos", "karaoke o baile en el salón", "arte a dúo: pintar, dibujar el retrato del otro o montar un mural", "cata a ciegas de comidas o infusiones", "noche de estrellas desde la ventana o el balcón con historias", "reorganizar un rincón de la casa juntos como proyecto", "cápsula del tiempo: escribir cartas para abrir dentro de un año", "clase improvisada: cada uno enseña al otro algo que sabe", "cabaña de mantas con lectura en voz alta"],
+    outdoors: ["paseo con un objetivo (mirador, amanecer o atardecer)", "fotografiar la ciudad como turistas", "búsqueda del tesoro creada por uno de los dos", "ir en bici o en patines por una ruta nueva", "mirar el cielo con una aplicación gratuita", "juegos de calle: frisbi, pelota, bádminton, carreritas de broma", "explorar un barrio o una playa que nunca hayáis visitado", "dibujar o escribir sentados en un lugar bonito", "pícnic sencillo (solo si encaja con el tiempo)", "mercadillo o feria al aire libre para elegir ingredientes"],
+    "go-out": ["barrio nuevo: pasear sin prisa y elegir lugares por impulso", "museo, galería o exposición (gratis si es posible)", "café o panadería del barrio con un reto de conversación", "mercado o feria para elegir ingredientes y luego cocinar", "mirador o jardín de la ciudad", "librería o tienda de segunda mano: cada uno elige un libro para el otro", "ruta de tapas o pinchos baratos por varios sitios", "cine o teatro de barrio, o sesión al aire libre", "clase abierta, taller o evento gratuito de la ciudad", "viaje en transporte público hasta un punto desconocido"],
+    any: ["una mezcla de casa y calle con un reto divertido", "día de primeras veces: hacer algo que ninguno de los dos haya hecho nunca", "homenaje a vuestra primera cita", "proyecto a dos que deje un recuerdo", "buscar pequeñas tradiciones de la pareja"],
+  },
 };
 const pick = <T,>(list: T[]) => list[Math.floor(Math.random() * list.length)];
 
@@ -47,7 +53,8 @@ async function ensureTables() {
 }
 
 const clean = (v: unknown, max: number) => (typeof v === "string" ? v.replace(/\s+/g, " ").trim().slice(0, max) : "");
-const BLOCK = /\b(droga|drogas|cocaína|maconha|arma|armas|invadir|invasão|ilegal|perigos[oa]|bêbad[oa]|embriag|drugs?|weapon|trespass|illegal|dangerous|drunk)\b/i;
+const BLOCK = /\b(droga|drogas|cocaína|maconha|marihuana|arma|armas|invadir|invasão|colarse|allanar|ilegal|perigos[oa]|peligros[oa]|bêbad[oa]|borrach[oa]|embriag|drugs?|weapon|trespass|illegal|dangerous|drunk)\b/i;
+const PRICE = /(\d\s?(€|euros?|reais|usd|dólares|dollars)\b|r\$\s?\d|[€$]\s?\d)/i; // nunca mostramos valores inventados
 
 async function sha(text: string) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
@@ -62,25 +69,55 @@ async function bump(who: string, day: string) {
   await env.DB.prepare("INSERT INTO ai_usage (day, who, n) VALUES (?, ?, 1) ON CONFLICT(day, who) DO UPDATE SET n = n + 1").bind(day, who).run();
 }
 
+const L = {
+  pt: {
+    env: { home: "em casa", outdoors: "ao ar livre", "go-out": "saindo de casa, na cidade", any: "em qualquer lugar" },
+    cost: { free: "ZERO: usar só o que já existe em casa ou lugares gratuitos", low: "baixo custo: gastar muito pouco, algo simples como um café, um lanche ou um item pequeno", more: "um pouco mais: um gasto pequeno e concreto que faz diferença (um prato especial, um ingresso, flores), sem luxo" },
+    time: { hour: "cerca de 1 hora", afternoon: "uma tarde (3 a 5 horas)", day: "um dia inteiro (6 a 10 horas), com começo, meio e fim" },
+    occ: { casual: "encontro casual e leve", surprise: "uma surpresa: uma pessoa prepara em segredo para a outra, de forma simples e segura", reconnect: "reconectar: foco em conversa e atenção um ao outro, sem celular" },
+  },
+  en: {
+    env: { home: "at home", outdoors: "outdoors", "go-out": "going out in town", any: "anywhere" },
+    cost: { free: "ZERO: only things already at home or free places", low: "low cost: spend very little, something simple like a coffee, a snack or one small item", more: "a bit more: one small, concrete spend that makes a difference (a special dish, a ticket, flowers), no luxury" },
+    time: { hour: "about 1 hour", afternoon: "an afternoon (3 to 5 hours)", day: "a full day (6 to 10 hours), with a beginning, middle and end" },
+    occ: { casual: "a casual, light date", surprise: "a surprise: one person secretly prepares it for the other, simple and safe", reconnect: "reconnect: focus on conversation and attention, no phones" },
+  },
+  es: {
+    env: { home: "en casa", outdoors: "al aire libre", "go-out": "saliendo de casa, por la ciudad", any: "en cualquier lugar" },
+    cost: { free: "CERO: usar solo lo que ya hay en casa o lugares gratuitos", low: "bajo coste: gastar muy poco, algo sencillo como un café, un tentempié o un objeto pequeño", more: "un poco más: un gasto pequeño y concreto que marque la diferencia (un plato especial, una entrada, flores), sin lujos" },
+    time: { hour: "alrededor de 1 hora", afternoon: "una tarde (de 3 a 5 horas)", day: "un día entero (de 6 a 10 horas), con principio, desarrollo y final" },
+    occ: { casual: "una cita informal y ligera", surprise: "una sorpresa: una persona la prepara en secreto para la otra, de forma sencilla y segura", reconnect: "reconectar: centrarse en la conversación y en la atención mutua, sin móvil" },
+  },
+} as const;
+
 function prompt(a: Answers, lang: Lang, avoid: string[], theme: string) {
-  const pt = lang === "pt";
-  const env_ = { home: pt ? "em casa" : "at home", outdoors: pt ? "ao ar livre" : "outdoors", "go-out": pt ? "saindo de casa, na cidade" : "going out in town", any: pt ? "em qualquer lugar" : "anywhere" }[a.environment];
-  const cost = { free: pt ? "ZERO reais/euros: usar só o que já existe em casa ou lugares gratuitos" : "ZERO money: only things already at home or free places", low: pt ? "baixo custo: até cerca de 15 euros no total para o casal" : "low cost: up to about 15 euros total for the couple", more: pt ? "um pouco mais: até cerca de 60 euros no total, sem luxo" : "a bit more: up to about 60 euros total, no luxury" }[a.budget];
-  const time = { hour: pt ? "cerca de 1 hora" : "about 1 hour", afternoon: pt ? "uma tarde (3 a 5 horas)" : "an afternoon (3 to 5 hours)", day: pt ? "um dia inteiro (6 a 10 horas), com começo, meio e fim" : "a full day (6 to 10 hours), with a beginning, middle and end" }[a.duration];
-  const occ = { casual: pt ? "encontro casual e leve" : "a casual, light date", surprise: pt ? "uma surpresa: uma pessoa prepara em segredo para a outra, de forma simples e segura" : "a surprise: one person secretly prepares it for the other, simple and safe", reconnect: pt ? "reconectar: foco em conversa e atenção um ao outro, sem celular" : "reconnect: focus on conversation and attention, no phones" }[a.occasion];
-  if (pt) {
+  const l = L[lang];
+  const env_ = l.env[a.environment as keyof typeof l.env];
+  const cost = l.cost[a.budget as keyof typeof l.cost];
+  const time = l.time[a.duration as keyof typeof l.time];
+  const occ = l.occ[a.occasion as keyof typeof l.occ];
+  if (lang === "pt") {
     return `Você cria UMA ideia de encontro para um casal, em português do Brasil, simples e realista, para uma marca chamada Simple & Romantic (romance acessível, momentos simples, pouco dinheiro).
 Filtros do casal: lugar: ${env_}. Orçamento: ${cost}. Tempo: ${time}. Clima: ${occ}.
 TEMA desta ideia (siga-o): ${theme}.
-Regras: respeite o orçamento e o tempo à risca; nada perigoso, ilegal, que dependa de álcool, de carro alugado, de reservas difíceis ou de invadir lugares; nada que exija comprar coisas caras; passos concretos e curtos; tom caloroso, sem exageros. O LUGAR é obrigatório: se for "saindo de casa", todos os passos acontecem fora de casa, a partir do primeiro; se for "ao ar livre", ao ar livre; se for "em casa", dentro de casa. Se o orçamento for "um pouco mais", inclua pelo menos um gasto concreto e pequeno que faça diferença (ex.: um prato especial, ingresso, flores, um café bom). Se for ZERO, não gaste nada. NUNCA cite o valor do orçamento nem a palavra "orçamento" no texto (só mostre o que gastar, ex.: "um café"). NUNCA escreva horários numéricos (como "das 6 às 10"); descreva o ritmo com palavras (manhã, meio do dia, fim de tarde, noite). Não use piquenique nem parque se o tema não pedir. O plano B precisa ser específico e coerente com a ideia, em uma frase.${avoid.length ? ` NÃO repita estas ideias: ${avoid.join("; ")}.` : ""}
+Regras: respeite o orçamento e o tempo à risca; nada perigoso, ilegal, que dependa de álcool, de carro alugado, de reservas difíceis ou de invadir lugares; nada que exija comprar coisas caras; passos concretos e curtos; tom caloroso, sem exageros. O LUGAR é obrigatório: se for "saindo de casa", todos os passos acontecem fora de casa, a partir do primeiro; se for "ao ar livre", ao ar livre; se for "em casa", dentro de casa. Se o orçamento for "um pouco mais", inclua pelo menos um gasto concreto e pequeno que faça diferença. Se for ZERO, não gaste nada. NUNCA cite valores, moedas, números de preço nem a palavra "orçamento" no texto (só diga o que gastar, ex.: "um café"). NUNCA escreva horários numéricos (como "das 6 às 10"); descreva o ritmo com palavras (manhã, meio do dia, fim de tarde, noite). Não use piquenique nem parque se o tema não pedir. O plano B precisa ser específico e coerente com a ideia, em uma frase.${avoid.length ? ` NÃO repita estas ideias: ${avoid.join("; ")}.` : ""}
 Responda SOMENTE com JSON válido, sem texto antes ou depois, neste formato exato:
 {"title":"título curto e atraente","whyItFits":"1 ou 2 frases dizendo por que combina com os filtros","howTo":["passo 1","passo 2","passo 3","passo 4","passo 5"],"smallDetail":"um detalhe pequeno que faz a diferença","surprise":"só se o clima for surpresa: o que a pessoa prepara em segredo; senão vazio","planB":"uma alternativa curta se chover ou der errado"}
 "howTo" deve ter de 4 a 7 passos.`;
   }
+  if (lang === "es") {
+    return `Creas UNA idea de cita para una pareja, en español de España (tuteando a una persona o hablando a "vosotros" cuando sean los dos), sencilla y realista, para una marca llamada Simple & Romantic (romance asequible, momentos sencillos, poco dinero).
+Filtros de la pareja: lugar: ${env_}. Presupuesto: ${cost}. Tiempo: ${time}. Ambiente: ${occ}.
+TEMA de esta idea (síguelo): ${theme}.
+Reglas: respeta el presupuesto y el tiempo a rajatabla; nada peligroso, ilegal, que dependa del alcohol, de un coche de alquiler, de reservas difíciles o de colarse en sitios; nada que obligue a comprar cosas caras; pasos concretos y cortos; tono cálido, sin exagerar. El LUGAR es obligatorio: si es "saliendo de casa", todos los pasos ocurren fuera de casa, desde el primero; si es "al aire libre", al aire libre; si es "en casa", dentro de casa. Si el presupuesto es "un poco más", incluye al menos un gasto concreto y pequeño que marque la diferencia. Si es CERO, no gastéis nada. NUNCA cites cantidades, monedas, precios ni la palabra "presupuesto" en el texto (di solo en qué gastar, p. ej. "un café"). NUNCA escribas horas numéricas (como "de 6 a 10"); describe el ritmo con palabras (mañana, mediodía, tarde, noche). No uses pícnic ni parque si el tema no lo pide. El plan B debe ser concreto y coherente con la idea, en una frase.${avoid.length ? ` NO repitas estas ideas: ${avoid.join("; ")}.` : ""}
+Responde SOLO con JSON válido, sin texto antes ni después, con este formato exacto:
+{"title":"título corto y atractivo","whyItFits":"1 o 2 frases que expliquen por qué encaja con los filtros","howTo":["paso 1","paso 2","paso 3","paso 4","paso 5"],"smallDetail":"un detalle pequeño que marca la diferencia","surprise":"solo si el ambiente es sorpresa: lo que la persona prepara en secreto; si no, vacío","planB":"una alternativa corta si llueve o sale mal"}
+"howTo" debe tener entre 4 y 7 pasos.`;
+  }
   return `You create ONE date idea for a couple, in English, simple and realistic, for a brand called Simple & Romantic (accessible romance, simple moments, little money).
 Couple's filters: place: ${env_}. Budget: ${cost}. Time: ${time}. Mood: ${occ}.
 THEME of this idea (follow it): ${theme}.
-Rules: respect the budget and time strictly; nothing dangerous, illegal, alcohol-dependent, needing a rental car, hard reservations or trespassing; nothing requiring expensive purchases; concrete short steps; warm tone, no exaggeration. The PLACE is mandatory: if "going out in town", every step including the first happens out of the house; if "outdoors", outdoors; if "at home", indoors. If the budget is "a bit more", include at least one small concrete spend that makes a difference (a special dish, a ticket, flowers, a good coffee). If ZERO, spend nothing. NEVER quote the budget amount or the word "budget" in the text (just say what to spend, e.g. "a coffee"). NEVER write clock times (like "6 to 10"); describe pace with words (morning, midday, late afternoon, evening). Do not use picnic or park unless the theme asks for it. Plan B must be specific and consistent with the idea, in one sentence.${avoid.length ? ` DO NOT repeat these ideas: ${avoid.join("; ")}.` : ""}
+Rules: respect the budget and time strictly; nothing dangerous, illegal, alcohol-dependent, needing a rental car, hard reservations or trespassing; nothing requiring expensive purchases; concrete short steps; warm tone, no exaggeration. The PLACE is mandatory: if "going out in town", every step including the first happens out of the house; if "outdoors", outdoors; if "at home", indoors. If the budget is "a bit more", include at least one small concrete spend that makes a difference. If ZERO, spend nothing. NEVER quote prices, currencies, amounts or the word "budget" in the text (just say what to spend, e.g. "a coffee"). NEVER write clock times (like "6 to 10"); describe pace with words (morning, midday, late afternoon, evening). Do not use picnic or park unless the theme asks for it. Plan B must be specific and consistent with the idea, in one sentence.${avoid.length ? ` DO NOT repeat these ideas: ${avoid.join("; ")}.` : ""}
 Reply ONLY with valid JSON, no text before or after, in this exact format:
 {"title":"short appealing title","whyItFits":"1 or 2 sentences on why it fits the filters","howTo":["step 1","step 2","step 3","step 4","step 5"],"smallDetail":"one small detail that makes the difference","surprise":"only if mood is surprise: what the person secretly prepares; otherwise empty","planB":"a short alternative if it rains or goes wrong"}
 "howTo" must have 4 to 7 steps.`;
@@ -109,7 +146,7 @@ function validate(obj: Record<string, unknown> | null): Omit<IdeaResult, "id" | 
   const howTo = Array.isArray(obj.howTo) ? obj.howTo.map((s) => clean(s, 260)).filter(Boolean) : [];
   if (!title || !whyItFits || !smallDetail || howTo.length < 3 || howTo.length > 8) return null;
   const all = [title, whyItFits, smallDetail, ...howTo, clean(obj.surprise, 300), clean(obj.planB, 260)].join(" ");
-  if (BLOCK.test(all)) return null;
+  if (BLOCK.test(all) || PRICE.test(all)) return null;
   const surprise = clean(obj.surprise, 300);
   const planB = clean(obj.planB, 260);
   return { title, whyItFits, smallDetail, howTo: howTo.slice(0, 7), ...(surprise ? { surprise } : {}), ...(planB ? { planB: { id: "ai-planb", title: planB } } : {}) };
@@ -132,7 +169,7 @@ async function generate(a: Answers, lang: Lang, avoid: string[]) {
   return null;
 }
 
-const dur = { pt: { hour: "1 hora", afternoon: "uma tarde", day: "um dia" }, en: { hour: "1 hour", afternoon: "an afternoon", day: "a day" } };
+const dur = { pt: { hour: "1 hora", afternoon: "uma tarde", day: "um dia" }, en: { hour: "1 hour", afternoon: "an afternoon", day: "a day" }, es: { hour: "1 hora", afternoon: "una tarde", day: "un día" } };
 const costLabel = { free: "C0", low: "C1", more: "C2" } as Record<string, string>;
 function toResult(id: string, body: Omit<IdeaResult, "id" | "badges" | "confirmBefore">, a: Answers, lang: Lang): IdeaResult {
   return { ...body, id, confirmBefore: false, aiGenerated: true, badges: [costLabel[a.budget] ?? "C0", (dur[lang] as Record<string, string>)[a.duration], a.environment] };
@@ -149,7 +186,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Filtros inválidos." }, { status: 400 });
     }
     a = { environment: env_, budget, duration, occasion };
-    lang = p.language === "en" ? "en" : "pt";
+    lang = p.language === "en" ? "en" : p.language === "es" ? "es" : "pt";
     exclude = Array.isArray(p.exclude) ? p.exclude.map((x) => clean(x, 40)).filter(Boolean).slice(0, 30) : [];
   } catch {
     return NextResponse.json({ error: "Pedido inválido." }, { status: 400 });

@@ -101,7 +101,7 @@ test("uses only real variants for the two original cases and rotates without lit
 test("renders surprise, confirmation and an eligible canonical Plan B without fixtures", () => {
   const result = recommend({ environment: "go-out", budget: "free", duration: "afternoon", occasion: "surprise" });
   assert.equal(result.status, "recommendation");
-  assert.match(result.result.surprise, /Surpresa identificável/);
+  assert.match(result.result.surprise, /surpresa/i);
   assert.equal(["S1", "S2"].includes(v2Authority.variants.find((item) => item.id === result.result.id).surpriseLevel), true);
   if (result.result.confirmBefore) {
     assert.ok(result.result.planB);

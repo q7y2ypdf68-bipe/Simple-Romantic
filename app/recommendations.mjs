@@ -88,10 +88,10 @@ function compareCandidates(left, right, answers, history) {
   return compare.find(Boolean) ?? 0;
 }
 
-function render(candidate, variantById) {
+function render(candidate, variantById, lang = "pt") {
   const { variant, family } = candidate;
   const planBVariant = variant.planBEligible ? variantById.get(variant.planBVariantId) : undefined;
-  const text = editorialText(variant);
+  const text = editorialText(variant, lang);
   return {
     id: variant.id,
     familyId: family.id,
@@ -123,12 +123,12 @@ export function createV2Engine({ families = v2Authority.families, variants = [],
     }).filter((candidate) => !candidate.reasons.length && !history.candidateIds.has(candidate.variant.id) && (!candidate.variant.gestureId || gestureIds.has(candidate.variant.gestureId)));
   }
 
-  function recommend(answers, session = {}) {
+  function recommend(answers, session = {}, lang = "pt") {
     const history = sessionIndex(session);
     const candidates = eligibleCandidates(answers, session).sort((left, right) => compareCandidates(left, right, answers, history));
     if (!candidates.length) return { status: "exhausted", message: "Você explorou as melhores ideias para estes filtros. Tente mudar o tempo, orçamento ou tipo de programa para descobrir outras possibilidades.", session };
     const selected = candidates[0];
-    const result = render(selected, variantById);
+    const result = render(selected, variantById, lang);
     return {
       status: "recommendation",
       result,
@@ -141,4 +141,4 @@ export function createV2Engine({ families = v2Authority.families, variants = [],
 
 const productionEngine = createV2Engine({ variants: v2Authority.variants });
 export const compatibleIdeas = (answers) => productionEngine.eligibleCandidates(answers).map((candidate) => candidate.variant);
-export const recommend = (answers, session) => productionEngine.recommend(answers, session);
+export const recommend = (answers, session, lang) => productionEngine.recommend(answers, session, lang);
