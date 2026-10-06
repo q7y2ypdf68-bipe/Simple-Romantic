@@ -1,6 +1,5 @@
 import { getVisiblePosts } from "../blog/posts-db";
-import { getVisibleBlogPostsEs } from "../es/blog/posts-es";
-import { getVisibleBlogPostsEn } from "../en/blog/posts-en";
+import { getVisiblePostsLang } from "../blog/posts-db";
 
 const siteUrl = "https://simpleandromantic.com";
 const staticPages = [
@@ -47,8 +46,8 @@ function escapeXml(value: string) {
 
 export async function GET() {
   const blogPosts = await getVisiblePosts();
-  const blogPostsEs = getVisibleBlogPostsEs();
-  const blogPostsEn = getVisibleBlogPostsEn();
+  const blogPostsEs = await getVisiblePostsLang("es");
+  const blogPostsEn = await getVisiblePostsLang("en");
   const pages = [
     ...staticPages.map((page) => ({
       url: `${siteUrl}${page.path}`,

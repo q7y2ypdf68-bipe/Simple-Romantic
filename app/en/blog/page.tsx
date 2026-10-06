@@ -3,7 +3,7 @@ import { LanguageSetter } from "../../components/LanguageSetter";
 import { BlogExplorer, type BlogListItem } from "../../blog/BlogExplorer";
 import { serializeStructuredData } from "../../structured-data";
 import { BlogFooterEn, BlogHeaderEn } from "./BlogChromeEn";
-import { getVisibleBlogPostsEn } from "./posts-en";
+import { getVisiblePostsLang } from "../../blog/posts-db";
 
 export const dynamic = "force-dynamic";
 
@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   openGraph: { type: "website", locale: "en_US", url: "/en/blog", title: "Simple & Romantic Blog", description: "Simple ideas for beautiful memories as a couple.", images: [{ url: "/images/blog/13-o-olhar-que-ficou.webp", alt: "Mature couple looking at each other by the sea" }] },
 };
 
-export default function BlogPageEn() {
-  const posts = getVisibleBlogPostsEn();
+export default async function BlogPageEn() {
+  const posts = await getVisiblePostsLang("en");
   const siteUrl = "https://simpleandromantic.com";
   const items: BlogListItem[] = posts.map((post) => ({ id: post.slug, href: `/en/blog/${post.slug}`, title: post.title, excerpt: post.excerpt, category: post.category, meta: post.readTime, image: post.image, imageAlt: post.imageAlt }));
   const structuredData = { "@context": "https://schema.org", "@type": "Blog", url: `${siteUrl}/en/blog`, name: "Simple & Romantic Blog", description: metadata.description, inLanguage: "en" };

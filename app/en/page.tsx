@@ -5,7 +5,7 @@ import { LanguageSetter } from "../components/LanguageSetter";
 import { IdeaFinder } from "../components/IdeaFinder";
 import { MobileMenu } from "../components/MobileMenu";
 import { ThemeToggle } from "../components/ThemeToggle";
-import { getVisibleBlogPostsEn } from "./blog/posts-en";
+import { getVisiblePostsLang } from "../blog/posts-db";
 
 export const dynamic = "force-dynamic";
 
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   openGraph: { locale: "en_US", url: "/en", title: "Simple & Romantic", description: "Simple ideas to nurture your connection and create beautiful memories as a couple.", images: [{ url: "/images/hero-park.webp", alt: "Couple enjoying a picnic in a park" }] },
 };
 
-export default function EnglishHome() {
-  const posts = getVisibleBlogPostsEn().slice(0, 3);
+export default async function EnglishHome() {
+  const posts = (await getVisiblePostsLang("en")).slice(0, 3);
   const links = [{ href: "/en/#encontrar", label: "Find an idea" }, { href: "/en/#lugares", label: "Places" }, { href: "/en/#como", label: "How it works" }, { href: "/en/guide", label: "Free guide" }, { href: "/en/blog", label: "Blog" }, { href: "/en/shop", label: "Shop" }, { href: "/en/community", label: "Community" }, { href: "/en/between-us", label: "Between us" }];
   return <main className="spanish-page english-page"><LanguageSetter lang="en" />
     <header className="site-header"><Link className="brand" href="/en" aria-label="Simple & Romantic — home"><span className="brand-heart" aria-hidden="true">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i><small>SIMPLE MOMENTS · BEAUTIFUL MEMORIES</small></span></Link><nav aria-label="Main navigation"><a href="#encontrar">Find an idea</a><a href="#lugares">Places</a><a href="#como">How it works</a><Link href="/en/guide">Free guide</Link><Link href="/en/blog">Blog</Link><Link href="/en/shop">Shop</Link><Link href="/en/community">Community</Link><Link href="/en/between-us">Between us</Link></nav><div className="header-actions"><ThemeToggle locale="en" /><div className="language" aria-label="Language"><Link className="language-mobile-switch" href="/" hrefLang="pt-BR">PT-BR</Link><span>/</span><strong>EN</strong><span>/</span><Link className="language-mobile-switch" href="/es" hrefLang="es-ES">ES</Link></div><MobileMenu links={links} openLabel="Open menu" closeLabel="Close menu" /></div></header>

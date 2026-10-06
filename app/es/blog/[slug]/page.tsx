@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
-import { articleAlternates } from "../../../blog/translations";
+import { articleAlternatesDb, getPostLang, getVisiblePostsLang } from "../../../blog/posts-db";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LanguageSetter } from "../../../components/LanguageSetter";
 import { ShareButtons } from "../../../blog/ShareButtons";
-import { blogPosts } from "../../../blog/posts";
 import { serializeStructuredData } from "../../../structured-data";
 import { BlogFooterEs, BlogHeaderEs } from "../BlogChromeEs";
-import { blogPostsEs, getPostEs } from "../posts-es";
 
-export function generateStaticParams() { return blogPostsEs.map((post) => ({ slug: post.slug })); }
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const post = getPostEs((await params).slug);
+  const post = await getPostLang("es", (await params).slug);
   if (!post) return {};
-  const index = blogPostsEs.findIndex((item) => item.slug === post.slug);
-  const portuguesePost = blogPosts[index];
-  return { title: post.title, description: post.excerpt, alternates: { canonical: `/es/blog/${post.slug}`, languages: articleAlternates("es", post.slug) }, openGraph: { type: "article", locale: "es_ES", url: `/es/blog/${post.slug}`, siteName: "Simple & Romantic", title: post.title, description: post.excerpt, images: [{ url: post.image, alt: post.imageAlt }] } };
+  return { title: post.title, description: post.excerpt, alternates: { canonical: `/es/blog/${post.slug}`, languages: await articleAlternatesDb("es", post.slug) }, openGraph: { type: "article", locale: "es_ES", url: `/es/blog/${post.slug}`, siteName: "Simple & Romantic", title: post.title, description: post.excerpt, images: [{ url: post.image, alt: post.imageAlt }] } };
 }
 
 export default async function ArticlePageEs({ params }: { params: Promise<{ slug: string }> }) {
-  const post = getPostEs((await params).slug);
+  const post = await getPostLang("es", (await params).slug);
   if (!post) notFound();
   const siteUrl = "https://simpleandromantic.com";
-  const currentIndex = blogPostsEs.findIndex((item) => item.slug === post.slug);
-  const related = blogPostsEs.filter((item) => item.slug !== post.slug).sort((a, b) => (a.category === post.category ? 0 : 1) - (b.category === post.category ? 0 : 1) || Math.abs(blogPostsEs.indexOf(a) - currentIndex) - Math.abs(blogPostsEs.indexOf(b) - currentIndex)).slice(0, 3);
+  const allPosts = await getVisiblePostsLang("es");
+  const currentIndex = allPosts.findIndex((item) => item.slug === post.slug);
+  const related = allPosts.filter((item) => item.slug !== post.slug).sort((a, b) => (a.category === post.category ? 0 : 1) - (b.category === post.category ? 0 : 1) || Math.abs(allPosts.indexOf(a) - currentIndex) - Math.abs(allPosts.indexOf(b) - currentIndex)).slice(0, 3);
   const structuredData = { "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.excerpt, image: `${siteUrl}${post.image}`, mainEntityOfPage: `${siteUrl}/es/blog/${post.slug}`, author: { "@type": "Organization", name: "Simple & Romantic" }, publisher: { "@type": "Organization", name: "Simple & Romantic" }, inLanguage: "es-ES", datePublished: post.publishedIso, dateModified: post.publishedIso };
 
   return <main className="article-page spanish-page"><LanguageSetter lang="es-ES" /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} /><BlogHeaderEs /><article>

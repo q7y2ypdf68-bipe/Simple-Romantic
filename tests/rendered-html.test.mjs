@@ -380,7 +380,7 @@ test("keeps SEO language pairs reciprocal and private analytics paths untracked"
     assert.match(source, /"es-ES"/);
   }
   const translations = await readFile(new URL("../app/blog/translations.ts", import.meta.url), "utf8");
-  assert.match(article, /articleAlternates\("pt"/);
+  assert.match(article, /articleAlternates(Db)?\("pt"/);
   assert.match(translations, /"pt-BR"/);
   assert.match(translations, /"es-ES"/);
   assert.match(tracker, /\/entre-nos\/resposta/);

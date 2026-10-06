@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { articleAlternates } from "../../blog/translations";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BlogFooter, BlogHeader } from "../BlogChrome";
-import { getPostBySlug, getVisiblePosts } from "../posts-db";
-import { blogPostsEs } from "../../es/blog/posts-es";
+import { articleAlternatesDb, getPostBySlug, getVisiblePosts } from "../posts-db";
 import { ShareButtons } from "../ShareButtons";
 import { serializeStructuredData } from "../../structured-data";
 
@@ -15,13 +13,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
-  const blogPosts = await getVisiblePosts();
-  const index = blogPosts.findIndex((item) => item.slug === post.slug);
-  const spanishPost = blogPostsEs[index];
   return {
     title: post.seoTitle || post.title,
     description: post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}`, languages: articleAlternates("pt", post.slug) },
+    alternates: { canonical: `/blog/${post.slug}`, languages: await articleAlternatesDb("pt", post.slug) },
     openGraph: {
       type: "article",
       locale: "pt_BR",

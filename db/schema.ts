@@ -85,6 +85,7 @@ export const blogPosts = sqliteTable("blog_posts", {
   status: text("status").notNull().default("published"),
   createdAt: text("created_at").notNull(),
   updatedAt: text("updated_at"),
+  translationOf: text("translation_of"), // slug do artigo em português que este texto traduz
 });
 
 export const blogImages = sqliteTable("blog_images", {

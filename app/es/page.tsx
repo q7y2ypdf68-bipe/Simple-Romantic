@@ -5,7 +5,7 @@ import { LanguageSetter } from "../components/LanguageSetter";
 import { IdeaFinder } from "../components/IdeaFinder";
 import { MobileMenu } from "../components/MobileMenu";
 import { ThemeToggle } from "../components/ThemeToggle";
-import { getVisibleBlogPostsEs } from "./blog/posts-es";
+import { getVisiblePostsLang } from "../blog/posts-db";
 
 export const dynamic = "force-dynamic";
 
@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   openGraph: { locale: "es_ES", url: "/es", title: "Simple & Romantic en español", description: "Ideas sencillas para cuidar la conexión y crear recuerdos bonitos en pareja.", images: [{ url: "/images/hero-park.webp", alt: "Pareja disfrutando de un pícnic en un parque" }] },
 };
 
-export default function SpanishHome() {
-  const posts = getVisibleBlogPostsEs().slice(0, 3);
+export default async function SpanishHome() {
+  const posts = (await getVisiblePostsLang("es")).slice(0, 3);
   const links = [{ href: "/es/#encontrar", label: "Encontrar una idea" }, { href: "/es/#lugares", label: "Lugares" }, { href: "/es/#como", label: "Cómo funciona" }, { href: "/es/guia", label: "Guía gratuita" }, { href: "/es/blog", label: "Blog" }, { href: "/es/tienda", label: "Tienda" }, { href: "/es/comunidad", label: "Comunidad" }, { href: "/es/entre-nos", label: "Entre nosotros" }];
   return <main className="spanish-page"><LanguageSetter lang="es-ES" />
     <header className="site-header"><Link className="brand" href="/es" aria-label="Simple & Romantic — inicio"><span className="brand-heart" aria-hidden="true">♥</span><span className="brand-name"><strong>simple</strong><i>& romantic</i><small>MOMENTOS SENCILLOS · RECUERDOS BONITOS</small></span></Link><nav aria-label="Navegación principal"><a href="#encontrar">Encontrar una idea</a><a href="#lugares">Lugares</a><a href="#como">Cómo funciona</a><Link href="/es/guia">Guía gratuita</Link><Link href="/es/blog">Blog</Link><Link href="/es/tienda">Tienda</Link><Link href="/es/comunidad">Comunidad</Link><Link href="/es/entre-nos">Entre nosotros</Link></nav><div className="header-actions"><ThemeToggle locale="es" /><div className="language" aria-label="Idioma"><Link className="language-mobile-switch" href="/" hrefLang="pt-BR">PT-BR</Link><span>/</span><Link className="language-mobile-switch" href="/en" hrefLang="en">EN</Link><span>/</span><strong>ES</strong></div><MobileMenu links={links} openLabel="Abrir menú" closeLabel="Cerrar menú" /></div></header>

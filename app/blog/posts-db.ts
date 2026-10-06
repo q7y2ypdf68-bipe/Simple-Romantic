@@ -1,6 +1,9 @@
 import { asc, desc, eq } from "drizzle-orm";
 import { blogPosts as staticPosts, type BlogPost, type BlogSection } from "./posts";
 import { lisbonToday } from "./post-format";
+import { articleTranslations, articleAlternates } from "./translations";
+import { blogPostsEs } from "../es/blog/posts-es";
+import { blogPostsEn } from "../en/blog/posts-en";
 
 type Row = typeof import("../../db/schema").blogPosts.$inferSelect;
 
@@ -24,6 +27,7 @@ export function rowToPost(row: Row): BlogPost {
     imageAlt: row.imageAlt,
     published: row.published,
     publishedIso: row.publishedIso || undefined,
+    translationOf: row.translationOf || undefined,
     readTime: row.readTime,
     intro: parseJson<string[]>(row.intro, []),
     sections: parseJson<BlogSection[]>(row.sections, []),
@@ -76,4 +80,47 @@ export async function getDbRowById(id: number): Promise<Row | undefined> {
   const [{ getDb }, { blogPosts }] = await Promise.all([import("../../db"), import("../../db/schema")]);
   const [row] = await getDb().select().from(blogPosts).where(eq(blogPosts.id, id)).limit(1);
   return row;
+}
+
+// ---------- Traduções (espanhol e inglês) ----------
+export type TranslationLang = "es" | "en";
+const staticByLang = { es: blogPostsEs, en: blogPostsEn } as const;
+
+/** Artigos traduzidos: os fixos no código + os salvos no banco (language "es" ou "en"). */
+export async function getVisiblePostsLang(lang: TranslationLang, now = new Date()): Promise<BlogPost[]> {
+  const today = lisbonToday(now);
+  const fixed = staticByLang[lang].filter((post) => !post.publishedIso || post.publishedIso <= today);
+  let live: BlogPost[] = [];
+  try {
+    const rows = await listAllDbRows();
+    const staticSlugs = new Set(staticByLang[lang].map((post) => post.slug));
+    live = rows
+      .filter((row) => row.language === lang && row.status === "published" && !staticSlugs.has(row.slug))
+      .filter((row) => !!row.publishedIso && row.publishedIso <= today)
+      .map(rowToPost);
+  } catch {
+    live = [];
+  }
+  return sortNewestFirst([...fixed, ...live]);
+}
+
+export async function getPostLang(lang: TranslationLang, slug: string, now = new Date()): Promise<BlogPost | undefined> {
+  return (await getVisiblePostsLang(lang, now)).find((post) => post.slug === slug);
+}
+
+/** hreflang de um artigo nos 3 idiomas, olhando os mapas fixos e o banco. */
+export async function articleAlternatesDb(lang: "pt" | TranslationLang, slug: string): Promise<Record<string, string>> {
+  let ptSlug: string | undefined = lang === "pt" ? slug : articleTranslations.find((row) => row[lang] === slug)?.pt;
+  let rows: Row[] = [];
+  try { rows = await listAllDbRows(); } catch { rows = []; }
+  if (!ptSlug) ptSlug = rows.find((row) => row.slug === slug)?.translationOf || undefined;
+  if (!ptSlug) return articleAlternates(lang, slug);
+  const fixed = articleTranslations.find((row) => row.pt === ptSlug);
+  const find = (l: TranslationLang) => fixed?.[l] ?? rows.find((row) => row.language === l && row.translationOf === ptSlug && row.status === "published")?.slug;
+  const out: Record<string, string> = { "pt-BR": `/blog/${ptSlug}` };
+  const es = find("es"), en = find("en");
+  if (es) out["es-ES"] = `/es/blog/${es}`;
+  if (en) out["en"] = `/en/blog/${en}`;
+  out["x-default"] = `/blog/${ptSlug}`;
+  return out;
 }

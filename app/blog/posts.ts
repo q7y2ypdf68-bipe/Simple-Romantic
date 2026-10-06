@@ -17,6 +17,7 @@ export type BlogPost = {
   published: string;
   publishedIso?: string;
   readTime: string;
+  translationOf?: string;
   intro: string[];
   sections: BlogSection[];
   series?: "CONSELHO DA SEMANA" | "IDEIAS E GUIAS" | "CONTOS";
