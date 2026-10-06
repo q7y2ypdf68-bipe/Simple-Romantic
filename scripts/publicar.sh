@@ -19,6 +19,7 @@ c.d1_databases = [{ binding: "DB", database_name: "site-creator-d1", database_id
 c.assets = { ...(c.assets || {}), binding: "ASSETS" };
 c.images = { binding: "IMAGES" };
 c.observability = { enabled: true, logs: { enabled: true } };
+c.routes = [{ pattern: "simpleandromantic.com", custom_domain: true }];   // mantém o domínio próprio ligado
 fs.writeFileSync(p, JSON.stringify(c));
 console.log("   banco:", c.d1_databases[0].database_id, "| imagens:", !!c.images, "| arquivos:", c.assets.binding);
 ' "$D1_ID"
