@@ -5,7 +5,7 @@ import { readFileSync } from "node:fs";
 import { basename, dirname, resolve } from "node:path";
 
 const [, , file, flag, urlArg] = process.argv;
-const base = flag === "--url" ? urlArg : "https://simple-and-romantic.simple-and-romantic.workers.dev";
+const base = flag === "--url" ? urlArg : "https://simpleandromantic.com";
 const token = process.env.IMPORT_TOKEN;
 if (!file || !token) { console.error("Uso: IMPORT_TOKEN=... node scripts/importar-post.mjs texto.json [--url URL]"); process.exit(2); }
 

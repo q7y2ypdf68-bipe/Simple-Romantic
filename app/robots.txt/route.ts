@@ -1,4 +1,4 @@
-const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
+const siteUrl = "https://simpleandromantic.com";
 
 export async function GET() {
   const body = [

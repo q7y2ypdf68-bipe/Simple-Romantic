@@ -1,6 +1,6 @@
 // Avisa Bing, Yandex etc. (IndexNow) das URLs do sitemap. Uso: node scripts/indexnow.mjs [--url URL ...]
 // O Google não participa do IndexNow; para ele vale o sitemap + Inspeção de URL.
-const SITE = "https://simple-and-romantic.simple-and-romantic.workers.dev";
+const SITE = "https://simpleandromantic.com";
 const KEY = "16b0bd6d58f766d40e4431401dab07d2";
 const extra = process.argv.slice(2).filter((a) => a.startsWith("http"));
 const xml = await (await fetch(SITE + "/sitemap.xml")).text();

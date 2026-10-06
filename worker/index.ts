@@ -42,6 +42,11 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    // Endereço antigo (workers.dev) → domínio próprio, preservando caminho e parâmetros.
+    if (url.hostname.endsWith(".workers.dev")) {
+      return Response.redirect(`https://simpleandromantic.com${url.pathname}${url.search}`, 301);
+    }
+
     if (url.pathname === "/_vinext/image") {
       // The supervised development preview does not expose the production
       // image bindings. In that environment, serve only same-origin public

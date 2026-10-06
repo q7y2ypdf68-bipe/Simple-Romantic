@@ -4,7 +4,7 @@ import { AnalyticsConsent } from "./components/AnalyticsConsent";
 import { AnalyticsTracker } from "./components/AnalyticsTracker";
 import { serializeStructuredData } from "./structured-data";
 
-const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
+const siteUrl = "https://simpleandromantic.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

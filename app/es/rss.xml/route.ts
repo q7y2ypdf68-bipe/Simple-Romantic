@@ -1,6 +1,6 @@
 import { getVisibleBlogPostsEs } from "../blog/posts-es";
 
-const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
+const siteUrl = "https://simpleandromantic.com";
 function escapeXml(value: string) { return value.replace(/[<>&'\"]/g, (character) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", "\"": "&quot;" })[character] || character); }
 
 export async function GET() {

@@ -12,7 +12,7 @@ type BrevoNotification = {
   html: string;
 };
 
-const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
+const siteUrl = "https://simpleandromantic.com";
 
 /**
  * Keeps the mailing provider behind a server-only boundary. The API key is

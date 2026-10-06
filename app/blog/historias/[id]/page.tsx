@@ -37,7 +37,7 @@ export default async function CommunityStoryPage({ params }: { params: Promise<{
 
   const author = story.anonymous ? "História publicada anonimamente" : story.authorName || "Leitor(a) da comunidade";
   const category = story.kind === "idea" ? "IDEIA DA COMUNIDADE" : story.kind === "surprise" ? "SURPRESA DA COMUNIDADE" : "HISTÓRIA DA COMUNIDADE";
-  const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
+  const siteUrl = "https://simpleandromantic.com";
   const path = `/blog/historias/${story.id}`;
   const structuredData = {
     "@context": "https://schema.org",

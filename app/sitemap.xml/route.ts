@@ -1,7 +1,7 @@
 import { getVisiblePosts } from "../blog/posts-db";
 import { getVisibleBlogPostsEs } from "../es/blog/posts-es";
 
-const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
+const siteUrl = "https://simpleandromantic.com";
 const staticPages = [
   { path: "", frequency: "weekly", priority: "1.0" },
   { path: "/blog", frequency: "weekly", priority: "0.9" },

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export function ShareButtons({ title, path, locale = "pt" }: { title: string; path: string; locale?: "pt" | "es" }) {
   const [copied, setCopied] = useState(false);
-  const siteUrl = "https://simple-and-romantic.simple-and-romantic.workers.dev";
+  const siteUrl = "https://simpleandromantic.com";
   const url = `${siteUrl}${path}`;
   const encodedUrl = encodeURIComponent(url);
   const encodedText = encodeURIComponent(`${title} — Simple & Romantic`);
