@@ -1,0 +1,36 @@
+{
+ "carrosseis": {
+  "pedir": {"titulo": "Como pedir o que você sente falta, <em>sem virar cobrança</em>", "slides": [
+   {"k":"A DIFERENÇA","t":"Cobrar olha para trás.","s":"Pedir convida a pessoa a olhar para a frente."},
+   {"k":"1","t":"Comece pelo que você sente","s":"\"Tenho sentido falta de…\" em vez de \"Você nunca…\"."},
+   {"k":"2","t":"Peça uma coisa só","s":"Pequena e concreta: um jantar a dois, abraços mais demorados."},
+   {"k":"3","t":"Convide, não imponha","s":"\"Você toparia tentar?\" abre mais portas do que uma exigência."},
+   {"k":"4","t":"Escute também","s":"Pergunte o que o outro sente falta e ouça até o fim, sem rebater."}],
+   "cta": {"t":"Desafio da semana","s":"Cada um diz, em voz alta, uma única coisa que sente falta."}},
+  "gestos": {"titulo": "Esfriou? <em>7 pequenos gestos</em> para reacender a chama", "slides": [
+   {"k":"DIA 1 E 2","t":"O olhar e o elogio","s":"Dez segundos olhando de verdade. Um elogio sincero e específico."},
+   {"k":"DIA 3 E 4","t":"O toque e o bilhete","s":"Um abraço longo sem pedir nada. Uma mensagem escondida na carteira."},
+   {"k":"DIA 5 E 6","t":"Arrumar-se e noite sem tela","s":"Algo em que se sintam bem. Música baixa, luz suave, conversa."},
+   {"k":"DIA 7","t":"A pergunta","s":"\"O que você gostaria que a gente fizesse mais?\" E escutar sem se defender."}],
+   "cta": {"t":"Sem pressão, sem meta","s":"Se um gesto não combinar com vocês, troquem por outro."}},
+  "ousadia": {"titulo": "Ousadia <em>sem vergonha</em>: surpreender quem você ama", "slides": [
+   {"k":"PRIMEIRO","t":"Comece pelo que a pessoa gosta","s":"A surpresa certa nasce da atenção, não da moda."},
+   {"k":"IDEIA 1","t":"Um detalhe diferente","s":"Uma cor nova, um tecido macio, algo que ela ou ele já elogiou."},
+   {"k":"IDEIA 2","t":"Um bilhete-convite","s":"\"Sexta, 21h, reservado para nós dois.\""},
+   {"k":"IDEIA 3","t":"Presentes mais íntimos?","s":"Conversem antes e escolham juntos. Sem surpresa forçada."},
+   {"k":"SE NÃO GOSTAR","t":"Agradeça a franqueza","s":"Quem se sente respeitado se arrisca mais da próxima vez."}],
+   "cta": {"t":"Surpresa boa não precisa ser cara","s":"O gesto vale mais do que a peça."}},
+  "relaxar": {"titulo": "<em>Relaxar</em> vem primeiro: luz baixa, massagem e sem pressa", "slides": [
+   {"k":"1","t":"O ambiente conta","s":"Luz baixa, ambiente morno, música suave e celulares longe."},
+   {"k":"2","t":"Dez minutos de massagem","s":"Um para cada. Teste o óleo no braço antes."},
+   {"k":"3","t":"Conversem baixinho","s":"\"Gostei disso\" ajuda mais do que \"não faça aquilo\"."},
+   {"k":"4","t":"Sem obrigação","s":"A noite não precisa terminar de nenhum jeito. Carinho já é um bom resultado."}],
+   "cta": {"t":"Desafio da semana","s":"Marquem uma noite só para relaxar a dois."}}
+ },
+ "pins": {
+  "pt": {"pedir": ["Como pedir o que você sente falta, sem virar cobrança", "Uma fórmula simples em 4 passos"], "gestos": ["Esfriou? 7 pequenos gestos para reacender a chama", "Um gesto por dia, durante uma semana"], "relaxar": ["Relaxar vem primeiro: luz baixa, massagem e sem pressa", "Roteiro de uma noite a dois"]},
+  "es": {"pedir": ["Cómo pedir lo que echas de menos, sin que parezca un reproche", "Una fórmula sencilla en 4 pasos"], "gestos": ["¿Se ha enfriado? 7 pequeños gestos para reavivar la llama", "Un gesto al día durante una semana"], "relaxar": ["Relajarse primero: luz tenue, masaje y sin prisa", "Guion de una noche para dos"]},
+  "en": {"pedir": ["How to ask for what you miss, without it sounding like a complaint", "A simple 4-step formula"], "gestos": ["Gone cold? 7 small gestures to rekindle the spark", "One gesture a day for a week"], "relaxar": ["Relaxing comes first: low light, massage and no rush", "A slow evening for two"]}
+ },
+ "cta": {"pt": "Link na bio →", "es": "Enlace en la bio →", "en": "Link in bio →"}
+}
