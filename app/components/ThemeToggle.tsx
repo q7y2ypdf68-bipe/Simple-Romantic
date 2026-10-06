@@ -11,16 +11,7 @@ export function ThemeToggle({ locale = "pt" }: { locale?: "pt" | "es" | "en" }) 
     const current = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
     const frame = window.requestAnimationFrame(() => setTheme(current));
 
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
-    const followSystem = (event: MediaQueryListEvent) => {
-      if (window.localStorage.getItem("simple-romantic-theme")) return;
-      const next = event.matches ? "dark" : "light";
-      document.documentElement.dataset.theme = next;
-      document.documentElement.style.colorScheme = next;
-      setTheme(next);
-    };
-    media.addEventListener("change", followSystem);
-    return () => { window.cancelAnimationFrame(frame); media.removeEventListener("change", followSystem); };
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   function toggleTheme() {
