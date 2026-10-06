@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     const email = clean(payload.email, 160).toLowerCase();
     const subject = clean(payload.subject, 120);
     const message = clean(payload.message, 2000);
-    const language = clean(payload.language, 10) === "es-ES" ? "es-ES" : "pt-BR";
+    const language = (() => { const value = clean(payload.language, 10); return value === "es-ES" ? "es-ES" : value === "en" || value === "en-US" ? "en" : "pt-BR"; })();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || subject.length < 4 || message.length < 20) {
       return NextResponse.json({ error: "Confira os campos antes de enviar." }, { status: 400 });
     }

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
-export function ThemeToggle({ locale = "pt" }: { locale?: "pt" | "es" }) {
+export function ThemeToggle({ locale = "pt" }: { locale?: "pt" | "es" | "en" }) {
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
@@ -33,7 +33,9 @@ export function ThemeToggle({ locale = "pt" }: { locale?: "pt" | "es" }) {
 
   const label = locale === "es"
     ? theme === "dark" ? "Activar modo claro" : "Activar modo oscuro"
-    : theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro";
+    : locale === "en"
+      ? theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+      : theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro";
 
   return <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={label} title={label}>
     <span aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>

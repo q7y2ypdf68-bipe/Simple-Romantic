@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     const need = clean(payload.need, 20);
     const message = clean(payload.message, 5000);
     const publicationConsent = payload.publicationConsent === true;
-    const language = clean(payload.language, 10) === "es-ES" ? "es-ES" : "pt-BR";
+    const language = (() => { const value = clean(payload.language, 10); return value === "es-ES" ? "es-ES" : value === "en" || value === "en-US" ? "en" : "pt-BR"; })();
     const adult = payload.adult === true;
     const consent = payload.consent === true;
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPageEs } from "../legal/LegalPageEs";
 
-export const metadata: Metadata = { title: "Normas de la comunidad", description: "Normas para compartir historias e ideas con respeto y seguridad.", alternates: { canonical: "/es/normas-de-la-comunidad", languages: { "pt-BR": "/regras-da-comunidade", "es-ES": "/es/normas-de-la-comunidad" } } };
+export const metadata: Metadata = { title: "Normas de la comunidad", description: "Normas para compartir historias e ideas con respeto y seguridad.", alternates: { canonical: "/es/normas-de-la-comunidad", languages: { "pt-BR": "/regras-da-comunidade", "es-ES": "/es/normas-de-la-comunidad", en: "/en/community-guidelines" } } };
 
 export default function CommunityRulesPageEs() {
   return <LegalPageEs kicker="HISTORIAS QUE ACERCAN" title="Normas de la comunidad" intro="Queremos historias verdaderas, útiles y acogedoras. Estas normas protegen a quien comparte y a quien lee.">

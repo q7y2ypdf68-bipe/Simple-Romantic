@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     const content = clean(payload.content, 3000);
     const location = clean(payload.location, 120);
     const anonymous = payload.anonymous === true;
-    const language = clean(payload.language, 10) === "es-ES" ? "es-ES" : "pt-BR";
+    const language = (() => { const value = clean(payload.language, 10); return value === "es-ES" ? "es-ES" : value === "en" || value === "en-US" ? "en" : "pt-BR"; })();
     const consent = payload.consent === true;
 
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

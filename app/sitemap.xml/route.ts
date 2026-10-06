@@ -1,5 +1,6 @@
 import { getVisiblePosts } from "../blog/posts-db";
 import { getVisibleBlogPostsEs } from "../es/blog/posts-es";
+import { getVisibleBlogPostsEn } from "../en/blog/posts-en";
 
 const siteUrl = "https://simpleandromantic.com";
 const staticPages = [
@@ -22,6 +23,16 @@ const staticPages = [
   { path: "/es/privacidad", frequency: "yearly", priority: "0.2" },
   { path: "/es/terminos", frequency: "yearly", priority: "0.2" },
   { path: "/es/normas-de-la-comunidad", frequency: "yearly", priority: "0.3" },
+  { path: "/en", frequency: "weekly", priority: "0.9" },
+  { path: "/en/blog", frequency: "weekly", priority: "0.9" },
+  { path: "/en/shop", frequency: "monthly", priority: "0.6" },
+  { path: "/en/guide", frequency: "monthly", priority: "0.9" },
+  { path: "/en/community", frequency: "monthly", priority: "0.6" },
+  { path: "/en/between-us", frequency: "weekly", priority: "0.9" },
+  { path: "/en/contact", frequency: "yearly", priority: "0.4" },
+  { path: "/en/privacy", frequency: "yearly", priority: "0.2" },
+  { path: "/en/terms", frequency: "yearly", priority: "0.2" },
+  { path: "/en/community-guidelines", frequency: "yearly", priority: "0.3" },
 ];
 
 function escapeXml(value: string) {
@@ -37,6 +48,7 @@ function escapeXml(value: string) {
 export async function GET() {
   const blogPosts = await getVisiblePosts();
   const blogPostsEs = getVisibleBlogPostsEs();
+  const blogPostsEn = getVisibleBlogPostsEn();
   const pages = [
     ...staticPages.map((page) => ({
       url: `${siteUrl}${page.path}`,
@@ -46,6 +58,13 @@ export async function GET() {
     })),
     ...blogPosts.map((post) => ({
       url: `${siteUrl}/blog/${post.slug}`,
+      lastModified: post.publishedIso,
+      frequency: "monthly",
+      priority: "0.8",
+      image: `${siteUrl}${post.image}`,
+    })),
+    ...blogPostsEn.map((post) => ({
+      url: `${siteUrl}/en/blog/${post.slug}`,
       lastModified: post.publishedIso,
       frequency: "monthly",
       priority: "0.8",

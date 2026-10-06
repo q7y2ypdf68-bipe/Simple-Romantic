@@ -6,7 +6,7 @@ import { serializeStructuredData } from "../structured-data";
 export const metadata: Metadata = {
   title: "Loja em preparação — Simple & Romantic",
   description: "A futura curadoria Simple & Romantic reunirá itens para piqueniques, experiências a dois, presentes e intimidade adulta, com transparência.",
-  alternates: { canonical: "/loja", languages: { "pt-BR": "/loja", "es-ES": "/es/tienda", "x-default": "/loja" } },
+  alternates: { canonical: "/loja", languages: { "pt-BR": "/loja", "es-ES": "/es/tienda", en: "/en/shop", "x-default": "/loja" } },
   openGraph: { locale: "pt_BR", url: "/loja", title: "Loja em preparação — Simple & Romantic", description: "Uma curadoria cuidadosa para criar momentos a dois. Ainda não há vendas nem encomendas abertas.", images: [{ url: "/images/hero-park.webp", alt: "Casal durante um piquenique num parque" }] },
 };
 

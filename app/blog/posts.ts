@@ -21,7 +21,7 @@ export type BlogPost = {
   sections: BlogSection[];
   series?: "CONSELHO DA SEMANA" | "IDEIAS E GUIAS" | "CONTOS";
   contentNotice?: {
-    label: "CONTO FICTÍCIO" | "INSPIRADO EM FATOS" | "HISTÓRIA REAL" | "CUENTO FICTICIO" | "INSPIRADO EN HECHOS" | "HISTORIA REAL";
+    label: "CONTO FICTÍCIO" | "INSPIRADO EM FATOS" | "HISTÓRIA REAL" | "CUENTO FICTICIO" | "INSPIRADO EN HECHOS" | "HISTORIA REAL" | "FICTIONAL STORY" | "BASED ON TRUE EVENTS" | "TRUE STORY";
     text: string;
   };
 };

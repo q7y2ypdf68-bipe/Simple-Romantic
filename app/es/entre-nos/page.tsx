@@ -4,7 +4,7 @@ import { LanguageSetter } from "../../components/LanguageSetter";
 import { BlogFooterEs, BlogHeaderEs } from "../blog/BlogChromeEs";
 import { ListeningFormEs } from "./ListeningFormEs";
 
-export const metadata: Metadata = { title: "Entre nosotros — un espacio para ser escuchado", description: "Un espacio privado de escucha y apoyo para personas adultas que necesitan poner en palabras lo que sienten.", alternates: { canonical: "/es/entre-nos", languages: { "pt-BR": "/entre-nos", "es-ES": "/es/entre-nos" } } };
+export const metadata: Metadata = { title: "Entre nosotros — un espacio para ser escuchado", description: "Un espacio privado de escucha y apoyo para personas adultas que necesitan poner en palabras lo que sienten.", alternates: { canonical: "/es/entre-nos", languages: { "pt-BR": "/entre-nos", "es-ES": "/es/entre-nos", en: "/en/between-us" } } };
 
 export default function ListeningPageEs() {
   return <main className="listening-page"><LanguageSetter lang="es-ES" /><BlogHeaderEs />

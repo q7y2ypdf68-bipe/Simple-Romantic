@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LegalPageEs } from "../legal/LegalPageEs";
 
-export const metadata: Metadata = { title: "Política de privacidad", description: "Cómo trata Simple & Romantic los datos personales, las aportaciones y los mensajes.", alternates: { canonical: "/es/privacidad", languages: { "pt-BR": "/privacidade", "es-ES": "/es/privacidad" } } };
+export const metadata: Metadata = { title: "Política de privacidad", description: "Cómo trata Simple & Romantic los datos personales, las aportaciones y los mensajes.", alternates: { canonical: "/es/privacidad", languages: { "pt-BR": "/privacidade", "es-ES": "/es/privacidad", en: "/en/privacy" } } };
 
 export default function PrivacyPageEs() {
   return <LegalPageEs kicker="TRANSPARENCIA Y CUIDADO" title="Política de privacidad" intro="Esta política explica, con un lenguaje sencillo, qué datos utilizamos y por qué. Última actualización: 23 de agosto de 2026.">

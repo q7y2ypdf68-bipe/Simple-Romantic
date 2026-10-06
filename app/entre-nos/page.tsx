@@ -6,7 +6,7 @@ import { ListeningForm } from "./ListeningForm";
 export const metadata: Metadata = {
   title: "Entre nós — um espaço para ser ouvido",
   description: "Um espaço privado de escuta e acolhimento para adultos que precisam colocar em palavras o que estão sentindo.",
-  alternates: { canonical: "/entre-nos", languages: { "pt-BR": "/entre-nos", "es-ES": "/es/entre-nos", "x-default": "/entre-nos" } },
+  alternates: { canonical: "/entre-nos", languages: { "pt-BR": "/entre-nos", "es-ES": "/es/entre-nos", en: "/en/between-us", "x-default": "/entre-nos" } },
 };
 
 export default function ListeningPage() {

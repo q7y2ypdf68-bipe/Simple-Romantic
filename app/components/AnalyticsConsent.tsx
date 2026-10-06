@@ -32,8 +32,15 @@ function getGtag(): GtagFunction | null {
   return typeof candidate === "function" ? candidate : null;
 }
 
+const BANNER = {
+  pt: { kicker: "PRIVACIDADE", title: "Podemos entender melhor as visitas?", text: "Usamos o Google Analytics para compreender as visitas e melhorar o conteúdo. Você escolhe se aceita.", accept: "Aceitar Analytics", decline: "Recusar" },
+  es: { kicker: "PRIVACIDAD", title: "¿Podemos entender mejor las visitas?", text: "Usamos Google Analytics para comprender las visitas y mejorar el contenido. Tú decides si aceptas.", accept: "Aceptar Analytics", decline: "Rechazar" },
+  en: { kicker: "PRIVACY", title: "May we better understand our visits?", text: "We use Google Analytics to understand visits and improve our content. You choose whether to accept.", accept: "Accept Analytics", decline: "Decline" },
+};
+
 export function AnalyticsConsent() {
   const pathname = usePathname();
+  const bannerCopy = BANNER[pathname === "/es" || pathname?.startsWith("/es/") ? "es" : pathname === "/en" || pathname?.startsWith("/en/") ? "en" : "pt"];
   const [consent, setConsent] = useState<ConsentState | null>(null);
   const [hasMounted, setHasMounted] = useState(false);
   const [scriptReady, setScriptReady] = useState(false);
@@ -122,18 +129,18 @@ export function AnalyticsConsent() {
           aria-describedby="analytics-consent-description"
         >
           <div className="analytics-consent-copy">
-            <p className="eyebrow">PRIVACIDADE</p>
-            <h2 id="analytics-consent-title">Podemos entender melhor as visitas?</h2>
+            <p className="eyebrow">{bannerCopy.kicker}</p>
+            <h2 id="analytics-consent-title">{bannerCopy.title}</h2>
             <p id="analytics-consent-description">
-              Usamos o Google Analytics para compreender as visitas e melhorar o conteúdo. Você escolhe se aceita.
+              {bannerCopy.text}
             </p>
           </div>
           <div className="analytics-consent-actions">
             <button className="analytics-consent-button analytics-consent-accept" type="button" onClick={() => chooseConsent("granted")}>
-              Aceitar Analytics
+              {bannerCopy.accept}
             </button>
             <button className="analytics-consent-button analytics-consent-decline" type="button" onClick={() => chooseConsent("denied")}>
-              Recusar
+              {bannerCopy.decline}
             </button>
           </div>
         </aside>

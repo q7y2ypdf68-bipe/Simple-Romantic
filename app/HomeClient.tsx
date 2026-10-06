@@ -256,7 +256,7 @@ export default function Home({ blogPosts }: { blogPosts: BlogPost[] }) {
           <div className="language" aria-label="Idioma">
             <button aria-pressed={language === "pt"} className={language === "pt" ? "active" : ""} onClick={() => setLanguage("pt")}>PT-BR</button>
             <span>/</span>
-            <button aria-pressed={language === "en"} className={language === "en" ? "active" : ""} onClick={() => setLanguage("en")}>EN</button>
+            <Link className="language-mobile-switch" href="/en" hrefLang="en">EN</Link>
             <span>/</span>
             <Link className="language-mobile-switch" href="/es" hrefLang="es-ES">ES</Link>
           </div>

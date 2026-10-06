@@ -69,10 +69,11 @@ const worker = {
     }
 
     const response = await handler.fetch(request, env, ctx);
-    if ((url.pathname === "/es" || url.pathname.startsWith("/es/")) && response.headers.get("content-type")?.includes("text/html")) {
+    const htmlLang = url.pathname === "/es" || url.pathname.startsWith("/es/") ? "es-ES" : url.pathname === "/en" || url.pathname.startsWith("/en/") ? "en" : null;
+    if (htmlLang && response.headers.get("content-type")?.includes("text/html")) {
       const headers = new Headers(response.headers);
       headers.delete("content-length");
-      const html = (await response.text()).replace('<html lang="pt-BR"', '<html lang="es-ES"');
+      const html = (await response.text()).replace('<html lang="pt-BR"', `<html lang="${htmlLang}"`);
       return withDefensiveSecurityHeaders(new Response(html, { status: response.status, statusText: response.statusText, headers }));
     }
     return withDefensiveSecurityHeaders(response);

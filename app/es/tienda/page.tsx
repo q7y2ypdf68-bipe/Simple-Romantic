@@ -7,7 +7,7 @@ import { BlogFooterEs, BlogHeaderEs } from "../blog/BlogChromeEs";
 export const metadata: Metadata = {
   title: "Tienda en preparación — Simple & Romantic",
   description: "La futura selección de Simple & Romantic reunirá artículos para pícnics, experiencias en pareja, regalos e intimidad adulta, con transparencia.",
-  alternates: { canonical: "/es/tienda", languages: { "pt-BR": "/loja", "es-ES": "/es/tienda", "x-default": "/loja" } },
+  alternates: { canonical: "/es/tienda", languages: { "pt-BR": "/loja", "es-ES": "/es/tienda", en: "/en/shop", "x-default": "/loja" } },
   openGraph: { locale: "es_ES", url: "/es/tienda", title: "Tienda en preparación — Simple & Romantic", description: "Una selección cuidada para crear momentos en pareja. Todavía no hay ventas ni pedidos abiertos.", images: [{ url: "/images/hero-park.webp", alt: "Pareja durante un pícnic en un parque" }] },
 };
 
