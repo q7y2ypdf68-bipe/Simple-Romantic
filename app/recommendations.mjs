@@ -2,6 +2,8 @@ import familyAuthority from "../../../SR_MOTOR_IDEIAS_V2_AUTHORITY/families.json
 import gestureAuthority from "../../../SR_MOTOR_IDEIAS_V2_AUTHORITY/gestures.json" with { type: "json" };
 import variantAuthority from "../../../SR_MOTOR_IDEIAS_V2_AUTHORITY/execution-variants.json" with { type: "json" };
 
+import { editorialText } from "./ideias-textos.mjs";
+
 export const environments = ["home", "outdoors", "go-out", "any"];
 export const budgets = ["free", "low", "more"];
 export const durations = ["hour", "afternoon", "day"];
@@ -89,17 +91,18 @@ function compareCandidates(left, right, answers, history) {
 function render(candidate, variantById) {
   const { variant, family } = candidate;
   const planBVariant = variant.planBEligible ? variantById.get(variant.planBVariantId) : undefined;
+  const text = editorialText(variant);
   return {
     id: variant.id,
     familyId: family.id,
-    title: variant.title,
-    whyItFits: variant.whyItFits,
-    howTo: variant.howTo,
-    smallDetail: variant.smallDetail,
+    title: text?.title ?? variant.title,
+    whyItFits: text?.whyItFits ?? variant.whyItFits,
+    howTo: text?.howTo ?? variant.howTo,
+    smallDetail: text?.smallDetail ?? variant.smallDetail,
     cost: `C${variant.costBand}`,
     duration: variant.durationLabel,
-    surprise: variant.surprise,
-    planB: planBVariant ? { id: planBVariant.id, title: planBVariant.title } : undefined,
+    surprise: text?.surprise ?? variant.surprise,
+    planB: planBVariant ? { id: planBVariant.id, title: text?.planB ?? planBVariant.title } : undefined,
     confirmBefore: variant.availability === "required-unverified" || variant.climate === "required-unverified",
     requirements: variant.requirements,
     badges: [`C${variant.costBand}`, variant.durationLabel, variant.environment],
