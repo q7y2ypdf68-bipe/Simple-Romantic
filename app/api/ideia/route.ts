@@ -18,6 +18,24 @@ const MODELS = ["@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/meta/llama-3.1-
 type AiBinding = { run: (model: string, input: Record<string, unknown>) => Promise<unknown> };
 type Answers = { environment: string; budget: string; duration: string; occasion: string };
 
+
+// Temas sorteados a cada criação: garantem variedade de verdade (a IA sozinha tende a repetir piquenique/cinema).
+const THEMES: Record<Lang, Record<string, string[]>> = {
+  pt: {
+    home: ["cozinhar juntos um prato que nenhum dos dois nunca fez", "noite de jogos com um torneio e prêmio bobo", "spa caseiro com massagem, música e luz baixa", "cartas e memórias: reler mensagens antigas e fotos", "karaokê ou baile na sala", "arte a dois: pintar, desenhar o retrato um do outro ou montar um mural", "degustação às cegas de comidas ou chás", "noite de estrelas na janela ou varanda com histórias", "faxina divertida e reorganizar um canto da casa juntos como projeto", "cápsula do tempo: escrever cartas para abrir daqui a um ano", "aula improvisada: um ensina ao outro algo que sabe", "cabana de cobertores com leitura em voz alta"],
+    outdoors: ["caminhada com um objetivo (mirante, nascer ou pôr do sol)", "fotografar a cidade como turistas", "caça ao tesouro criada por um dos dois", "andar de bicicleta ou patins por um trajeto novo", "observar estrelas ou o céu com um app gratuito", "jogos de rua: frisbee, bola, badminton, corrida de brincadeira", "explorar um bairro ou uma praia que nunca visitaram", "desenhar ou escrever sentados num lugar bonito", "piquenique simples (só se combinar bem com o tempo)", "feira ou mercado ao ar livre para escolher ingredientes"],
+    "go-out": ["bairro novo: caminhar sem pressa e escolher lugares por impulso", "museu, galeria ou exposição (grátis se possível)", "café ou padaria do bairro com um desafio de conversa", "mercado ou feira para escolher ingredientes e depois cozinhar", "mirante ou jardim da cidade", "livraria ou sebo: cada um escolhe um livro para o outro", "tour de petiscos baratos em vários lugares", "cinema ou teatro de bairro, ou sessão ao ar livre", "aula aberta, oficina ou evento gratuito da cidade", "passeio de transporte público até um ponto desconhecido"],
+    any: ["uma mistura de casa e rua com um desafio divertido", "dia de primeiras vezes: fazer algo que nenhum dos dois nunca fez", "homenagem ao primeiro encontro de vocês", "projeto a dois que sobra como lembrança", "caça a pequenas tradições do casal"],
+  },
+  en: {
+    home: ["cook a dish neither of you has made", "game night tournament with a silly prize", "home spa with massage, music and low light", "letters and memories: reread old messages and photos", "karaoke or dance night in the living room", "make art together: paint, draw each other or build a collage", "blind tasting of foods or teas", "stargazing from the window or balcony with stories", "tackle a small home project together", "time capsule: write letters to open in a year", "improvised class: each teaches the other something", "blanket fort with reading aloud"],
+    outdoors: ["a walk with a goal (viewpoint, sunrise or sunset)", "photograph your city like tourists", "a treasure hunt made by one of you", "bike or skate a new route", "stargaze with a free app", "street games: frisbee, ball, badminton", "explore a neighborhood or beach you never visited", "sit somewhere beautiful and draw or write", "a simple picnic (only if it suits the weather)", "an open-air market to choose ingredients"],
+    "go-out": ["a new neighborhood: wander and choose places on impulse", "a museum, gallery or exhibition (free if possible)", "a local cafe or bakery with a conversation challenge", "a market to pick ingredients, then cook", "a viewpoint or city garden", "a bookstore: each picks a book for the other", "a cheap snack crawl across several places", "a neighborhood cinema, theater or open-air screening", "a free open class, workshop or city event", "a public-transport trip to somewhere unknown"],
+    any: ["a mix of home and town with a fun challenge", "a day of firsts: something neither has done", "a tribute to your first date", "a project for two that leaves a keepsake", "build a small couple tradition"],
+  },
+};
+const pick = <T,>(list: T[]) => list[Math.floor(Math.random() * list.length)];
+
 let ready = false;
 async function ensureTables() {
   if (ready) return;
@@ -44,7 +62,7 @@ async function bump(who: string, day: string) {
   await env.DB.prepare("INSERT INTO ai_usage (day, who, n) VALUES (?, ?, 1) ON CONFLICT(day, who) DO UPDATE SET n = n + 1").bind(day, who).run();
 }
 
-function prompt(a: Answers, lang: Lang, avoid: string[]) {
+function prompt(a: Answers, lang: Lang, avoid: string[], theme: string) {
   const pt = lang === "pt";
   const env_ = { home: pt ? "em casa" : "at home", outdoors: pt ? "ao ar livre" : "outdoors", "go-out": pt ? "saindo de casa, na cidade" : "going out in town", any: pt ? "em qualquer lugar" : "anywhere" }[a.environment];
   const cost = { free: pt ? "ZERO reais/euros: usar só o que já existe em casa ou lugares gratuitos" : "ZERO money: only things already at home or free places", low: pt ? "baixo custo: até cerca de 15 euros no total para o casal" : "low cost: up to about 15 euros total for the couple", more: pt ? "um pouco mais: até cerca de 60 euros no total, sem luxo" : "a bit more: up to about 60 euros total, no luxury" }[a.budget];
@@ -53,14 +71,16 @@ function prompt(a: Answers, lang: Lang, avoid: string[]) {
   if (pt) {
     return `Você cria UMA ideia de encontro para um casal, em português do Brasil, simples e realista, para uma marca chamada Simple & Romantic (romance acessível, momentos simples, pouco dinheiro).
 Filtros do casal: lugar: ${env_}. Orçamento: ${cost}. Tempo: ${time}. Clima: ${occ}.
-Regras: respeite o orçamento e o tempo à risca; nada perigoso, ilegal, que dependa de álcool, de carro alugado, de reservas difíceis ou de invadir lugares; nada que exija comprar coisas caras; passos concretos e curtos; tom caloroso, sem exageros.${avoid.length ? ` NÃO repita estas ideias: ${avoid.join("; ")}.` : ""}
+TEMA desta ideia (siga-o): ${theme}.
+Regras: respeite o orçamento e o tempo à risca; nada perigoso, ilegal, que dependa de álcool, de carro alugado, de reservas difíceis ou de invadir lugares; nada que exija comprar coisas caras; passos concretos e curtos; tom caloroso, sem exageros. O LUGAR é obrigatório: se for "saindo de casa", todos os passos acontecem fora de casa, a partir do primeiro; se for "ao ar livre", ao ar livre; se for "em casa", dentro de casa. Se o orçamento for "um pouco mais", inclua pelo menos um gasto concreto e pequeno que faça diferença (ex.: um prato especial, ingresso, flores, um café bom). Se for ZERO, não gaste nada. NUNCA escreva horários numéricos (como "das 6 às 10"); descreva o ritmo com palavras (manhã, meio do dia, fim de tarde, noite). Não use piquenique nem parque se o tema não pedir. O plano B precisa ser específico e coerente com a ideia, em uma frase.${avoid.length ? ` NÃO repita estas ideias: ${avoid.join("; ")}.` : ""}
 Responda SOMENTE com JSON válido, sem texto antes ou depois, neste formato exato:
 {"title":"título curto e atraente","whyItFits":"1 ou 2 frases dizendo por que combina com os filtros","howTo":["passo 1","passo 2","passo 3","passo 4","passo 5"],"smallDetail":"um detalhe pequeno que faz a diferença","surprise":"só se o clima for surpresa: o que a pessoa prepara em segredo; senão vazio","planB":"uma alternativa curta se chover ou der errado"}
 "howTo" deve ter de 4 a 7 passos.`;
   }
   return `You create ONE date idea for a couple, in English, simple and realistic, for a brand called Simple & Romantic (accessible romance, simple moments, little money).
 Couple's filters: place: ${env_}. Budget: ${cost}. Time: ${time}. Mood: ${occ}.
-Rules: respect the budget and time strictly; nothing dangerous, illegal, alcohol-dependent, needing a rental car, hard reservations or trespassing; nothing requiring expensive purchases; concrete short steps; warm tone, no exaggeration.${avoid.length ? ` DO NOT repeat these ideas: ${avoid.join("; ")}.` : ""}
+THEME of this idea (follow it): ${theme}.
+Rules: respect the budget and time strictly; nothing dangerous, illegal, alcohol-dependent, needing a rental car, hard reservations or trespassing; nothing requiring expensive purchases; concrete short steps; warm tone, no exaggeration. The PLACE is mandatory: if "going out in town", every step including the first happens out of the house; if "outdoors", outdoors; if "at home", indoors. If the budget is "a bit more", include at least one small concrete spend that makes a difference (a special dish, a ticket, flowers, a good coffee). If ZERO, spend nothing. NEVER write clock times (like "6 to 10"); describe pace with words (morning, midday, late afternoon, evening). Do not use picnic or park unless the theme asks for it. Plan B must be specific and consistent with the idea, in one sentence.${avoid.length ? ` DO NOT repeat these ideas: ${avoid.join("; ")}.` : ""}
 Reply ONLY with valid JSON, no text before or after, in this exact format:
 {"title":"short appealing title","whyItFits":"1 or 2 sentences on why it fits the filters","howTo":["step 1","step 2","step 3","step 4","step 5"],"smallDetail":"one small detail that makes the difference","surprise":"only if mood is surprise: what the person secretly prepares; otherwise empty","planB":"a short alternative if it rains or goes wrong"}
 "howTo" must have 4 to 7 steps.`;
@@ -96,11 +116,13 @@ function validate(obj: Record<string, unknown> | null): Omit<IdeaResult, "id" | 
 }
 
 async function generate(a: Answers, lang: Lang, avoid: string[]) {
+  const concrete = a.environment === "any" ? pick(["home", "outdoors", "go-out"]) : a.environment;
+  const theme = pick(THEMES[lang][concrete] ?? THEMES[lang].any);
   const ai = (env as unknown as { AI?: AiBinding }).AI;
   if (!ai) return null;
   for (const model of MODELS) {
     try {
-      const raw = await ai.run(model, { messages: [{ role: "user", content: prompt(a, lang, avoid) }], max_tokens: 900, temperature: 0.8 });
+      const raw = await ai.run(model, { messages: [{ role: "user", content: prompt(a, lang, avoid, theme) }], max_tokens: 900, temperature: 0.95, top_p: 0.95 });
       const ok = validate(extractJson(raw));
       if (ok) return ok;
     } catch (error) {
