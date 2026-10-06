@@ -1315,10 +1315,6 @@ html[data-theme="dark"] .finder-actions .finder-three:hover,html[data-theme="dar
 .how,.guide-final,.listening-aftercare{background:linear-gradient(135deg,#d62f6a 0%,#a82a5e 100%)!important}
 html[data-theme="dark"] .how,html[data-theme="dark"] .guide-final,html[data-theme="dark"] .listening-aftercare{background:linear-gradient(135deg,#6a1f40 0%,#43172f 100%)!important}
 .guide-final .eyebrow,.listening-aftercare .eyebrow{color:#ffe9a8!important}
-/* 2. Menos degradês: só o topo das páginas e o gerador ficam coloridos; o resto vira creme liso, com os cartões coloridos como destaque */
-html:not([data-theme="dark"]) .places,html:not([data-theme="dark"]) .guide-list,html:not([data-theme="dark"]) .listening-principles,html:not([data-theme="dark"]) .community,html:not([data-theme="dark"]) .home-blog,html:not([data-theme="dark"]) .home-listening{background:#fff9f1!important}
-html:not([data-theme="dark"]) .listening-form-section{background:#fff6ee!important}
-html:not([data-theme="dark"]) .guide{background:linear-gradient(135deg,#ffeef3,#ffe3ec)!important}
 /* 3. Números 01/02/03 no modo escuro: rosa claro, legível */
 html[data-theme="dark"] .community-steps article>span,html[data-theme="dark"] .guide-principles span,html[data-theme="dark"] .guide-card-head>span{color:#ff9fbe!important}
 /* 4. Aviso de cookies: mais baixo, estreito e discreto */
@@ -1332,3 +1328,7 @@ html:not([data-theme="dark"]) .shop-process{background:#4a2840!important}
 .blog-categories.expanded button.cat-extra{display:inline-flex}
 .blog-categories .cat-more{border-style:dashed}
 .shop-process .eyebrow{color:#ffb3cd!important}
+/* 7. Títulos grandes: entrelinha maior para a cauda do "g" não encostar no "h" da linha de baixo */
+.section-heading h2,.guide-copy h2,.community-intro h2,.blog-welcome h2,.editorial-schedule-heading h2,.guide-final h2,.home-listening h2,.listening-form-intro h2,.listening-aftercare h2{line-height:1.16!important;letter-spacing:0!important}
+/* 8. Seções vizinhas bem separadas: "Tem algo preso no seu coração?" (rosa-pêssego) x "Histórias que aproximam" (creme/azul) */
+.community{border-top:1px solid var(--line)}
