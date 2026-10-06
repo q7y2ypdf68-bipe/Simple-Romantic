@@ -289,7 +289,7 @@ export default function Home({ blogPosts }: { blogPosts: BlogPost[] }) {
       <IdeaFinder lang={language} />
 
       <section className="places section" id="lugares">
-        <div className="section-heading split"><div><p className="eyebrow">{t.placesKicker}</p><h2>{t.placesTitle}</h2></div><p>{t.placesText}</p></div>
+        <div className="section-heading split"><div><p className="eyebrow">{t.placesKicker}</p><h2>{t.placesTitle.split(/(?<=\.)\s+/).map((part: string) => <span key={part} style={{ display: "block" }}>{part}</span>)}</h2></div><p>{t.placesText}</p></div>
         <div className="place-grid">{t.cards.map((card, index) => <article className={`place-card place-${index + 1}`} key={card[0]}>
           <div className="place-art"><Image unoptimized src={index === 0 ? "/images/hero-park.webp" : index === 1 ? "/images/beach-walk.webp" : "/images/viewpoint-surprise.webp"} alt={card[0]} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 34vw" /><small>{card[2]}</small></div>
           <div className="place-copy"><small>0{index + 1}</small><h3>{card[0]}</h3><p>{card[1]}</p><a href="#encontrar">{card[3]} →</a></div>
