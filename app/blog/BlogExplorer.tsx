@@ -25,6 +25,7 @@ function normalize(value: string) {
 export function BlogExplorer({ items, locale = "pt" }: { items: BlogListItem[]; locale?: "pt" | "es" | "en" }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("TODOS");
+  const [showAllCategories, setShowAllCategories] = useState(false);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const allCategory = "TODOS";
   const tx = (pt: string, es: string, en: string) => locale === "es" ? es : locale === "en" ? en : pt;
@@ -50,8 +51,9 @@ export function BlogExplorer({ items, locale = "pt" }: { items: BlogListItem[]; 
         <span>{tx("Pesquisar no blog", "Buscar en el blog", "Search the blog")}</span>
         <div><span aria-hidden="true">⌕</span><input value={query} onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder={tx("Ex.: piquenique, chuva, surpresa…", "Ej.: pícnic, lluvia, sorpresa…", "E.g. picnic, rain, surprise…")} type="search" /></div>
       </label>
-      <div className="blog-categories" aria-label={tx("Filtrar por categoria", "Filtrar por categoría", "Filter by category")}>
-        {categories.map((item) => <button aria-pressed={category === item} className={category === item ? "active" : ""} type="button" key={item} onClick={() => chooseCategory(item)}>{item === allCategory ? tx("Todos", "Todos", "All") : item}</button>)}
+      <div className={`blog-categories${showAllCategories ? " expanded" : ""}`} aria-label={tx("Filtrar por categoria", "Filtrar por categoría", "Filter by category")}>
+        {categories.map((item, index) => <button aria-pressed={category === item} className={`${category === item ? "active" : ""}${index > 6 && category !== item ? " cat-extra" : ""}`.trim()} type="button" key={item} onClick={() => chooseCategory(item)}>{item === allCategory ? tx("Todos", "Todos", "All") : item}</button>)}
+        {categories.length > 7 && <button className="cat-more" type="button" aria-expanded={showAllCategories} onClick={() => setShowAllCategories((value) => !value)}>{showAllCategories ? tx("Menos categorias", "Menos categorías", "Fewer categories") : tx("Mais categorias", "Más categorías", "More categories")}</button>}
       </div>
     </div>
 
