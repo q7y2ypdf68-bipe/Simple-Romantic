@@ -75,7 +75,8 @@ test("matches the editorial 108-filter baseline and preserves the 18 structural 
   for (const environment of ["home", "outdoors", "go-out", "any"]) for (const budget of ["free", "low", "more"]) for (const duration of ["hour", "afternoon", "day"]) for (const occasion of ["casual", "surprise", "reconnect"]) counts.push({ environment, budget, duration, occasion, count: compatibleIdeas({ environment, budget, duration, occasion }).length });
   const buckets = Object.fromEntries([">=6", "3-5", "2", "1", "0"].map((key) => [key, 0]));
   for (const { count } of counts) buckets[count >= 6 ? ">=6" : count >= 3 ? "3-5" : String(count)] += 1;
-  assert.deepEqual(buckets, { ">=6": 66, "3-5": 21, "2": 3, "1": 0, "0": 18 });
+  assert.deepEqual(buckets, { ">=6": 66, "3-5": 18, "2": 6, "1": 0, "0": 18 }); // ideias só de noite (estrelas, jantar temático, performance) não aparecem em "uma tarde"/"um dia" sem o filtro "à noite"
+  assert.deepEqual(buckets, { ">=6": 66, "3-5": 18, "2": 6, "1": 0, "0": 18 });
   assert.equal(counts.filter((item) => item.environment === "home" && item.duration === "day").every((item) => item.count === 0), true);
   assert.equal(counts.filter((item) => item.environment !== "home" && item.budget === "free" && item.duration === "day").every((item) => item.count === 0), true);
 });
@@ -84,7 +85,7 @@ test("uses only real variants for the two original cases and rotates without lit
   const caseA = { environment: "home", budget: "low", duration: "afternoon", occasion: "surprise" };
   const caseB = { environment: "outdoors", budget: "free", duration: "afternoon", occasion: "casual" };
   assert.ok(compatibleIdeas(caseA).length >= 3);
-  assert.ok(compatibleIdeas(caseB).length >= 9);
+  assert.ok(compatibleIdeas(caseB).length >= 8); // 9 menos "Observação das estrelas", que é só de noite
   for (const variant of [...compatibleIdeas(caseA), ...compatibleIdeas(caseB)]) {
     assert.ok(v2Authority.variants.includes(variant));
     assert.equal(variant.howTo.length >= 3 && variant.howTo.length <= 5, true);
@@ -107,4 +108,17 @@ test("renders surprise, confirmation and an eligible canonical Plan B without fi
     assert.ok(result.result.planB);
     assert.ok(v2Authority.variants.some((item) => item.id === result.result.planB.id));
   }
+});
+
+test("filtro de momento do dia: noite e dia nunca se misturam", () => {
+  const base = { environment: "outdoors", budget: "free", duration: "afternoon", occasion: "casual" };
+  const day = compatibleIdeas({ ...base, period: "day" });
+  const night = compatibleIdeas({ ...base, period: "night" });
+  assert.equal(day.some((item) => item.familyId === "TEM-01"), false);
+  assert.equal(night.some((item) => item.familyId === "TEM-01"), true);
+  assert.equal(night.some((item) => ["NAT-05", "NAT-09", "NAT-12", "CID-10"].includes(item.familyId)), false);
+  assert.equal(compatibleIdeas({ ...base, duration: "day", budget: "more" }).some((item) => item.familyId === "TEM-01"), false);
+  const next = recommend({ ...base, period: "night" }, { displayed: [] }, "en");
+  assert.equal(next.status, "recommendation");
+  assert.equal(next.result.period, "night");
 });

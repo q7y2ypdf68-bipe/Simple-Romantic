@@ -3,11 +3,19 @@ import gestureAuthority from "../../../SR_MOTOR_IDEIAS_V2_AUTHORITY/gestures.jso
 import variantAuthority from "../../../SR_MOTOR_IDEIAS_V2_AUTHORITY/execution-variants.json" with { type: "json" };
 
 import { editorialText } from "./ideias-textos.mjs";
+import { NIGHT_BASES } from "./ideias-noite.mjs";
 
 export const environments = ["home", "outdoors", "go-out", "any"];
 export const budgets = ["free", "low", "more"];
 export const durations = ["hour", "afternoon", "day"];
 export const occasions = ["casual", "surprise", "reconnect"];
+export const periods = ["any", "day", "night"];
+
+// Momento do dia de cada ideia: "night" só faz sentido à noite; "day" só de dia; o resto serve para os dois.
+const NIGHT_FAMILIES = new Set(["TEM-01", "GAS-13", "CUL-07"]);
+const DAY_FAMILIES = new Set(["NAT-01", "NAT-05", "NAT-08", "NAT-09", "NAT-10", "NAT-12", "VIA-01", "VIA-02", "VIA-05", "CID-10", "CUL-01", "CUL-03", "CUL-08", "GAS-11", "COM-01", "COM-06", "CEL-08", "VIN-05"]);
+const DAY_IDS = new Set(["V2-075", "V2-078"]);
+export const periodOf = (variant) => variant.period ?? (NIGHT_FAMILIES.has(variant.familyId) ? "night" : DAY_FAMILIES.has(variant.familyId) || DAY_IDS.has(variant.id) ? "day" : "both");
 
 const durationRanges = { hour: [45, 90], afternoon: [180, 300], day: [360, 600] };
 const budgetCeilings = { free: 0, low: 2, more: 4 };
@@ -28,6 +36,7 @@ function assertAnswers(answers) {
   for (const [key, allowed] of Object.entries({ environment: environments, budget: budgets, duration: durations, occasion: occasions })) {
     if (!allowed.includes(answers[key])) throw new Error(`Invalid recommendation ${key}`);
   }
+  if (answers.period !== undefined && !periods.includes(answers.period)) throw new Error("Invalid recommendation period");
 }
 
 function durationFits(variant, band) {
@@ -42,6 +51,8 @@ function hardGateReasons(variant, family, answers, variantById) {
   if (!family || family.structuralVetoes.length) reasons.push("structural-veto");
   if (answers.environment !== "any" && variant.environment !== answers.environment) reasons.push("environment");
   if (!durationFits(variant, answers.duration)) reasons.push("duration");
+  const moment = periodOf(variant), wanted = answers.period ?? "any";
+  if ((wanted === "day" && moment === "night") || (wanted === "night" && moment === "day") || (wanted === "any" && moment === "night" && answers.duration !== "hour")) reasons.push("period");
   if (!Number.isInteger(variant.costBand) || variant.costBand < 0 || variant.costBand > 4 || variant.costBand > budgetCeilings[answers.budget]) reasons.push("cost");
   if (variant.consent === "unsatisfied" || variant.safety === "unsafe" || variant.accessibility === "incompatible") reasons.push("safety-or-consent");
   if (variant.requirements?.structuralImpossible) reasons.push("structural-requirement");
@@ -65,7 +76,9 @@ function sessionIndex(session = {}) {
 function compareCandidates(left, right, answers, history) {
   const l = left.variant, r = right.variant;
   const target = (durationRanges[answers.duration][0] + durationRanges[answers.duration][1]) / 2;
+  const nightFirst = answers.period === "night";
   const compare = [
+    nightFirst ? Number(periodOf(l) !== "night") - Number(periodOf(r) !== "night") : 0,
     tierRank[l.tier] - tierRank[r.tier],
     Number(!(l.occasions ?? []).includes(answers.occasion)) - Number(!(r.occasions ?? []).includes(answers.occasion)),
     Number(l.environment !== answers.environment) - Number(r.environment !== answers.environment),
@@ -106,6 +119,7 @@ function render(candidate, variantById, lang = "pt") {
     confirmBefore: variant.availability === "required-unverified" || variant.climate === "required-unverified",
     requirements: variant.requirements,
     badges: [`C${variant.costBand}`, variant.durationLabel, variant.environment],
+    period: periodOf(variant),
   };
 }
 
@@ -139,6 +153,11 @@ export function createV2Engine({ families = v2Authority.families, variants = [],
   return { eligibleCandidates, recommend };
 }
 
-const productionEngine = createV2Engine({ variants: v2Authority.variants });
+// Variantes noturnas extras: copiam as regras (família, custo, segurança) de uma variante já validada.
+const nightVariants = NIGHT_BASES.map(({ id, from, title }) => {
+  const origin = v2Authority.variants.find((variant) => variant.id === from);
+  return { ...origin, id, title, period: "night", durationLabel: origin.durationLabel };
+});
+const productionEngine = createV2Engine({ variants: [...v2Authority.variants, ...nightVariants] });
 export const compatibleIdeas = (answers) => productionEngine.eligibleCandidates(answers).map((candidate) => candidate.variant);
 export const recommend = (answers, session, lang) => productionEngine.recommend(answers, session, lang);

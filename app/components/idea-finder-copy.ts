@@ -4,11 +4,11 @@ type Opt = { value: string; label: string };
 export type FinderCopy = {
   kicker: string; title: string; text: string;
   environment: string; budget: string; time: string; occasion: string;
-  environments: Opt[]; budgets: Opt[]; times: Opt[]; occasions: Opt[];
+  environments: Opt[]; budgets: Opt[]; times: Opt[]; occasions: Opt[]; periods: Opt[]; period: string;
   find: string; three: string; threeTitle: string; resultKicker: string; anotherIdea: string;
   finding: string; aiNote: string; exhausted: string; tip: string;
   surprise: string; planB: string; confirm: string;
-  cost: Record<string, string>; duration: Record<string, string>; place: Record<string, string>;
+  cost: Record<string, string>; duration: Record<string, string>; place: Record<string, string>; periodLabel: Record<string, string>;
 };
 
 export const finderCopy: Record<FinderLang, FinderCopy> = {
@@ -19,11 +19,12 @@ export const finderCopy: Record<FinderLang, FinderCopy> = {
     budgets: [{ value: "free", label: "Grátis" }, { value: "low", label: "Baixo custo" }, { value: "more", label: "Um pouco mais" }],
     times: [{ value: "hour", label: "1 hora" }, { value: "afternoon", label: "Uma tarde" }, { value: "day", label: "Um dia" }],
     occasions: [{ value: "casual", label: "Encontro casual" }, { value: "surprise", label: "Uma surpresa" }, { value: "reconnect", label: "Reconectar" }],
+    period: "Que momento do dia?", periods: [{ value: "any", label: "Tanto faz" }, { value: "day", label: "De dia" }, { value: "night", label: "À noite" }],
     find: "Criar o nosso encontro", three: "Me dê 3 ideias", threeTitle: "3 ideias para vocês", resultKicker: "UMA IDEIA PARA VOCÊS", anotherIdea: "Quero outra ideia",
     finding: "Procurando uma ideia para vocês…", aiNote: "Ideia criada na hora para os seus filtros. Confira detalhes e horários antes de sair.",
     exhausted: "Ainda não temos uma ideia para estes filtros. Tente mudar o tempo, o orçamento ou o tipo de programa.", tip: "Pequeno detalhe",
     surprise: "Surpresa:", planB: "Plano B:", confirm: "Confirme antes:",
-    cost: { C0: "Grátis", C1: "Baixo custo", C2: "Um pouco mais" }, duration: { hour: "1 hora", afternoon: "Uma tarde", day: "Um dia" }, place: { home: "Em casa", outdoors: "Ao ar livre", "go-out": "Sair", any: "Tanto faz" },
+    cost: { C0: "Grátis", C1: "Baixo custo", C2: "Um pouco mais" }, duration: { hour: "1 hora", afternoon: "Uma tarde", day: "Um dia" }, place: { home: "Em casa", outdoors: "Ao ar livre", "go-out": "Sair", any: "Tanto faz" }, periodLabel: { day: "De dia", night: "À noite" },
   },
   es: {
     kicker: "EL PLAN EMPIEZA AQUÍ", title: "¿Qué os gustaría vivir hoy?", text: "Contadnos lo esencial. Lo convertimos en una cita posible.",
@@ -32,11 +33,12 @@ export const finderCopy: Record<FinderLang, FinderCopy> = {
     budgets: [{ value: "free", label: "Gratis" }, { value: "low", label: "Bajo coste" }, { value: "more", label: "Un poco más" }],
     times: [{ value: "hour", label: "1 hora" }, { value: "afternoon", label: "Una tarde" }, { value: "day", label: "Un día" }],
     occasions: [{ value: "casual", label: "Cita informal" }, { value: "surprise", label: "Una sorpresa" }, { value: "reconnect", label: "Reconectar" }],
+    period: "¿En qué momento del día?", periods: [{ value: "any", label: "Me da igual" }, { value: "day", label: "De día" }, { value: "night", label: "De noche" }],
     find: "Crear nuestra cita", three: "Dame 3 ideas", threeTitle: "3 ideas para vosotros", resultKicker: "UNA IDEA PARA VOSOTROS", anotherIdea: "Quiero otra idea",
     finding: "Buscando una idea para vosotros…", aiNote: "Idea creada al momento para vuestros filtros. Comprobad detalles y horarios antes de salir.",
     exhausted: "Todavía no tenemos una idea para estos filtros. Probad a cambiar el tiempo, el presupuesto o el tipo de plan.", tip: "Un pequeño detalle",
     surprise: "Sorpresa:", planB: "Plan B:", confirm: "Confirmad antes:",
-    cost: { C0: "Gratis", C1: "Bajo coste", C2: "Un poco más" }, duration: { hour: "1 hora", afternoon: "Una tarde", day: "Un día" }, place: { home: "En casa", outdoors: "Al aire libre", "go-out": "Salir", any: "Me da igual" },
+    cost: { C0: "Gratis", C1: "Bajo coste", C2: "Un poco más" }, duration: { hour: "1 hora", afternoon: "Una tarde", day: "Un día" }, place: { home: "En casa", outdoors: "Al aire libre", "go-out": "Salir", any: "Me da igual" }, periodLabel: { day: "De día", night: "De noche" },
   },
   en: {
     kicker: "YOUR PLAN STARTS HERE", title: "What would you like to experience today?", text: "Tell us the essentials. We'll turn them into a date you can actually enjoy.",
@@ -45,10 +47,11 @@ export const finderCopy: Record<FinderLang, FinderCopy> = {
     budgets: [{ value: "free", label: "Free" }, { value: "low", label: "Low cost" }, { value: "more", label: "A bit more" }],
     times: [{ value: "hour", label: "1 hour" }, { value: "afternoon", label: "An afternoon" }, { value: "day", label: "A day" }],
     occasions: [{ value: "casual", label: "Casual date" }, { value: "surprise", label: "A surprise" }, { value: "reconnect", label: "Reconnect" }],
+    period: "What time of day?", periods: [{ value: "any", label: "Anything" }, { value: "day", label: "Daytime" }, { value: "night", label: "Evening / night" }],
     find: "Create our date", three: "Give me 3 ideas", threeTitle: "3 ideas for you", resultKicker: "AN IDEA FOR YOU", anotherIdea: "Show another idea",
     finding: "Finding an idea for you…", aiNote: "Idea created just now for your filters. Check details and opening times before you go.",
     exhausted: "We don't have an idea for these filters yet. Try changing the time, budget or type of plan.", tip: "A little detail",
     surprise: "Surprise:", planB: "Plan B:", confirm: "Check first:",
-    cost: { C0: "Free", C1: "Low cost", C2: "A bit more" }, duration: { hour: "1 hour", afternoon: "An afternoon", day: "A day" }, place: { home: "At home", outdoors: "Outdoors", "go-out": "Going out", any: "Anything" },
+    cost: { C0: "Free", C1: "Low cost", C2: "A bit more" }, duration: { hour: "1 hour", afternoon: "An afternoon", day: "A day" }, place: { home: "At home", outdoors: "Outdoors", "go-out": "Going out", any: "Anything" }, periodLabel: { day: "Daytime", night: "Evening / night" },
   },
 };

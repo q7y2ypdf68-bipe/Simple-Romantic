@@ -4,7 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { recommend } from "../recommendations.mjs";
 import { finderCopy, type FinderLang } from "./idea-finder-copy";
 
-type Answers = { environment: string; budget: string; duration: string; occasion: string };
+type Answers = { environment: string; budget: string; duration: string; occasion: string; period: string };
 type Idea = { id: string; title: string; whyItFits: string; howTo: string[]; smallDetail?: string; badges: string[]; planB?: { title: string }; surprise?: string; confirmBefore?: boolean; requirements?: string; aiGenerated?: boolean };
 type Session = { displayed: Array<{ candidateId: string; familyId: string; mechanic: string; category: string; modifierIds?: string[]; gestureId?: string; timestamp: number }> };
 
@@ -13,9 +13,10 @@ const LINK_MAP: Record<string, Record<string, string>> = {
   lugar: { casa: "home", home: "home", hogar: "home", arlivre: "outdoors", outdoors: "outdoors", airelibre: "outdoors", sair: "go-out", "go-out": "go-out", salir: "go-out", qualquer: "any", any: "any", cualquiera: "any" },
   orcamento: { gratis: "free", free: "free", baixo: "low", low: "low", bajo: "low", mais: "more", more: "more", mas: "more" },
   tempo: { hora: "hour", hour: "hour", tarde: "afternoon", afternoon: "afternoon", dia: "day", day: "day" },
+  momento: { qualquer: "any", any: "any", cualquiera: "any", tanto: "any", dia: "day", day: "day", dedia: "day", diurno: "day", noite: "night", noche: "night", night: "night", anoite: "night", denoche: "night" },
   clima: { casual: "casual", informal: "casual", surpresa: "surprise", sorpresa: "surprise", surprise: "surprise", reconectar: "reconnect", reconnect: "reconnect" },
 };
-const LINK_NAMES: Record<string, string> = { lugar: "environment", orcamento: "budget", tempo: "time", clima: "occasion" };
+const LINK_NAMES: Record<string, string> = { lugar: "environment", orcamento: "budget", tempo: "time", clima: "occasion", momento: "period" };
 
 export function IdeaFinder({ lang }: { lang: FinderLang }) {
   const t = finderCopy[lang];
@@ -28,7 +29,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
   const [lastAnswers, setLastAnswers] = useState<Answers | null>(null);
 
   function readAnswers(data: FormData): Answers {
-    return { environment: String(data.get("environment")), budget: String(data.get("budget")), duration: String(data.get("time")), occasion: String(data.get("occasion")) };
+    return { environment: String(data.get("environment")), budget: String(data.get("budget")), duration: String(data.get("time")), occasion: String(data.get("occasion")), period: String(data.get("period") ?? "any") };
   }
 
   // Motor curado primeiro; se não houver ideia para os filtros, a IA cria uma (plano B); por fim, ideias de reserva.
@@ -143,7 +144,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
 
   const badgesFor = (idea: Idea) => {
     const env = idea.badges?.[2] ?? lastAnswers?.environment ?? "any";
-    return [t.cost[idea.badges?.[0]] ?? t.cost.C0, lastAnswers ? t.duration[lastAnswers.duration] : "", t.place[env] ?? ""].filter(Boolean);
+    return [t.cost[idea.badges?.[0]] ?? t.cost.C0, lastAnswers ? t.duration[lastAnswers.duration] : "", t.place[env] ?? "", lastAnswers ? (t.periodLabel[lastAnswers.period] ?? "") : ""].filter(Boolean);
   };
 
   const result = recommendation?.status === "recommendation" ? recommendation.result : undefined;
@@ -156,6 +157,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
         <Choice number="02" title={t.budget} name="budget" options={t.budgets} />
         <Choice number="03" title={t.time} name="time" options={t.times} />
         <Choice number="04" title={t.occasion} name="occasion" options={t.occasions} />
+        <Choice number="05" title={t.period} name="period" options={t.periods} />
         <div className="finder-actions"><button className="button primary finder-button" type="submit">{t.find}<span>→</span></button><button className="button secondary finder-three" type="button" onClick={pickThree}>{t.three}</button></div>
       </form>
       {resultVisible && !finding && trio && trio.length > 0 && <div className="idea-trio" id="resultado" aria-live="polite"><p className="eyebrow">{t.threeTitle}</p><div className="idea-trio-grid">{trio.map((item) => <article key={item.id}><h3>{item.title}</h3><p>{item.whyItFits}</p><ol>{item.howTo.slice(0, 5).map((step) => <li key={step}>{step}</li>)}</ol><div className="result-meta">{badgesFor(item).map((b) => <span key={b}>{b}</span>)}</div>{item.planB && <p><strong>{t.planB}</strong> {item.planB.title}</p>}</article>)}</div></div>}
