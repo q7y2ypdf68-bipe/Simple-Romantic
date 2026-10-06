@@ -1,3 +1,4 @@
+import { AdultGate } from "../../../components/AdultGate";
 import type { Metadata } from "next";
 import { articleAlternatesDb, getPostLang, getVisiblePostsLang } from "../../../blog/posts-db";
 import Image from "next/image";
@@ -25,7 +26,8 @@ export default async function ArticlePageEn({ params }: { params: Promise<{ slug
   const related = allPosts.filter((item) => item.slug !== post.slug).sort((a, b) => (a.category === post.category ? 0 : 1) - (b.category === post.category ? 0 : 1) || Math.abs(allPosts.indexOf(a) - currentIndex) - Math.abs(allPosts.indexOf(b) - currentIndex)).slice(0, 3);
   const structuredData = { "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.excerpt, image: `${siteUrl}${post.image}`, mainEntityOfPage: `${siteUrl}/en/blog/${post.slug}`, author: { "@type": "Organization", name: "Simple & Romantic" }, publisher: { "@type": "Organization", name: "Simple & Romantic" }, inLanguage: "en", datePublished: post.publishedIso, dateModified: post.publishedIso };
 
-  return <main className="article-page spanish-page english-page"><LanguageSetter lang="en" /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} /><BlogHeaderEn /><article>
+  return <main className="article-page spanish-page english-page"><LanguageSetter lang="en" /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} /><BlogHeaderEn />{post.contentNotice?.label === "+18" && <AdultGate lang="en" />}
+    <article>
     <header className="article-header section"><nav className="article-breadcrumbs" aria-label="Page path"><Link href="/en">Home</Link><span>›</span><Link href="/en/blog">Blog</Link><span>›</span><span aria-current="page">{post.category}</span></nav><Link className="article-back" href="/en/blog">← Back to the blog</Link><p className="eyebrow">{post.category}</p><h1>{post.title}</h1><p className="article-deck">{post.excerpt}</p><div className="article-meta"><span>{post.published}</span><span>{post.readTime}</span></div></header>
     <div className="article-hero-image"><Image unoptimized src={post.image} alt={post.imageAlt} fill priority sizes="100vw" /></div>
     <div className="article-body"><ShareButtons title={post.title} path={`/en/blog/${post.slug}`} locale="en" />{post.contentNotice && <aside className="article-content-notice" aria-label="Content type"><strong>{post.contentNotice.label}</strong><p>{post.contentNotice.text}</p></aside>}{post.intro.map((paragraph) => <p className="article-intro" key={paragraph}>{paragraph}</p>)}{post.sections.map((section) => <section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>}</section>)}

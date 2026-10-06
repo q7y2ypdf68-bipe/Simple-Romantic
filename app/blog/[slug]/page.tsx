@@ -1,3 +1,4 @@
+import { AdultGate } from "../../components/AdultGate";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -79,6 +80,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   return <main className="article-page">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} />
     <BlogHeader />
+    {post.contentNotice?.label === "+18" && <AdultGate lang="pt" />}
     <article className={post.slug === "pequenos-gestos-de-amor" ? "article-sr-n-003" : undefined}>
       <header className="article-header section"><nav className="article-breadcrumbs" aria-label="Caminho da página"><Link href="/">Início</Link><span>›</span><Link href="/blog">Blog</Link><span>›</span><span aria-current="page">{post.category}</span></nav><Link className="article-back" href="/blog">← Voltar ao blog</Link><p className="eyebrow">{post.category}</p><h1>{post.title}</h1><p className="article-deck">{post.excerpt}</p><div className="article-meta"><span>{post.published}</span><span>{post.readTime}</span></div></header>
       <div className="article-hero-image"><Image unoptimized src={post.image} alt={post.imageAlt} fill priority sizes="100vw" /></div>
