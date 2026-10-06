@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AnalyticsConsent } from "./components/AnalyticsConsent";
 import { AnalyticsTracker } from "./components/AnalyticsTracker";
+import { CleanUrl } from "./components/CleanUrl";
 import { serializeStructuredData } from "./structured-data";
 
 const siteUrl = "https://simpleandromantic.com";
@@ -104,5 +105,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
   const themeScript = `(function(){try{var root=document.documentElement;root.lang=location.pathname==='/es'||location.pathname.indexOf('/es/')===0?'es-ES':'pt-BR';var saved=localStorage.getItem('simple-romantic-theme');var theme=saved==='dark'||saved==='light'?saved:(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');root.dataset.theme=theme;root.style.colorScheme=theme;}catch(e){document.documentElement.dataset.theme='light';}})();`;
 
-  return <html lang="pt-BR" data-theme="light" suppressHydrationWarning><head><meta name="codex-preview" content="development" /><meta name="color-scheme" content="light dark" /><meta name="supported-color-schemes" content="light dark" /><meta name="theme-color" media="(prefers-color-scheme: light)" content="#fffefe" /><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#171116" /><script dangerouslySetInnerHTML={{ __html: themeScript }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} /></head><body><AnalyticsTracker /><AnalyticsConsent />{children}</body></html>;
+  return <html lang="pt-BR" data-theme="light" suppressHydrationWarning><head><meta name="codex-preview" content="development" /><meta name="color-scheme" content="light dark" /><meta name="supported-color-schemes" content="light dark" /><meta name="theme-color" media="(prefers-color-scheme: light)" content="#fffefe" /><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#171116" /><script dangerouslySetInnerHTML={{ __html: themeScript }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} /></head><body><AnalyticsTracker /><CleanUrl /><AnalyticsConsent />{children}</body></html>;
 }
