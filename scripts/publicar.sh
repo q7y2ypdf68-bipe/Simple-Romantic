@@ -18,6 +18,7 @@ const c = JSON.parse(fs.readFileSync(p, "utf8"));
 c.d1_databases = [{ binding: "DB", database_name: "site-creator-d1", database_id: process.argv[1] }];
 c.assets = { ...(c.assets || {}), binding: "ASSETS" };
 c.images = { binding: "IMAGES" };
+c.ai = { binding: "AI" };   // Workers AI: plano B do gerador de ideias
 c.observability = { enabled: true, logs: { enabled: true } };
 c.routes = [{ pattern: "simpleandromantic.com", custom_domain: true }];   // mantém o domínio próprio ligado
 c.workers_dev = true;   // endereço antigo continua respondendo (só para redirecionar)

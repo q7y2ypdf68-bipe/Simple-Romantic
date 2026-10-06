@@ -35,6 +35,8 @@ const copy = {
     find: "Criar o nosso encontro",
     resultKicker: "UMA IDEIA PARA VOCÊS",
     anotherIdea: "Quero outra ideia",
+    finding: "Procurando uma ideia para vocês…",
+    aiNote: "Ideia criada na hora para os seus filtros. Confira detalhes e horários antes de sair.",
     exhausted: "Ainda não temos uma variante de execução segura para estes filtros. Tente mudar o tempo, orçamento ou tipo de programa.",
     resultTip: "Pequeno detalhe",
     resultTipText: "Escreva uma frase num papel e entregue apenas quando o sol começar a desaparecer.",
@@ -112,6 +114,8 @@ const copy = {
     find: "Create our date",
     resultKicker: "AN IDEA FOR YOU",
     anotherIdea: "Show another idea",
+    finding: "Finding an idea for you…",
+    aiNote: "Idea created just now for your filters. Check details and opening times before you go.",
     exhausted: "We do not yet have a safe execution variant for these filters. Try changing the time, budget or type of plan.",
     resultTip: "A little detail",
     resultTipText: "Write one sentence on paper and share it only when the sun begins to disappear.",
@@ -172,6 +176,8 @@ export default function Home({ blogPosts }: { blogPosts: BlogPost[] }) {
   const [resultVisible, setResultVisible] = useState(false);
   const [recommendation, setRecommendation] = useState<ReturnType<typeof recommend> | null>(null);
   const [recommendationSession, setRecommendationSession] = useState<{ displayed: Array<{ candidateId: string; familyId: string; mechanic: string; category: string; modifierIds?: string[]; gestureId?: string; timestamp: number }> }>({ displayed: [] });
+  const [aiShown, setAiShown] = useState<string[]>([]);
+  const [finding, setFinding] = useState(false);
   const [message, setMessage] = useState("");
   const [guideReady, setGuideReady] = useState(false);
   const [communityStatus, setCommunityStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -188,29 +194,51 @@ export default function Home({ blogPosts }: { blogPosts: BlogPost[] }) {
     { href: "/entre-nos", label: t.nav[7] },
   ];
 
-  function createDate(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const answers = {
-      environment: String(data.get("environment")),
-      budget: String(data.get("budget")),
-      duration: String(data.get("time")),
-      occasion: String(data.get("occasion")),
-    };
-    const next = recommend(answers, { displayed: [] });
+  type Answers = { environment: string; budget: string; duration: string; occasion: string };
+
+  // Quando o motor curado não tem ideia para os filtros, a IA cria uma na hora (plano B).
+  // Nunca deixamos o visitante sem resposta.
+  async function resolveIdea(answers: Answers, session: typeof recommendationSession, shown: string[]) {
+    const next = recommend(answers, session);
+    if (next.status === "recommendation") {
+      setRecommendation(next);
+      setRecommendationSession((next.session as typeof recommendationSession | undefined) ?? { displayed: [] });
+      return;
+    }
+    setFinding(true);
+    try {
+      const response = await fetch("/api/ideia", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...answers, language, exclude: shown }) });
+      const body = await response.json();
+      if (response.ok && body?.status === "recommendation" && body.result) {
+        setRecommendation({ status: "recommendation", result: body.result, session } as unknown as ReturnType<typeof recommend>);
+        setAiShown((list) => [...list, String(body.result.id)]);
+        return;
+      }
+    } catch {
+      // cai no aviso abaixo
+    } finally {
+      setFinding(false);
+    }
     setRecommendation(next);
-    setRecommendationSession((next.session as typeof recommendationSession | undefined) ?? { displayed: [] });
-    setResultVisible(true);
-    requestAnimationFrame(() => document.querySelector("#resultado")?.scrollIntoView({ behavior: "smooth", block: "center" }));
   }
 
-  function anotherIdea() {
+  function readAnswers(data: FormData): Answers {
+    return { environment: String(data.get("environment")), budget: String(data.get("budget")), duration: String(data.get("time")), occasion: String(data.get("occasion")) };
+  }
+
+  async function createDate(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const answers = readAnswers(new FormData(event.currentTarget));
+    setAiShown([]);
+    setResultVisible(true);
+    requestAnimationFrame(() => document.querySelector("#resultado")?.scrollIntoView({ behavior: "smooth", block: "center" }));
+    await resolveIdea(answers, { displayed: [] }, []);
+  }
+
+  async function anotherIdea() {
     const form = document.querySelector<HTMLFormElement>(".finder-form");
     if (!form) return;
-    const data = new FormData(form);
-    const next = recommend({ environment: String(data.get("environment")), budget: String(data.get("budget")), duration: String(data.get("time")), occasion: String(data.get("occasion")) }, recommendationSession);
-    setRecommendation(next);
-    setRecommendationSession((next.session as typeof recommendationSession | undefined) ?? { displayed: [] });
+    await resolveIdea(readAnswers(new FormData(form)), recommendationSession, aiShown);
   }
 
   async function joinList(event: FormEvent<HTMLFormElement>) {
@@ -315,12 +343,13 @@ export default function Home({ blogPosts }: { blogPosts: BlogPost[] }) {
           <Choice number="04" title={t.occasion} name="occasion" options={t.occasions} />
           <button className="button primary finder-button" type="submit">{t.find}<span>→</span></button>
         </form>
-        {resultVisible && recommendation?.status === "recommendation" && recommendation.result && <article className="date-result" id="resultado">
+        {resultVisible && !finding && recommendation?.status === "recommendation" && recommendation.result && <article className="date-result" id="resultado">
           <div className="result-visual"><span>☀</span><small>{recommendation.result.badges[0]}</small></div>
-          <div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{recommendation.result.title}</h3><p>{recommendation.result.whyItFits}</p><ol>{recommendation.result.howTo.map((step: string) => <li key={step}>{step}</li>)}</ol><div className="result-meta">{recommendation.result.badges.map(item => <span key={item}>{item}</span>)}</div>{recommendation.result.surprise && <p><strong>Surpresa:</strong> {recommendation.result.surprise}</p>}{recommendation.result.planB && <p><strong>Plano B:</strong> {recommendation.result.planB.title}</p>}{recommendation.result.confirmBefore && <p><strong>Confirme antes:</strong> {recommendation.result.requirements}</p>}<button className="button secondary" type="button" onClick={anotherIdea}>{t.anotherIdea}</button></div>
+          <div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{recommendation.result.title}</h3>{(recommendation.result as { aiGenerated?: boolean }).aiGenerated && <p className="result-ai-note"><small>{t.aiNote}</small></p>}<p>{recommendation.result.whyItFits}</p><ol>{recommendation.result.howTo.map((step: string) => <li key={step}>{step}</li>)}</ol><div className="result-meta">{recommendation.result.badges.map(item => <span key={item}>{item}</span>)}</div>{recommendation.result.surprise && <p><strong>Surpresa:</strong> {recommendation.result.surprise}</p>}{recommendation.result.planB && <p><strong>Plano B:</strong> {recommendation.result.planB.title}</p>}{recommendation.result.confirmBefore && <p><strong>Confirme antes:</strong> {recommendation.result.requirements}</p>}<button className="button secondary" type="button" onClick={anotherIdea}>{t.anotherIdea}</button></div>
           <div className="result-tip"><span>♡</span><div><strong>{t.resultTip}</strong><p>{recommendation.result.smallDetail}</p></div></div>
         </article>}
-        {resultVisible && recommendation?.status === "exhausted" && <article className="date-result date-result-empty" id="resultado"><div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{t.exhausted}</h3></div></article>}
+        {resultVisible && finding && <article className="date-result date-result-empty" id="resultado" aria-live="polite"><div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{t.finding}</h3></div></article>}
+        {resultVisible && !finding && recommendation?.status === "exhausted" && <article className="date-result date-result-empty" id="resultado"><div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{t.exhausted}</h3></div></article>}
       </section>
 
       <section className="places section" id="lugares">
