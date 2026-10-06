@@ -1,0 +1,87 @@
+import type { BlogPost } from "../../../blog/posts";
+
+export const posts: BlogPost[] = [
+  {
+    slug: "photo-walk-for-couples",
+    title: "A Photo Walk for Couples: A Free Date Idea",
+    seoTitle: "Photo Walk for Couples",
+    excerpt: "A creative date using only your phone, your neighborhood, and a more attentive eye for the road.",
+    category: "CREATIVE DATES",
+    image: "/images/blog/08-passeio-fotografico.webp",
+    imageAlt: "Adult couple photographing details during a walk through the city",
+    published: "July 22, 2026",
+    publishedIso: "2026-07-22",
+    readTime: "5 min read",
+    intro: [
+      "A photo walk turns an ordinary stroll into a game of observation. You don't need a professional camera: your phone is enough. The idea is to slow down and discover together the little details you would normally miss.",
+      "Pick a safe route, preferably during the day, and agree on a theme to guide your photos.",
+    ],
+    sections: [
+      { heading: "Pick a challenge", items: ["Five colors you find along the way.", "Interesting doors, windows, and facades.", "Small signs of kindness in the city.", "Reflections, shadows, and curious shapes.", "Three photos that represent your relationship."] },
+      { heading: "During the walk", paragraphs: ["Take turns choosing the direction, and stop whenever something catches your eye. Avoid photographing identifiable people without their permission, and respect areas where photography is not allowed.", "At the end, sit down in a square or park, and each of you picks your three favorite photos and explains why."] },
+      { heading: "Keep the memory", paragraphs: ["Create a shared album with the date and the name of the place. One of the images can become your phone wallpaper or go along with a loving message the next day.", "The value of the date lies in the story you build while looking at the same city with curiosity."] },
+    ],
+  },
+  {
+    slug: "date-at-home-without-spending",
+    title: "10 Date Ideas at Home That Cost Nothing",
+    seoTitle: "Date at Home Without Spending",
+    excerpt: "Ways to get out of autopilot and create a special evening using only what you already have.",
+    category: "AT HOME",
+    image: "/images/blog/09-encontro-em-casa.webp",
+    imageAlt: "Adult couple preparing a simple meal at home",
+    published: "July 22, 2026",
+    publishedIso: "2026-07-22",
+    readTime: "6 min read",
+    intro: [
+      "Staying home doesn't have to mean repeating the same routine. A shift in intention, setting, and attention can turn a few ordinary hours into an intimate, fun date.",
+      "Before choosing an idea, agree on one simple rule: during that time, chores and notifications take a back seat.",
+    ],
+    sections: [
+      { heading: "Ten plans using what you already have", items: ["Cook an improvised recipe together.", "Have a themed movie night with a film you can already watch.", "Create a playlist that tells your story as a couple.", "Put together a quiz about shared memories.", "Rearrange a corner of the house for coffee and conversation.", "Do a blind tasting of foods already in your pantry.", "Learn some dance steps from a free video.", "Plan a walk for the weekend.", "Write letters to open a year from now.", "Pick out photographs to make a digital retrospective."] },
+      { heading: "Change the setting without buying anything", paragraphs: ["Turn off the main light, use a lamp, set the table, or spread a blanket on the floor. The visual change helps your brain notice that this moment is different from your routine.", "Don't try to recreate a perfect social media image. Create comfort, and leave room to laugh when something doesn't go as expected."] },
+    ],
+  },
+  {
+    slug: "questions-for-couples-to-talk",
+    title: "25 Questions for Couples to Talk With More Presence",
+    seoTitle: "Questions for Couples to Talk",
+    excerpt: "Light, affectionate, and deeper questions to go along with a walk, a picnic, or an evening at home.",
+    category: "CONVERSATIONS",
+    image: "/images/blog/10-perguntas-conversa.webp",
+    imageAlt: "Two adult men talking during a walk by the sea",
+    published: "July 22, 2026",
+    publishedIso: "2026-07-22",
+    readTime: "8 min read",
+    intro: [
+      "Good questions open paths to stories that daily routine rarely reaches. They aren't tests, and they don't need to be answered quickly. What matters most is listening without turning every answer into a debate.",
+      "Choose just a few questions per date. If a topic causes discomfort, respect the boundary and come back to it when it feels safe.",
+    ],
+    sections: [
+      { heading: "To start on a light note", items: ["What small moment this week made you smile?", "What place in our city would you like to discover?", "What song fits where we are right now?", "What simple habit makes your day better?", "Which memory of ours always lifts your mood?", "What would a perfect afternoon that costs nothing look like?", "What new thing would you like to learn with me?", "What food brings back a good memory for you?"] },
+      { heading: "To strengthen your connection", items: ["When do you feel most loved by me?", "What did I do recently that made a difference?", "What could we celebrate more?", "How can we share the tiredness better?", "What simple tradition could we start?", "What would you like me to ask you more often?", "What small dream can we make happen this month?", "How do you prefer to be supported on a hard day?"] },
+      { heading: "To look ahead", items: ["What memory do we want to build this year?", "What do we want to hold on to even when our routine changes?", "What nearby place deserves a visit together?", "What would our ideal Sunday look like?", "What could make our home feel warmer and more welcoming?", "What do we want to learn about each other?", "What realistic promise can we make for next week?", "What free experience have we never had together?", "What are you grateful for today?"] },
+    ],
+  },
+  {
+    slug: "safe-dates-in-public-places",
+    title: "How to Plan Safe Dates in Public Places",
+    seoTitle: "Safe Dates in Public Places",
+    excerpt: "A practical checklist for enjoying parks, beaches, squares, and scenic overlooks with peace of mind.",
+    category: "SAFETY AND CARE",
+    image: "/images/blog/11-seguranca-publica.webp",
+    imageAlt: "Older couple checking a route before an outing in a public place",
+    published: "July 22, 2026",
+    publishedIso: "2026-07-22",
+    readTime: "6 min read",
+    intro: [
+      "Public spaces make for beautiful, affordable dates, but every place calls for attention to the time of day, transportation, weather, and local rules. Planning these details doesn't take away from spontaneity: it protects the moment.",
+      "This checklist works just as well for longtime couples as for people who are still getting to know each other.",
+    ],
+    sections: [
+      { heading: "Before the date", items: ["Look up the hours, lighting, accessibility, and foot traffic of the place.", "Check the weather forecast and any alerts for the area.", "Plan the trip there and back, including a backup way to get home.", "Keep your phone charged and bring only what you need.", "On newer dates, share your location and the time with someone you trust."] },
+      { heading: "During the outing", items: ["Stay in permitted areas and avoid isolated paths.", "Respect everyone's physical and emotional boundaries.", "Don't leave personal belongings unattended.", "Drink responsibly, and never drive after drinking.", "Notice changes in the weather, the crowds, and the transportation available."] },
+      { heading: "Consent always matters", paragraphs: ["A romantic plan has to be comfortable for both people. Surprises don't cancel the right to ask questions, say no, change your mind, or leave.", "If something feels unsafe, end the date or change the plan. No photo, itinerary, or expectation is worth more than your well-being."] },
+    ],
+  },
+];

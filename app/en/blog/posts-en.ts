@@ -1,7 +1,13 @@
 import type { BlogPost } from "../../blog/posts";
+import { posts as a } from "./parts/part-A";
+import { posts as b } from "./parts/part-B";
+import { posts as c } from "./parts/part-C";
+import { posts as d } from "./parts/part-D";
+import { posts as e } from "./parts/part-E";
+import { posts as f } from "./parts/part-F";
 
-// English articles. Translations are added a few at a time; slugs are in English.
-export const blogPostsEn: BlogPost[] = [];
+// English translations of the Portuguese articles, same publication dates.
+export const blogPostsEn: BlogPost[] = [...a, ...b, ...c, ...d, ...e, ...f].sort((x, y) => (y.publishedIso || "").localeCompare(x.publishedIso || ""));
 
 export function getPostEn(slug: string) {
   return blogPostsEn.find((post) => post.slug === slug);

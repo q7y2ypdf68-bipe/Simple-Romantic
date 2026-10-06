@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { articleAlternates } from "../../../blog/translations";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return {};
   const index = blogPostsEn.findIndex((item) => item.slug === post.slug);
   const portuguesePost = blogPosts[index];
-  return { title: post.title, description: post.excerpt, alternates: { canonical: `/en/blog/${post.slug}`, languages: { ...(portuguesePost ? { "pt-BR": `/blog/${portuguesePost.slug}` } : {}), en: `/en/blog/${post.slug}` } }, openGraph: { type: "article", locale: "en_US", url: `/en/blog/${post.slug}`, siteName: "Simple & Romantic", title: post.title, description: post.excerpt, images: [{ url: post.image, alt: post.imageAlt }] } };
+  return { title: post.title, description: post.excerpt, alternates: { canonical: `/en/blog/${post.slug}`, languages: articleAlternates("en", post.slug) }, openGraph: { type: "article", locale: "en_US", url: `/en/blog/${post.slug}`, siteName: "Simple & Romantic", title: post.title, description: post.excerpt, images: [{ url: post.image, alt: post.imageAlt }] } };
 }
 
 export default async function ArticlePageEn({ params }: { params: Promise<{ slug: string }> }) {

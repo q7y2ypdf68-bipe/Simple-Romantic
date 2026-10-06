@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { articleAlternates } from "../../blog/translations";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: post.seoTitle || post.title,
     description: post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}`, languages: { "pt-BR": `/blog/${post.slug}`, ...(spanishPost ? { "es-ES": `/es/blog/${spanishPost.slug}` } : {}), "x-default": `/blog/${post.slug}` } },
+    alternates: { canonical: `/blog/${post.slug}`, languages: articleAlternates("pt", post.slug) },
     openGraph: {
       type: "article",
       locale: "pt_BR",

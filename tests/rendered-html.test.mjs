@@ -375,10 +375,14 @@ test("keeps SEO language pairs reciprocal and private analytics paths untracked"
     readFile(new URL("../app/blog/[slug]/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/components/AnalyticsTracker.tsx", import.meta.url), "utf8"),
   ]);
-  for (const source of [guide, privacy, article]) {
+  for (const source of [guide, privacy]) {
     assert.match(source, /"pt-BR"/);
     assert.match(source, /"es-ES"/);
   }
+  const translations = await readFile(new URL("../app/blog/translations.ts", import.meta.url), "utf8");
+  assert.match(article, /articleAlternates\("pt"/);
+  assert.match(translations, /"pt-BR"/);
+  assert.match(translations, /"es-ES"/);
   assert.match(tracker, /\/entre-nos\/resposta/);
   assert.match(tracker, /\/es\/entre-nos\/respuesta/);
 });

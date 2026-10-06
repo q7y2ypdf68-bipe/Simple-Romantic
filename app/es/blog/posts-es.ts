@@ -1,6 +1,8 @@
 import type { BlogPost } from "../../blog/posts";
+import { posts as partA } from "./parts/part-A";
+import { posts as partB } from "./parts/part-B";
 
-export const blogPostsEs: BlogPost[] = [
+const baseEs: BlogPost[] = [
   {
     slug: "cuento-la-mirada-que-se-quedo",
     title: "La mirada que se quedó",
@@ -191,6 +193,8 @@ export const blogPostsEs: BlogPost[] = [
     ],
   },
 ];
+
+export const blogPostsEs: BlogPost[] = [...baseEs, ...partA, ...partB].sort((x, y) => (y.publishedIso || "").localeCompare(x.publishedIso || ""));
 
 export function getPostEs(slug: string) {
   return blogPostsEs.find((post) => post.slug === slug);
