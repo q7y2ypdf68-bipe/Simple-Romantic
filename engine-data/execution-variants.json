@@ -1,0 +1,3206 @@
+{
+  "VARIANT_DATA_GAP": false,
+  "variantCount": 82,
+  "familiesWithVariants": [
+    "JOG-01",
+    "JOG-02",
+    "MUS-08",
+    "MUS-03",
+    "JOG-04",
+    "VIN-05",
+    "VIN-07",
+    "VIN-09",
+    "MUS-04",
+    "JOG-03",
+    "ART-01",
+    "COM-01",
+    "GAS-08",
+    "ART-08",
+    "MUS-06",
+    "ART-09",
+    "ART-10",
+    "GAS-07",
+    "NAT-01",
+    "CID-01",
+    "NAT-10",
+    "NAT-08",
+    "TEM-01",
+    "CID-10",
+    "NAT-05",
+    "NAT-12",
+    "NAT-09",
+    "VIA-01",
+    "VIA-02",
+    "VIA-05",
+    "CUL-08",
+    "GAS-10",
+    "CUL-03",
+    "CUL-04",
+    "GAS-05",
+    "CUL-01",
+    "CUL-07",
+    "GAS-09",
+    "GAS-11",
+    "MOV-06",
+    "GAS-13",
+    "CEL-08",
+    "COM-06"
+  ],
+  "coverageGap": "Restam exclusivamente zeros estruturais: EM_CASA + FULL_DAY e FULL_DAY GRÁTIS nos cenários dependentes de famílias de viagem estruturalmente pagas.",
+  "variants": [
+    {
+      "id": "V2-001",
+      "familyId": "JOG-01",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-17"
+      ],
+      "gestureId": "GEST-17",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Jogo de tabuleiro: um encontro sem pressão",
+      "whyItFits": "Baseado em Jogo de tabuleiro, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para jogo de tabuleiro.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-002",
+      "familyId": "JOG-02",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "B",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-08"
+      ],
+      "gestureId": "GEST-08",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Jogo de cartas: um encontro sem pressão",
+      "whyItFits": "Baseado em Jogo de cartas, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para jogo de cartas.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-003",
+      "familyId": "MUS-08",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "C",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-15"
+      ],
+      "gestureId": "GEST-15",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Karaoke: um encontro sem pressão",
+      "whyItFits": "Baseado em Karaoke, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para karaoke.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-004",
+      "familyId": "MUS-03",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-01"
+      ],
+      "gestureId": "GEST-01",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Escuta musical intencional: um detalhe para descobrir",
+      "whyItFits": "Baseado em Escuta musical intencional, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para escuta musical intencional.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Bilhete curto e específico”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Bilhete curto e específico."
+    },
+    {
+      "id": "V2-005",
+      "familyId": "JOG-04",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "B",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-07"
+      ],
+      "gestureId": "GEST-07",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Quiz: um detalhe para descobrir",
+      "whyItFits": "Baseado em Quiz, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para quiz.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Música dedicada”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Música dedicada."
+    },
+    {
+      "id": "V2-006",
+      "familyId": "ART-11",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "C",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-26"
+      ],
+      "gestureId": "GEST-26",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Cartas: um detalhe para descobrir",
+      "whyItFits": "Baseado em Cartas, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para cartas.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Postal escrito”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Postal escrito."
+    },
+    {
+      "id": "V2-007",
+      "familyId": "VIN-07",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-69"
+      ],
+      "gestureId": "GEST-69",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Revisitar memória querida: tempo com intenção",
+      "whyItFits": "Baseado em Revisitar memória querida, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para revisitar memória querida.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-008",
+      "familyId": "VIN-09",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "B",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-34"
+      ],
+      "gestureId": "GEST-34",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Gratidão: tempo com intenção",
+      "whyItFits": "Baseado em Gratidão, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para gratidão.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-009",
+      "familyId": "MUS-04",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "C",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-63"
+      ],
+      "gestureId": "GEST-63",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Playlist partilhada: tempo com intenção",
+      "whyItFits": "Baseado em Playlist partilhada, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para playlist partilhada.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-010",
+      "familyId": "JOG-03",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-17"
+      ],
+      "gestureId": "GEST-17",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Puzzle: um encontro sem pressão",
+      "whyItFits": "Baseado em Puzzle, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para puzzle.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-011",
+      "familyId": "ART-01",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "B",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-08"
+      ],
+      "gestureId": "GEST-08",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Arte visual livre: um encontro sem pressão",
+      "whyItFits": "Baseado em Arte visual livre, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para arte visual livre.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-012",
+      "familyId": "COM-01",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "C",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-15"
+      ],
+      "gestureId": "GEST-15",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Voluntariado: um encontro sem pressão",
+      "whyItFits": "Baseado em Voluntariado, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para voluntariado.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-013",
+      "familyId": "GAS-08",
+      "environment": "home",
+      "costBand": 1,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-01"
+      ],
+      "gestureId": "GEST-01",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Preparar sobremesa juntos: um detalhe para descobrir",
+      "whyItFits": "Baseado em Preparar sobremesa juntos, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para preparar sobremesa juntos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Bilhete curto e específico”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Bilhete curto e específico."
+    },
+    {
+      "id": "V2-014",
+      "familyId": "ART-08",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "B",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-07"
+      ],
+      "gestureId": "GEST-07",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Papel e colagem: um detalhe para descobrir",
+      "whyItFits": "Baseado em Papel e colagem, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para papel e colagem.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Música dedicada”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Música dedicada."
+    },
+    {
+      "id": "V2-015",
+      "familyId": "MUS-06",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "C",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-26"
+      ],
+      "gestureId": "GEST-26",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Dançar em casa: um detalhe para descobrir",
+      "whyItFits": "Baseado em Dançar em casa, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para dançar em casa.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Postal escrito”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Postal escrito."
+    },
+    {
+      "id": "V2-016",
+      "familyId": "ART-09",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-69"
+      ],
+      "gestureId": "GEST-69",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Álbum físico: tempo com intenção",
+      "whyItFits": "Baseado em Álbum físico, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para álbum físico.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-017",
+      "familyId": "ART-10",
+      "environment": "home",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "B",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-34"
+      ],
+      "gestureId": "GEST-34",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Curadoria de fotografias físicas: tempo com intenção",
+      "whyItFits": "Baseado em Curadoria de fotografias físicas, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para curadoria de fotografias físicas.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-018",
+      "familyId": "GAS-07",
+      "environment": "home",
+      "costBand": 1,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "C",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "independent",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-63"
+      ],
+      "gestureId": "GEST-63",
+      "requirements": "Usar apenas materiais e alimentos adequados às preferências já conhecidas.",
+      "planBEligible": false,
+      "title": "Cozinhar juntos: tempo com intenção",
+      "whyItFits": "Baseado em Cozinhar juntos, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Preparem o espaço e os materiais necessários para cozinhar juntos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-019",
+      "familyId": "NAT-01",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-17"
+      ],
+      "gestureId": "GEST-17",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Caminhada ao ar livre: um encontro sem pressão",
+      "whyItFits": "Baseado em Caminhada ao ar livre, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam caminhada ao ar livre no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-020",
+      "familyId": "CID-01",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "B",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-08"
+      ],
+      "gestureId": "GEST-08",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Exploração urbana: um encontro sem pressão",
+      "whyItFits": "Baseado em Exploração urbana, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam exploração urbana no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-021",
+      "familyId": "NAT-10",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "C",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-15"
+      ],
+      "gestureId": "GEST-15",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Observação de natureza: um encontro sem pressão",
+      "whyItFits": "Baseado em Observação de natureza, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam observação de natureza no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-022",
+      "familyId": "NAT-08",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-01"
+      ],
+      "gestureId": "GEST-01",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Contemplação de paisagem: um detalhe para descobrir",
+      "whyItFits": "Baseado em Contemplação de paisagem, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam contemplação de paisagem no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Bilhete curto e específico”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Bilhete curto e específico."
+    },
+    {
+      "id": "V2-023",
+      "familyId": "TEM-01",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "B",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-07"
+      ],
+      "gestureId": "GEST-07",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Observação das estrelas: um detalhe para descobrir",
+      "whyItFits": "Baseado em Observação das estrelas, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam observação das estrelas no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Música dedicada”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Música dedicada."
+    },
+    {
+      "id": "V2-024",
+      "familyId": "CID-10",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "C",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-26"
+      ],
+      "gestureId": "GEST-26",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Exploração de loja de nicho: um detalhe para descobrir",
+      "whyItFits": "Baseado em Exploração de loja de nicho, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam exploração de loja de nicho no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Postal escrito”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Postal escrito."
+    },
+    {
+      "id": "V2-025",
+      "familyId": "NAT-05",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-69"
+      ],
+      "gestureId": "GEST-69",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Praia: tempo com intenção",
+      "whyItFits": "Baseado em Praia, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam praia no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-026",
+      "familyId": "NAT-12",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "B",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-34"
+      ],
+      "gestureId": "GEST-34",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Colheita sazonal permitida: tempo com intenção",
+      "whyItFits": "Baseado em Colheita sazonal permitida, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam colheita sazonal permitida no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-027",
+      "familyId": "NAT-09",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "C",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-63"
+      ],
+      "gestureId": "GEST-63",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Trilho leve: tempo com intenção",
+      "whyItFits": "Baseado em Trilho leve, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam trilho leve no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-028",
+      "familyId": "NAT-01",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-17"
+      ],
+      "gestureId": "GEST-17",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Caminhada ao ar livre: um encontro sem pressão",
+      "whyItFits": "Baseado em Caminhada ao ar livre, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam caminhada ao ar livre no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-029",
+      "familyId": "CID-01",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "B",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-08"
+      ],
+      "gestureId": "GEST-08",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Exploração urbana: um encontro sem pressão",
+      "whyItFits": "Baseado em Exploração urbana, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam exploração urbana no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-030",
+      "familyId": "NAT-10",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "C",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-15"
+      ],
+      "gestureId": "GEST-15",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Observação de natureza: um encontro sem pressão",
+      "whyItFits": "Baseado em Observação de natureza, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam observação de natureza no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-031",
+      "familyId": "NAT-08",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-01"
+      ],
+      "gestureId": "GEST-01",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Contemplação de paisagem: um detalhe para descobrir",
+      "whyItFits": "Baseado em Contemplação de paisagem, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam contemplação de paisagem no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Bilhete curto e específico”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Bilhete curto e específico."
+    },
+    {
+      "id": "V2-032",
+      "familyId": "TEM-01",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "B",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-07"
+      ],
+      "gestureId": "GEST-07",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Observação das estrelas: um detalhe para descobrir",
+      "whyItFits": "Baseado em Observação das estrelas, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam observação das estrelas no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Música dedicada”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Música dedicada."
+    },
+    {
+      "id": "V2-033",
+      "familyId": "CID-10",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "C",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-26"
+      ],
+      "gestureId": "GEST-26",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Exploração de loja de nicho: um detalhe para descobrir",
+      "whyItFits": "Baseado em Exploração de loja de nicho, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam exploração de loja de nicho no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Postal escrito”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Postal escrito."
+    },
+    {
+      "id": "V2-034",
+      "familyId": "NAT-05",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-69"
+      ],
+      "gestureId": "GEST-69",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Praia: tempo com intenção",
+      "whyItFits": "Baseado em Praia, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam praia no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-035",
+      "familyId": "NAT-12",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "B",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-34"
+      ],
+      "gestureId": "GEST-34",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Colheita sazonal permitida: tempo com intenção",
+      "whyItFits": "Baseado em Colheita sazonal permitida, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam colheita sazonal permitida no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-036",
+      "familyId": "NAT-09",
+      "environment": "outdoors",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "C",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-63"
+      ],
+      "gestureId": "GEST-63",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Trilho leve: tempo com intenção",
+      "whyItFits": "Baseado em Trilho leve, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam trilho leve no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-037",
+      "familyId": "VIA-01",
+      "environment": "outdoors",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "A",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-17"
+      ],
+      "gestureId": "GEST-17",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Passeio local de um dia: um encontro sem pressão",
+      "whyItFits": "Baseado em Passeio local de um dia, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam passeio local de um dia no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-038",
+      "familyId": "VIA-02",
+      "environment": "outdoors",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "B",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-08"
+      ],
+      "gestureId": "GEST-08",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Viagem curta de comboio: um encontro sem pressão",
+      "whyItFits": "Baseado em Viagem curta de comboio, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam viagem curta de comboio no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-039",
+      "familyId": "VIA-05",
+      "environment": "outdoors",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "C",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-15"
+      ],
+      "gestureId": "GEST-15",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Ferry ou transporte panorâmico: um encontro sem pressão",
+      "whyItFits": "Baseado em Ferry ou transporte panorâmico, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam ferry ou transporte panorâmico no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-040",
+      "familyId": "VIA-01",
+      "environment": "outdoors",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-01"
+      ],
+      "gestureId": "GEST-01",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Passeio local de um dia: um detalhe para descobrir",
+      "whyItFits": "Baseado em Passeio local de um dia, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam passeio local de um dia no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Bilhete curto e específico”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Bilhete curto e específico."
+    },
+    {
+      "id": "V2-041",
+      "familyId": "VIA-02",
+      "environment": "outdoors",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "B",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-07"
+      ],
+      "gestureId": "GEST-07",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Viagem curta de comboio: um detalhe para descobrir",
+      "whyItFits": "Baseado em Viagem curta de comboio, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam viagem curta de comboio no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Música dedicada”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Música dedicada."
+    },
+    {
+      "id": "V2-042",
+      "familyId": "VIA-05",
+      "environment": "outdoors",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "C",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-26"
+      ],
+      "gestureId": "GEST-26",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Ferry ou transporte panorâmico: um detalhe para descobrir",
+      "whyItFits": "Baseado em Ferry ou transporte panorâmico, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam ferry ou transporte panorâmico no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Postal escrito”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Postal escrito."
+    },
+    {
+      "id": "V2-043",
+      "familyId": "VIA-01",
+      "environment": "outdoors",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "A",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-69"
+      ],
+      "gestureId": "GEST-69",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Passeio local de um dia: tempo com intenção",
+      "whyItFits": "Baseado em Passeio local de um dia, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam passeio local de um dia no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-044",
+      "familyId": "VIA-02",
+      "environment": "outdoors",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "B",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-34"
+      ],
+      "gestureId": "GEST-34",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Viagem curta de comboio: tempo com intenção",
+      "whyItFits": "Baseado em Viagem curta de comboio, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam viagem curta de comboio no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-045",
+      "familyId": "VIA-05",
+      "environment": "outdoors",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "C",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "required-unverified",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-63"
+      ],
+      "gestureId": "GEST-63",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Ferry ou transporte panorâmico: tempo com intenção",
+      "whyItFits": "Baseado em Ferry ou transporte panorâmico, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam ferry ou transporte panorâmico no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-046",
+      "familyId": "CUL-08",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-17"
+      ],
+      "gestureId": "GEST-17",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Exploração de livraria: um encontro sem pressão",
+      "whyItFits": "Baseado em Exploração de livraria, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam exploração de livraria no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-047",
+      "familyId": "GAS-10",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "B",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-08"
+      ],
+      "gestureId": "GEST-08",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Comida de rua: um encontro sem pressão",
+      "whyItFits": "Baseado em Comida de rua, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam comida de rua no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-048",
+      "familyId": "CID-10",
+      "environment": "go-out",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "C",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-15"
+      ],
+      "gestureId": "GEST-15",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Exploração de loja de nicho: um encontro sem pressão",
+      "whyItFits": "Baseado em Exploração de loja de nicho, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam exploração de loja de nicho no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-049",
+      "familyId": "CUL-03",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-01"
+      ],
+      "gestureId": "GEST-01",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Galeria de arte: um detalhe para descobrir",
+      "whyItFits": "Baseado em Galeria de arte, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam galeria de arte no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Bilhete curto e específico”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Bilhete curto e específico."
+    },
+    {
+      "id": "V2-050",
+      "familyId": "CUL-04",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "B",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-07"
+      ],
+      "gestureId": "GEST-07",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Cinema: um detalhe para descobrir",
+      "whyItFits": "Baseado em Cinema, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam cinema no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Música dedicada”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Música dedicada."
+    },
+    {
+      "id": "V2-051",
+      "familyId": "GAS-05",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "C",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-26"
+      ],
+      "gestureId": "GEST-26",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Jantar em restaurante: um detalhe para descobrir",
+      "whyItFits": "Baseado em Jantar em restaurante, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam jantar em restaurante no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Postal escrito”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Postal escrito."
+    },
+    {
+      "id": "V2-052",
+      "familyId": "CUL-01",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-69"
+      ],
+      "gestureId": "GEST-69",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Museu: tempo com intenção",
+      "whyItFits": "Baseado em Museu, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam museu no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-053",
+      "familyId": "CUL-07",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "B",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-34"
+      ],
+      "gestureId": "GEST-34",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Performance ao vivo: tempo com intenção",
+      "whyItFits": "Baseado em Performance ao vivo, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam performance ao vivo no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-054",
+      "familyId": "GAS-09",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "C",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-63"
+      ],
+      "gestureId": "GEST-63",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Degustação orientada: tempo com intenção",
+      "whyItFits": "Baseado em Degustação orientada, é uma experiência concreta, proporcional e pensada para uma hora.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam degustação orientada no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-055",
+      "familyId": "CUL-01",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-17"
+      ],
+      "gestureId": "GEST-17",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Museu: um encontro sem pressão",
+      "whyItFits": "Baseado em Museu, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam museu no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-056",
+      "familyId": "CUL-03",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "B",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-08"
+      ],
+      "gestureId": "GEST-08",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Galeria de arte: um encontro sem pressão",
+      "whyItFits": "Baseado em Galeria de arte, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam galeria de arte no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-057",
+      "familyId": "GAS-11",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "C",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-15"
+      ],
+      "gestureId": "GEST-15",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Mercado, feira ou evento gastronómico: um encontro sem pressão",
+      "whyItFits": "Baseado em Mercado, feira ou evento gastronómico, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam mercado, feira ou evento gastronómico no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-058",
+      "familyId": "CUL-07",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-01"
+      ],
+      "gestureId": "GEST-01",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Performance ao vivo: um detalhe para descobrir",
+      "whyItFits": "Baseado em Performance ao vivo, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam performance ao vivo no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Bilhete curto e específico”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Bilhete curto e específico."
+    },
+    {
+      "id": "V2-059",
+      "familyId": "MOV-06",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "B",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-07"
+      ],
+      "gestureId": "GEST-07",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Bowling: um detalhe para descobrir",
+      "whyItFits": "Baseado em Bowling, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam bowling no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Música dedicada”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Música dedicada."
+    },
+    {
+      "id": "V2-060",
+      "familyId": "GAS-13",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "C",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-26"
+      ],
+      "gestureId": "GEST-26",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Jantar temático: um detalhe para descobrir",
+      "whyItFits": "Baseado em Jantar temático, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam jantar temático no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Postal escrito”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Postal escrito."
+    },
+    {
+      "id": "V2-061",
+      "familyId": "CUL-08",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-69"
+      ],
+      "gestureId": "GEST-69",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Exploração de livraria: tempo com intenção",
+      "whyItFits": "Baseado em Exploração de livraria, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam exploração de livraria no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-062",
+      "familyId": "CUL-04",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "B",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-34"
+      ],
+      "gestureId": "GEST-34",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Cinema: tempo com intenção",
+      "whyItFits": "Baseado em Cinema, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam cinema no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-063",
+      "familyId": "GAS-05",
+      "environment": "go-out",
+      "costBand": 1,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "C",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-63"
+      ],
+      "gestureId": "GEST-63",
+      "requirements": "Confirmar horário, acessibilidade, previsão e disponibilidade antes de sair.",
+      "planBEligible": true,
+      "title": "Jantar em restaurante: tempo com intenção",
+      "whyItFits": "Baseado em Jantar em restaurante, é uma experiência concreta, proporcional e pensada para uma tarde.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam jantar em restaurante no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-064",
+      "familyId": "VIA-01",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "A",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-17"
+      ],
+      "gestureId": "GEST-17",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Passeio local de um dia: um encontro sem pressão",
+      "whyItFits": "Baseado em Passeio local de um dia, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam passeio local de um dia no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-065",
+      "familyId": "VIA-02",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "B",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-08"
+      ],
+      "gestureId": "GEST-08",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Viagem curta de comboio: um encontro sem pressão",
+      "whyItFits": "Baseado em Viagem curta de comboio, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam viagem curta de comboio no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-066",
+      "familyId": "VIA-05",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "C",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-15"
+      ],
+      "gestureId": "GEST-15",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Ferry ou transporte panorâmico: um encontro sem pressão",
+      "whyItFits": "Baseado em Ferry ou transporte panorâmico, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam ferry ou transporte panorâmico no ritmo confortável para ambos.",
+        "Deixem espaço para conversar e encerrem quando fizer sentido, sem prolongamento obrigatório."
+      ],
+      "smallDetail": "Deixem uma escolha pequena para a outra pessoa decidir."
+    },
+    {
+      "id": "V2-067",
+      "familyId": "VIA-01",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-01"
+      ],
+      "gestureId": "GEST-01",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Passeio local de um dia: um detalhe para descobrir",
+      "whyItFits": "Baseado em Passeio local de um dia, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam passeio local de um dia no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Bilhete curto e específico”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Bilhete curto e específico."
+    },
+    {
+      "id": "V2-068",
+      "familyId": "VIA-02",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "B",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-07"
+      ],
+      "gestureId": "GEST-07",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Viagem curta de comboio: um detalhe para descobrir",
+      "whyItFits": "Baseado em Viagem curta de comboio, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam viagem curta de comboio no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Música dedicada”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Música dedicada."
+    },
+    {
+      "id": "V2-069",
+      "familyId": "VIA-05",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "C",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S2",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-26"
+      ],
+      "gestureId": "GEST-26",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Ferry ou transporte panorâmico: um detalhe para descobrir",
+      "whyItFits": "Baseado em Ferry ou transporte panorâmico, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam ferry ou transporte panorâmico no ritmo confortável para ambos.",
+        "Revelem o detalhe preparado só depois de confirmar que a pessoa está confortável com o plano."
+      ],
+      "smallDetail": "A surpresa é “Postal escrito”; confirme antes os requisitos práticos e deixe a pessoa recusar ou ajustar o plano.",
+      "surprise": "Surpresa identificável: Postal escrito."
+    },
+    {
+      "id": "V2-070",
+      "familyId": "VIA-01",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "A",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-69"
+      ],
+      "gestureId": "GEST-69",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Passeio local de um dia: tempo com intenção",
+      "whyItFits": "Baseado em Passeio local de um dia, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam passeio local de um dia no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-071",
+      "familyId": "VIA-02",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "B",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-34"
+      ],
+      "gestureId": "GEST-34",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Viagem curta de comboio: tempo com intenção",
+      "whyItFits": "Baseado em Viagem curta de comboio, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam viagem curta de comboio no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-072",
+      "familyId": "VIA-05",
+      "environment": "go-out",
+      "costBand": 2,
+      "durationMinutes": 420,
+      "durationLabel": "Um dia",
+      "tier": "C",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-63"
+      ],
+      "gestureId": "GEST-63",
+      "requirements": "Confirmar horários, bilhetes, acessibilidade e regresso no mesmo dia.",
+      "planBEligible": true,
+      "title": "Ferry ou transporte panorâmico: tempo com intenção",
+      "whyItFits": "Baseado em Ferry ou transporte panorâmico, é uma experiência concreta, proporcional e pensada para um dia.",
+      "howTo": [
+        "Combinem ponto de partida, horário, orçamento e preferências.",
+        "Confirmem a disponibilidade e façam ferry ou transporte panorâmico no ritmo confortável para ambos.",
+        "Reservem alguns minutos para uma pergunta simples ou uma memória ligada ao encontro."
+      ],
+      "smallDetail": "Fechem com um agradecimento concreto pelo tempo partilhado."
+    },
+    {
+      "id": "V2-073",
+      "familyId": "CEL-08",
+      "environment": "go-out",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-17"
+      ],
+      "gestureId": "GEST-17",
+      "requirements": "Confirmar horário, acessibilidade e uso gratuito do espaço; não comprar nada e levar apenas materiais já disponíveis.",
+      "planBEligible": true,
+      "title": "Descobrir uma loja de segunda mão sem compra",
+      "whyItFits": "Baseado em Thrift ou segunda mão, usa um espaço gratuito de saída e mantém o custo incremental em C0.",
+      "howTo": [
+        "Confirmem um espaço público gratuito, o horário e a acessibilidade antes de sair.",
+        "Percorram uma loja de segunda mão com o acordo de não comprar nada; cada pessoa escolhe uma peça curiosa e explica por que a reparou.",
+        "Façam uma pausa curta para conversar e terminem no horário combinado, sem obrigação de prolongar."
+      ],
+      "smallDetail": "A atividade não exige compra nem preferência pessoal presumida."
+    },
+    {
+      "id": "V2-074",
+      "familyId": "VIN-05",
+      "environment": "go-out",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "surprise": "Surpresa identificável: Cartas curtas escolhidas na biblioteca.",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-01"
+      ],
+      "gestureId": "GEST-01",
+      "requirements": "Confirmar horário, acessibilidade e uso gratuito do espaço; não comprar nada e levar apenas materiais já disponíveis.",
+      "planBEligible": true,
+      "title": "Cartas curtas escolhidas na biblioteca",
+      "whyItFits": "Baseado em Cartas, usa um espaço gratuito de saída e mantém o custo incremental em C0.",
+      "howTo": [
+        "Confirmem um espaço público gratuito, o horário e a acessibilidade antes de sair.",
+        "Prepare três perguntas em cartões e revele-as uma de cada vez numa mesa de biblioteca; a outra pessoa pode trocar qualquer pergunta.",
+        "Façam uma pausa curta para conversar e terminem no horário combinado, sem obrigação de prolongar."
+      ],
+      "smallDetail": "A surpresa é identificável, proporcional e pode ser recusada ou ajustada."
+    },
+    {
+      "id": "V2-075",
+      "familyId": "ART-01",
+      "environment": "go-out",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "surprise": "Surpresa identificável: Um desenho surpresa na biblioteca.",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-22"
+      ],
+      "gestureId": "GEST-22",
+      "requirements": "Confirmar horário, acessibilidade e uso gratuito do espaço; não comprar nada e levar apenas materiais já disponíveis.",
+      "planBEligible": true,
+      "title": "Um desenho surpresa na biblioteca",
+      "whyItFits": "Baseado em Arte visual livre, usa um espaço gratuito de saída e mantém o custo incremental em C0.",
+      "howTo": [
+        "Confirmem um espaço público gratuito, o horário e a acessibilidade antes de sair.",
+        "Leve papel e lápis próprios e revele, já na biblioteca, um pequeno tema de desenho que pode ser trocado sem constrangimento.",
+        "Façam uma pausa curta para conversar e terminem no horário combinado, sem obrigação de prolongar."
+      ],
+      "smallDetail": "A surpresa é identificável, proporcional e pode ser recusada ou ajustada."
+    },
+    {
+      "id": "V2-076",
+      "familyId": "ART-10",
+      "environment": "go-out",
+      "costBand": 0,
+      "durationMinutes": 75,
+      "durationLabel": "Uma hora",
+      "tier": "A",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-34"
+      ],
+      "gestureId": "GEST-34",
+      "requirements": "Confirmar horário, acessibilidade e uso gratuito do espaço; não comprar nada e levar apenas materiais já disponíveis.",
+      "planBEligible": true,
+      "title": "Escolher uma fotografia para revisitar",
+      "whyItFits": "Baseado em Curadoria de fotografias físicas, usa um espaço gratuito de saída e mantém o custo incremental em C0.",
+      "howTo": [
+        "Confirmem um espaço público gratuito, o horário e a acessibilidade antes de sair.",
+        "Levem duas fotografias já impressas para uma mesa de biblioteca, escolham uma e conversem sobre o que ainda vos faz sorrir nessa memória.",
+        "Façam uma pausa curta para conversar e terminem no horário combinado, sem obrigação de prolongar."
+      ],
+      "smallDetail": "A atividade não exige compra nem preferência pessoal presumida."
+    },
+    {
+      "id": "V2-077",
+      "familyId": "COM-01",
+      "environment": "go-out",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-42"
+      ],
+      "gestureId": "GEST-42",
+      "requirements": "Confirmar horário, acessibilidade e uso gratuito do espaço; não comprar nada e levar apenas materiais já disponíveis.",
+      "planBEligible": true,
+      "title": "Voluntariado leve de uma tarde",
+      "whyItFits": "Baseado em Voluntariado, usa um espaço gratuito de saída e mantém o custo incremental em C0.",
+      "howTo": [
+        "Confirmem um espaço público gratuito, o horário e a acessibilidade antes de sair.",
+        "Confirmem uma ação comunitária gratuita e de baixa exigência, participem durante uma tarde e façam uma pausa para comentar o que descobriram.",
+        "Façam uma pausa curta para conversar e terminem no horário combinado, sem obrigação de prolongar."
+      ],
+      "smallDetail": "A atividade não exige compra nem preferência pessoal presumida."
+    },
+    {
+      "id": "V2-078",
+      "familyId": "ART-01",
+      "environment": "go-out",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "casual"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-05",
+        "MOD-10",
+        "MOD-45"
+      ],
+      "optionalGestureIds": [
+        "GEST-17"
+      ],
+      "gestureId": "GEST-17",
+      "requirements": "Confirmar horário, acessibilidade e uso gratuito do espaço; não comprar nada e levar apenas materiais já disponíveis.",
+      "planBEligible": true,
+      "title": "Desenho livre num espaço público calmo",
+      "whyItFits": "Baseado em Arte visual livre, usa um espaço gratuito de saída e mantém o custo incremental em C0.",
+      "howTo": [
+        "Confirmem um espaço público gratuito, o horário e a acessibilidade antes de sair.",
+        "Levem apenas materiais que já têm, escolham uma mesa pública tranquila e façam desenhos rápidos do que observam sem comparar resultados.",
+        "Façam uma pausa curta para conversar e terminem no horário combinado, sem obrigação de prolongar."
+      ],
+      "smallDetail": "A atividade não exige compra nem preferência pessoal presumida."
+    },
+    {
+      "id": "V2-079",
+      "familyId": "ART-08",
+      "environment": "go-out",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "surprise": "Surpresa identificável: Colagem com envelope surpresa.",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-23"
+      ],
+      "gestureId": "GEST-23",
+      "requirements": "Confirmar horário, acessibilidade e uso gratuito do espaço; não comprar nada e levar apenas materiais já disponíveis.",
+      "planBEligible": true,
+      "title": "Colagem com envelope surpresa",
+      "whyItFits": "Baseado em Papel e colagem, usa um espaço gratuito de saída e mantém o custo incremental em C0.",
+      "howTo": [
+        "Confirmem um espaço público gratuito, o horário e a acessibilidade antes de sair.",
+        "Levem recortes e papel que já tenham, combinem uma mesa pública gratuita e revelem um envelope com um tema de colagem que pode ser alterado.",
+        "Façam uma pausa curta para conversar e terminem no horário combinado, sem obrigação de prolongar."
+      ],
+      "smallDetail": "A surpresa é identificável, proporcional e pode ser recusada ou ajustada."
+    },
+    {
+      "id": "V2-080",
+      "familyId": "ART-11",
+      "environment": "go-out",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "surprise"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "safe",
+      "surpriseLevel": "S1",
+      "surprise": "Surpresa identificável: Decoração com envelope surpresa.",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-29",
+        "MOD-68",
+        "MOD-70"
+      ],
+      "optionalGestureIds": [
+        "GEST-26"
+      ],
+      "gestureId": "GEST-26",
+      "requirements": "Confirmar horário, acessibilidade e uso gratuito do espaço; não comprar nada e levar apenas materiais já disponíveis.",
+      "planBEligible": true,
+      "title": "Decoração com envelope surpresa",
+      "whyItFits": "Baseado em Decoração de espaço, usa um espaço gratuito de saída e mantém o custo incremental em C0.",
+      "howTo": [
+        "Confirmem um espaço público gratuito, o horário e a acessibilidade antes de sair.",
+        "Levem papéis e fitas já disponíveis, revelem um envelope com uma cor ou tema e deixem a outra pessoa trocar a proposta se preferir.",
+        "Façam uma pausa curta para conversar e terminem no horário combinado, sem obrigação de prolongar."
+      ],
+      "smallDetail": "A surpresa é identificável, proporcional e pode ser recusada ou ajustada."
+    },
+    {
+      "id": "V2-081",
+      "familyId": "ART-09",
+      "environment": "go-out",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-28"
+      ],
+      "gestureId": "GEST-28",
+      "requirements": "Confirmar horário, acessibilidade e uso gratuito do espaço; não comprar nada e levar apenas materiais já disponíveis.",
+      "planBEligible": true,
+      "title": "Álbum físico numa tarde sem ecrãs",
+      "whyItFits": "Baseado em Álbum físico, usa um espaço gratuito de saída e mantém o custo incremental em C0.",
+      "howTo": [
+        "Confirmem um espaço público gratuito, o horário e a acessibilidade antes de sair.",
+        "Levem fotografias ou papéis já disponíveis para uma mesa de biblioteca e organizem um pequeno conjunto, contando por que cada item ficou.",
+        "Façam uma pausa curta para conversar e terminem no horário combinado, sem obrigação de prolongar."
+      ],
+      "smallDetail": "A atividade não exige compra nem preferência pessoal presumida."
+    },
+    {
+      "id": "V2-082",
+      "familyId": "COM-06",
+      "environment": "go-out",
+      "costBand": 0,
+      "durationMinutes": 240,
+      "durationLabel": "Uma tarde",
+      "tier": "A",
+      "occasions": [
+        "reconnect"
+      ],
+      "consent": "satisfied",
+      "safety": "safe",
+      "accessibility": "compatible",
+      "availability": "required-unverified",
+      "climate": "independent",
+      "surpriseSafety": "not-applicable",
+      "planBVariantId": "V2-001",
+      "modifierIds": [
+        "MOD-08",
+        "MOD-17",
+        "MOD-67"
+      ],
+      "optionalGestureIds": [
+        "GEST-52"
+      ],
+      "gestureId": "GEST-52",
+      "requirements": "Confirmar horário, acessibilidade e uso gratuito do espaço; não comprar nada e levar apenas materiais já disponíveis.",
+      "planBEligible": true,
+      "title": "Cuidar de um jardim comunitário",
+      "whyItFits": "Baseado em Jardinagem, usa um espaço gratuito de saída e mantém o custo incremental em C0.",
+      "howTo": [
+        "Confirmem um espaço público gratuito, o horário e a acessibilidade antes de sair.",
+        "Confirmem uma sessão aberta e gratuita de jardinagem comunitária, escolham uma tarefa leve e conversem durante a pausa sobre o que querem cultivar no presente.",
+        "Façam uma pausa curta para conversar e terminem no horário combinado, sem obrigação de prolongar."
+      ],
+      "smallDetail": "A atividade não exige compra nem preferência pessoal presumida."
+    }
+  ]
+}

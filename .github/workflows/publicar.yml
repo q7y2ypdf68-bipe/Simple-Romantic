@@ -1,0 +1,54 @@
+# Publica o site sozinho a cada envio para a branch painel-admin-blog.
+# Também dá para rodar à mão: aba Actions > "Publicar o site" > Run workflow.
+name: Publicar o site
+
+on:
+  push:
+    branches: [painel-admin-blog]
+  workflow_dispatch: {}
+
+concurrency:
+  group: publicar-site
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # O código fica em work/site-source para que o motor de ideias (3 pastas acima) seja encontrado.
+      - uses: actions/checkout@v4
+        with:
+          path: work/site-source
+
+      - name: Colocar os dados do motor de ideias no lugar esperado
+        run: cp -r work/site-source/engine-data SR_MOTOR_IDEIAS_V2_AUTHORITY
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: work/site-source/package-lock.json
+
+      - name: Instalar
+        working-directory: work/site-source
+        run: npm ci
+
+      - name: Testar
+        working-directory: work/site-source
+        run: npm test
+
+      - name: Publicar no Cloudflare
+        working-directory: work/site-source
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CI: "true"
+        run: bash scripts/publicar.sh
+
+      - name: Conferir o site no ar
+        run: |
+          sleep 20
+          code=$(curl -s -o /dev/null -w "%{http_code}" https://simpleandromantic.com/)
+          echo "Site respondeu $code"
+          test "$code" = "200"

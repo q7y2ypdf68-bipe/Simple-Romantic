@@ -1,0 +1,366 @@
+{
+  "gestureCount": 72,
+  "gestures": [
+    {
+      "id": "GEST-01",
+      "name": "Bilhete curto e específico",
+      "category": "sinal leve"
+    },
+    {
+      "id": "GEST-02",
+      "name": "Flor ou ramo simples",
+      "category": "sinal leve"
+    },
+    {
+      "id": "GEST-03",
+      "name": "Chocolate favorito",
+      "category": "sinal leve"
+    },
+    {
+      "id": "GEST-04",
+      "name": "Fotografia impressa",
+      "category": "sinal leve"
+    },
+    {
+      "id": "GEST-05",
+      "name": "Objeto simbólico pequeno",
+      "category": "sinal leve"
+    },
+    {
+      "id": "GEST-06",
+      "name": "Mensagem de áudio curta",
+      "category": "sinal leve"
+    },
+    {
+      "id": "GEST-07",
+      "name": "Música dedicada",
+      "category": "sinal leve"
+    },
+    {
+      "id": "GEST-08",
+      "name": "Elogio concreto",
+      "category": "sinal leve"
+    },
+    {
+      "id": "GEST-09",
+      "name": "Perguntar como a pessoa está",
+      "category": "sinal leve"
+    },
+    {
+      "id": "GEST-10",
+      "name": "Levar bebida preferida",
+      "category": "sinal leve"
+    },
+    {
+      "id": "GEST-11",
+      "name": "Preparar pausa confortável",
+      "category": "sinal leve"
+    },
+    {
+      "id": "GEST-12",
+      "name": "Ajudar numa tarefa combinada",
+      "category": "cuidado"
+    },
+    {
+      "id": "GEST-13",
+      "name": "Respeitar necessidade de descanso",
+      "category": "cuidado"
+    },
+    {
+      "id": "GEST-14",
+      "name": "Lembrar preferência conhecida",
+      "category": "cuidado"
+    },
+    {
+      "id": "GEST-15",
+      "name": "Levar pequeno lanche",
+      "category": "cuidado"
+    },
+    {
+      "id": "GEST-16",
+      "name": "Criar ambiente calmo",
+      "category": "cuidado"
+    },
+    {
+      "id": "GEST-17",
+      "name": "Oferecer escolha real",
+      "category": "cuidado"
+    },
+    {
+      "id": "GEST-18",
+      "name": "Acompanhar sem pressionar",
+      "category": "cuidado"
+    },
+    {
+      "id": "GEST-19",
+      "name": "Confirmar acessibilidade",
+      "category": "cuidado"
+    },
+    {
+      "id": "GEST-20",
+      "name": "Reconhecer esforço recente",
+      "category": "cuidado"
+    },
+    {
+      "id": "GEST-21",
+      "name": "Proteger tempo sem interrupções",
+      "category": "cuidado"
+    },
+    {
+      "id": "GEST-22",
+      "name": "Desenho simples",
+      "category": "cuidado"
+    },
+    {
+      "id": "GEST-23",
+      "name": "Colagem pequena",
+      "category": "criativo"
+    },
+    {
+      "id": "GEST-24",
+      "name": "Lista de músicas",
+      "category": "criativo"
+    },
+    {
+      "id": "GEST-25",
+      "name": "Marcador de livro",
+      "category": "criativo"
+    },
+    {
+      "id": "GEST-26",
+      "name": "Postal escrito",
+      "category": "criativo"
+    },
+    {
+      "id": "GEST-27",
+      "name": "Foto com legenda",
+      "category": "criativo"
+    },
+    {
+      "id": "GEST-28",
+      "name": "Mini álbum",
+      "category": "criativo"
+    },
+    {
+      "id": "GEST-29",
+      "name": "Objeto reutilizado",
+      "category": "criativo"
+    },
+    {
+      "id": "GEST-30",
+      "name": "Revisitar fotografia",
+      "category": "criativo"
+    },
+    {
+      "id": "GEST-31",
+      "name": "Contar primeira impressão",
+      "category": "criativo"
+    },
+    {
+      "id": "GEST-32",
+      "name": "Partilhar música antiga",
+      "category": "criativo"
+    },
+    {
+      "id": "GEST-33",
+      "name": "Lembrar conquista comum",
+      "category": "criativo"
+    },
+    {
+      "id": "GEST-34",
+      "name": "Escolher recordação favorita",
+      "category": "memória"
+    },
+    {
+      "id": "GEST-35",
+      "name": "Recriar pequeno gesto",
+      "category": "memória"
+    },
+    {
+      "id": "GEST-36",
+      "name": "Escrever data significativa",
+      "category": "memória"
+    },
+    {
+      "id": "GEST-37",
+      "name": "Guardar bilhete",
+      "category": "memória"
+    },
+    {
+      "id": "GEST-38",
+      "name": "Montar cápsula simples",
+      "category": "memória"
+    },
+    {
+      "id": "GEST-39",
+      "name": "Falar de viagem passada",
+      "category": "memória"
+    },
+    {
+      "id": "GEST-40",
+      "name": "Escolher fotografia para imprimir",
+      "category": "memória"
+    },
+    {
+      "id": "GEST-41",
+      "name": "Escolher juntos",
+      "category": "memória"
+    },
+    {
+      "id": "GEST-42",
+      "name": "Dividir tarefa leve",
+      "category": "memória"
+    },
+    {
+      "id": "GEST-43",
+      "name": "Criar lista comum",
+      "category": "memória"
+    },
+    {
+      "id": "GEST-44",
+      "name": "Preparar mesa juntos",
+      "category": "memória"
+    },
+    {
+      "id": "GEST-45",
+      "name": "Fazer jogo cooperativo",
+      "category": "colaboração"
+    },
+    {
+      "id": "GEST-46",
+      "name": "Montar piquenique",
+      "category": "colaboração"
+    },
+    {
+      "id": "GEST-47",
+      "name": "Escolher tema comum",
+      "category": "colaboração"
+    },
+    {
+      "id": "GEST-48",
+      "name": "Construir algo simples",
+      "category": "colaboração"
+    },
+    {
+      "id": "GEST-49",
+      "name": "Resolver desafio juntos",
+      "category": "colaboração"
+    },
+    {
+      "id": "GEST-50",
+      "name": "Criar playlist a dois",
+      "category": "colaboração"
+    },
+    {
+      "id": "GEST-51",
+      "name": "Selecionar fotos",
+      "category": "colaboração"
+    },
+    {
+      "id": "GEST-52",
+      "name": "Cuidar de planta juntos",
+      "category": "colaboração"
+    },
+    {
+      "id": "GEST-53",
+      "name": "Definir próximo ritual",
+      "category": "colaboração"
+    },
+    {
+      "id": "GEST-54",
+      "name": "Brinde simples",
+      "category": "colaboração"
+    },
+    {
+      "id": "GEST-55",
+      "name": "Marcar pequena conquista",
+      "category": "colaboração"
+    },
+    {
+      "id": "GEST-56",
+      "name": "Escolher sobremesa",
+      "category": "celebração"
+    },
+    {
+      "id": "GEST-57",
+      "name": "Foto comemorativa",
+      "category": "celebração"
+    },
+    {
+      "id": "GEST-58",
+      "name": "Dança curta",
+      "category": "celebração"
+    },
+    {
+      "id": "GEST-59",
+      "name": "Pequeno prémio simbólico",
+      "category": "celebração"
+    },
+    {
+      "id": "GEST-60",
+      "name": "Ritual de parabéns",
+      "category": "celebração"
+    },
+    {
+      "id": "GEST-61",
+      "name": "Mensagem de orgulho",
+      "category": "celebração"
+    },
+    {
+      "id": "GEST-62",
+      "name": "Taça ou bebida favorita",
+      "category": "celebração"
+    },
+    {
+      "id": "GEST-63",
+      "name": "Fechar o dia com gratidão",
+      "category": "celebração"
+    },
+    {
+      "id": "GEST-64",
+      "name": "Acender vela com segurança",
+      "category": "celebração"
+    },
+    {
+      "id": "GEST-65",
+      "name": "Escolher música de abertura",
+      "category": "celebração"
+    },
+    {
+      "id": "GEST-66",
+      "name": "Definir intenção do encontro",
+      "category": "celebração"
+    },
+    {
+      "id": "GEST-67",
+      "name": "Sem ecrãs por período combinado",
+      "category": "ritual"
+    },
+    {
+      "id": "GEST-68",
+      "name": "Escolher pergunta do dia",
+      "category": "ritual"
+    },
+    {
+      "id": "GEST-69",
+      "name": "Encerrar com agradecimento",
+      "category": "ritual"
+    },
+    {
+      "id": "GEST-70",
+      "name": "Guardar pequeno símbolo",
+      "category": "ritual"
+    },
+    {
+      "id": "GEST-71",
+      "name": "Repetir tradição querida",
+      "category": "ritual"
+    },
+    {
+      "id": "GEST-72",
+      "name": "Fazer pausa de respiração",
+      "category": "ritual"
+    }
+  ],
+  "rule": "Gesto é complemento opcional; nunca substitui consentimento, segurança ou autonomia."
+}
