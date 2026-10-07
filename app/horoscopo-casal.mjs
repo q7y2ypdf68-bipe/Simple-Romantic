@@ -111,7 +111,8 @@ const fill = (text, values) => text.replace(/\{(\w+)\}/g, (_, key) => values[key
 const idOf = (text) => seedOf(text).toString(36);
 
 // Escolhe um item que não apareceu nas leituras recentes deste casal (a janela é 60% da lista, então sempre sobra opção).
-function pickFresh(list, seed, recent, key) {
+function pickFresh(list, seed, recent, key, force = null) {
+  if (force) { const hit = list.map((item, index) => ({ item, id: key(item, index) })).find((entry) => entry.id === force); if (hit) return hit; }
   const window = Math.max(0, Math.floor(list.length * 0.6));
   const avoid = new Set(recent.slice(-window));
   const fresh = list.map((item, index) => ({ item, id: key(item, index) })).filter((entry) => !avoid.has(entry.id));
@@ -121,7 +122,7 @@ function pickFresh(list, seed, recent, key) {
 
 // Leitura do dia: céu real (sky) + os dois signos. "memory" são as leituras recentes deste casal neste aparelho: serve para não repetir.
 // "shift" pede "outra ideia do dia": muda as escolhas, mas o céu continua o mesmo.
-export function coupleReading(signA, signB, day, lang = "pt", shift = 0, sky = null, memory = []) {
+export function coupleReading(signA, signB, day, lang = "pt", shift = 0, sky = null, memory = [], forced = null) {
   const pack = HORO[lang] ?? HORO.pt;
   const ceu = PACKS[lang] ?? PACKS.pt;
   const key = comboKey(signA, signB);
@@ -145,14 +146,14 @@ export function coupleReading(signA, signB, day, lang = "pt", shift = 0, sky = n
     chips.push(fill(ceu.chips.moonIn, { sign: names[moonSign] }));
     chips.push(ceu.phaseNames[sky.phase]);
     const distance = Math.min((indexA - indexB + 12) % 12, (indexB - indexA + 12) % 12);
-    aspect = pickFresh(ceu.aspects[distance], salt(1), recentOf("a"), (item) => idOf(item));
+    aspect = pickFresh(ceu.aspects[distance], salt(1), recentOf("a"), (item) => idOf(item), forced?.a);
     paragraphs.push(fill(aspect.item, { A: names[indexA], B: names[indexB] }));
-    give = pickFresh(ceu.givesLine, salt(2), recentOf("l"), (item) => idOf(item));
+    give = pickFresh(ceu.givesLine, salt(2), recentOf("l"), (item) => idOf(item), forced?.l);
     paragraphs.push(fill(give.item, { A: names[indexA], B: names[indexB], gA: ceu.gives[indexA], gB: ceu.gives[indexB] }));
     if (sky.event) paragraphs.push(fill(ceu.events[sky.event.kind], { sign: names[sky.event.sign] }));
     else paragraphs.push(ceu.phases[sky.phase]);
     if (sky.mercury.station) { paragraphs.push(ceu.mercury.station[sky.mercury.station]); chips.push(sky.mercury.station === "retro" ? ceu.chips.mercuryRetro : ceu.chips.mercuryDirect); }
-    else if (sky.mercury.retro) { merc = pickFresh(ceu.mercury.retro, salt(3), recentOf("m"), (item) => idOf(item)); paragraphs.push(merc.item); chips.push(ceu.chips.mercuryRetro); }
+    else if (sky.mercury.retro) { merc = pickFresh(ceu.mercury.retro, salt(3), recentOf("m"), (item) => idOf(item), forced?.m); paragraphs.push(merc.item); chips.push(ceu.chips.mercuryRetro); }
     const planets = ["venus", "mars", "sun"];
     const planet = planets[salt(4) % planets.length];
     const planetSign = sky[planet];
@@ -163,12 +164,12 @@ export function coupleReading(signA, signB, day, lang = "pt", shift = 0, sky = n
 
   const gestureList = [...pack.gestures[elements[0]], ...(elements[1] === elements[0] ? [] : pack.gestures[elements[1]])];
   if (sky) gestureList.push(...ceu.gestures[elements[0]], ...(elements[1] === elements[0] ? [] : ceu.gestures[elements[1]]), ceu.moonGestures[moonSign]);
-  const gesture = pickFresh(gestureList, salt(6), recentOf("g"), (item) => idOf(item));
-  const closing = sky ? pickFresh(ceu.closings, salt(7), recentOf("c"), (item) => idOf(item)) : null;
+  const gesture = pickFresh(gestureList, salt(6), recentOf("g"), (item) => idOf(item), forced?.g);
+  const closing = sky ? pickFresh(ceu.closings, salt(7), recentOf("c"), (item) => idOf(item), forced?.c) : null;
 
   const answers = { environment: "any", budget: "low", duration: seed % 3 === 0 ? "afternoon" : "hour", occasion: OCCASION[key] ?? "casual", period: "any", flame: false };
   const pool = compatibleIdeas(answers);
-  const idea = pickFresh(pool, salt(8), recentOf("i"), (variant) => variant.id);
+  const idea = pickFresh(pool, salt(8), recentOf("i"), (variant) => variant.id, forced?.i);
   const session = { displayed: pool.filter((variant) => variant.id !== idea.item.id).map((variant) => ({ candidateId: variant.id })) };
   const result = recommend(answers, session, lang).result;
   return {

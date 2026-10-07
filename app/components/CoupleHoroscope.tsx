@@ -46,13 +46,22 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
   const [tab, setTab] = useState<Tab>("day");
   const [period, setPeriod] = useState<PeriodResult | null>(null);
 
+  const [pick, setPick] = useState({ a: "", b: "" });
+  const [viewDay, setViewDay] = useState<{ y: number; m: number; d: number } | null>(null);
   const [note, setNote] = useState("");
   const [canShare, setCanShare] = useState(false);
   useEffect(() => { setCanShare(typeof navigator !== "undefined" && typeof navigator.share === "function"); }, []);
   const tt = t as unknown as { shareText: string; copied: string; share: string; copy: string };
+  function shareUrl(a: string, b: string) {
+    const day = dayText(viewDay ?? localParts());
+    const ids = reading?.used ? ["a", "l", "m", "g", "c", "i"].map((key) => String((reading.used as Record<string, unknown>)[key] ?? "_")).join(".") : "";
+    const query = new URLSearchParams({ casal: `${a}-${b}`, d: day, t: tab, s: String(shift) });
+    if (tab === "day" && ids) query.set("r", ids);
+    return `https://simpleandromantic.com${SHARE_PATH[lang]}?${query.toString()}#horoscopo`;
+  }
   function shareData(a: string, b: string) {
     const names = t.signs as Record<string, string[]>;
-    return { text: tt.shareText.replace("{a}", names[a][0]).replace("{b}", names[b][0]), url: `https://simpleandromantic.com${SHARE_PATH[lang]}#horoscopo` };
+    return { text: tt.shareText.replace("{a}", names[a][0]).replace("{b}", names[b][0]), url: shareUrl(a, b) };
   }
   async function share(a: string, b: string) {
     const { text, url } = shareData(a, b);
@@ -66,6 +75,25 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
     const { text, url } = shareData(a, b);
     try { await navigator.clipboard.writeText(`${text} ${url}`); setNote(tt.copied); setTimeout(() => setNote(""), 2500); } catch {}
   }
+  // Link compartilhado: abre exatamente a leitura que a outra pessoa viu (casal, dia, aba e escolhas).
+  useEffect(() => {
+    try {
+      const query = new URLSearchParams(window.location.search);
+      const [a, b] = (query.get("casal") ?? "").split("-");
+      if (!(a && b && options.some((item) => item.id === a) && options.some((item) => item.id === b))) return;
+      const dayMatch = /^(\d{4})-(\d{2})-(\d{2})$/.exec(query.get("d") ?? "");
+      const fixed = dayMatch ? { y: Number(dayMatch[1]), m: Number(dayMatch[2]), d: Number(dayMatch[3]) } : localParts();
+      const sharedShift = Math.max(0, Math.min(50, Number(query.get("s")) || 0));
+      const kind = query.get("t");
+      setPick({ a, b });
+      const done = () => document.getElementById("horoscopo")?.scrollIntoView();
+      if (kind === "week" || kind === "month" || kind === "year") { show(a, b, 0, fixed).then(() => showPeriod(a, b, kind, sharedShift, fixed)).then(done); return; }
+      const ids = (query.get("r") ?? "").split(".");
+      const forced = ids.length === 6 ? Object.fromEntries(["a", "l", "m", "g", "c", "i"].map((key, index) => [key, ids[index] === "_" ? null : ids[index]])) : undefined;
+      show(a, b, sharedShift, fixed, forced).then(done);
+    } catch {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const shareButtons = (a: string, b: string) => (
     <>
       <button className="button secondary" type="button" onClick={() => whatsapp(a, b)} aria-label="WhatsApp"><svg className="wa-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#25D366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/><path fill="#fff" d="M8.6 7.3c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.900 4.300 2.400 1 2.900.8 3.400.7.500-.1 1.600-.7 1.800-1.300.2-.6.2-1.200.2-1.300-.1-.1-.3-.2-.6-.3l-1.900-.9c-.3-.1-.4-.1-.6.100l-.8 1c-.1.200-.3.200-.6.100-.3-.1-1.200-.4-2.300-1.400-.8-.8-1.400-1.700-1.600-2-.1-.3 0-.4.100-.5l.4-.5c.1-.1.200-.3.300-.4.100-.2 0-.3 0-.4z"/></svg>WhatsApp</button>
@@ -74,20 +102,22 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
     </>
   );
 
-  async function showPeriod(a: string, b: string, kind: Exclude<Tab, "day">, nextShift: number) {
-    const parts = localParts();
+  async function showPeriod(a: string, b: string, kind: Exclude<Tab, "day">, nextShift: number, fixed?: { y: number; m: number; d: number }) {
+    const parts = fixed ?? viewDay ?? localParts();
+    setViewDay(parts);
     const { periodSky } = await import("../ceu.mjs");
     setPeriod(periodReading(a, b, periodSky(kind, parts.y, parts.m, parts.d), lang, nextShift));
     setShift(nextShift);
     setTab(kind);
   }
 
-  async function show(a: string, b: string, nextShift: number) {
+  async function show(a: string, b: string, nextShift: number, fixed?: { y: number; m: number; d: number }, forced?: Record<string, string | null>) {
     setTab("day");
-    const parts = localParts();
+    const parts = fixed ?? viewDay ?? localParts();
+    setViewDay(parts);
     const { skyForDay } = await import("../ceu.mjs");
     const pair = pairOf(a, b);
-    const next = coupleReading(a, b, dayText(parts), lang, nextShift, skyForDay(parts.y, parts.m, parts.d), readMemory(pair));
+    const next = coupleReading(a, b, dayText(parts), lang, nextShift, skyForDay(parts.y, parts.m, parts.d), readMemory(pair), forced ?? null);
     saveMemory(pair, next.used as Used);
     setSigns({ a, b });
     setShift(nextShift);
@@ -98,15 +128,15 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const a = String(data.get("signA") ?? ""), b = String(data.get("signB") ?? "");
-    if (a && b) show(a, b, 0);
+    if (a && b) { setViewDay(null); show(a, b, 0, localParts()); }
   }
 
   return (
     <section className="horoscope section" id="horoscopo">
       <div className="section-heading centered"><p className="eyebrow">{t.kicker}</p><h2>{t.title}</h2><p>{t.text}</p></div>
       <form className="horoscope-form" onSubmit={submit}>
-        <label><span>{t.you}</span><select name="signA" required defaultValue=""><option value="" disabled>{t.placeholder}</option>{options.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
-        <label><span>{t.partner}</span><select name="signB" required defaultValue=""><option value="" disabled>{t.placeholder}</option>{options.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
+        <label><span>{t.you}</span><select name="signA" required value={pick.a} onChange={(event) => setPick({ ...pick, a: event.target.value })}><option value="" disabled>{t.placeholder}</option>{options.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
+        <label><span>{t.partner}</span><select name="signB" required value={pick.b} onChange={(event) => setPick({ ...pick, b: event.target.value })}><option value="" disabled>{t.placeholder}</option>{options.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label>
         <button className="button primary" type="submit">{t.button}<span>→</span></button>
       </form>
       {reading && signs && (
