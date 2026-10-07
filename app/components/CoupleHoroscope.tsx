@@ -6,10 +6,30 @@ import { HORO, coupleReading, signOptions } from "../horoscopo-casal.mjs";
 type Lang = "pt" | "es" | "en";
 type Reading = ReturnType<typeof coupleReading>;
 
-const localDay = () => {
+const localParts = () => {
   const now = new Date();
-  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+  return { y: now.getFullYear(), m: now.getMonth() + 1, d: now.getDate() };
 };
+const dayText = ({ y, m, d }: { y: number; m: number; d: number }) => `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+
+type Used = { day: string; shift: number } & Record<string, string | number | null>;
+const MEMORY_KEY = "sr-horo";
+const pairOf = (a: string, b: string) => [a, b].sort().join("+");
+// Lembra (só neste aparelho) o que já saiu para este casal, para não repetir nos dias seguintes.
+function readMemory(pair: string): Used[] {
+  try {
+    const all = JSON.parse(localStorage.getItem(MEMORY_KEY) ?? "{}");
+    return Array.isArray(all[pair]) ? all[pair] : [];
+  } catch { return []; }
+}
+function saveMemory(pair: string, used: Used) {
+  try {
+    const all = JSON.parse(localStorage.getItem(MEMORY_KEY) ?? "{}");
+    const list = (Array.isArray(all[pair]) ? all[pair] : []).filter((item: Used) => !(item.day === used.day && item.shift === used.shift));
+    all[pair] = [...list, used].slice(-40);
+    localStorage.setItem(MEMORY_KEY, JSON.stringify(all));
+  } catch {}
+}
 
 // Brincadeira do casal: dois signos → clima do dia, uma ideia de encontro (do motor) e um gesto. Sem IA e sem custo.
 export function CoupleHoroscope({ lang }: { lang: Lang }) {
@@ -19,10 +39,15 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
   const [shift, setShift] = useState(0);
   const [reading, setReading] = useState<Reading | null>(null);
 
-  function show(a: string, b: string, nextShift: number) {
+  async function show(a: string, b: string, nextShift: number) {
+    const parts = localParts();
+    const { skyForDay } = await import("../ceu.mjs");
+    const pair = pairOf(a, b);
+    const next = coupleReading(a, b, dayText(parts), lang, nextShift, skyForDay(parts.y, parts.m, parts.d), readMemory(pair));
+    saveMemory(pair, next.used as Used);
     setSigns({ a, b });
     setShift(nextShift);
-    setReading(coupleReading(a, b, localDay(), lang, nextShift));
+    setReading(next);
   }
 
   function submit(event: FormEvent<HTMLFormElement>) {
@@ -45,14 +70,15 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
           <header>
             <p className="eyebrow">{t.today} · {reading.a.element} + {reading.b.element}</p>
             <h3>{reading.a.name} + {reading.b.name}</h3>
-            <h4>{reading.vibe[0]}</h4>
-            <p>{reading.vibe[1]}</p>
-            <ul className="horoscope-traits"><li><strong>{reading.a.name}</strong> {reading.a.trait}.</li><li><strong>{reading.b.name}</strong> {reading.b.trait}.</li></ul>
+            <h4>{reading.title}</h4>
+            {reading.chips.length > 0 && <ul className="horoscope-traits horoscope-chips">{reading.chips.map((chip: string) => <li key={chip}>{chip}</li>)}</ul>}
+            {reading.paragraphs.map((text: string) => <p key={text}>{text}</p>)}
           </header>
           <div className="horoscope-cards">
             <section><p className="eyebrow">{t.idea}</p><h4>{reading.idea.title}</h4><p>{reading.idea.whyItFits}</p><ol>{reading.idea.howTo.slice(0, 3).map((step: string) => <li key={step}>{step}</li>)}</ol>{reading.idea.confirmBefore && reading.idea.requirements && <p className="horoscope-confirm"><small>{reading.idea.requirements}</small></p>}</section>
             <section><p className="eyebrow">{t.gesture}</p><p className="horoscope-gesture">{reading.gesture}</p></section>
           </div>
+          {reading.closing && <p className="horoscope-closing"><em>{reading.closing}</em></p>}
           <div className="horoscope-actions"><button className="button secondary" type="button" onClick={() => show(signs.a, signs.b, shift + 1)}>{t.again}</button><a className="quiet-link" href="#encontrar">{t.more} →</a><p><small>{t.why}</small></p></div>
         </article>
       )}

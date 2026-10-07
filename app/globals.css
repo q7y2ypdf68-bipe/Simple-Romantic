@@ -1358,6 +1358,9 @@ html[data-theme="dark"] .flame-ask{background:#3a1a24;border-color:#7a3a4a;color
 .horoscope-result h4{margin:0 0 8px;font:600 22px/1.25 Georgia,serif}
 .horoscope-result p{line-height:1.55}
 .horoscope-traits{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:15px}
+.horoscope-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.horoscope-chips li{border:1px solid var(--line, rgba(0,0,0,.15));border-radius:999px;padding:4px 12px;font-size:13px}
+.horoscope-closing{text-align:center;margin:18px 0 6px;font:italic 500 19px/1.4 Georgia,serif}
 .horoscope-cards{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;margin-top:22px}
 .horoscope-cards section{padding:20px;border-radius:18px;background:rgba(255,255,255,.7)}
 .horoscope-cards ol{padding-left:20px;line-height:1.5}
