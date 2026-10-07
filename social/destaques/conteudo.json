@@ -1,0 +1,55 @@
+{
+  "horoscopo-1": {
+    "kicker": "HORÓSCOPO DO CASAL",
+    "titulo": "Leão + Peixes: fogo e água <em>fazem vapor</em>",
+    "chips": ["Fogo", "+", "Água"],
+    "sub": "Escolham os dois signos e recebam um clima do dia, uma ideia de encontro e um gesto.",
+    "botaoFacebook": "Faça o seu →",
+    "botaoPin": "Faça o seu",
+    "slides": [
+      {"k": "O CLIMA DO DIA", "t": "Fogo e água <em>fazem vapor</em>", "s": "Opostos que se completam: um aquece, o outro acalma. Hoje, escutem o que o outro precisa antes de propor qualquer coisa."},
+      {"k": "A IDEIA DE ENCONTRO", "t": "Tarde de caminhada, com paradas e lanche", "s": "Uma tarde ao ar livre muda o humor de qualquer um.", "lista": ["Escolham uma rota de 1 a 2 horas, com pontos bonitos.", "Levem água, lanche leve e um casaco extra.", "Façam 2 ou 3 paradas: foto, lanche e silêncio."]},
+      {"k": "O GESTO DO DIA", "t": "Pergunte “como você está de verdade?”", "s": "E escute até o fim."}
+    ],
+    "cta": {"k": "QUAL É O SEU PAR?", "t": "Escolha os dois signos e <em>teste hoje</em>", "s": "É só brincadeira: signo nenhum prevê o futuro de ninguém. A graça é ter um motivo para chegar mais perto.", "botao": "Link na bio →"}
+  },
+  "guia-30": {
+    "kicker": "GUIA GRATUITO",
+    "titulo": "30 encontros que <em>cabem no bolso</em>",
+    "sub": "Lugar, duração, o que levar, um pequeno detalhe e um plano B para cada um.",
+    "botaoFacebook": "Baixe grátis →",
+    "botaoPin": "Baixe grátis",
+    "slides": [
+      {"k": "EXEMPLO 1", "t": "Sobremesa feita por vocês, <em>do início ao fim</em>", "s": "Cozinhar algo doce juntos termina com recompensa e cheiro bom na casa."},
+      {"k": "EXEMPLO 2", "t": "Turistas na nossa própria cidade", "s": "A cidade esconde cantos que a gente nunca olha. Olhar com olhos de turista muda o passeio."},
+      {"k": "EXEMPLO 3", "t": "Playlist a dois, <em>uma música por vez</em>", "s": "Cada música é um recado. Montar a lista juntos é uma conversa disfarçada."}
+    ],
+    "cta": {"k": "PARA GUARDAR", "t": "Escolham uma, <em>não as trinta</em>", "s": "O objetivo é presença, não produtividade. PDF grátis para baixar.", "botao": "Link na bio →"}
+  },
+  "lugares-3": {
+    "kicker": "LUGARES SIMPLES",
+    "titulo": "Três lugares para um encontro <em>de verdade</em>",
+    "sub": "Nenhum custa muito. Todos pedem só que o celular fique no bolso.",
+    "botaoFacebook": "Ver mais lugares →",
+    "botaoPin": "Ver mais lugares",
+    "slides": [
+      {"k": "1", "t": "Um mirante na hora do <em>pôr do sol</em>", "s": "Cheguem 15 minutos antes, para ver a luz mudar."},
+      {"k": "2", "t": "A beira de água perto de vocês", "s": "Uma manta, algo para beber e uma conversa sem pressa."},
+      {"k": "3", "t": "Uma biblioteca ou livraria", "s": "Escolham um trecho e leiam em voz alta, um para o outro."}
+    ],
+    "cta": {"k": "MAIS IDEIAS", "t": "Por lugar, por orçamento, <em>por tempo</em>", "s": "No site, vocês escolhem e a gente monta o encontro.", "botao": "Link na bio →"}
+  },
+  "entre-nos-1": {
+    "kicker": "ENTRE NÓS",
+    "titulo": "Pode falar. <em>Sua história importa.</em>",
+    "sub": "Um espaço para ser ouvido, com respeito.",
+    "botaoFacebook": "Conheça →",
+    "botaoPin": "Conheça",
+    "slides": [
+      {"k": "A IDEIA", "t": "Colocar em palavras já é <em>o começo de um alívio</em>", "s": "Você escreve do seu jeito e nós lemos com cuidado."},
+      {"k": "O COMPROMISSO", "t": "Escutar antes de responder", "s": "Sem julgamento. Sem publicação automática. Sem respostas vazias."},
+      {"k": "UM AVISO", "t": "Não é terapia", "s": "Não substitui ajuda profissional, mas pode ser um primeiro passo. Se estiver em sofrimento intenso, procure um profissional ou um serviço de apoio da sua região."}
+    ],
+    "cta": {"k": "QUANDO QUISER", "t": "O espaço <em>está aqui</em>", "s": "Sem pressa e sem pressão.", "botao": "Link na bio →"}
+  }
+}
