@@ -18,7 +18,9 @@ const QUERIES: Array<[PlaceKind, string]> = [
   ["market", '["amenity"="marketplace"]'],
 ];
 const KEY = "sr-place";
-const RADIUS = 20000;
+const RADIUS = 15000;
+// Os servidores públicos do Overpass às vezes ficam ocupados: consultamos vários ao mesmo tempo e usamos o primeiro que responder bem.
+const MIRRORS = ["https://overpass.openstreetmap.fr/api/interpreter", "https://overpass-api.de/api/interpreter", "https://z.overpass-api.de/api/interpreter"];
 
 export function readPlace(): PlaceInfo | null {
   try {
@@ -49,11 +51,14 @@ export async function lookupPlace(city: string, lang: string): Promise<PlaceInfo
     const lat = Number(hit.lat), lon = Number(hit.lon);
     if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
     const around = `(around:${RADIUS},${lat},${lon})`;
-    const body = `[out:json][timeout:25];${QUERIES.map(([, f]) => `(nwr${f}${around};);out count;`).join("")}`;
-    const res = await timed("https://overpass-api.de/api/interpreter", { method: "POST", body: `data=${encodeURIComponent(body)}`, headers: { "Content-Type": "application/x-www-form-urlencoded" } }, 20000);
-    if (!res.ok) return null;
-    const counts = ((await res.json()) as { elements?: Array<{ type: string; tags?: { total?: string } }> }).elements?.filter((e) => e.type === "count") ?? [];
-    if (counts.length !== QUERIES.length) return null;
+    const body = `[out:json][timeout:15];${QUERIES.map(([, f]) => `(nwr${f}${around};);out count;`).join("")}`;
+    const counts = await Promise.any(MIRRORS.map(async (url) => {
+      const res = await timed(url, { method: "POST", body: `data=${encodeURIComponent(body)}`, headers: { "Content-Type": "application/x-www-form-urlencoded" } }, 25000);
+      if (!res.ok) throw new Error("mirror failed");
+      const rows = ((await res.json()) as { elements?: Array<{ type: string; tags?: { total?: string } }> }).elements?.filter((e) => e.type === "count") ?? [];
+      if (rows.length !== QUERIES.length) throw new Error("bad answer");
+      return rows;
+    }));
     const places = QUERIES.filter((_, i) => Number(counts[i]?.tags?.total ?? 0) > 0).map(([kind]) => kind);
     const name = hit.display_name.split(",").slice(0, 2).join(",").trim();
     const info = { name, places, at: Date.now() };
