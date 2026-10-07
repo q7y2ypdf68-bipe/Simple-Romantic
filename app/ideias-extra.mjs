@@ -1,7 +1,8 @@
 import { SURPRISE_T } from "./ideias-extra-surpresa.mjs";
+import { NOITE_DIA_BASES, NOITE_DIA_T } from "./ideias-extra-noite-dia.mjs";
 // Ideias extras do motor (aprovadas pelo Bruno em 07/10/2026). Copiam as regras (família, custo, tempo) de uma variante já validada.
 // Formato do texto: [título, porquê, passos, detalhe]. Sem preços, sem marcas.
-export const EXTRA_BASES = [
+const EXTRA_BASES_MAIN = [
   { id: "V2-110", from: "V2-007", title: "Carta para daqui a um ano" },
   { id: "V2-111", from: "V2-008", title: "Caixa das lembranças pequenas" },
   { id: "V2-112", from: "V2-003", title: "Cinema na sala, com ingresso feito à mão" },
@@ -19,7 +20,7 @@ export const EXTRA_BASES = [
   { id: "V2-124", from: "V2-019", title: "Um passeio com uma pergunta por esquina" },
   { id: "V2-125", from: "V2-021", title: "Banco de praça e uma garrafa de chá" },
   { id: "V2-126", from: "V2-020", title: "Fotografar pelos olhos do outro" },
-  { id: "V2-127", from: "V2-025", title: "Amanhecer com café na mão", period: "day" },
+  { id: "V2-127", from: "V2-019", title: "Amanhecer com café na mão", period: "day" },
   { id: "V2-128", from: "V2-048", title: "Feira de rua só para olhar" },
   { id: "V2-129", from: "V2-002", title: "Desenhar de olhos fechados o rosto do outro" },
   { id: "V2-130", from: "V2-004", title: "Bilhetes escondidos pela casa" },
@@ -105,4 +106,6 @@ const EXTRA_BASE_T = {
   },
 };
 
-export const EXTRA_T = Object.fromEntries(["pt", "es", "en"].map((lang) => [lang, { ...EXTRA_BASE_T[lang], ...SURPRISE_T[lang] }]));
+export const EXTRA_T = Object.fromEntries(["pt", "es", "en"].map((lang) => [lang, { ...EXTRA_BASE_T[lang], ...SURPRISE_T[lang], ...NOITE_DIA_T[lang] }]));
+
+export const EXTRA_BASES = [...EXTRA_BASES_MAIN, ...NOITE_DIA_BASES];

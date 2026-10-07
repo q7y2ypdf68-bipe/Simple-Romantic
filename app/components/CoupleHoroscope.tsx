@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+
+const SHARE_PATH = { pt: "/", es: "/es", en: "/en" } as const;
 import { HORO, coupleReading, periodReading, signOptions } from "../horoscopo-casal.mjs";
 import PERIODOS from "../horoscopo-periodos.mjs";
 
@@ -43,6 +45,18 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
   const [reading, setReading] = useState<Reading | null>(null);
   const [tab, setTab] = useState<Tab>("day");
   const [period, setPeriod] = useState<PeriodResult | null>(null);
+
+  const [note, setNote] = useState("");
+  async function share(a: string, b: string) {
+    const url = `https://simpleandromantic.com${SHARE_PATH[lang]}#horoscopo`;
+    const text = (t as unknown as { shareText: string }).shareText.replace("{a}", (t.signs as Record<string, string[]>)[a][0]).replace("{b}", (t.signs as Record<string, string[]>)[b][0]);
+    try {
+      if (typeof navigator.share === "function") { await navigator.share({ title: t.title, text, url }); return; }
+      await navigator.clipboard.writeText(`${text} ${url}`);
+      setNote((t as unknown as { copied: string }).copied);
+      setTimeout(() => setNote(""), 2500);
+    } catch {}
+  }
 
   async function showPeriod(a: string, b: string, kind: Exclude<Tab, "day">, nextShift: number) {
     const parts = localParts();
@@ -98,7 +112,7 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
           </header>
           <div className="horoscope-cards"><section><p className="eyebrow">{t.gesture}</p><p className="horoscope-gesture">{period.gesture}</p></section></div>
           <p className="horoscope-closing"><em>{period.closing}</em></p>
-          <div className="horoscope-actions"><button className="button secondary" type="button" onClick={() => showPeriod(signs.a, signs.b, tab as Exclude<Tab, "day">, shift + 1)}>{t.again}</button><p><small>{t.why}</small></p></div>
+          <div className="horoscope-actions"><button className="button secondary" type="button" onClick={() => share(signs.a, signs.b)}>{(t as unknown as { share: string }).share}</button><button className="button secondary" type="button" onClick={() => showPeriod(signs.a, signs.b, tab as Exclude<Tab, "day">, shift + 1)}>{t.again}</button><p><small>{t.why}</small></p>{note && <p role="status"><small>{note}</small></p>}</div>
         </article>
       )}
       {reading && signs && tab === "day" && (
@@ -115,7 +129,7 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
             <section><p className="eyebrow">{t.gesture}</p><p className="horoscope-gesture">{reading.gesture}</p></section>
           </div>
           {reading.closing && <p className="horoscope-closing"><em>{reading.closing}</em></p>}
-          <div className="horoscope-actions"><button className="button secondary" type="button" onClick={() => show(signs.a, signs.b, shift + 1)}>{t.again}</button><a className="quiet-link" href="#encontrar">{t.more} →</a><p><small>{t.why}</small></p></div>
+          <div className="horoscope-actions"><button className="button secondary" type="button" onClick={() => share(signs.a, signs.b)}>{(t as unknown as { share: string }).share}</button><button className="button secondary" type="button" onClick={() => show(signs.a, signs.b, shift + 1)}>{t.again}</button><a className="quiet-link" href="#encontrar">{t.more} →</a><p><small>{t.why}</small></p>{note && <p role="status"><small>{note}</small></p>}</div>
         </article>
       )}
     </section>
