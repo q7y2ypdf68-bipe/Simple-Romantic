@@ -1,0 +1,65 @@
+// Descobre, a partir da cidade informada, que tipos de lugar existem por perto (dados abertos do OpenStreetMap).
+// Roda no navegador do visitante; nada é gravado no nosso servidor. Se qualquer passo falhar, não filtramos nada.
+export type PlaceKind = "beach" | "park" | "nature" | "cinema" | "theatre" | "museum" | "gallery" | "bookshop" | "bowling" | "ferry" | "train" | "market";
+export type PlaceInfo = { name: string; places: PlaceKind[]; at: number };
+
+const QUERIES: Array<[PlaceKind, string]> = [
+  ["beach", '["natural"="beach"]'],
+  ["park", '["leisure"~"^(park|garden)$"]'],
+  ["nature", '["leisure"="nature_reserve"]'],
+  ["cinema", '["amenity"="cinema"]'],
+  ["theatre", '["amenity"~"^(theatre|arts_centre)$"]'],
+  ["museum", '["tourism"="museum"]'],
+  ["gallery", '["tourism"="gallery"]'],
+  ["bookshop", '["shop"="books"]'],
+  ["bowling", '["leisure"="bowling_alley"]'],
+  ["ferry", '["amenity"="ferry_terminal"]'],
+  ["train", '["railway"="station"]'],
+  ["market", '["amenity"="marketplace"]'],
+];
+const KEY = "sr-place";
+const RADIUS = 20000;
+
+export function readPlace(): PlaceInfo | null {
+  try {
+    const raw = JSON.parse(window.localStorage.getItem(KEY) ?? "null");
+    if (raw && typeof raw.name === "string" && Array.isArray(raw.places) && Date.now() - Number(raw.at) < 30 * 86400_000) return raw as PlaceInfo;
+  } catch { /* sem cidade guardada */ }
+  return null;
+}
+export function savePlace(info: PlaceInfo | null) {
+  try { if (info) window.localStorage.setItem(KEY, JSON.stringify(info)); else window.localStorage.removeItem(KEY); } catch { /* vale só nesta visita */ }
+}
+
+async function timed(url: string, init: RequestInit | undefined, ms: number) {
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), ms);
+  try { return await fetch(url, { ...init, signal: ctl.signal }); } finally { clearTimeout(timer); }
+}
+
+// Devolve null se não achar a cidade ou se o serviço falhar (nesse caso o site funciona como antes).
+export async function lookupPlace(city: string, lang: string): Promise<PlaceInfo | null> {
+  const q = city.trim().slice(0, 80);
+  if (q.length < 2) return null;
+  try {
+    const geo = await timed(`https://nominatim.openstreetmap.org/search?format=json&limit=1&accept-language=${encodeURIComponent(lang)}&q=${encodeURIComponent(q)}`, undefined, 8000);
+    if (!geo.ok) return null;
+    const hit = ((await geo.json()) as Array<{ lat: string; lon: string; display_name: string }>)[0];
+    if (!hit) return null;
+    const lat = Number(hit.lat), lon = Number(hit.lon);
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+    const around = `(around:${RADIUS},${lat},${lon})`;
+    const body = `[out:json][timeout:25];${QUERIES.map(([, f]) => `(nwr${f}${around};);out count;`).join("")}`;
+    const res = await timed("https://overpass-api.de/api/interpreter", { method: "POST", body: `data=${encodeURIComponent(body)}`, headers: { "Content-Type": "application/x-www-form-urlencoded" } }, 20000);
+    if (!res.ok) return null;
+    const counts = ((await res.json()) as { elements?: Array<{ type: string; tags?: { total?: string } }> }).elements?.filter((e) => e.type === "count") ?? [];
+    if (counts.length !== QUERIES.length) return null;
+    const places = QUERIES.filter((_, i) => Number(counts[i]?.tags?.total ?? 0) > 0).map(([kind]) => kind);
+    const name = hit.display_name.split(",").slice(0, 2).join(",").trim();
+    const info = { name, places, at: Date.now() };
+    savePlace(info);
+    return info;
+  } catch {
+    return null;
+  }
+}

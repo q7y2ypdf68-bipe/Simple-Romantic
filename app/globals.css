@@ -1395,3 +1395,17 @@ html[data-theme="dark"] .choices input:checked+span::after{background:#7CFFB0;bo
 .idea-trio article.is-flame{background:linear-gradient(160deg,#8a1d45,#4a0f2a);border-color:rgba(255,200,215,.35)}
 .trio-flame-chip{display:inline-block;margin-bottom:14px;padding:7px 14px;border-radius:99px;background:#ffd45b;color:#4a0f2a;font:800 14px/1 Arial,sans-serif;letter-spacing:.3px}
 @media(max-width:1100px){.idea-trio-grid{grid-template-columns:1fr}.idea-trio h3{font-size:28px}}
+
+/* 13. Campo de cidade (lugares reais por perto) */
+.finder-form .city-field{grid-column:1/-1}
+.city-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.city-row input{flex:1 1 260px;height:50px;border:1px solid var(--line);border-radius:12px;padding:0 15px;background:#fffafb;font-size:16px;color:var(--ink);outline:none}
+.city-row input:focus{border-color:var(--pink);box-shadow:0 0 0 3px #ffe4ed}
+.city-row .button{min-height:50px;font-size:14px}
+.city-clear{background:none;border:0;text-decoration:underline;cursor:pointer;color:inherit;font-size:14px;padding:8px}
+.city-hint{margin:10px 0 0;font-size:14px;line-height:1.5;opacity:.85}
+.city-hint small{font-size:inherit}
+html[data-theme="dark"] .city-row input{background:#16323a;color:#fff;border-color:#4a7a86}
+.city-row .city-btn{min-width:170px;background:transparent!important;color:var(--pink-dark)!important;-webkit-text-fill-color:var(--pink-dark)!important;border:2px solid var(--pink)!important;box-shadow:none!important}
+.city-row .city-btn:hover,.city-row .city-btn:focus-visible{background:rgba(237,63,120,.1)!important}
+html[data-theme="dark"] .city-row .city-btn{color:#ff9fbe!important;-webkit-text-fill-color:#ff9fbe!important;border-color:#ff6b9d!important}

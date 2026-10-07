@@ -17,7 +17,8 @@ const GLOBAL_DAILY = 60; // criações por dia no site todo (cota gratuita da Wo
 const MODELS = ["@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/meta/llama-3.1-8b-instruct"];
 
 type AiBinding = { run: (model: string, input: Record<string, unknown>) => Promise<unknown> };
-type Answers = { environment: string; budget: string; duration: string; occasion: string; period: string };
+type Answers = { environment: string; budget: string; duration: string; occasion: string; period: string; city?: string; places?: string[] };
+const PLACE_KINDS = ["beach", "park", "nature", "cinema", "theatre", "museum", "gallery", "bookshop", "bowling", "ferry", "train", "market"];
 
 
 // Temas sorteados a cada criação: garantem variedade de verdade (a IA sozinha tende a repetir piquenique/cinema).
@@ -118,7 +119,19 @@ const L = {
   },
 } as const;
 
+function placeHint(a: Answers, lang: Lang) {
+  if (!a.places) return "";
+  const have = a.places.length ? a.places.join(", ") : "none of: beach, park, nature reserve, cinema, theatre, museum, gallery, bookshop, bowling, ferry, train, market";
+  const where = a.city ? ` near ${a.city}` : "";
+  const text = `\nLOCATION CONSTRAINT${where}: only these kinds of places exist nearby: ${have}. Do NOT suggest anything that needs a place kind that is not on that list (for example no beach if "beach" is missing). Never invent names of specific venues.`;
+  return lang === "pt" ? text.replace("LOCATION CONSTRAINT", "RESTRIÇÃO DE LUGAR (responda no idioma pedido)") : text;
+}
+
 function prompt(a: Answers, lang: Lang, avoid: string[], theme: string) {
+  return basePrompt(a, lang, avoid, theme) + placeHint(a, lang);
+}
+
+function basePrompt(a: Answers, lang: Lang, avoid: string[], theme: string) {
   const l = L[lang];
   const env_ = l.env[a.environment as keyof typeof l.env];
   const cost = l.cost[a.budget as keyof typeof l.cost];
@@ -217,7 +230,9 @@ export async function POST(request: Request) {
     if (!ENVS.includes(env_) || !BUDGETS.includes(budget) || !DURATIONS.includes(duration) || !OCCASIONS.includes(occasion) || !PERIODS.includes(period)) {
       return NextResponse.json({ error: "Filtros inválidos." }, { status: 400 });
     }
-    a = { environment: env_, budget, duration, occasion, period };
+    const places = Array.isArray(p.places) ? p.places.map((x) => clean(x, 12)).filter((x) => PLACE_KINDS.includes(x)) : undefined;
+    const city = typeof p.city === "string" ? p.city.replace(/[^\p{L}\p{N} ,.'\-]/gu, "").slice(0, 60) : "";
+    a = { environment: env_, budget, duration, occasion, period, ...(places ? { places, city } : {}) };
     lang = p.language === "en" ? "en" : p.language === "es" ? "es" : "pt";
     exclude = Array.isArray(p.exclude) ? p.exclude.map((x) => clean(x, 40)).filter(Boolean).slice(0, 30) : [];
   } catch {
@@ -243,7 +258,7 @@ export async function POST(request: Request) {
       } catch { return null; }
     };
 
-    if (fresh.length && rows.length >= BANK_TARGET) {
+    if (!a.places && fresh.length && rows.length >= BANK_TARGET) {
       const cached = serveCached();
       if (cached) return cached;
     }
@@ -253,6 +268,7 @@ export async function POST(request: Request) {
       const avoid = [...rows.slice(0, 8).map((r) => r.title)];
       const body = await generate(a, lang, avoid);
       if (body) {
+        if (a.places) return NextResponse.json({ status: "recommendation", result: toResult(`ai-local-${Date.now()}`, body, a, lang), source: "ai" });
         const saved = await env.DB.prepare("INSERT INTO ai_ideas (combo, lang, title, body, created_at) VALUES (?, ?, ?, ?, ?)").bind(combo, lang, body.title, JSON.stringify(body), new Date().toISOString()).run();
         await Promise.all([bump(who, day), bump("*", day)]);
         const id = saved.meta?.last_row_id ?? Date.now();

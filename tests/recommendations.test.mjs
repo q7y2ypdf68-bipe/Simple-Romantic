@@ -180,3 +180,24 @@ test("Modo Chama real nunca fica vazio e varia entre rodadas", () => {
   }
   assert.notEqual(rounds[0], rounds[1]);
 });
+
+test("com cidade informada, ideias que dependem de praia/cinema só aparecem se o lugar existe", async () => {
+  const { PLACE_NEEDS } = await import("../app/recommendations.mjs");
+  assert.deepEqual(PLACE_NEEDS["NAT-05"], ["beach"]);
+  const a = { environment: "outdoors", budget: "free", duration: "afternoon", occasion: "casual", period: "any" };
+  const ids = (places) => new Set(compatibleIdeas({ ...a, places }).map((v) => v.familyId));
+  assert.ok(ids(undefined).has("NAT-05"));
+  assert.ok(ids(["beach", "park"]).has("NAT-05"));
+  assert.ok(!ids(["park"]).has("NAT-05"));
+  assert.ok(ids(["park"]).size > 0);
+  const b = { ...a, environment: "go-out", budget: "low", duration: "hour" };
+  assert.ok(!new Set(compatibleIdeas({ ...b, places: [] }).map((v) => v.familyId)).has("CUL-04"));
+});
+
+test("Modo Chama tem 20 ideias e nunca fica vazio em nenhuma combinação de filtros", () => {
+  const { environments, budgets, durations, occasions, periods } = { environments: ["home", "outdoors", "go-out", "any"], budgets: ["free", "low", "more"], durations: ["hour", "afternoon", "day"], occasions: ["casual", "surprise", "reconnect"], periods: ["any", "day", "night"] };
+  for (const environment of environments) for (const budget of budgets) for (const duration of durations) for (const occasion of occasions) for (const period of periods) {
+    const out = recommend({ environment, budget, duration, occasion, period, flame: true }, { displayed: [] }, "pt");
+    assert.equal(out.status, "recommendation", [environment, budget, duration, occasion, period].join("|"));
+  }
+});

@@ -2,9 +2,10 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { recommend } from "../recommendations.mjs";
+import { lookupPlace, readPlace, savePlace, type PlaceInfo, type PlaceKind } from "../places";
 import { finderCopy, type FinderLang } from "./idea-finder-copy";
 
-type Answers = { environment: string; budget: string; duration: string; occasion: string; period: string; flame?: boolean };
+type Answers = { environment: string; budget: string; duration: string; occasion: string; period: string; flame?: boolean; places?: PlaceKind[] };
 type Idea = { id: string; title: string; whyItFits: string; howTo: string[]; smallDetail?: string; badges: string[]; planB?: { title: string }; surprise?: string; confirmBefore?: boolean; requirements?: string; aiGenerated?: boolean; flame?: boolean; relaxed?: boolean };
 type Session = { displayed: Array<{ candidateId: string; familyId: string; mechanic: string; category: string; modifierIds?: string[]; gestureId?: string; timestamp: number }>; seed?: number; recentIds?: string[] };
 
@@ -43,6 +44,22 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
   const [lastAnswers, setLastAnswers] = useState<Answers | null>(null);
   const [flameOn, setFlameOn] = useState(false);
   const [flameAsk, setFlameAsk] = useState(false);
+  const [place, setPlace] = useState<PlaceInfo | null>(null);
+  const [cityText, setCityText] = useState("");
+  const [placeState, setPlaceState] = useState<"idle" | "busy" | "fail">("idle");
+
+  useEffect(() => {
+    const saved = readPlace();
+    if (saved) { setPlace(saved); setCityText(saved.name); }
+  }, []);
+
+  async function useCity() {
+    if (cityText.trim().length < 2) return;
+    setPlaceState("busy");
+    const info = await lookupPlace(cityText, lang);
+    if (info) { setPlace(info); setCityText(info.name); setPlaceState("idle"); } else { setPlace(null); setPlaceState("fail"); }
+  }
+  function clearCity() { savePlace(null); setPlace(null); setCityText(""); setPlaceState("idle"); }
 
   // Modo Chama é +18: usa a mesma confirmação guardada dos artigos de intimidade.
   function toggleFlame(checked: boolean) {
@@ -58,7 +75,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
   }
 
   function readAnswers(data: FormData): Answers {
-    return { environment: String(data.get("environment")), budget: String(data.get("budget")), duration: String(data.get("time")), occasion: String(data.get("occasion")), period: String(data.get("period") ?? "any"), flame: data.get("flame") === "on" };
+    return { environment: String(data.get("environment")), budget: String(data.get("budget")), duration: String(data.get("time")), occasion: String(data.get("occasion")), period: String(data.get("period") ?? "any"), flame: data.get("flame") === "on", ...(place ? { places: place.places } : {}) };
   }
 
   // Motor curado primeiro; se não houver ideia para os filtros, a IA cria uma (plano B); por fim, ideias de reserva.
@@ -74,7 +91,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
     if (answers.flame) { setRecommendation(next); return; }
     setFinding(true);
     try {
-      const response = await fetch("/api/ideia", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...answers, language: lang, exclude: shown }) });
+      const response = await fetch("/api/ideia", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...answers, city: place?.name, language: lang, exclude: shown }) });
       const body = await response.json();
       if (response.ok && body?.status === "recommendation" && body.result) {
         setRecommendation({ status: "recommendation", result: body.result });
@@ -109,7 +126,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
         }
         if (answers.flame) break;
         try {
-          const response = await fetch("/api/ideia", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...answers, language: lang, exclude: shown }) });
+          const response = await fetch("/api/ideia", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...answers, city: place?.name, language: lang, exclude: shown }) });
           const body = await response.json();
           if (response.ok && body?.result) {
             shown.push(String(body.result.id));
@@ -192,6 +209,12 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
         <Choice number="04" title={t.occasion} name="occasion" options={t.occasions} />
         <Choice number="05" title={t.period} name="period" options={t.periods} />
         <fieldset className="flame-field"><legend><span>06</span>{t.flameTitle}</legend><label className="flame-toggle"><input type="checkbox" name="flame" checked={flameOn} onChange={(event) => toggleFlame(event.target.checked)} /><span>{t.flameLabel}</span></label><p className="flame-hint">{t.flameHint}</p>{flameAsk && <div className="flame-ask" role="alertdialog" aria-labelledby="flame-ask-title"><strong id="flame-ask-title">{t.flameAskTitle}</strong><p>{t.flameAskText}</p><div><button type="button" className="button primary" onClick={confirmAdult}>{t.flameYes}</button><button type="button" className="button secondary" onClick={() => setFlameAsk(false)}>{t.flameNo}</button></div></div>}</fieldset>
+        <fieldset className="city-field"><legend><span>07</span>{t.placeTitle}</legend>
+          <div className="city-row"><input type="text" name="city" value={cityText} onChange={(event) => setCityText(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") { event.preventDefault(); void useCity(); } }} placeholder={t.placeHolder} maxLength={80} autoComplete="off" aria-describedby="city-hint" />
+            <button type="button" className="button secondary city-btn" onClick={() => void useCity()} disabled={placeState === "busy"}>{t.placeBtn}</button>
+            {place && <button type="button" className="city-clear" onClick={clearCity}>{t.placeClear}</button>}</div>
+          <p id="city-hint" className="city-hint"><small>{placeState === "busy" ? `${t.placeBusy} ${cityText}` : placeState === "fail" ? t.placeFail : place ? `✓ ${t.placeOk} ${place.name}` : t.placeHint}</small></p>
+        </fieldset>
         <div className="finder-actions"><button className="button primary finder-button" type="submit">{t.find}<span>→</span></button><button className="button secondary finder-three" type="button" onClick={pickThree}>{t.three}</button></div>
       </form>
       {resultVisible && !finding && trio && trio.length > 0 && <div className="idea-trio" id="resultado" aria-live="polite"><p className="eyebrow">{t.threeTitle}</p>{trio.some((item) => item.flame) && <p className="result-flame-note"><small>{t.flameNote}</small></p>}<div className="idea-trio-grid">{trio.map((item) => <article key={item.id} className={item.flame ? "is-flame" : undefined}>{item.flame && <span className="trio-flame-chip">🔥 {t.flameBadge} +18</span>}<h3>{item.title}</h3><p>{item.whyItFits}</p><ol>{item.howTo.slice(0, 5).map((step) => <li key={step}>{step}</li>)}</ol><div className="result-meta">{badgesFor(item).map((b) => <span key={b}>{b}</span>)}</div>{item.planB && <p><strong>{t.planB}</strong> {item.planB.title}</p>}</article>)}</div></div>}

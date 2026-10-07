@@ -39,6 +39,7 @@ function assertAnswers(answers) {
   }
   if (answers.period !== undefined && !periods.includes(answers.period)) throw new Error("Invalid recommendation period");
   if (answers.flame !== undefined && typeof answers.flame !== "boolean") throw new Error("Invalid recommendation flame");
+  if (answers.places !== undefined && !Array.isArray(answers.places)) throw new Error("Invalid recommendation places");
 }
 
 function durationFits(variant, band) {
@@ -48,11 +49,21 @@ function durationFits(variant, band) {
     && variant.minDurationMinutes <= maximum && variant.maxDurationMinutes >= minimum;
 }
 
+// Lugares reais: se o visitante informou a cidade, ideias que dependem de um tipo de lugar só aparecem quando ele existe por perto.
+// Sem cidade (answers.places ausente), nada é filtrado.
+export const PLACE_NEEDS = {
+  "NAT-05": ["beach"], "NAT-09": ["nature"], "NAT-12": ["nature"], "NAT-10": ["nature", "park"],
+  "CUL-04": ["cinema"], "CUL-01": ["museum"], "CUL-03": ["gallery"], "CUL-08": ["bookshop"], "CUL-07": ["theatre"],
+  "MOV-06": ["bowling"], "VIA-05": ["ferry"], "VIA-02": ["train"], "GAS-11": ["market"],
+};
+
 function hardGateReasons(variant, family, answers, variantById, relax = false) {
   const reasons = [];
   if (!family || family.structuralVetoes.length) reasons.push("structural-veto");
   // Modo Chama: só as ideias marcadas; fora dele, as ideias do modo Chama nunca aparecem.
   if (Boolean(variant.flame) !== Boolean(answers.flame)) reasons.push("flame");
+  const need = PLACE_NEEDS[variant.familyId];
+  if (need && Array.isArray(answers.places) && !need.some((place) => answers.places.includes(place))) reasons.push("place-missing");
   if (!relax && answers.environment !== "any" && variant.environment !== answers.environment) reasons.push("environment");
   if (!relax && !durationFits(variant, answers.duration)) reasons.push("duration");
   const moment = periodOf(variant), wanted = answers.period ?? "any";
