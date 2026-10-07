@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LanguageSetter } from "../components/LanguageSetter";
 import { IdeaFinder } from "../components/IdeaFinder";
+import { CoupleHoroscope } from "../components/CoupleHoroscope";
 import { MobileMenu } from "../components/MobileMenu";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { getVisiblePostsLang } from "../blog/posts-db";
@@ -25,6 +26,7 @@ export default async function EnglishHome() {
     <section className="hero" id="inicio"><div className="hero-copy"><p className="eyebrow">AFFORDABLE ROMANCE · REAL MOMENTS</p><h1>Romance doesn’t have<br /><em>to be expensive.</em></h1><p className="hero-text">Discover beautiful places, simple dates and small gestures to enjoy as a couple — close to you and within your budget.</p><div className="hero-actions"><a className="button primary" href="#encontrar">Find an idea <span>→</span></a><Link className="quiet-link" href="/en/blog">Read the blog</Link></div><div className="proof"><span>✓ Free content</span><span>✓ No hassle</span><span>✓ For real couples</span></div></div><div className="hero-scene"><Image unoptimized src="/images/hero-park.webp" alt="Couple smiling during a picnic in a park" fill priority sizes="(max-width: 1000px) 100vw, 49vw" /><div className="photo-wash" /><div className="picnic-card"><small>THIS WEEKEND</small><strong>Sunset, a blanket<br />and no rush.</strong><span>FREE OR LOW COST</span></div></div></section>
 
     <IdeaFinder lang="en" />
+    <CoupleHoroscope lang="en" />
 
     <section className="section" id="empezar"><div className="section-heading centered"><p className="eyebrow">TO GET STARTED</p><h2>Three paths for this week</h2></div><div className="spanish-idea-grid"><article><span>01</span><h3>Go out without spending</h3><p>A walk, a blanket, something from home and a question worth a slow answer.</p><Link className="quiet-link" href="/en/#encontrar">Find a free idea →</Link></article><article><span>02</span><h3>Set something up today</h3><p>Spontaneous plans that need no booking and no weeks of planning.</p><Link className="quiet-link" href="/en/#encontrar">Pick a plan →</Link></article><article><span>03</span><h3>Reconnect</h3><p>Gestures and questions to leave autopilot and look at each other again.</p><Link className="quiet-link" href="/en/guide">Nurture the connection →</Link></article></div></section>
 

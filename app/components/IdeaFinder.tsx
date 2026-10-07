@@ -4,8 +4,8 @@ import { FormEvent, useEffect, useState } from "react";
 import { recommend } from "../recommendations.mjs";
 import { finderCopy, type FinderLang } from "./idea-finder-copy";
 
-type Answers = { environment: string; budget: string; duration: string; occasion: string; period: string };
-type Idea = { id: string; title: string; whyItFits: string; howTo: string[]; smallDetail?: string; badges: string[]; planB?: { title: string }; surprise?: string; confirmBefore?: boolean; requirements?: string; aiGenerated?: boolean };
+type Answers = { environment: string; budget: string; duration: string; occasion: string; period: string; flame?: boolean };
+type Idea = { id: string; title: string; whyItFits: string; howTo: string[]; smallDetail?: string; badges: string[]; planB?: { title: string }; surprise?: string; confirmBefore?: boolean; requirements?: string; aiGenerated?: boolean; flame?: boolean; relaxed?: boolean };
 type Session = { displayed: Array<{ candidateId: string; familyId: string; mechanic: string; category: string; modifierIds?: string[]; gestureId?: string; timestamp: number }> };
 
 // Aceita, no link, tanto os valores em inglês quanto palavras nos 3 idiomas.
@@ -27,9 +27,24 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
   const [finding, setFinding] = useState(false);
   const [trio, setTrio] = useState<Idea[] | null>(null);
   const [lastAnswers, setLastAnswers] = useState<Answers | null>(null);
+  const [flameOn, setFlameOn] = useState(false);
+  const [flameAsk, setFlameAsk] = useState(false);
+
+  // Modo Chama é +18: usa a mesma confirmação guardada dos artigos de intimidade.
+  function toggleFlame(checked: boolean) {
+    if (!checked) { setFlameOn(false); setFlameAsk(false); return; }
+    let ok = false;
+    try { ok = window.localStorage.getItem("sr-adult") === "1"; } catch { ok = false; }
+    if (ok) setFlameOn(true); else setFlameAsk(true);
+  }
+  function confirmAdult() {
+    try { window.localStorage.setItem("sr-adult", "1"); } catch { /* vale só nesta visita */ }
+    setFlameAsk(false);
+    setFlameOn(true);
+  }
 
   function readAnswers(data: FormData): Answers {
-    return { environment: String(data.get("environment")), budget: String(data.get("budget")), duration: String(data.get("time")), occasion: String(data.get("occasion")), period: String(data.get("period") ?? "any") };
+    return { environment: String(data.get("environment")), budget: String(data.get("budget")), duration: String(data.get("time")), occasion: String(data.get("occasion")), period: String(data.get("period") ?? "any"), flame: data.get("flame") === "on" };
   }
 
   // Motor curado primeiro; se não houver ideia para os filtros, a IA cria uma (plano B); por fim, ideias de reserva.
@@ -41,6 +56,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
       setRecommendationSession(next.session ?? { displayed: [] });
       return;
     }
+    if (answers.flame) { setRecommendation(next); return; }
     setFinding(true);
     try {
       const response = await fetch("/api/ideia", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...answers, language: lang, exclude: shown }) });
@@ -76,6 +92,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
           found.push(next.result);
           continue;
         }
+        if (answers.flame) break;
         try {
           const response = await fetch("/api/ideia", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...answers, language: lang, exclude: shown }) });
           const body = await response.json();
@@ -158,12 +175,13 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
         <Choice number="03" title={t.time} name="time" options={t.times} />
         <Choice number="04" title={t.occasion} name="occasion" options={t.occasions} />
         <Choice number="05" title={t.period} name="period" options={t.periods} />
+        <fieldset className="flame-field"><legend><span>06</span>{t.flameTitle}</legend><label className="flame-toggle"><input type="checkbox" name="flame" checked={flameOn} onChange={(event) => toggleFlame(event.target.checked)} /><span>{t.flameLabel}</span></label><p className="flame-hint">{t.flameHint}</p>{flameAsk && <div className="flame-ask" role="alertdialog" aria-labelledby="flame-ask-title"><strong id="flame-ask-title">{t.flameAskTitle}</strong><p>{t.flameAskText}</p><div><button type="button" className="button primary" onClick={confirmAdult}>{t.flameYes}</button><button type="button" className="button secondary" onClick={() => setFlameAsk(false)}>{t.flameNo}</button></div></div>}</fieldset>
         <div className="finder-actions"><button className="button primary finder-button" type="submit">{t.find}<span>→</span></button><button className="button secondary finder-three" type="button" onClick={pickThree}>{t.three}</button></div>
       </form>
-      {resultVisible && !finding && trio && trio.length > 0 && <div className="idea-trio" id="resultado" aria-live="polite"><p className="eyebrow">{t.threeTitle}</p><div className="idea-trio-grid">{trio.map((item) => <article key={item.id}><h3>{item.title}</h3><p>{item.whyItFits}</p><ol>{item.howTo.slice(0, 5).map((step) => <li key={step}>{step}</li>)}</ol><div className="result-meta">{badgesFor(item).map((b) => <span key={b}>{b}</span>)}</div>{item.planB && <p><strong>{t.planB}</strong> {item.planB.title}</p>}</article>)}</div></div>}
+      {resultVisible && !finding && trio && trio.length > 0 && <div className="idea-trio" id="resultado" aria-live="polite"><p className="eyebrow">{t.threeTitle}</p>{trio.some((item) => item.flame) && <p className="result-flame-note"><small>{t.flameNote}</small></p>}<div className="idea-trio-grid">{trio.map((item) => <article key={item.id}><h3>{item.title}</h3><p>{item.whyItFits}</p><ol>{item.howTo.slice(0, 5).map((step) => <li key={step}>{step}</li>)}</ol><div className="result-meta">{badgesFor(item).map((b) => <span key={b}>{b}</span>)}</div>{item.planB && <p><strong>{t.planB}</strong> {item.planB.title}</p>}</article>)}</div></div>}
       {resultVisible && !finding && !trio && result && <article className="date-result" id="resultado">
-        <div className="result-visual"><span>☀</span><small>{badgesFor(result)[0]}</small></div>
-        <div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{result.title}</h3>{result.aiGenerated && <p className="result-ai-note"><small>{t.aiNote}</small></p>}<p>{result.whyItFits}</p><ol>{result.howTo.map((step) => <li key={step}>{step}</li>)}</ol><div className="result-meta">{badgesFor(result).map((item) => <span key={item}>{item}</span>)}</div>{result.surprise && <p><strong>{t.surprise}</strong> {result.surprise}</p>}{result.planB && <p><strong>{t.planB}</strong> {result.planB.title}</p>}{result.confirmBefore && <p><strong>{t.confirm}</strong> {result.requirements}</p>}<button className="button secondary" type="button" onClick={anotherIdea}>{t.anotherIdea}</button></div>
+        <div className="result-visual"><span>{result.flame ? "🔥" : "☀"}</span><small>{badgesFor(result)[0]}</small></div>
+        <div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{result.title}</h3>{result.flame && <p className="result-flame-note"><small>{result.relaxed ? `${t.flameRelaxed} ` : ""}{t.flameNote}</small></p>}{result.aiGenerated && <p className="result-ai-note"><small>{t.aiNote}</small></p>}<p>{result.whyItFits}</p><ol>{result.howTo.map((step) => <li key={step}>{step}</li>)}</ol><div className="result-meta">{badgesFor(result).map((item) => <span key={item}>{item}</span>)}</div>{result.surprise && <p><strong>{t.surprise}</strong> {result.surprise}</p>}{result.planB && <p><strong>{t.planB}</strong> {result.planB.title}</p>}{result.confirmBefore && <p><strong>{t.confirm}</strong> {result.requirements}</p>}<button className="button secondary" type="button" onClick={anotherIdea}>{t.anotherIdea}</button></div>
         <div className="result-tip"><span>♡</span><div><strong>{t.tip}</strong><p>{result.smallDetail}</p></div></div>
       </article>}
       {resultVisible && finding && <article className="date-result date-result-empty" id="resultado" aria-live="polite"><div className="result-copy"><p className="eyebrow">{t.resultKicker}</p><h3>{t.finding}</h3></div></article>}

@@ -4,6 +4,7 @@ import variantAuthority from "../../../SR_MOTOR_IDEIAS_V2_AUTHORITY/execution-va
 
 import { editorialText } from "./ideias-textos.mjs";
 import { NIGHT_BASES } from "./ideias-noite.mjs";
+import { FLAME_BASES } from "./ideias-chama.mjs";
 
 export const environments = ["home", "outdoors", "go-out", "any"];
 export const budgets = ["free", "low", "more"];
@@ -37,6 +38,7 @@ function assertAnswers(answers) {
     if (!allowed.includes(answers[key])) throw new Error(`Invalid recommendation ${key}`);
   }
   if (answers.period !== undefined && !periods.includes(answers.period)) throw new Error("Invalid recommendation period");
+  if (answers.flame !== undefined && typeof answers.flame !== "boolean") throw new Error("Invalid recommendation flame");
 }
 
 function durationFits(variant, band) {
@@ -46,13 +48,15 @@ function durationFits(variant, band) {
     && variant.minDurationMinutes <= maximum && variant.maxDurationMinutes >= minimum;
 }
 
-function hardGateReasons(variant, family, answers, variantById) {
+function hardGateReasons(variant, family, answers, variantById, relax = false) {
   const reasons = [];
   if (!family || family.structuralVetoes.length) reasons.push("structural-veto");
-  if (answers.environment !== "any" && variant.environment !== answers.environment) reasons.push("environment");
-  if (!durationFits(variant, answers.duration)) reasons.push("duration");
+  // Modo Chama: só as ideias marcadas; fora dele, as ideias do modo Chama nunca aparecem.
+  if (Boolean(variant.flame) !== Boolean(answers.flame)) reasons.push("flame");
+  if (!relax && answers.environment !== "any" && variant.environment !== answers.environment) reasons.push("environment");
+  if (!relax && !durationFits(variant, answers.duration)) reasons.push("duration");
   const moment = periodOf(variant), wanted = answers.period ?? "any";
-  if ((wanted === "day" && moment === "night") || (wanted === "night" && moment === "day") || (wanted === "any" && moment === "night" && answers.duration !== "hour")) reasons.push("period");
+  if (!relax && ((wanted === "day" && moment === "night") || (wanted === "night" && moment === "day") || (wanted === "any" && moment === "night" && answers.duration !== "hour"))) reasons.push("period");
   if (!Number.isInteger(variant.costBand) || variant.costBand < 0 || variant.costBand > 4 || variant.costBand > budgetCeilings[answers.budget]) reasons.push("cost");
   if (variant.consent === "unsatisfied" || variant.safety === "unsafe" || variant.accessibility === "incompatible") reasons.push("safety-or-consent");
   if (variant.requirements?.structuralImpossible) reasons.push("structural-requirement");
@@ -120,6 +124,7 @@ function render(candidate, variantById, lang = "pt") {
     requirements: variant.requirements,
     badges: [`C${variant.costBand}`, variant.durationLabel, variant.environment],
     period: periodOf(variant),
+    flame: Boolean(variant.flame),
   };
 }
 
@@ -128,21 +133,32 @@ export function createV2Engine({ families = v2Authority.families, variants = [],
   const variantById = new Map(variants.map((variant) => [variant.id, variant]));
   const gestureIds = new Set(gestures.map((gesture) => gesture.id));
 
-  function eligibleCandidates(answers, session) {
+  function eligibleCandidates(answers, session, relax = false) {
     assertAnswers(answers);
     const history = sessionIndex(session);
     return variants.map((variant) => {
       const family = familyById.get(variant.familyId);
-      return { variant, family, reasons: hardGateReasons(variant, family, answers, variantById) };
+      return { variant, family, reasons: hardGateReasons(variant, family, answers, variantById, relax) };
     }).filter((candidate) => !candidate.reasons.length && !history.candidateIds.has(candidate.variant.id) && (!candidate.variant.gestureId || gestureIds.has(candidate.variant.gestureId)));
   }
 
   function recommend(answers, session = {}, lang = "pt") {
     const history = sessionIndex(session);
-    const candidates = eligibleCandidates(answers, session).sort((left, right) => compareCandidates(left, right, answers, history));
+    let candidates = eligibleCandidates(answers, session).sort((left, right) => compareCandidates(left, right, answers, history));
+    // Modo Chama nunca fica vazio: se os filtros de lugar/tempo/momento não têm ideia, relaxa só esses (custo e segurança continuam).
+    let relaxed = false;
+    if (!candidates.length && answers.flame) {
+      candidates = eligibleCandidates(answers, session, true).sort((left, right) => compareCandidates(left, right, answers, history));
+      relaxed = candidates.length > 0;
+      // Última rede: se só faltam ideias de "surpresa", mostra uma ideia de outro clima em vez de ficar vazio.
+      if (!candidates.length && answers.occasion === "surprise") {
+        candidates = eligibleCandidates({ ...answers, occasion: "casual" }, session, true).sort((left, right) => compareCandidates(left, right, { ...answers, occasion: "casual" }, history));
+        relaxed = candidates.length > 0;
+      }
+    }
     if (!candidates.length) return { status: "exhausted", message: "Você explorou as melhores ideias para estes filtros. Tente mudar o tempo, orçamento ou tipo de programa para descobrir outras possibilidades.", session };
     const selected = candidates[0];
-    const result = render(selected, variantById, lang);
+    const result = { ...render(selected, variantById, lang), relaxed };
     return {
       status: "recommendation",
       result,
@@ -158,6 +174,11 @@ const nightVariants = NIGHT_BASES.map(({ id, from, title }) => {
   const origin = v2Authority.variants.find((variant) => variant.id === from);
   return { ...origin, id, title, period: "night", durationLabel: origin.durationLabel };
 });
-const productionEngine = createV2Engine({ variants: [...v2Authority.variants, ...nightVariants] });
+// Ideias do modo Chama (+18): copiam as regras de uma variante em casa já validada e ficam marcadas com flame.
+const flameVariants = FLAME_BASES.map(({ id, from, title, period }) => {
+  const origin = v2Authority.variants.find((variant) => variant.id === from);
+  return { ...origin, id, title, flame: true, ...(period ? { period } : {}) };
+});
+const productionEngine = createV2Engine({ variants: [...v2Authority.variants, ...nightVariants, ...flameVariants] });
 export const compatibleIdeas = (answers) => productionEngine.eligibleCandidates(answers).map((candidate) => candidate.variant);
 export const recommend = (answers, session, lang) => productionEngine.recommend(answers, session, lang);

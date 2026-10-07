@@ -122,3 +122,31 @@ test("filtro de momento do dia: noite e dia nunca se misturam", () => {
   assert.equal(next.status, "recommendation");
   assert.equal(next.result.period, "night");
 });
+
+// ---- Modo Chama (+18) e horóscopo do casal ----
+import { recommend as recommendNow } from "../app/recommendations.mjs";
+import { coupleReading, SIGN_IDS } from "../app/horoscopo-casal.mjs";
+
+test("modo Chama nunca aparece fora do modo e nunca fica vazio", () => {
+  for (const environment of ["home", "outdoors", "go-out", "any"]) for (const budget of ["free", "low", "more"]) for (const duration of ["hour", "afternoon", "day"]) for (const occasion of ["casual", "surprise", "reconnect"]) {
+    for (const flame of [true, false]) {
+      let session = { displayed: [] };
+      for (let i = 0; i < 3; i++) {
+        const next = recommendNow({ environment, budget, duration, occasion, period: "any", flame }, session, "pt");
+        if (!flame && next.status !== "recommendation") break;
+        assert.equal(next.status, "recommendation");
+        assert.equal(next.result.flame, flame);
+        session = next.session;
+      }
+    }
+  }
+});
+
+test("horóscopo do casal é estável no dia, igual nos dois sentidos e sempre devolve ideia", () => {
+  for (const a of SIGN_IDS) for (const b of SIGN_IDS) for (const lang of ["pt", "es", "en"]) {
+    const one = coupleReading(a, b, "2026-10-07", lang), two = coupleReading(b, a, "2026-10-07", lang);
+    assert.equal(one.idea.id, two.idea.id);
+    assert.ok(one.idea.title && one.vibe && one.gesture);
+    assert.equal(one.idea.flame, false);
+  }
+});

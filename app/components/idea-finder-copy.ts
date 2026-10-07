@@ -8,6 +8,7 @@ export type FinderCopy = {
   find: string; three: string; threeTitle: string; resultKicker: string; anotherIdea: string;
   finding: string; aiNote: string; exhausted: string; tip: string;
   surprise: string; planB: string; confirm: string;
+  flameTitle: string; flameLabel: string; flameHint: string; flameAskTitle: string; flameAskText: string; flameYes: string; flameNo: string; flameBadge: string; flameRelaxed: string; flameNote: string;
   cost: Record<string, string>; duration: Record<string, string>; place: Record<string, string>; periodLabel: Record<string, string>;
 };
 
@@ -25,6 +26,9 @@ export const finderCopy: Record<FinderLang, FinderCopy> = {
     exhausted: "Ainda não temos uma ideia para estes filtros. Tente mudar o tempo, o orçamento ou o tipo de programa.", tip: "Pequeno detalhe",
     surprise: "Surpresa:", planB: "Plano B:", confirm: "Confirme antes:",
     cost: { C0: "Grátis", C1: "Baixo custo", C2: "Um pouco mais" }, duration: { hour: "1 hora", afternoon: "Uma tarde", day: "Um dia" }, place: { home: "Em casa", outdoors: "Ao ar livre", "go-out": "Sair", any: "Tanto faz" }, periodLabel: { day: "De dia", night: "À noite" },
+    flameTitle: "Modo Chama (+18)", flameLabel: "Ativar o modo Chama 🔥", flameHint: "Ideias mais íntimas e sensuais, para maiores de 18 anos. Sem nada explícito e sempre com consentimento.",
+    flameAskTitle: "Conteúdo para adultos (+18)", flameAskText: "O modo Chama sugere encontros mais íntimos e sensuais, sem imagens e sem nada explícito. É destinado a maiores de 18 anos.", flameYes: "Tenho 18 anos ou mais", flameNo: "Agora não",
+    flameBadge: "Modo Chama", flameRelaxed: "Não havia uma ideia exata para esses filtros. Aqui vai uma que combina com o clima.", flameNote: "Combinem antes o que é bem-vindo. Qualquer um pode dizer “passo” ou parar, a qualquer momento.",
   },
   es: {
     kicker: "EL PLAN EMPIEZA AQUÍ", title: "¿Qué os gustaría vivir hoy?", text: "Contadnos lo esencial. Lo convertimos en una cita posible.",
@@ -39,6 +43,9 @@ export const finderCopy: Record<FinderLang, FinderCopy> = {
     exhausted: "Todavía no tenemos una idea para estos filtros. Probad a cambiar el tiempo, el presupuesto o el tipo de plan.", tip: "Un pequeño detalle",
     surprise: "Sorpresa:", planB: "Plan B:", confirm: "Confirmad antes:",
     cost: { C0: "Gratis", C1: "Bajo coste", C2: "Un poco más" }, duration: { hour: "1 hora", afternoon: "Una tarde", day: "Un día" }, place: { home: "En casa", outdoors: "Al aire libre", "go-out": "Salir", any: "Me da igual" }, periodLabel: { day: "De día", night: "De noche" },
+    flameTitle: "Modo Llama (+18)", flameLabel: "Activar el modo Llama 🔥", flameHint: "Ideas más íntimas y sensuales, para mayores de 18 años. Nada explícito y siempre con consentimiento.",
+    flameAskTitle: "Contenido para adultos (+18)", flameAskText: "El modo Llama propone citas más íntimas y sensuales, sin imágenes y sin nada explícito. Está dirigido a mayores de 18 años.", flameYes: "Tengo 18 años o más", flameNo: "Ahora no",
+    flameBadge: "Modo Llama", flameRelaxed: "No había una idea exacta para esos filtros. Aquí tenéis una que encaja con el ambiente.", flameNote: "Acordad antes qué es bienvenido. Cualquiera puede decir “paso” o parar, en cualquier momento.",
   },
   en: {
     kicker: "YOUR PLAN STARTS HERE", title: "What would you like to experience today?", text: "Tell us the essentials. We'll turn them into a date you can actually enjoy.",
@@ -53,5 +60,8 @@ export const finderCopy: Record<FinderLang, FinderCopy> = {
     exhausted: "We don't have an idea for these filters yet. Try changing the time, budget or type of plan.", tip: "A little detail",
     surprise: "Surprise:", planB: "Plan B:", confirm: "Check first:",
     cost: { C0: "Free", C1: "Low cost", C2: "A bit more" }, duration: { hour: "1 hour", afternoon: "An afternoon", day: "A day" }, place: { home: "At home", outdoors: "Outdoors", "go-out": "Going out", any: "Anything" }, periodLabel: { day: "Daytime", night: "Evening / night" },
+    flameTitle: "Flame mode (18+)", flameLabel: "Turn on flame mode 🔥", flameHint: "More intimate and sensual ideas, for adults aged 18 and over. Nothing explicit, and always with consent.",
+    flameAskTitle: "Adult content (18+)", flameAskText: "Flame mode suggests more intimate and sensual dates, with no images and nothing explicit. It is meant for readers aged 18 and over.", flameYes: "I am 18 or older", flameNo: "Not now",
+    flameBadge: "Flame mode", flameRelaxed: "There was no exact idea for those filters. Here is one that fits the mood.", flameNote: "Agree beforehand on what is welcome. Either of you can say “pass” or stop at any time.",
   },
 };

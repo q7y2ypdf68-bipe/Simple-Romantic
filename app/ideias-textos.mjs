@@ -128,13 +128,15 @@ export const PLAN_B = {
 import * as en from "./ideias-textos-en.mjs";
 import * as es from "./ideias-textos-es.mjs";
 import { NIGHT_T } from "./ideias-noite.mjs";
+import { FLAME_T } from "./ideias-chama.mjs";
 
 const PACKS = { pt: { T, SURPRISE, PLAN_B }, en, es };
 
 export function editorialText(variant, lang = "pt") {
   const pack = PACKS[lang] ?? PACKS.pt;
   const night = NIGHT_T[lang] ?? NIGHT_T.pt;
-  const entry = night[variant.id] ?? pack.T[variant.id] ?? pack.T[`${variant.familyId}@${variant.durationMinutes}`];
+  const flame = FLAME_T[lang] ?? FLAME_T.pt;
+  const entry = flame[variant.id] ?? night[variant.id] ?? pack.T[variant.id] ?? pack.T[`${variant.familyId}@${variant.durationMinutes}`];
   if (!entry) return null;
   const [title, whyItFits, howTo, smallDetail, planB] = entry;
   const key = String(variant.surprise ?? "").replace(/^Surpresa identificável:\s*/, "").replace(/\.$/, "");

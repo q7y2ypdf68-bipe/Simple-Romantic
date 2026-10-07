@@ -1332,3 +1332,43 @@ html:not([data-theme="dark"]) .shop-process{background:#4a2840!important}
 .section-heading h2,.guide-copy h2,.community-intro h2,.blog-welcome h2,.editorial-schedule-heading h2,.guide-final h2,.home-listening h2,.listening-form-intro h2,.listening-aftercare h2{line-height:1.16!important;letter-spacing:0!important}
 /* 8. Seções vizinhas bem separadas: "Tem algo preso no seu coração?" (rosa-pêssego) x "Histórias que aproximam" (creme/azul) */
 .community{border-top:1px solid var(--line)}
+
+/* 9. Modo Chama (+18) no gerador */
+.finder-form .flame-field{grid-column:1/-1;border-top:1px dashed var(--line)!important;padding-top:22px!important}
+.flame-toggle{display:inline-flex;align-items:center;gap:12px;cursor:pointer}
+.flame-toggle input{appearance:none;-webkit-appearance:none;width:26px;height:26px;margin:0;border:2px solid #e5484d;border-radius:8px;background:#fff;display:grid;place-items:center;cursor:pointer;flex:none}.flame-toggle input:checked{background:#e5484d}.flame-toggle input:checked::after{content:"✓";color:#fff;font-size:17px;line-height:1;font-weight:800}.flame-toggle input:focus-visible{outline:3px solid #ffb3b6;outline-offset:2px}
+.flame-toggle span{font-size:17px;font-weight:700}
+.flame-hint{margin:10px 0 0;font-size:14px;line-height:1.5;opacity:.8}
+.flame-ask{margin-top:16px;padding:20px;border:1px solid #f0b4b8;border-radius:18px;background:#fff1f1;color:#49243d}
+.flame-ask strong{display:block;margin-bottom:8px;font:600 20px Georgia,serif}
+.flame-ask p{margin:0 0 14px;line-height:1.5}
+.flame-ask div{display:flex;flex-wrap:wrap;gap:10px}
+.result-flame-note{margin:0 0 10px}
+html[data-theme="dark"] .flame-ask{background:#3a1a24;border-color:#7a3a4a;color:#ffe9ee}
+
+/* 10. Horóscopo do casal */
+.horoscope{background:var(--paper)}
+.horoscope-form{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;padding:30px;border:1px solid #f6dbe6;border-radius:24px;background:#fff;box-shadow:var(--shadow)}
+.horoscope-form label{display:flex;flex-direction:column;gap:8px;font-weight:700}
+.horoscope-form select{height:52px;border:1px solid var(--line);border-radius:12px;padding:0 14px;background:#fffafb;font-size:16px;color:inherit}
+.horoscope-form select:focus{border-color:var(--pink);outline:none;box-shadow:0 0 0 3px #ffe4ed}
+.horoscope-form .button{grid-column:1/-1;justify-self:center;min-width:275px}
+.horoscope-result{max-width:900px;margin:28px auto 0;padding:30px;border-radius:24px;background:linear-gradient(135deg,#fff3d9,#ffe3ec);color:#49243d;box-shadow:var(--shadow)}
+.horoscope-result h3{margin:0 0 6px;font:500 34px/1.16 Georgia,serif}
+.horoscope-result h4{margin:0 0 8px;font:600 22px/1.25 Georgia,serif}
+.horoscope-result p{line-height:1.55}
+.horoscope-traits{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:15px}
+.horoscope-cards{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;margin-top:22px}
+.horoscope-cards section{padding:20px;border-radius:18px;background:rgba(255,255,255,.7)}
+.horoscope-cards ol{padding-left:20px;line-height:1.5}
+.horoscope-gesture{font:500 22px/1.35 Georgia,serif;margin:0}
+.horoscope-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:22px}
+.horoscope-actions p{flex-basis:100%;margin:0;opacity:.8}
+html[data-theme="dark"] .horoscope-form{background:#241a20;border-color:#4a2c3a}
+html[data-theme="dark"] .horoscope-form select{background:#1b1317;border-color:#4a2c3a}
+html[data-theme="dark"] .horoscope-result{background:linear-gradient(135deg,#3a2a24,#3a1f2b);color:#ffe9ee}
+html[data-theme="dark"] .horoscope-cards section{background:rgba(0,0,0,.28)}
+@media(max-width:700px){.horoscope-form{grid-template-columns:1fr;padding:20px 16px}.horoscope-cards{grid-template-columns:1fr}.horoscope-result{padding:20px 16px}}
+html[data-theme="dark"] .flame-toggle input:not(:checked){background:#241a20}
+.horoscope-actions .button.secondary,.flame-ask .button.secondary{background:#fff!important;color:#49243d!important;-webkit-text-fill-color:#49243d!important;border:2px solid #f0b4b8!important}
+html[data-theme="dark"] .horoscope-actions .button.secondary,html[data-theme="dark"] .flame-ask .button.secondary{background:transparent!important;color:#ffe9ee!important;-webkit-text-fill-color:#ffe9ee!important;border-color:#7a3a4a!important}

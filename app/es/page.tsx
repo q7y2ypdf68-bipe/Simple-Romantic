@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LanguageSetter } from "../components/LanguageSetter";
 import { IdeaFinder } from "../components/IdeaFinder";
+import { CoupleHoroscope } from "../components/CoupleHoroscope";
 import { MobileMenu } from "../components/MobileMenu";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { getVisiblePostsLang } from "../blog/posts-db";
@@ -25,6 +26,7 @@ export default async function SpanishHome() {
     <section className="hero" id="inicio"><div className="hero-copy"><p className="eyebrow">ROMANCE ASEQUIBLE · MOMENTOS REALES</p><h1>El romanticismo no tiene<br /><em>por qué ser caro.</em></h1><p className="hero-text">Descubrid lugares bonitos, citas sencillas y pequeños gestos para vivir en pareja — cerca de vosotros y dentro de vuestro presupuesto.</p><div className="hero-actions"><a className="button primary" href="#encontrar">Encontrar una idea <span>→</span></a><Link className="quiet-link" href="/es/blog">Leer el blog</Link></div><div className="proof"><span>✓ Contenido gratuito</span><span>✓ Sin complicaciones</span><span>✓ Para parejas reales</span></div></div><div className="hero-scene"><Image unoptimized src="/images/hero-park.webp" alt="Pareja sonriendo durante un pícnic en un parque" fill priority sizes="(max-width: 1000px) 100vw, 49vw" /><div className="photo-wash" /><div className="picnic-card"><small>ESTE FIN DE SEMANA</small><strong>Un atardecer,<br />una manta y calma.</strong><span>GRATIS O ASEQUIBLE</span></div></div></section>
 
     <IdeaFinder lang="es" />
+    <CoupleHoroscope lang="es" />
 
     <section className="section" id="empezar"><div className="section-heading centered"><p className="eyebrow">PARA EMPEZAR</p><h2>Tres caminos para esta semana</h2></div><div className="spanish-idea-grid"><article><span>01</span><h3>Salir sin gastar</h3><p>Un paseo, una manta, algo de casa y una pregunta que merezca una respuesta tranquila.</p><Link className="quiet-link" href="/es/blog/citas-romanticas-gratis-salir-de-la-rutina">Ver ideas gratuitas →</Link></article><article><span>02</span><h3>Preparar algo hoy</h3><p>Planes espontáneos que no requieren reserva ni semanas de organización.</p><Link className="quiet-link" href="/es/blog/cita-romantica-de-ultima-hora">Elegir un plan →</Link></article><article><span>03</span><h3>Volver a conectar</h3><p>Gestos y preguntas para dejar el piloto automático y volver a miraros.</p><Link className="quiet-link" href="/es/blog/como-reconectar-con-tu-pareja">Cuidar la conexión →</Link></article></div></section>
 
