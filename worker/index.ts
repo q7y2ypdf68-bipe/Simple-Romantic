@@ -24,7 +24,7 @@ function withDefensiveSecurityHeaders(response: Response): Response {
   headers.set("x-content-type-options", "nosniff");
   headers.set("referrer-policy", "strict-origin-when-cross-origin");
   headers.set("x-frame-options", "DENY");
-  headers.set("permissions-policy", "camera=(), geolocation=(), microphone=()");
+  headers.set("permissions-policy", "camera=(), geolocation=(self), microphone=()");
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
