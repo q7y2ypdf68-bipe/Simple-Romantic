@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { recommend } from "../recommendations.mjs";
-import { lookupPlace, readPlace, savePlace, type PlaceInfo, type PlaceKind } from "../places";
+import { lookupHere, lookupPlace, readPlace, savePlace, type PlaceInfo, type PlaceKind } from "../places";
 import { finderCopy, type FinderLang } from "./idea-finder-copy";
 
 type Answers = { environment: string; budget: string; duration: string; occasion: string; period: string; flame?: boolean; places?: PlaceKind[] };
@@ -57,6 +57,12 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
     if (cityText.trim().length < 2) return;
     setPlaceState("busy");
     const info = await lookupPlace(cityText, lang);
+    if (info) { setPlace(info); setCityText(info.name); setPlaceState("idle"); } else { setPlace(null); setPlaceState("fail"); }
+  }
+  async function useHere() {
+    if (!navigator.geolocation) { setPlaceState("fail"); return; }
+    setPlaceState("busy");
+    const info = await lookupHere(lang);
     if (info) { setPlace(info); setCityText(info.name); setPlaceState("idle"); } else { setPlace(null); setPlaceState("fail"); }
   }
   function clearCity() { savePlace(null); setPlace(null); setCityText(""); setPlaceState("idle"); }
@@ -212,6 +218,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
         <fieldset className="city-field"><legend><span>07</span>{t.placeTitle}</legend>
           <div className="city-row"><input type="text" name="city" value={cityText} onChange={(event) => setCityText(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") { event.preventDefault(); void useCity(); } }} placeholder={t.placeHolder} maxLength={80} autoComplete="off" aria-describedby="city-hint" />
             <button type="button" className="button secondary city-btn" onClick={() => void useCity()} disabled={placeState === "busy"}>{t.placeBtn}</button>
+            <button type="button" className="button secondary city-btn" onClick={() => void useHere()} disabled={placeState === "busy"}>{t.placeHere}</button>
             {place && <button type="button" className="city-clear" onClick={clearCity}>{t.placeClear}</button>}</div>
           <p id="city-hint" className="city-hint"><small>{placeState === "busy" ? `${t.placeBusy} ${cityText}` : placeState === "fail" ? t.placeFail : place ? `✓ ${t.placeOk} ${place.name}` : t.placeHint}</small></p>
         </fieldset>

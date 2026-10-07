@@ -39,6 +39,22 @@ async function timed(url: string, init: RequestInit | undefined, ms: number) {
   try { return await fetch(url, { ...init, signal: ctl.signal }); } finally { clearTimeout(timer); }
 }
 
+async function placesAround(lat: number, lon: number, name: string): Promise<PlaceInfo | null> {
+  const around = `(around:${RADIUS},${lat},${lon})`;
+  const body = `[out:json][timeout:15];${QUERIES.map(([, f]) => `(nwr${f}${around};);out count;`).join("")}`;
+  const counts = await Promise.any(MIRRORS.map(async (url) => {
+    const res = await timed(url, { method: "POST", body: `data=${encodeURIComponent(body)}`, headers: { "Content-Type": "application/x-www-form-urlencoded" } }, 25000);
+    if (!res.ok) throw new Error("mirror failed");
+    const rows = ((await res.json()) as { elements?: Array<{ type: string; tags?: { total?: string } }> }).elements?.filter((e) => e.type === "count") ?? [];
+    if (rows.length !== QUERIES.length) throw new Error("bad answer");
+    return rows;
+  }));
+  const places = QUERIES.filter((_, i) => Number(counts[i]?.tags?.total ?? 0) > 0).map(([kind]) => kind);
+  const info = { name, places, at: Date.now() };
+  savePlace(info);
+  return info;
+}
+
 // Devolve null se não achar a cidade ou se o serviço falhar (nesse caso o site funciona como antes).
 export async function lookupPlace(city: string, lang: string): Promise<PlaceInfo | null> {
   const q = city.trim().slice(0, 80);
@@ -50,20 +66,25 @@ export async function lookupPlace(city: string, lang: string): Promise<PlaceInfo
     if (!hit) return null;
     const lat = Number(hit.lat), lon = Number(hit.lon);
     if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
-    const around = `(around:${RADIUS},${lat},${lon})`;
-    const body = `[out:json][timeout:15];${QUERIES.map(([, f]) => `(nwr${f}${around};);out count;`).join("")}`;
-    const counts = await Promise.any(MIRRORS.map(async (url) => {
-      const res = await timed(url, { method: "POST", body: `data=${encodeURIComponent(body)}`, headers: { "Content-Type": "application/x-www-form-urlencoded" } }, 25000);
-      if (!res.ok) throw new Error("mirror failed");
-      const rows = ((await res.json()) as { elements?: Array<{ type: string; tags?: { total?: string } }> }).elements?.filter((e) => e.type === "count") ?? [];
-      if (rows.length !== QUERIES.length) throw new Error("bad answer");
-      return rows;
-    }));
-    const places = QUERIES.filter((_, i) => Number(counts[i]?.tags?.total ?? 0) > 0).map(([kind]) => kind);
-    const name = hit.display_name.split(",").slice(0, 2).join(",").trim();
-    const info = { name, places, at: Date.now() };
-    savePlace(info);
-    return info;
+    return await placesAround(lat, lon, hit.display_name.split(",").slice(0, 2).join(",").trim());
+  } catch {
+    return null;
+  }
+}
+
+// Botão "Usar minha localização": o navegador pede permissão; as coordenadas só são usadas aqui, para consultar o mapa, e não são guardadas.
+export async function lookupHere(lang: string): Promise<PlaceInfo | null> {
+  try {
+    const pos = await new Promise<GeolocationPosition>((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 12000, maximumAge: 600000 }));
+    const { latitude: lat, longitude: lon } = pos.coords;
+    let name = "";
+    try {
+      const rev = await timed(`https://nominatim.openstreetmap.org/reverse?format=json&zoom=10&accept-language=${encodeURIComponent(lang)}&lat=${lat}&lon=${lon}`, undefined, 8000);
+      const j = (await rev.json()) as { address?: Record<string, string>; display_name?: string };
+      const ad = j.address ?? {};
+      name = [ad.city ?? ad.town ?? ad.village ?? ad.municipality ?? ad.county, ad.country].filter(Boolean).join(", ") || (j.display_name ?? "").split(",").slice(0, 2).join(",").trim();
+    } catch { /* sem nome: usamos um texto genérico */ }
+    return await placesAround(lat, lon, name || `${lat.toFixed(2)}, ${lon.toFixed(2)}`);
   } catch {
     return null;
   }
