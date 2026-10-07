@@ -29,6 +29,17 @@ function markSeen(ids: string[]) {
     window.localStorage.setItem(SEEN_KEY, JSON.stringify(list));
   } catch { /* sem memória nesta visita */ }
 }
+function browserKind(): "chrome" | "safari" | "firefox" | "ios" | "android" | "other" {
+  try {
+    const ua = navigator.userAgent;
+    if (/iPhone|iPad|iPod/i.test(ua)) return "ios";
+    if (/Android/i.test(ua)) return "android";
+    if (/Firefox\//i.test(ua)) return "firefox";
+    if (/Chrome\/|Edg\/|CriOS/i.test(ua)) return "chrome";
+    if (/Safari\//i.test(ua)) return "safari";
+  } catch { /* navegador desconhecido */ }
+  return "other";
+}
 function freshSession(): Session {
   return { displayed: [], seed: Math.floor(Math.random() * 1_000_000_000), recentIds: readSeen() } as Session;
 }
@@ -221,7 +232,13 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
             <button type="button" className="button secondary city-btn" onClick={() => void useCity()} disabled={placeState === "busy"}>{t.placeBtn}</button>
             <button type="button" className="button secondary city-btn" onClick={() => void useHere()} disabled={placeState === "busy"}>{t.placeHere}</button>
             {place && <button type="button" className="city-clear" onClick={clearCity}>{t.placeClear}</button>}</div>
-          <p id="city-hint" className="city-hint"><small>{placeState === "busy" ? `${t.placeBusy} ${cityText}` : placeState === "fail" ? t.placeFail : placeState === "denied" ? t.placeDenied : placeState === "unavailable" ? t.placeUnavailable : placeState === "timeout" ? t.placeTimeout : placeState === "map" ? t.placeMap : place ? `✓ ${t.placeOk} ${place.name}` : t.placeHint}</small></p>
+          {placeState === "denied" && <div className="city-help" role="dialog" aria-label={t.placeHelp.title}>
+            <button type="button" className="city-help-close" onClick={() => setPlaceState("idle")} aria-label={t.placeHelp.close}>×</button>
+            <strong>📍 {t.placeHelp.title}</strong>
+            <ol>{t.placeHelp[browserKind()].split("|").map((step) => <li key={step}>{step.replace(/^\d+\.\s*/, "")}</li>)}</ol>
+            <div className="city-help-actions"><button type="button" className="button primary" onClick={() => void useHere()}>{t.placeHelp.retry}</button><button type="button" className="city-clear" onClick={() => { setPlaceState("idle"); document.querySelector<HTMLInputElement>('input[name="city"]')?.focus(); }}>{t.placeHelp.typeCity}</button></div>
+          </div>}
+          <p id="city-hint" className="city-hint"><small>{placeState === "busy" ? `${t.placeBusy} ${cityText}` : placeState === "fail" ? t.placeFail : placeState === "denied" ? "" : placeState === "unavailable" ? t.placeUnavailable : placeState === "timeout" ? t.placeTimeout : placeState === "map" ? t.placeMap : place ? `✓ ${t.placeOk} ${place.name}` : t.placeHint}</small></p>
         </fieldset>
         <div className="finder-actions"><button className="button primary finder-button" type="submit">{t.find}<span>→</span></button><button className="button secondary finder-three" type="button" onClick={pickThree}>{t.three}</button></div>
       </form>
