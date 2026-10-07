@@ -72,20 +72,28 @@ export async function lookupPlace(city: string, lang: string): Promise<PlaceInfo
   }
 }
 
+export type HereError = "denied" | "unavailable" | "timeout" | "map";
+
 // Botão "Usar minha localização": o navegador pede permissão; as coordenadas só são usadas aqui, para consultar o mapa, e não são guardadas.
-export async function lookupHere(lang: string): Promise<PlaceInfo | null> {
+export async function lookupHere(lang: string): Promise<PlaceInfo | HereError> {
+  let lat = 0, lon = 0;
   try {
-    const pos = await new Promise<GeolocationPosition>((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 12000, maximumAge: 600000 }));
-    const { latitude: lat, longitude: lon } = pos.coords;
-    let name = "";
-    try {
-      const rev = await timed(`https://nominatim.openstreetmap.org/reverse?format=json&zoom=10&accept-language=${encodeURIComponent(lang)}&lat=${lat}&lon=${lon}`, undefined, 8000);
-      const j = (await rev.json()) as { address?: Record<string, string>; display_name?: string };
-      const ad = j.address ?? {};
-      name = [ad.city ?? ad.town ?? ad.village ?? ad.municipality ?? ad.county, ad.country].filter(Boolean).join(", ") || (j.display_name ?? "").split(",").slice(0, 2).join(",").trim();
-    } catch { /* sem nome: usamos um texto genérico */ }
-    return await placesAround(lat, lon, name || `${lat.toFixed(2)}, ${lon.toFixed(2)}`);
+    const pos = await new Promise<GeolocationPosition>((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 15000, maximumAge: 600000 }));
+    lat = pos.coords.latitude; lon = pos.coords.longitude;
+  } catch (error) {
+    const code = (error as { code?: number })?.code;
+    return code === 1 ? "denied" : code === 3 ? "timeout" : "unavailable";
+  }
+  let name = "";
+  try {
+    const rev = await timed(`https://nominatim.openstreetmap.org/reverse?format=json&zoom=10&accept-language=${encodeURIComponent(lang)}&lat=${lat}&lon=${lon}`, undefined, 8000);
+    const j = (await rev.json()) as { address?: Record<string, string>; display_name?: string };
+    const ad = j.address ?? {};
+    name = [ad.city ?? ad.town ?? ad.village ?? ad.municipality ?? ad.county, ad.country].filter(Boolean).join(", ") || (j.display_name ?? "").split(",").slice(0, 2).join(",").trim();
+  } catch { /* sem nome: usamos as coordenadas */ }
+  try {
+    return (await placesAround(lat, lon, name || `${lat.toFixed(2)}, ${lon.toFixed(2)}`)) ?? "map";
   } catch {
-    return null;
+    return "map";
   }
 }

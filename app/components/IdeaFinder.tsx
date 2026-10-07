@@ -46,7 +46,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
   const [flameAsk, setFlameAsk] = useState(false);
   const [place, setPlace] = useState<PlaceInfo | null>(null);
   const [cityText, setCityText] = useState("");
-  const [placeState, setPlaceState] = useState<"idle" | "busy" | "fail">("idle");
+  const [placeState, setPlaceState] = useState<"idle" | "busy" | "fail" | "denied" | "unavailable" | "timeout" | "map">("idle");
 
   useEffect(() => {
     const saved = readPlace();
@@ -60,10 +60,11 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
     if (info) { setPlace(info); setCityText(info.name); setPlaceState("idle"); } else { setPlace(null); setPlaceState("fail"); }
   }
   async function useHere() {
-    if (!navigator.geolocation) { setPlaceState("fail"); return; }
+    if (!navigator.geolocation) { setPlaceState("unavailable"); return; }
     setPlaceState("busy");
     const info = await lookupHere(lang);
-    if (info) { setPlace(info); setCityText(info.name); setPlaceState("idle"); } else { setPlace(null); setPlaceState("fail"); }
+    if (typeof info === "string") { setPlace(null); setPlaceState(info); return; }
+    setPlace(info); setCityText(info.name); setPlaceState("idle");
   }
   function clearCity() { savePlace(null); setPlace(null); setCityText(""); setPlaceState("idle"); }
 
@@ -220,7 +221,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
             <button type="button" className="button secondary city-btn" onClick={() => void useCity()} disabled={placeState === "busy"}>{t.placeBtn}</button>
             <button type="button" className="button secondary city-btn" onClick={() => void useHere()} disabled={placeState === "busy"}>{t.placeHere}</button>
             {place && <button type="button" className="city-clear" onClick={clearCity}>{t.placeClear}</button>}</div>
-          <p id="city-hint" className="city-hint"><small>{placeState === "busy" ? `${t.placeBusy} ${cityText}` : placeState === "fail" ? t.placeFail : place ? `✓ ${t.placeOk} ${place.name}` : t.placeHint}</small></p>
+          <p id="city-hint" className="city-hint"><small>{placeState === "busy" ? `${t.placeBusy} ${cityText}` : placeState === "fail" ? t.placeFail : placeState === "denied" ? t.placeDenied : placeState === "unavailable" ? t.placeUnavailable : placeState === "timeout" ? t.placeTimeout : placeState === "map" ? t.placeMap : place ? `✓ ${t.placeOk} ${place.name}` : t.placeHint}</small></p>
         </fieldset>
         <div className="finder-actions"><button className="button primary finder-button" type="submit">{t.find}<span>→</span></button><button className="button secondary finder-three" type="button" onClick={pickThree}>{t.three}</button></div>
       </form>
