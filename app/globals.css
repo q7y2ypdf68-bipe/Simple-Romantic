@@ -1372,3 +1372,26 @@ html[data-theme="dark"] .horoscope-cards section{background:rgba(0,0,0,.28)}
 html[data-theme="dark"] .flame-toggle input:not(:checked){background:#241a20}
 .horoscope-actions .button.secondary,.flame-ask .button.secondary{background:#fff!important;color:#49243d!important;-webkit-text-fill-color:#49243d!important;border:2px solid #f0b4b8!important}
 html[data-theme="dark"] .horoscope-actions .button.secondary,html[data-theme="dark"] .flame-ask .button.secondary{background:transparent!important;color:#ffe9ee!important;-webkit-text-fill-color:#ffe9ee!important;border-color:#7a3a4a!important}
+
+/* 11. Opções selecionadas bem visíveis (sinal de visto + anel), claro e escuro */
+.choices label{position:relative}
+.choices label span{position:relative}
+.choices input:checked+span{outline:3px solid #ffd45b;outline-offset:2px;font-weight:800}
+.choices input:checked+span::after{content:"✓";position:absolute;top:-9px;right:-9px;width:24px;height:24px;border-radius:50%;background:#fff;color:#0c7a3d;border:2px solid #0c7a3d;font:900 15px/20px Arial,sans-serif;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.35);-webkit-text-fill-color:#0c7a3d}
+html[data-theme="dark"] .choices input:checked+span{outline-color:#fff}
+html[data-theme="dark"] .choices input:checked+span::after{background:#7CFFB0;border-color:#0c7a3d;color:#054d26;-webkit-text-fill-color:#054d26}
+.flame-toggle input:checked{outline:3px solid #ffd45b;outline-offset:2px}
+
+/* 12. As 3 ideias: maiores e com contraste alto (cartões lado a lado) */
+.idea-trio{max-width:1240px}
+.idea-trio-grid{gap:22px}
+.idea-trio article{background:linear-gradient(160deg,#16607a,#0e3f55);padding:30px 28px;border:1px solid rgba(255,255,255,.18)}
+.idea-trio h3{font-size:30px;line-height:1.18;margin-bottom:14px;color:#fff}
+.idea-trio p,.idea-trio li{font-size:17px;line-height:1.6;color:#fff}
+.idea-trio ol{padding-left:22px;margin:14px 0 18px}.idea-trio li{margin-top:9px}
+.idea-trio .result-meta span{font-size:14px;padding:7px 12px;border-color:rgba(255,255,255,.6);color:#fff}
+.idea-trio>.eyebrow{font-size:15px;color:inherit}
+.result-flame-note{text-align:center}.result-flame-note small{font-size:16px;line-height:1.5}
+.idea-trio article.is-flame{background:linear-gradient(160deg,#8a1d45,#4a0f2a);border-color:rgba(255,200,215,.35)}
+.trio-flame-chip{display:inline-block;margin-bottom:14px;padding:7px 14px;border-radius:99px;background:#ffd45b;color:#4a0f2a;font:800 14px/1 Arial,sans-serif;letter-spacing:.3px}
+@media(max-width:1100px){.idea-trio-grid{grid-template-columns:1fr}.idea-trio h3{font-size:28px}}
