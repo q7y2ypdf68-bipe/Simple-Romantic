@@ -3,8 +3,9 @@
 export type PlaceKind = "beach" | "park" | "nature" | "cinema" | "theatre" | "museum" | "gallery" | "bookshop" | "bowling" | "ferry" | "train" | "market";
 export type PlaceInfo = { name: string; places: PlaceKind[]; at: number };
 
-const QUERIES: Array<[PlaceKind, string]> = [
-  ["beach", '["natural"="beach"]'],
+// "beach" = costa de mar por perto (raio maior). Prainhas de rio/lago marcadas no mapa não contam, para não sugerir mar no interior.
+const QUERIES: Array<[PlaceKind, string, number?]> = [
+  ["beach", '["natural"="coastline"]', 30000],
   ["park", '["leisure"~"^(park|garden)$"]'],
   ["nature", '["leisure"="nature_reserve"]'],
   ["cinema", '["amenity"="cinema"]'],
@@ -40,8 +41,7 @@ async function timed(url: string, init: RequestInit | undefined, ms: number) {
 }
 
 async function placesAround(lat: number, lon: number, name: string): Promise<PlaceInfo | null> {
-  const around = `(around:${RADIUS},${lat},${lon})`;
-  const body = `[out:json][timeout:15];${QUERIES.map(([, f]) => `(nwr${f}${around};);out count;`).join("")}`;
+  const body = `[out:json][timeout:15];${QUERIES.map(([, f, r]) => `(nwr${f}(around:${r ?? RADIUS},${lat},${lon}););out count;`).join("")}`;
   const counts = await Promise.any(MIRRORS.map(async (url) => {
     const res = await timed(url, { method: "POST", body: `data=${encodeURIComponent(body)}`, headers: { "Content-Type": "application/x-www-form-urlencoded" } }, 25000);
     if (!res.ok) throw new Error("mirror failed");
