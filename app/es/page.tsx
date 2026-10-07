@@ -1,3 +1,4 @@
+import { coupleMetadata } from "../horoscopo-og";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +10,10 @@ import { ThemeToggle } from "../components/ThemeToggle";
 import { getVisiblePostsLang } from "../blog/posts-db";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ casal?: string | string[] }> }): Promise<Metadata> {
+  return coupleMetadata("es", (await searchParams).casal);
+}
 
 export const metadata: Metadata = {
   title: "Simple & Romantic en español — Momentos sencillos, recuerdos bonitos",
