@@ -150,3 +150,33 @@ test("horóscopo do casal é estável no dia, igual nos dois sentidos e sempre d
     assert.equal(one.idea.flame, false);
   }
 });
+
+test("com semente e memória, percorre as ideias sem repetir até esgotar; sem semente continua fixo", () => {
+  const f2 = family("F2");
+  const variants = Array.from({ length: 8 }, (_, i) => base(`v${i}`, f2.id, { tier: i % 2 ? "A" : "B" }));
+  const engine = createV2Engine({ variants });
+  assert.equal(engine.recommend(answers).result.id, engine.recommend(answers).result.id);
+  let recentIds = [];
+  const seen = [];
+  for (let round = 0; round < 4; round += 1) {
+    const out = engine.recommend(answers, { displayed: [], seed: 1000 + round * 37, recentIds });
+    assert.equal(out.result ? true : false, true);
+    seen.push(out.result.id);
+    recentIds = [...recentIds, out.result.id];
+  }
+  assert.equal(new Set(seen).size, 4);
+});
+
+test("Modo Chama real nunca fica vazio e varia entre rodadas", () => {
+  const a = { environment: "home", budget: "free", duration: "hour", occasion: "casual", period: "night", flame: true };
+  let recent = [];
+  const rounds = [];
+  for (let r = 0; r < 3; r += 1) {
+    let s = { displayed: [], seed: 5 + r * 977, recentIds: recent };
+    const trio = [];
+    for (let i = 0; i < 3; i += 1) { const out = recommend(a, s, "pt"); assert.ok(out.result); trio.push(out.result.id); s = out.session; }
+    recent = [...recent, ...trio];
+    rounds.push(trio.join());
+  }
+  assert.notEqual(rounds[0], rounds[1]);
+});

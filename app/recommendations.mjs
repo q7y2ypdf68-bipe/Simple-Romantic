@@ -128,6 +128,32 @@ function render(candidate, variantById, lang = "pt") {
   };
 }
 
+// Variedade: entre as ideias "empatadas" nos critérios principais (período, nível, clima, lugar, força),
+// escolhe uma ao acaso, preferindo as que a pessoa ainda não viu (memória do navegador em session.recentIds)
+// e evitando repetir família/mecânica dentro da mesma rodada. Sem session.seed (testes), o resultado é fixo.
+function chooseVaried(candidates, answers, session, history) {
+  const first = candidates[0];
+  if (!Number.isFinite(session?.seed)) return first;
+  // Os filtros duros já garantem que TODAS as candidatas servem; então sorteamos entre as melhores (metade de cima, mínimo 6).
+  const band = candidates.slice(0, Math.max(6, Math.ceil(candidates.length * 0.6)));
+  const recent = [...(session.recentIds ?? []), ...(session.displayed ?? []).map((item) => item.candidateId)];
+  const seenAt = new Map(recent.map((id, index) => [id, index]));
+  let pool = band.filter((c) => !seenAt.has(c.variant.id));
+  if (!pool.length) {
+    // tudo da faixa já foi visto: abre para todas as candidatas e prefere as vistas há mais tempo
+    const unseen = candidates.filter((c) => !seenAt.has(c.variant.id));
+    if (unseen.length) pool = unseen;
+    else {
+      const oldest = candidates.slice().sort((a, b) => seenAt.get(a.variant.id) - seenAt.get(b.variant.id));
+      pool = oldest.slice(0, Math.max(1, Math.ceil(oldest.length / 2)));
+    }
+  }
+  const fresh = pool.filter((c) => !history.familyIds.has(c.family.id) && !history.mechanics.has(c.family.centralMechanic));
+  if (fresh.length) pool = fresh;
+  const mix = Math.abs(Math.floor(session.seed) + (session.displayed?.length ?? 0) * 7919);
+  return pool[mix % pool.length];
+}
+
 export function createV2Engine({ families = v2Authority.families, variants = [], gestures = v2Authority.gestures } = {}) {
   const familyById = new Map(families.map((family) => [family.id, family]));
   const variantById = new Map(variants.map((variant) => [variant.id, variant]));
@@ -157,7 +183,7 @@ export function createV2Engine({ families = v2Authority.families, variants = [],
       }
     }
     if (!candidates.length) return { status: "exhausted", message: "Você explorou as melhores ideias para estes filtros. Tente mudar o tempo, orçamento ou tipo de programa para descobrir outras possibilidades.", session };
-    const selected = candidates[0];
+    const selected = chooseVaried(candidates, answers, session, history);
     const result = { ...render(selected, variantById, lang), relaxed };
     return {
       status: "recommendation",

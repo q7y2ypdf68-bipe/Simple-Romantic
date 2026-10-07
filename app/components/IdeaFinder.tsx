@@ -6,7 +6,7 @@ import { finderCopy, type FinderLang } from "./idea-finder-copy";
 
 type Answers = { environment: string; budget: string; duration: string; occasion: string; period: string; flame?: boolean };
 type Idea = { id: string; title: string; whyItFits: string; howTo: string[]; smallDetail?: string; badges: string[]; planB?: { title: string }; surprise?: string; confirmBefore?: boolean; requirements?: string; aiGenerated?: boolean; flame?: boolean; relaxed?: boolean };
-type Session = { displayed: Array<{ candidateId: string; familyId: string; mechanic: string; category: string; modifierIds?: string[]; gestureId?: string; timestamp: number }> };
+type Session = { displayed: Array<{ candidateId: string; familyId: string; mechanic: string; category: string; modifierIds?: string[]; gestureId?: string; timestamp: number }>; seed?: number; recentIds?: string[] };
 
 // Aceita, no link, tanto os valores em inglês quanto palavras nos 3 idiomas.
 const LINK_MAP: Record<string, Record<string, string>> = {
@@ -17,6 +17,20 @@ const LINK_MAP: Record<string, Record<string, string>> = {
   clima: { casual: "casual", informal: "casual", surpresa: "surprise", sorpresa: "surprise", surprise: "surprise", reconectar: "reconnect", reconnect: "reconnect" },
 };
 const LINK_NAMES: Record<string, string> = { lugar: "environment", orcamento: "budget", tempo: "time", clima: "occasion", momento: "period" };
+
+const SEEN_KEY = "sr-seen";
+function readSeen(): string[] {
+  try { const raw = JSON.parse(window.localStorage.getItem(SEEN_KEY) ?? "[]"); return Array.isArray(raw) ? raw.map(String) : []; } catch { return []; }
+}
+function markSeen(ids: string[]) {
+  try {
+    const list = readSeen().filter((id) => !ids.includes(id)).concat(ids).slice(-80);
+    window.localStorage.setItem(SEEN_KEY, JSON.stringify(list));
+  } catch { /* sem memória nesta visita */ }
+}
+function freshSession(): Session {
+  return { displayed: [], seed: Math.floor(Math.random() * 1_000_000_000), recentIds: readSeen() } as Session;
+}
 
 export function IdeaFinder({ lang }: { lang: FinderLang }) {
   const t = finderCopy[lang];
@@ -54,6 +68,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
     if (next.status === "recommendation") {
       setRecommendation(next);
       setRecommendationSession(next.session ?? { displayed: [] });
+      if (next.result) markSeen([String(next.result.id)]);
       return;
     }
     if (answers.flame) { setRecommendation(next); return; }
@@ -82,7 +97,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
     setFinding(true);
     requestAnimationFrame(() => document.querySelector("#resultado")?.scrollIntoView({ behavior: "smooth", block: "center" }));
     const found: Idea[] = [];
-    let session: Session = { displayed: [] };
+    let session: Session = freshSession();
     const shown: string[] = [];
     try {
       for (let i = 0; i < 3; i++) {
@@ -107,6 +122,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
     } finally {
       setFinding(false);
     }
+    markSeen(found.map((item) => String(item.id)));
     setTrio(found);
   }
 
@@ -117,7 +133,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
     setTrio(null);
     setResultVisible(true);
     requestAnimationFrame(() => document.querySelector("#resultado")?.scrollIntoView({ behavior: "smooth", block: "center" }));
-    await resolveIdea(answers, { displayed: [] }, []);
+    await resolveIdea(answers, freshSession(), []);
   }
 
   function formAnswers() {
@@ -150,7 +166,7 @@ export function IdeaFinder({ lang }: { lang: FinderLang }) {
         const answers = formAnswers();
         if (!answers) return;
         if (q.get("ideias") === "3" || q.get("ideas") === "3") void threeIdeas(answers);
-        else { setAiShown([]); setResultVisible(true); void resolveIdea(answers, { displayed: [] }, []); }
+        else { setAiShown([]); setResultVisible(true); void resolveIdea(answers, freshSession(), []); }
         document.querySelector("#encontrar")?.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     } catch {
