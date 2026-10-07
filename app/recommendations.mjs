@@ -220,7 +220,7 @@ const flameVariants = FLAME_BASES.map(({ id, from, title, period }) => {
 // Ideias extras (aprovadas): copiam as regras de uma variante validada e trazem texto próprio nos 3 idiomas.
 const extraVariants = EXTRA_BASES.map(({ id, from, title, period }) => {
   const origin = v2Authority.variants.find((variant) => variant.id === from);
-  return { ...origin, id, title, surprise: undefined, ...(period ? { period } : {}) };
+  return { ...origin, id, title, ...(origin.surprise ? { surprise: title } : { surprise: undefined }), ...(period ? { period } : {}) };
 });
 const productionEngine = createV2Engine({ variants: [...v2Authority.variants, ...nightVariants, ...flameVariants, ...extraVariants] });
 export const compatibleIdeas = (answers) => productionEngine.eligibleCandidates(answers).map((candidate) => candidate.variant);

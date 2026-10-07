@@ -1,3 +1,4 @@
+import { SURPRISE_T } from "./ideias-extra-surpresa.mjs";
 // Ideias extras do motor (aprovadas pelo Bruno em 07/10/2026). Copiam as regras (família, custo, tempo) de uma variante já validada.
 // Formato do texto: [título, porquê, passos, detalhe]. Sem preços, sem marcas.
 export const EXTRA_BASES = [
@@ -21,9 +22,21 @@ export const EXTRA_BASES = [
   { id: "V2-127", from: "V2-025", title: "Amanhecer com café na mão", period: "day" },
   { id: "V2-128", from: "V2-048", title: "Feira de rua só para olhar" },
   { id: "V2-129", from: "V2-002", title: "Desenhar de olhos fechados o rosto do outro" },
+  { id: "V2-130", from: "V2-004", title: "Bilhetes escondidos pela casa" },
+  { id: "V2-131", from: "V2-006", title: "Café da manhã surpresa, antes de acordar", period: "day" },
+  { id: "V2-132", from: "V2-013", title: "Viagem pelo mundo sem sair da sala" },
+  { id: "V2-133", from: "V2-005", title: "Mensagens de quem a gente ama" },
+  { id: "V2-134", from: "V2-006", title: "Pote dos dez motivos" },
+  { id: "V2-135", from: "V2-022", title: "Destino surpresa a pé" },
+  { id: "V2-136", from: "V2-031", title: "Caça às lembranças pelo bairro" },
+  { id: "V2-137", from: "V2-032", title: "Piquenique surpresa no parque" },
+  { id: "V2-138", from: "V2-058", title: "Envelopes para abrir de hora em hora" },
+  { id: "V2-139", from: "V2-049", title: "Café no lugar do primeiro encontro" },
+  { id: "V2-140", from: "V2-051", title: "Uma foto impressa e guardada num lugar especial" },
+  { id: "V2-141", from: "V2-067", title: "Um dia \"você escolhe tudo\"" },
 ];
 
-export const EXTRA_T = {
+const EXTRA_BASE_T = {
   pt: {
     "V2-110": ["Carta para daqui a um ano", "Escrever para o 'nós' do futuro faz perceber o que importa hoje, e abrir a carta depois vira um presente.", ["Cada um escreve uma carta curta: como estamos hoje, o que agradeço, o que sonho para o próximo ano.", "Não leiam agora, nem espiem.", "Lacrem as duas num envelope com a data de abertura escrita por fora.", "Guardem juntos num lugar combinado.", "Marquem a data no calendário."], "Incluam uma coisa pequena que queiram ter feito até lá."],
     "V2-111": ["Caixa das lembranças pequenas", "Bilhetes, ingressos e objetos bobos contam a história melhor que muita foto.", ["Cada um procura 3 objetos pequenos que lembram momentos dos dois.", "Coloquem tudo na mesa e contem a história de cada um.", "Escolham uma caixa ou lata que já tenham em casa.", "Guardem os objetos dentro e escrevam a data na tampa."], "Deixem espaço: a caixa pode crescer com o tempo."],
@@ -91,3 +104,5 @@ export const EXTRA_T = {
     "V2-129": ["Drawing each other's face with eyes closed", "Pencil in hand and eyes closed always end in laughter, and the light touch on the face becomes tenderness.", ["Take paper and pencils.", "Facing each other, ask permission and lightly touch the other's face, eyes closed.", "Draw, still with eyes closed.", "Open your eyes, compare and give the artwork a title.", "Keep the drawings."], "The most crooked drawing goes on the fridge."],
   },
 };
+
+export const EXTRA_T = Object.fromEntries(["pt", "es", "en"].map((lang) => [lang, { ...EXTRA_BASE_T[lang], ...SURPRISE_T[lang] }]));

@@ -140,8 +140,8 @@ export function editorialText(variant, lang = "pt") {
   const extra = EXTRA_T[lang] ?? EXTRA_T.pt;
   const entry = extra[variant.id] ?? flame[variant.id] ?? night[variant.id] ?? pack.T[variant.id] ?? pack.T[`${variant.familyId}@${variant.durationMinutes}`];
   if (!entry) return null;
-  const [title, whyItFits, howTo, smallDetail, planB] = entry;
+  const [title, whyItFits, howTo, smallDetail, planB, surpriseText] = entry;
   const key = String(variant.surprise ?? "").replace(/^Surpresa identificável:\s*/, "").replace(/\.$/, "");
-  const surprise = variant.surprise ? (pack.SURPRISE[key] ?? undefined) : undefined;
+  const surprise = surpriseText ?? (variant.surprise ? (pack.SURPRISE[key] ?? undefined) : undefined);
   return { title, whyItFits, howTo, smallDetail, planB: planB ?? pack.PLAN_B[variant.environment], surprise };
 }
