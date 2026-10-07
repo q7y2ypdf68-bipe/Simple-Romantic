@@ -1414,7 +1414,7 @@ html[data-theme="dark"] .city-row .city-btn{color:#ff9fbe!important;-webkit-text
 .city-field{position:relative}
 .city-help{position:relative;margin:16px 0 0;padding:20px 22px;max-width:620px;border:2px solid var(--pink);border-radius:18px;background:#fff7fa;color:#3a1b2a;box-shadow:0 14px 40px rgba(237,63,120,.22)}
 .city-help:before{content:"";position:absolute;top:-10px;left:60px;width:18px;height:18px;background:#fff7fa;border-left:2px solid var(--pink);border-top:2px solid var(--pink);transform:rotate(45deg)}
-.city-help strong{display:block;font-size:18px;margin:0 28px 10px 0}
+.city-help strong{display:block;font-size:18px;margin:0 44px 10px 0}
 .city-help ol{margin:0 0 14px;padding-left:22px;font-size:16px;line-height:1.55}
 .city-help li{margin:4px 0}
 .city-help-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
