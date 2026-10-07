@@ -1,6 +1,7 @@
 // Horóscopo do casal: brincadeira leve. Nada de previsão séria, nada de "incompatível".
 // A leitura combina os elementos dos dois signos e sorteia (de forma estável por dia e por par) uma ideia do motor e um gesto.
 import { compatibleIdeas, recommend } from "./recommendations.mjs";
+import PERIODOS from "./horoscopo-periodos.mjs";
 import CEU_PT from "./horoscopo-ceu-pt.mjs";
 import CEU_ES from "./horoscopo-ceu-es.mjs";
 import CEU_EN from "./horoscopo-ceu-en.mjs";
@@ -185,3 +186,79 @@ export function coupleReading(signA, signB, day, lang = "pt", shift = 0, sky = n
 }
 
 export const signOptions = (lang) => SIGN_IDS.map((id) => ({ id, label: `${(HORO[lang] ?? HORO.pt).signs[id][0]} · ${DATES[id]}` }));
+
+const LOCALES = { pt: "pt-BR", es: "es-ES", en: "en-GB" };
+const dateText = (lang, item) => new Intl.DateTimeFormat(LOCALES[lang] ?? "pt-BR", { day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(Date.UTC(item.y, item.m - 1, item.d)));
+const shortDate = (lang, item) => new Intl.DateTimeFormat(LOCALES[lang] ?? "pt-BR", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" }).format(new Date(Date.UTC(item.y, item.m - 1, item.d)));
+const monthText = (lang, item) => new Intl.DateTimeFormat(LOCALES[lang] ?? "pt-BR", { month: "long", timeZone: "UTC" }).format(new Date(Date.UTC(item.y, item.m - 1, 1)));
+const listText = (lang, items) => new Intl.ListFormat(LOCALES[lang] ?? "pt-BR", { style: "long", type: "conjunction" }).format(items);
+const rangeText = (lang, texts, range) => range.to ? fill(texts.rangeFromTo, { from: dateText(lang, range.from), to: dateText(lang, range.to) }) : fill(texts.rangeFromOn, { from: dateText(lang, range.from) });
+
+// Leitura de semana ("week"), mês ("month") ou 12 meses ("year"). "period" vem de periodSky() (ceu.mjs).
+export function periodReading(signA, signB, period, lang = "pt", shift = 0) {
+  const pack = HORO[lang] ?? HORO.pt;
+  const ceu = PACKS[lang] ?? PACKS.pt;
+  const all = PERIODOS[lang] ?? PERIODOS.pt;
+  const text = all[period.kind];
+  const names = SIGN_IDS.map((id) => pack.signs[id][0]);
+  const indexA = SIGN_IDS.indexOf(signA), indexB = SIGN_IDS.indexOf(signB);
+  const seed = seedOf(`${[signA, signB].sort().join("+")}|${period.kind}|${period.start.y}-${period.start.m}-${period.start.d}`) + shift * 7919;
+  const salt = (n) => seedOf(`${seed}|${n}`);
+  const choose = (list, n) => list[salt(n) % list.length];
+  const first = period.list[0], lastDay = period.list[period.list.length - 1];
+  const paragraphs = [];
+  const lines = [];
+  const chips = [];
+  const elements = [ELEMENT[signA], ELEMENT[signB]];
+
+  if (period.kind === "week") {
+    paragraphs.push(fill(choose(text.intros, 1), { from: dateText(lang, first), to: dateText(lang, lastDay) }));
+    const moonSigns = [...new Set(period.list.map((item) => item.sky.moon))];
+    paragraphs.push(fill(text.moonPass, { list: listText(lang, moonSigns.map((sign) => names[sign])) }));
+    for (const item of period.list) lines.push(fill(text.dayLine, { day: shortDate(lang, item), title: ceu.moon[item.sky.moon][0] }));
+    for (const event of period.events) paragraphs.push(`${dateText(lang, event)}: ${fill(all.moonEvents[event.kind], { sign: names[event.sign] })}`);
+    const sky = period.first;
+    if (period.list.some((item) => item.sky.mercury.station === "retro")) paragraphs.push(ceu.mercury.station.retro);
+    else if (period.list.some((item) => item.sky.mercury.station === "direct")) paragraphs.push(ceu.mercury.station.direct);
+    else if (sky.mercury.retro) paragraphs.push(choose(ceu.mercury.retro, 2));
+    if (sky.mercury.retro) chips.push(ceu.chips.mercuryRetro);
+    const planet = ["venus", "mars"][salt(3) % 2];
+    paragraphs.push(fill(ceu[planet].lead, { sign: names[sky[planet]], t: ceu[planet].items[sky[planet]] }));
+  } else if (period.kind === "month") {
+    { const intro = fill(choose(text.intros, 1), { month: monthText(lang, first) }); paragraphs.push(intro.charAt(0).toUpperCase() + intro.slice(1)); }
+    for (const event of period.events) lines.push(fill(text.eventLine, { date: dateText(lang, event), text: fill(all.moonEvents[event.kind], { sign: names[event.sign] }) }));
+    const mid = period.list[Math.min(14, period.list.length - 1)].sky;
+    paragraphs.push(fill(ceu.sun.lead, { sign: names[mid.sun], t: ceu.sun.items[mid.sun] }));
+    const planet = ["venus", "mars"][salt(3) % 2];
+    paragraphs.push(fill(ceu[planet].lead, { sign: names[first.sky[planet]], t: ceu[planet].items[first.sky[planet]] }));
+    if (period.retro.length) { const range = period.retro[0]; paragraphs.push(range.to ? fill(text.retroLine, { range: rangeText(lang, text, range) }) : fill(text.retroOpen, { from: dateText(lang, range.from) })); chips.push(ceu.chips.mercuryRetro); }
+    else paragraphs.push(text.noRetro);
+  } else {
+    paragraphs.push(fill(choose(text.intros, 1), {}));
+    for (const key of ["jupiter", "saturn"]) {
+      const data = period[key];
+      paragraphs.push(fill(text.planetLead, { planet: text.planets[key], sign: names[data.sign], t: text[key][data.sign] }));
+      if (data.ingress.length) paragraphs.push(...data.ingress.map((item) => fill(text.ingress, { date: dateText(lang, item), planet: text.names[key], sign: names[item.sign] })));
+    }
+    lines.push(text.eclipsesLead);
+    if (period.eclipses.length) for (const eclipse of period.eclipses) lines.push(fill(text.eclipse[eclipse.type], { date: dateText(lang, eclipse) }));
+    else lines.push(text.noEclipses);
+    if (period.retro.length) paragraphs.push(fill(text.retroLead, { list: listText(lang, period.retro.map((range) => range.to ? fill(text.rangeFromTo, { from: dateText(lang, range.from), to: dateText(lang, range.to) }) : fill(text.rangeFromOn, { from: dateText(lang, range.from) }))) }));
+    else paragraphs.push(text.noRetro);
+    const fulls = period.events.filter((event) => event.kind === "full" && (event.sign === indexA || event.sign === indexB));
+    if (fulls.length) paragraphs.push(fill(text.moonsLead, { list: listText(lang, fulls.map((event) => dateText(lang, event))) }));
+  }
+
+  const gestureList = [...pack.gestures[elements[0]], ...(elements[1] === elements[0] ? [] : pack.gestures[elements[1]]), ...ceu.gestures[elements[0]], ...(elements[1] === elements[0] ? [] : ceu.gestures[elements[1]])];
+  return {
+    kind: period.kind,
+    title: choose(text.titles, 4),
+    chips,
+    paragraphs,
+    lines,
+    gesture: choose(gestureList, 5),
+    closing: choose(ceu.closings, 6),
+    a: { name: pack.signs[signA][0] },
+    b: { name: pack.signs[signB][0] },
+  };
+}

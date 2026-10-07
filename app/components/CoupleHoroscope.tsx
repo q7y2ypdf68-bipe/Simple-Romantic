@@ -1,10 +1,13 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { HORO, coupleReading, signOptions } from "../horoscopo-casal.mjs";
+import { HORO, coupleReading, periodReading, signOptions } from "../horoscopo-casal.mjs";
+import PERIODOS from "../horoscopo-periodos.mjs";
 
 type Lang = "pt" | "es" | "en";
 type Reading = ReturnType<typeof coupleReading>;
+type PeriodResult = ReturnType<typeof periodReading>;
+type Tab = "day" | "week" | "month" | "year";
 
 const localParts = () => {
   const now = new Date();
@@ -38,8 +41,19 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
   const [signs, setSigns] = useState<{ a: string; b: string } | null>(null);
   const [shift, setShift] = useState(0);
   const [reading, setReading] = useState<Reading | null>(null);
+  const [tab, setTab] = useState<Tab>("day");
+  const [period, setPeriod] = useState<PeriodResult | null>(null);
+
+  async function showPeriod(a: string, b: string, kind: Exclude<Tab, "day">, nextShift: number) {
+    const parts = localParts();
+    const { periodSky } = await import("../ceu.mjs");
+    setPeriod(periodReading(a, b, periodSky(kind, parts.y, parts.m, parts.d), lang, nextShift));
+    setShift(nextShift);
+    setTab(kind);
+  }
 
   async function show(a: string, b: string, nextShift: number) {
+    setTab("day");
     const parts = localParts();
     const { skyForDay } = await import("../ceu.mjs");
     const pair = pairOf(a, b);
@@ -66,6 +80,28 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
         <button className="button primary" type="submit">{t.button}<span>→</span></button>
       </form>
       {reading && signs && (
+        <div className="horoscope-tabs" role="tablist">
+          {(["day", "week", "month", "year"] as Tab[]).map((item) => (
+            <button key={item} type="button" role="tab" aria-selected={tab === item} className={tab === item ? "active" : ""} onClick={() => (item === "day" ? show(signs.a, signs.b, 0) : showPeriod(signs.a, signs.b, item, 0))}>{(PERIODOS[lang] as { tabs: Record<Tab, string> }).tabs[item]}</button>
+          ))}
+        </div>
+      )}
+      {reading && signs && tab !== "day" && period && (
+        <article className="horoscope-result" aria-live="polite">
+          <header>
+            <p className="eyebrow">{(PERIODOS[lang] as { tabs: Record<Tab, string> }).tabs[tab]}</p>
+            <h3>{period.a.name} + {period.b.name}</h3>
+            <h4>{period.title}</h4>
+            {period.chips.length > 0 && <ul className="horoscope-traits horoscope-chips">{period.chips.map((chip: string) => <li key={chip}>{chip}</li>)}</ul>}
+            {period.paragraphs.map((text: string) => <p key={text}>{text}</p>)}
+            {period.lines.length > 0 && <ul className="horoscope-lines">{period.lines.map((text: string) => <li key={text}>{text}</li>)}</ul>}
+          </header>
+          <div className="horoscope-cards"><section><p className="eyebrow">{t.gesture}</p><p className="horoscope-gesture">{period.gesture}</p></section></div>
+          <p className="horoscope-closing"><em>{period.closing}</em></p>
+          <div className="horoscope-actions"><button className="button secondary" type="button" onClick={() => showPeriod(signs.a, signs.b, tab as Exclude<Tab, "day">, shift + 1)}>{t.again}</button><p><small>{t.why}</small></p></div>
+        </article>
+      )}
+      {reading && signs && tab === "day" && (
         <article className="horoscope-result" aria-live="polite">
           <header>
             <p className="eyebrow">{t.today} · {reading.a.element} + {reading.b.element}</p>
