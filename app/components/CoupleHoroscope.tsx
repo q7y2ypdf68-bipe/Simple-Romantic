@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 const SHARE_PATH = { pt: "/", es: "/es", en: "/en" } as const;
 import { HORO, coupleReading, periodReading, signOptions } from "../horoscopo-casal.mjs";
@@ -47,16 +47,32 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
   const [period, setPeriod] = useState<PeriodResult | null>(null);
 
   const [note, setNote] = useState("");
-  async function share(a: string, b: string) {
-    const url = `https://simpleandromantic.com${SHARE_PATH[lang]}#horoscopo`;
-    const text = (t as unknown as { shareText: string }).shareText.replace("{a}", (t.signs as Record<string, string[]>)[a][0]).replace("{b}", (t.signs as Record<string, string[]>)[b][0]);
-    try {
-      if (typeof navigator.share === "function") { await navigator.share({ title: t.title, text, url }); return; }
-      await navigator.clipboard.writeText(`${text} ${url}`);
-      setNote((t as unknown as { copied: string }).copied);
-      setTimeout(() => setNote(""), 2500);
-    } catch {}
+  const [canShare, setCanShare] = useState(false);
+  useEffect(() => { setCanShare(typeof navigator !== "undefined" && typeof navigator.share === "function"); }, []);
+  const tt = t as unknown as { shareText: string; copied: string; share: string; copy: string };
+  function shareData(a: string, b: string) {
+    const names = t.signs as Record<string, string[]>;
+    return { text: tt.shareText.replace("{a}", names[a][0]).replace("{b}", names[b][0]), url: `https://simpleandromantic.com${SHARE_PATH[lang]}#horoscopo` };
   }
+  async function share(a: string, b: string) {
+    const { text, url } = shareData(a, b);
+    try { await navigator.share({ title: t.title, text, url }); } catch {}
+  }
+  function whatsapp(a: string, b: string) {
+    const { text, url } = shareData(a, b);
+    window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, "_blank", "noopener");
+  }
+  async function copyLink(a: string, b: string) {
+    const { text, url } = shareData(a, b);
+    try { await navigator.clipboard.writeText(`${text} ${url}`); setNote(tt.copied); setTimeout(() => setNote(""), 2500); } catch {}
+  }
+  const shareButtons = (a: string, b: string) => (
+    <>
+      <button className="button secondary" type="button" onClick={() => whatsapp(a, b)} aria-label="WhatsApp"><svg className="wa-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#25D366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/><path fill="#fff" d="M8.6 7.3c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.900 4.300 2.400 1 2.900.8 3.400.7.500-.1 1.600-.7 1.800-1.300.2-.6.2-1.200.2-1.300-.1-.1-.3-.2-.6-.3l-1.900-.9c-.3-.1-.4-.1-.6.100l-.8 1c-.1.200-.3.200-.6.100-.3-.1-1.200-.4-2.300-1.400-.8-.8-1.400-1.700-1.600-2-.1-.3 0-.4.100-.5l.4-.5c.1-.1.200-.3.300-.4.100-.2 0-.3 0-.4z"/></svg>WhatsApp</button>
+      {canShare && <button className="button secondary" type="button" onClick={() => share(a, b)}>{tt.share}</button>}
+      <button className="button secondary" type="button" onClick={() => copyLink(a, b)}>{tt.copy}</button>
+    </>
+  );
 
   async function showPeriod(a: string, b: string, kind: Exclude<Tab, "day">, nextShift: number) {
     const parts = localParts();
@@ -112,7 +128,7 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
           </header>
           <div className="horoscope-cards"><section><p className="eyebrow">{t.gesture}</p><p className="horoscope-gesture">{period.gesture}</p></section></div>
           <p className="horoscope-closing"><em>{period.closing}</em></p>
-          <div className="horoscope-actions"><button className="button secondary" type="button" onClick={() => share(signs.a, signs.b)}>{(t as unknown as { share: string }).share}</button><button className="button secondary" type="button" onClick={() => showPeriod(signs.a, signs.b, tab as Exclude<Tab, "day">, shift + 1)}>{t.again}</button><p><small>{t.why}</small></p>{note && <p role="status"><small>{note}</small></p>}</div>
+          <div className="horoscope-actions">{shareButtons(signs.a, signs.b)}<button className="button secondary" type="button" onClick={() => showPeriod(signs.a, signs.b, tab as Exclude<Tab, "day">, shift + 1)}>{t.again}</button><p><small>{t.why}</small></p>{note && <p role="status"><small>{note}</small></p>}</div>
         </article>
       )}
       {reading && signs && tab === "day" && (
@@ -129,7 +145,7 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
             <section><p className="eyebrow">{t.gesture}</p><p className="horoscope-gesture">{reading.gesture}</p></section>
           </div>
           {reading.closing && <p className="horoscope-closing"><em>{reading.closing}</em></p>}
-          <div className="horoscope-actions"><button className="button secondary" type="button" onClick={() => share(signs.a, signs.b)}>{(t as unknown as { share: string }).share}</button><button className="button secondary" type="button" onClick={() => show(signs.a, signs.b, shift + 1)}>{t.again}</button><a className="quiet-link" href="#encontrar">{t.more} →</a><p><small>{t.why}</small></p>{note && <p role="status"><small>{note}</small></p>}</div>
+          <div className="horoscope-actions">{shareButtons(signs.a, signs.b)}<button className="button secondary" type="button" onClick={() => show(signs.a, signs.b, shift + 1)}>{t.again}</button><a className="quiet-link" href="#encontrar">{t.more} →</a><p><small>{t.why}</small></p>{note && <p role="status"><small>{note}</small></p>}</div>
         </article>
       )}
     </section>
