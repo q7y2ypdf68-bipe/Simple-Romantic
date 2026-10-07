@@ -75,8 +75,8 @@ test("matches the editorial 108-filter baseline and preserves the 18 structural 
   for (const environment of ["home", "outdoors", "go-out", "any"]) for (const budget of ["free", "low", "more"]) for (const duration of ["hour", "afternoon", "day"]) for (const occasion of ["casual", "surprise", "reconnect"]) counts.push({ environment, budget, duration, occasion, count: compatibleIdeas({ environment, budget, duration, occasion }).length });
   const buckets = Object.fromEntries([">=6", "3-5", "2", "1", "0"].map((key) => [key, 0]));
   for (const { count } of counts) buckets[count >= 6 ? ">=6" : count >= 3 ? "3-5" : String(count)] += 1;
-  assert.deepEqual(buckets, { ">=6": 66, "3-5": 18, "2": 6, "1": 0, "0": 18 }); // ideias só de noite (estrelas, jantar temático, performance) não aparecem em "uma tarde"/"um dia" sem o filtro "à noite"
-  assert.deepEqual(buckets, { ">=6": 66, "3-5": 18, "2": 6, "1": 0, "0": 18 });
+  assert.deepEqual(buckets, { ">=6": 68, "3-5": 16, "2": 6, "1": 0, "0": 18 }); // ideias só de noite (estrelas, jantar temático, performance) não aparecem em "uma tarde"/"um dia" sem o filtro "à noite"
+  assert.deepEqual(buckets, { ">=6": 68, "3-5": 16, "2": 6, "1": 0, "0": 18 });
   assert.equal(counts.filter((item) => item.environment === "home" && item.duration === "day").every((item) => item.count === 0), true);
   assert.equal(counts.filter((item) => item.environment !== "home" && item.budget === "free" && item.duration === "day").every((item) => item.count === 0), true);
 });

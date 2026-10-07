@@ -5,6 +5,7 @@ import variantAuthority from "../../../SR_MOTOR_IDEIAS_V2_AUTHORITY/execution-va
 import { editorialText } from "./ideias-textos.mjs";
 import { NIGHT_BASES } from "./ideias-noite.mjs";
 import { FLAME_BASES } from "./ideias-chama.mjs";
+import { EXTRA_BASES } from "./ideias-extra.mjs";
 
 export const environments = ["home", "outdoors", "go-out", "any"];
 export const budgets = ["free", "low", "more"];
@@ -216,6 +217,11 @@ const flameVariants = FLAME_BASES.map(({ id, from, title, period }) => {
   const origin = v2Authority.variants.find((variant) => variant.id === from);
   return { ...origin, id, title, flame: true, ...(period ? { period } : {}) };
 });
-const productionEngine = createV2Engine({ variants: [...v2Authority.variants, ...nightVariants, ...flameVariants] });
+// Ideias extras (aprovadas): copiam as regras de uma variante validada e trazem texto próprio nos 3 idiomas.
+const extraVariants = EXTRA_BASES.map(({ id, from, title, period }) => {
+  const origin = v2Authority.variants.find((variant) => variant.id === from);
+  return { ...origin, id, title, surprise: undefined, ...(period ? { period } : {}) };
+});
+const productionEngine = createV2Engine({ variants: [...v2Authority.variants, ...nightVariants, ...flameVariants, ...extraVariants] });
 export const compatibleIdeas = (answers) => productionEngine.eligibleCandidates(answers).map((candidate) => candidate.variant);
 export const recommend = (answers, session, lang) => productionEngine.recommend(answers, session, lang);
