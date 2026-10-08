@@ -9,7 +9,7 @@ Origem: geradas por IA (Canva) em 06/10/2026, exclusivas da conta do Bruno; não
 
 | Arquivo (pasta novas/) | Cena | Status | Uso previsto |
 |---|---|---|---|
-| 001_piquenique_parque.jpg | Casal em piquenique num parque de Lisboa, fim de tarde | NOVA | Artigo/pin de piquenique romântico |
+| 001_piquenique_parque.jpg | Casal em piquenique num parque de Lisboa, fim de tarde | NO SITE (08/10, artigo kit de piquenique; liberada para redes depois) | Artigo/pin de piquenique romântico |
 | 002_cozinhando_juntos.jpg | Casal cozinhando e provando o molho | NOVA | Encontro em casa / jantar a dois |
 | 003_passeio_rua_antiga.jpg | Casal passeando de mãos dadas em rua antiga com elétrico | NOVA | Passeios de graça na cidade |
 | 004_noite_de_chuva_em_casa.jpg | Casal sob a manta em noite de chuva, chá e jogo de tabuleiro | NOVA | Dia de chuva a dois |
