@@ -230,11 +230,11 @@ footer>small,footer>div{font-size:14px;line-height:1.5}
 .editorial-schedule-grid p{margin:0 0 5px;color:var(--ink);font-size:20px;font-weight:850}
 .editorial-schedule-grid small{color:var(--muted);font-size:15px;line-height:1.45}
 
-.article-header{max-width:1150px;margin:auto;padding-top:100px;padding-bottom:75px;text-align:center}
+.article-header{max-width:920px;margin:auto;padding-top:70px;padding-bottom:45px;text-align:center}
 .article-back{display:inline-block;margin-bottom:35px;color:var(--pink-dark);font-size:15px;font-weight:800}
 .article-header .eyebrow{font-size:14px}
-.article-header h1{margin:0;font:500 clamp(54px,6vw,88px)/.98 Georgia,serif;letter-spacing:-.008em}
-.article-deck{max-width:850px;margin:30px auto 0;color:var(--muted);font-size:23px;line-height:1.6}
+.article-header h1{margin:0;font:500 clamp(34px,3.4vw,50px)/1.1 Georgia,serif;letter-spacing:-.008em}
+.article-deck{max-width:760px;margin:22px auto 0;color:var(--muted);font-size:19px;line-height:1.6}
 .article-meta{display:flex;justify-content:center;gap:25px;margin-top:28px;color:var(--muted);font-size:14px;font-weight:700}
 .article-hero-image{position:relative;width:min(86vw,920px);aspect-ratio:5/3;height:auto;margin:0 auto 70px;overflow:hidden;border-radius:30px;box-shadow:var(--shadow)}
 .article-hero-image img{object-fit:cover}
@@ -279,7 +279,7 @@ footer>small,footer>div{font-size:14px;line-height:1.5}
   .editorial-schedule-grid article{align-items:flex-start;padding:20px 18px}
   .editorial-schedule-grid span{width:48px;height:48px;flex-basis:48px}
   .article-header{padding-top:75px;padding-bottom:55px}
-  .article-header h1{font-size:49px}
+  .article-header h1{font-size:38px}
   .article-deck{font-size:20px}
   .article-hero-image{width:90vw;height:auto;aspect-ratio:4/3;margin-bottom:60px;border-radius:20px}
   .article-body{font-size:18px}
@@ -1270,7 +1270,7 @@ html[data-theme="dark"] .analytics-consent-banner{border-color:#765064;backgroun
   .hero-copy{padding-top:64px;padding-bottom:64px}
   .hero h1,.blog-hero h1{font-size:46px;line-height:.96}
   .guide-hero h1,.listening-hero-copy h1{font-size:48px;line-height:.96}
-  .article-header h1{font-size:43px;line-height:1}
+  .article-header h1{font-size:32px;line-height:1.12}
   .shop-hero h1{font-size:40px;line-height:1.04}
   .hero-text,.section-heading>p:not(.eyebrow),.home-listening>div:last-child>p:not(.eyebrow),.listening-hero-copy>p:not(.eyebrow){font-size:17px;line-height:1.6}
   .blog-hero>p:not(.eyebrow),.shop-hero>p:not(.eyebrow){font-size:18px;line-height:1.58}
