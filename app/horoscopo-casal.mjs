@@ -5,6 +5,7 @@ import PERIODOS from "./horoscopo-periodos.mjs";
 import CEU_PT from "./horoscopo-ceu-pt.mjs";
 import CEU_ES from "./horoscopo-ceu-es.mjs";
 import CEU_EN from "./horoscopo-ceu-en.mjs";
+import MAIS from "./horoscopo-ceu-mais.mjs";
 
 export const SIGN_IDS = ["aries", "taurus", "gemini", "cancer", "leo", "virgo", "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces"];
 const ELEMENT = { aries: "fire", leo: "fire", sagittarius: "fire", taurus: "earth", virgo: "earth", capricorn: "earth", gemini: "air", libra: "air", aquarius: "air", cancer: "water", scorpio: "water", pisces: "water" };
@@ -106,7 +107,9 @@ export function seedOf(text) {
 }
 
 const RULER = { aries: "mars", taurus: "venus", gemini: "mercury", cancer: null, leo: null, virgo: "mercury", libra: "venus", scorpio: "mars", sagittarius: "jupiter", capricorn: "saturn", aquarius: "saturn", pisces: "jupiter" };
-const PACKS = { pt: CEU_PT, es: CEU_ES, en: CEU_EN };
+// Soma as variações extras (horoscopo-ceu-mais.mjs) aos textos base: mais opções por dia, sem perder os antigos.
+const withMore = (base, more) => ({ ...base, aspects: base.aspects.map((list, index) => [...list, ...(more.aspects[index] ?? [])]), givesLine: [...base.givesLine, ...more.givesMore], moonMore: more.moon, phasesMore: more.phases });
+const PACKS = { pt: withMore(CEU_PT, MAIS.pt), es: withMore(CEU_ES, MAIS.es), en: withMore(CEU_EN, MAIS.en) };
 const fill = (text, values) => text.replace(/\{(\w+)\}/g, (_, key) => values[key] ?? "");
 const idOf = (text) => seedOf(text).toString(36);
 
@@ -137,12 +140,13 @@ export function coupleReading(signA, signB, day, lang = "pt", shift = 0, sky = n
   const paragraphs = [];
   const chips = [];
   let title = pack.title;
-  let moonSign = null, aspect = null, give = null, merc = null;
+  let moonSign = null, aspect = null, give = null, merc = null, moonPick = null, phasePick = null;
 
   if (sky) {
     moonSign = sky.moon;
-    title = ceu.moon[moonSign][0];
-    paragraphs.push(ceu.moon[moonSign][1]);
+    moonPick = pickFresh([ceu.moon[moonSign], ...ceu.moonMore[moonSign]], salt(9), recentOf("o"), (item) => idOf(item[1]), forced?.o);
+    title = moonPick.item[0];
+    paragraphs.push(moonPick.item[1]);
     chips.push(fill(ceu.chips.moonIn, { sign: names[moonSign] }));
     chips.push(ceu.phaseNames[sky.phase]);
     const distance = Math.min((indexA - indexB + 12) % 12, (indexB - indexA + 12) % 12);
@@ -151,7 +155,7 @@ export function coupleReading(signA, signB, day, lang = "pt", shift = 0, sky = n
     give = pickFresh(ceu.givesLine, salt(2), recentOf("l"), (item) => idOf(item), forced?.l);
     paragraphs.push(fill(give.item, { A: names[indexA], B: names[indexB], gA: ceu.gives[indexA], gB: ceu.gives[indexB] }));
     if (sky.event) paragraphs.push(fill(ceu.events[sky.event.kind], { sign: names[sky.event.sign] }));
-    else paragraphs.push(ceu.phases[sky.phase]);
+    else { phasePick = pickFresh([ceu.phases[sky.phase], ...ceu.phasesMore[sky.phase]], salt(10), recentOf("p"), (item) => idOf(item), forced?.p); paragraphs.push(phasePick.item); }
     if (sky.mercury.station) { paragraphs.push(ceu.mercury.station[sky.mercury.station]); chips.push(sky.mercury.station === "retro" ? ceu.chips.mercuryRetro : ceu.chips.mercuryDirect); }
     else if (sky.mercury.retro) { merc = pickFresh(ceu.mercury.retro, salt(3), recentOf("m"), (item) => idOf(item), forced?.m); paragraphs.push(merc.item); chips.push(ceu.chips.mercuryRetro); }
     const planets = ["venus", "mars", "sun"];
@@ -185,7 +189,7 @@ export function coupleReading(signA, signB, day, lang = "pt", shift = 0, sky = n
     a: { id: signA, name: pack.signs[signA][0], trait: pack.signs[signA][1], element: pack.elements[ELEMENT[signA]] },
     b: { id: signB, name: pack.signs[signB][0], trait: pack.signs[signB][1], element: pack.elements[ELEMENT[signB]] },
     // O que foi usado, para guardar na memória do aparelho.
-    used: { day, shift, a: aspect?.id ?? null, l: give?.id ?? null, m: merc?.id ?? null, g: gesture.id, c: closing?.id ?? null, i: idea.id },
+    used: { day, shift, a: aspect?.id ?? null, l: give?.id ?? null, m: merc?.id ?? null, g: gesture.id, c: closing?.id ?? null, i: idea.id, o: moonPick?.id ?? null, p: phasePick?.id ?? null },
   };
 }
 

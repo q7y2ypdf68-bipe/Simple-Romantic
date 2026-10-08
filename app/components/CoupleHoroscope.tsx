@@ -54,7 +54,7 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
   const tt = t as unknown as { shareText: string; copied: string; share: string; copy: string };
   function shareUrl(a: string, b: string) {
     const day = dayText(viewDay ?? localParts());
-    const ids = reading?.used ? ["a", "l", "m", "g", "c", "i"].map((key) => String((reading.used as Record<string, unknown>)[key] ?? "_")).join(".") : "";
+    const ids = reading?.used ? ["a", "l", "m", "g", "c", "i", "o", "p"].map((key) => String((reading.used as Record<string, unknown>)[key] ?? "_")).join(".") : "";
     const query = new URLSearchParams({ casal: `${a}-${b}`, d: day, t: tab, s: String(shift) });
     if (tab === "day" && ids) query.set("r", ids);
     return `https://simpleandromantic.com${SHARE_PATH[lang]}?${query.toString()}#horoscopo`;
@@ -89,7 +89,7 @@ export function CoupleHoroscope({ lang }: { lang: Lang }) {
       const done = () => document.getElementById("horoscopo")?.scrollIntoView();
       if (kind === "week" || kind === "month" || kind === "year") { show(a, b, 0, fixed).then(() => showPeriod(a, b, kind, sharedShift, fixed)).then(done); return; }
       const ids = (query.get("r") ?? "").split(".");
-      const forced = ids.length === 6 ? Object.fromEntries(["a", "l", "m", "g", "c", "i"].map((key, index) => [key, ids[index] === "_" ? null : ids[index]])) : undefined;
+      const forced = ids.length === 6 || ids.length === 8 ? Object.fromEntries(["a", "l", "m", "g", "c", "i", "o", "p"].slice(0, ids.length).map((key, index) => [key, ids[index] === "_" ? null : ids[index]])) : undefined;
       show(a, b, sharedShift, fixed, forced).then(done);
     } catch {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
