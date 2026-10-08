@@ -131,6 +131,7 @@ import { NIGHT_T } from "./ideias-noite.mjs";
 import { FLAME_T } from "./ideias-chama.mjs";
 import { FLAME_MORE_T } from "./ideias-chama-mais.mjs";
 import { LACUNAS_T } from "./ideias-lacunas.mjs";
+import { INSPIRACAO_T } from "./ideias-inspiracao.mjs";
 import { FLAME_RECON_T } from "./ideias-chama-reconectar.mjs";
 import { EXTRA_T } from "./ideias-extra.mjs";
 
@@ -140,7 +141,7 @@ export function editorialText(variant, lang = "pt") {
   const pack = PACKS[lang] ?? PACKS.pt;
   const night = NIGHT_T[lang] ?? NIGHT_T.pt;
   const flame = { ...(FLAME_T[lang] ?? FLAME_T.pt), ...(FLAME_MORE_T[lang] ?? FLAME_MORE_T.pt), ...(FLAME_RECON_T[lang] ?? FLAME_RECON_T.pt) };
-  const extra = { ...(EXTRA_T[lang] ?? EXTRA_T.pt), ...(LACUNAS_T[lang] ?? LACUNAS_T.pt) };
+  const extra = { ...(EXTRA_T[lang] ?? EXTRA_T.pt), ...(LACUNAS_T[lang] ?? LACUNAS_T.pt), ...(INSPIRACAO_T[lang] ?? INSPIRACAO_T.pt) };
   const entry = extra[variant.id] ?? flame[variant.id] ?? night[variant.id] ?? pack.T[variant.id] ?? pack.T[`${variant.familyId}@${variant.durationMinutes}`];
   if (!entry) return null;
   const [title, whyItFits, howTo, smallDetail, planB, surpriseText] = entry;
