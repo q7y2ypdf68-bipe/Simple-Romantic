@@ -129,6 +129,7 @@ import * as en from "./ideias-textos-en.mjs";
 import * as es from "./ideias-textos-es.mjs";
 import { NIGHT_T } from "./ideias-noite.mjs";
 import { FLAME_T } from "./ideias-chama.mjs";
+import { FLAME_MORE_T } from "./ideias-chama-mais.mjs";
 import { EXTRA_T } from "./ideias-extra.mjs";
 
 const PACKS = { pt: { T, SURPRISE, PLAN_B }, en, es };
@@ -136,7 +137,7 @@ const PACKS = { pt: { T, SURPRISE, PLAN_B }, en, es };
 export function editorialText(variant, lang = "pt") {
   const pack = PACKS[lang] ?? PACKS.pt;
   const night = NIGHT_T[lang] ?? NIGHT_T.pt;
-  const flame = FLAME_T[lang] ?? FLAME_T.pt;
+  const flame = { ...(FLAME_T[lang] ?? FLAME_T.pt), ...(FLAME_MORE_T[lang] ?? FLAME_MORE_T.pt) };
   const extra = EXTRA_T[lang] ?? EXTRA_T.pt;
   const entry = extra[variant.id] ?? flame[variant.id] ?? night[variant.id] ?? pack.T[variant.id] ?? pack.T[`${variant.familyId}@${variant.durationMinutes}`];
   if (!entry) return null;
