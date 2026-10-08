@@ -7,6 +7,7 @@ import { NIGHT_BASES } from "./ideias-noite.mjs";
 import { FLAME_BASES } from "./ideias-chama.mjs";
 import { flameMoreVariants } from "./ideias-chama-mais.mjs";
 import { lacunasVariants } from "./ideias-lacunas.mjs";
+import { flameReconVariants } from "./ideias-chama-reconectar.mjs";
 import { EXTRA_BASES } from "./ideias-extra.mjs";
 
 export const environments = ["home", "outdoors", "go-out", "any"];
@@ -230,6 +231,7 @@ const extraVariants = EXTRA_BASES.map(({ id, from, title, period }) => {
 });
 const flameMore = flameMoreVariants(v2Authority.variants);
 const lacunas = lacunasVariants(v2Authority.variants);
-const productionEngine = createV2Engine({ variants: [...v2Authority.variants, ...nightVariants, ...flameVariants, ...flameMore, ...extraVariants, ...lacunas] });
+const flameRecon = flameReconVariants(v2Authority.variants);
+const productionEngine = createV2Engine({ variants: [...v2Authority.variants, ...nightVariants, ...flameVariants, ...flameMore, ...flameRecon, ...extraVariants, ...lacunas] });
 export const compatibleIdeas = (answers) => productionEngine.eligibleCandidates(answers).map((candidate) => candidate.variant);
 export const recommend = (answers, session, lang) => productionEngine.recommend(answers, session, lang);
