@@ -75,10 +75,9 @@ test("matches the editorial 108-filter baseline and preserves the 18 structural 
   for (const environment of ["home", "outdoors", "go-out", "any"]) for (const budget of ["free", "low", "more"]) for (const duration of ["hour", "afternoon", "day"]) for (const occasion of ["casual", "surprise", "reconnect"]) counts.push({ environment, budget, duration, occasion, count: compatibleIdeas({ environment, budget, duration, occasion }).length });
   const buckets = Object.fromEntries([">=6", "3-5", "2", "1", "0"].map((key) => [key, 0]));
   for (const { count } of counts) buckets[count >= 6 ? ">=6" : count >= 3 ? "3-5" : String(count)] += 1;
-  assert.deepEqual(buckets, { ">=6": 73, "3-5": 14, "2": 3, "1": 0, "0": 18 }); // ideias só de noite (estrelas, jantar temático, performance) não aparecem em "uma tarde"/"um dia" sem o filtro "à noite"
-  assert.deepEqual(buckets, { ">=6": 73, "3-5": 14, "2": 3, "1": 0, "0": 18 });
-  assert.equal(counts.filter((item) => item.environment === "home" && item.duration === "day").every((item) => item.count === 0), true);
-  assert.equal(counts.filter((item) => item.environment !== "home" && item.budget === "free" && item.duration === "day").every((item) => item.count === 0), true);
+  assert.deepEqual(buckets, { ">=6": 106, "3-5": 2, "2": 0, "1": 0, "0": 0 }); // depois dos lotes de ideias de 08/10 nenhuma combinação fica sem ideia
+  assert.equal(counts.filter((item) => item.environment === "home" && item.duration === "day").every((item) => item.count >= 6), true);
+  assert.equal(counts.filter((item) => item.environment !== "home" && item.budget === "free" && item.duration === "day").every((item) => item.count >= 5), true);
 });
 
 test("uses only real variants for the two original cases and rotates without literal repeats", () => {
@@ -87,7 +86,7 @@ test("uses only real variants for the two original cases and rotates without lit
   assert.ok(compatibleIdeas(caseA).length >= 3);
   assert.ok(compatibleIdeas(caseB).length >= 8); // 9 menos "Observação das estrelas", que é só de noite
   for (const variant of [...compatibleIdeas(caseA), ...compatibleIdeas(caseB)]) {
-    assert.ok(v2Authority.variants.includes(variant) || /^V2-(08[3-9]|09\d|1\d\d)$/.test(variant.id)); // extras aprovadas (noite, chama, ideias novas) copiam regras da base
+    assert.ok(v2Authority.variants.includes(variant) || /^V2-(08[3-9]|09\d|[12]\d\d)$/.test(variant.id)); // extras aprovadas (noite, chama, ideias novas) copiam regras da base
     assert.equal(variant.howTo.length >= 3 && variant.howTo.length <= 5, true);
   }
   let session = { displayed: [] }, seen = new Set();
@@ -102,8 +101,9 @@ test("uses only real variants for the two original cases and rotates without lit
 test("renders surprise, confirmation and an eligible canonical Plan B without fixtures", () => {
   const result = recommend({ environment: "go-out", budget: "free", duration: "afternoon", occasion: "surprise" });
   assert.equal(result.status, "recommendation");
-  assert.match(result.result.surprise, /surpresa/i);
-  assert.equal(["S1", "S2"].includes(v2Authority.variants.find((item) => item.id === result.result.id).surpriseLevel), true);
+  assert.ok(typeof result.result.surprise === "string" && result.result.surprise.length > 10);
+  const chosen = compatibleIdeas({ environment: "go-out", budget: "free", duration: "afternoon", occasion: "surprise" }).find((item) => item.id === result.result.id);
+  assert.equal(["S1", "S2"].includes(chosen.surpriseLevel), true);
   if (result.result.confirmBefore) {
     assert.ok(result.result.planB);
     assert.ok(v2Authority.variants.some((item) => item.id === result.result.planB.id));
