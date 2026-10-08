@@ -148,6 +148,10 @@ function render(candidate, variantById, lang = "pt") {
 function chooseVaried(candidates, answers, session, history) {
   const first = candidates[0];
   if (!Number.isFinite(session?.seed)) return first;
+  // A ocasião escolhida (casual, surpresa, reconectar) vale como preferência: se há ideias novas dessa ocasião, sorteia só entre elas.
+  const seenIds = new Set([...(session.recentIds ?? []), ...(session.displayed ?? []).map((item) => item.candidateId)]);
+  const preferred = candidates.filter((c) => (c.variant.occasions ?? []).includes(answers.occasion) && !seenIds.has(c.variant.id));
+  if (preferred.length) candidates = preferred;
   // Os filtros duros já garantem que TODAS as candidatas servem; então sorteamos entre as melhores (metade de cima, mínimo 6).
   const band = candidates.slice(0, Math.max(6, Math.ceil(candidates.length * 0.6)));
   const recent = [...(session.recentIds ?? []), ...(session.displayed ?? []).map((item) => item.candidateId)];
