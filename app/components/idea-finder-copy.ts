@@ -5,7 +5,7 @@ export type FinderCopy = {
   kicker: string; title: string; text: string;
   environment: string; budget: string; time: string; occasion: string;
   environments: Opt[]; budgets: Opt[]; times: Opt[]; occasions: Opt[]; periods: Opt[]; period: string;
-  find: string; three: string; threeTitle: string; resultKicker: string; anotherIdea: string;
+  find: string; three: string; threeTitle: string; noMatchText: string; noMatchBtn: string; resultKicker: string; anotherIdea: string;
   finding: string; aiNote: string; exhausted: string; tip: string;
   surprise: string; planB: string; confirm: string;
   flameTitle: string; flameLabel: string; flameHint: string; flameAskTitle: string; flameAskText: string; flameYes: string; flameNo: string; flameBadge: string; flameRelaxed: string; flameNote: string;
@@ -22,7 +22,7 @@ export const finderCopy: Record<FinderLang, FinderCopy> = {
     times: [{ value: "hour", label: "1 hora" }, { value: "afternoon", label: "Uma tarde" }, { value: "day", label: "Um dia" }],
     occasions: [{ value: "casual", label: "Encontro casual" }, { value: "surprise", label: "Uma surpresa" }, { value: "reconnect", label: "Reconectar" }],
     period: "Que momento do dia?", periods: [{ value: "any", label: "Tanto faz" }, { value: "day", label: "De dia" }, { value: "night", label: "À noite" }],
-    find: "Criar o nosso encontro", three: "Me dê 3 ideias", threeTitle: "3 ideias para vocês", resultKicker: "UMA IDEIA PARA VOCÊS", anotherIdea: "Quero outra ideia",
+    find: "Criar o nosso encontro", three: "Me dê 3 ideias", threeTitle: "3 ideias para vocês", noMatchText: "Nenhuma ideia combinou com vocês? Tudo bem. Torcemos para que uma delas inspire um dia ou uma noite incrível a dois. 💛", noMatchBtn: "Me dê outras 3 ideias", resultKicker: "UMA IDEIA PARA VOCÊS", anotherIdea: "Quero outra ideia",
     finding: "Procurando uma ideia para vocês…", aiNote: "Ideia criada na hora para os seus filtros. Confira detalhes e horários antes de sair.",
     exhausted: "Ainda não temos uma ideia para estes filtros. Tente mudar o tempo, o orçamento ou o tipo de programa.", tip: "Pequeno detalhe",
     surprise: "Surpresa:", planB: "Plano B:", confirm: "Confirme antes:",
@@ -40,7 +40,7 @@ export const finderCopy: Record<FinderLang, FinderCopy> = {
     times: [{ value: "hour", label: "1 hora" }, { value: "afternoon", label: "Una tarde" }, { value: "day", label: "Un día" }],
     occasions: [{ value: "casual", label: "Cita informal" }, { value: "surprise", label: "Una sorpresa" }, { value: "reconnect", label: "Reconectar" }],
     period: "¿En qué momento del día?", periods: [{ value: "any", label: "Me da igual" }, { value: "day", label: "De día" }, { value: "night", label: "De noche" }],
-    find: "Crear nuestra cita", three: "Dame 3 ideas", threeTitle: "3 ideas para vosotros", resultKicker: "UNA IDEA PARA VOSOTROS", anotherIdea: "Quiero otra idea",
+    find: "Crear nuestra cita", three: "Dame 3 ideas", threeTitle: "3 ideas para vosotros", noMatchText: "¿Ninguna idea os ha convencido? No pasa nada. Ojalá una de ellas os inspire un día o una noche increíble en pareja. 💛", noMatchBtn: "Dame otras 3 ideas", resultKicker: "UNA IDEA PARA VOSOTROS", anotherIdea: "Quiero otra idea",
     finding: "Buscando una idea para vosotros…", aiNote: "Idea creada al momento para vuestros filtros. Comprobad detalles y horarios antes de salir.",
     exhausted: "Todavía no tenemos una idea para estos filtros. Probad a cambiar el tiempo, el presupuesto o el tipo de plan.", tip: "Un pequeño detalle",
     surprise: "Sorpresa:", planB: "Plan B:", confirm: "Confirmad antes:",
@@ -58,7 +58,7 @@ export const finderCopy: Record<FinderLang, FinderCopy> = {
     times: [{ value: "hour", label: "1 hour" }, { value: "afternoon", label: "An afternoon" }, { value: "day", label: "A day" }],
     occasions: [{ value: "casual", label: "Casual date" }, { value: "surprise", label: "A surprise" }, { value: "reconnect", label: "Reconnect" }],
     period: "What time of day?", periods: [{ value: "any", label: "Anything" }, { value: "day", label: "Daytime" }, { value: "night", label: "Evening / night" }],
-    find: "Create our date", three: "Give me 3 ideas", threeTitle: "3 ideas for you", resultKicker: "AN IDEA FOR YOU", anotherIdea: "Show another idea",
+    find: "Create our date", three: "Give me 3 ideas", threeTitle: "3 ideas for you", noMatchText: "None of these felt right? That's okay. We hope one of them sparks an incredible day or night with your partner. 💛", noMatchBtn: "Give me 3 more ideas", resultKicker: "AN IDEA FOR YOU", anotherIdea: "Show another idea",
     finding: "Finding an idea for you…", aiNote: "Idea created just now for your filters. Check details and opening times before you go.",
     exhausted: "We don't have an idea for these filters yet. Try changing the time, budget or type of plan.", tip: "A little detail",
     surprise: "Surprise:", planB: "Plan B:", confirm: "Check first:",

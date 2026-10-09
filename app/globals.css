@@ -1432,3 +1432,5 @@ html[data-theme="dark"] .city-help .city-clear,html[data-theme="dark"] .city-hel
 .horoscope-tabs button.active{background:linear-gradient(135deg,#c9215f,#e24d5a);border-color:transparent;color:#fff}
 .horoscope-lines{margin:14px 0 0;padding-left:20px;line-height:1.5;display:grid;gap:4px}
 .horoscope-actions .wa-icon{margin-right:8px;vertical-align:-3px}
+.idea-nomatch{max-width:640px;margin:34px auto 0;text-align:center}
+.idea-nomatch p{font-size:17px;line-height:1.6;margin:0 0 16px;color:inherit}
