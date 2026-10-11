@@ -65,6 +65,7 @@ function friendlyPath(path: string) {
 
 function friendlySource(source: string) {
   if (source === "Direto") return "Acesso direto";
+  if (source.startsWith("utm-")) return `${source.slice(4)} (link marcado)`;
   return source.replace(/^www\./, "");
 }
 

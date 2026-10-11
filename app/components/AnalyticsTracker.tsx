@@ -22,6 +22,16 @@ export function AnalyticsTracker() {
       }
     }
 
+    // Links marcados por nós (ex.: ?utm_source=whatsapp) dizem de onde veio a visita
+    // melhor do que o referenciador, que o WhatsApp, e-mails e apps costumam esconder.
+    try {
+      const tagged = new URLSearchParams(window.location.search).get("utm_source");
+      const clean = (tagged || "").toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 30);
+      if (clean) source = `utm-${clean}`;
+    } catch {
+      // Sem marcação, vale a origem pelo referenciador.
+    }
+
     const payload = JSON.stringify({ path: pathname, source });
     if (navigator.sendBeacon) {
       navigator.sendBeacon("/api/analytics", new Blob([payload], { type: "application/json" }));
