@@ -76,9 +76,9 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "romantic-night-at-home-from-scratch",
-    title: "How to Create a Romantic Night at Home from Scratch",
-    seoTitle: "Romantic Night at Home: A Simple Guide",
-    excerpt: "Learn how to create a romantic night at home, from setting the scene to a backup plan, with presence and simplicity.",
+    title: "How to Plan a Romantic Night at Home: A Simple Guide",
+    seoTitle: "How to Plan a Romantic Night at Home: A Simple Guide",
+    excerpt: "How to plan a romantic night at home, step by step: set the intention, the table and the mood, and keep a backup plan. Simple, with no big budget needed.",
     category: "AT HOME",
     image: "/images/blog/23-noite-romantica-em-casa.webp",
     imageAlt: "Adult couple preparing a simple meal together in a cozy kitchen at dusk",
