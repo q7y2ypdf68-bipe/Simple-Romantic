@@ -20,7 +20,7 @@ const html = `<!doctype html><meta charset="utf-8"><style>*{box-sizing:border-bo
 .k{display:inline-block;background:#ed3f78;color:#fff;border-radius:99px;padding:14px 32px;font-size:30px;font-weight:800;letter-spacing:3px}
 h1{font:500 108px/1.1 Georgia,serif;letter-spacing:-2px;margin-top:56px}h1 em{color:#ed3f78}
 p{font-size:52px;line-height:1.38;color:#6b3f59;margin-top:56px}
-.foot{position:absolute;bottom:380px;left:80px;right:80px;font-size:30px;color:#6b3f59}</style><body><div class="heart">♥</div><div class="brand">simple <i>&amp; romantic</i></div><div class="box"><span class="k">${esc(C.kicker)}</span><h1>${rich(C.titulo)}</h1><p>${esc(C.sub)}</p></div><div class="foot">${esc(C.rodape)}</div></body>`;
+.foot{position:absolute;bottom:360px;left:80px;right:80px;font-size:32px;line-height:1.5;color:#6b3f59;white-space:pre-line}</style><body><div class="heart">♥</div><div class="brand">simple <i>&amp; romantic</i></div><div class="box"><span class="k">${esc(C.kicker)}</span><h1>${rich(C.titulo)}</h1><p>${esc(C.sub)}</p></div><div class="foot">${esc(C.rodape)}</div></body>`;
 let chromium;
 for (const n of ["playwright", "playwright-core", "/home/claude/.npm-global/lib/node_modules/@playwright/mcp/node_modules/playwright/index.mjs"]) { try { ({ chromium } = await import(n)); break; } catch { /* tenta o próximo */ } }
 if (!chromium) throw new Error("Playwright não encontrado");
