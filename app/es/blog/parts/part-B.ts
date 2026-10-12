@@ -263,4 +263,55 @@ export const posts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "consejo-semanal-agradece-lo-que-ya-es-rutina",
+    title: "Consejo de la semana: agradece lo que ya se ha vuelto rutina",
+    seoTitle: "Cómo mostrar gratitud a tu pareja en el día a día",
+    excerpt: "Una práctica de dos minutos para notar lo que tu pareja hace todos los días y dar las gracias en voz alta, antes de que se vuelva invisible.",
+    category: "CONSEJO SEMANAL",
+    series: "CONSELHO DA SEMANA",
+    image: "/images/blog/26-agradeca-o-que-ja-e-rotina.webp",
+    imageAlt: "Una pareja cocinando junta en una cocina al atardecer, él le ofrece una cucharada de salsa para probar",
+    published: "13 de octubre de 2026",
+    publishedIso: "2026-10-13",
+    readTime: "4 min de lectura",
+    translationOf: "conselho-da-semana-agradeca-o-que-ja-virou-rotina",
+    intro: [
+      "Quien prepara el café cada mañana, saca la basura o se acuerda de las citas de todos rara vez oye un gracias. No es falta de amor: lo que es constante acaba volviéndose invisible.",
+      "El consejo de este martes es sencillo: elige algo que tu pareja hace todos los días y dale las gracias en voz alta, con detalle.",
+    ],
+    sections: [
+      {
+        heading: "Cómo hacer el agradecimiento de dos minutos",
+        items: [
+          "Elige algo que la otra persona hace sin que se lo pidan y sin aplausos: la cena, la ropa doblada, la factura pagada a tiempo.",
+          "Di la frase completa: qué hizo y qué cambia eso en tu día. Por ejemplo: «gracias por dejar el café listo, empiezo el día más ligero».",
+          "Deja lo que estés haciendo y mira a la persona durante esos segundos.",
+          "No añadas un «pero» ni pidas nada a cambio. El agradecimiento vale por sí solo.",
+        ],
+      },
+      {
+        heading: "Una frase para empezar",
+        paragraphs: [
+          "Si no sabéis cómo abrir la conversación, probad: «hay algo que haces todos los días y casi nunca te agradezco. Quiero agradecértelo ahora».",
+          "Agradecer no es lo mismo que elogiar en general. El elogio genérico pasa rápido. Cuando nombras el gesto, la otra persona siente que la ven.",
+        ],
+      },
+      {
+        heading: "Por qué cambia el ambiente de la casa",
+        paragraphs: [
+          "Con el tiempo, las tareas diarias se convierten en una obligación silenciosa, y quien las hace empieza a sentir que nadie lo nota. Decir gracias le devuelve un rostro a la rutina.",
+          "También funciona para quien agradece: buscar lo que el otro hace bien entrena la mirada para ver lo que funciona, y no solo lo que falta.",
+        ],
+      },
+      {
+        heading: "El pequeño compromiso de la semana",
+        paragraphs: [
+          "Hasta el domingo, cada uno agradece una cosa por día, siempre una distinta. Al final de la semana, contaos cuál fue el agradecimiento más bonito de escuchar.",
+          "Si el gracias llega con un abrazo, o con hacerse cargo de la tarea del otro por una noche, mejor todavía.",
+        ],
+        paragraphLink: { before: "Para la otra mitad de esta conversación, leed también el ", linkText: "Consejo de la semana: diez minutos de presencia valen más que un plan perfecto", href: "/es/blog/consejo-semanal-diez-minutos-de-presencia", after: "." },
+      },
+    ],
+  },
 ];

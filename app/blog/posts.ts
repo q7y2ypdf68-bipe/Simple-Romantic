@@ -1056,6 +1056,56 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "conselho-da-semana-agradeca-o-que-ja-virou-rotina",
+    title: "Conselho da semana: agradeça o que já virou rotina",
+    seoTitle: "Como demonstrar gratidão ao parceiro no dia a dia",
+    excerpt: "Uma prática de dois minutos para notar o que o outro faz todos os dias e dizer obrigado em voz alta, antes que isso fique invisível.",
+    category: "CONSELHO DA SEMANA",
+    series: "CONSELHO DA SEMANA",
+    image: "/images/blog/26-agradeca-o-que-ja-e-rotina.webp",
+    imageAlt: "Casal cozinhando junto numa cozinha ao entardecer, ele oferece uma colher de molho para ela provar",
+    published: "13 de outubro de 2026",
+    publishedIso: "2026-10-13",
+    readTime: "4 min de leitura",
+    intro: [
+      "Quem faz o café todas as manhãs, leva o lixo para fora ou lembra da consulta de todo mundo raramente ouve um obrigado. Não é falta de amor: o que é constante acaba ficando invisível.",
+      "O conselho desta terça-feira é simples: escolha uma coisa que o seu par faz todo dia e agradeça em voz alta, com detalhe.",
+    ],
+    sections: [
+      {
+        heading: "Como fazer o agradecimento de dois minutos",
+        items: [
+          "Escolha algo que a outra pessoa faz sem pedir e sem aplauso: o jantar, a roupa dobrada, a conta paga em dia.",
+          "Diga a frase inteira: o que a pessoa fez e o que isso muda no seu dia. Por exemplo: “obrigado por deixar o café pronto, eu começo o dia mais leve”.",
+          "Pare o que estiver fazendo e olhe para a pessoa durante esses segundos.",
+          "Não acrescente um “mas” nem peça nada em troca. O agradecimento vale por si.",
+        ],
+      },
+      {
+        heading: "Uma frase para começar",
+        paragraphs: [
+          "Se não souberem como abrir, experimentem: “tem uma coisa que você faz todo dia e que eu quase nunca agradeço. Quero agradecer agora”.",
+          "Agradecer não é o mesmo que elogiar de forma geral. Elogio genérico passa rápido. Quando você nomeia o gesto, a pessoa percebe que foi vista.",
+        ],
+      },
+      {
+        heading: "Por que isso muda o clima da casa",
+        paragraphs: [
+          "Com o tempo, as tarefas do dia a dia viram obrigação silenciosa, e quem as faz passa a sentir que ninguém repara. Dizer obrigado devolve um rosto à rotina.",
+          "Também funciona para quem agradece: procurar o que o outro faz de bom treina o olhar para o que está dando certo, e não só para o que falta.",
+        ],
+      },
+      {
+        heading: "O pequeno compromisso da semana",
+        paragraphs: [
+          "Até domingo, cada um agradece uma coisa por dia, sempre uma diferente. No fim da semana, contem um ao outro qual agradecimento foi o mais bom de ouvir.",
+          "Se o obrigado vier acompanhado de um abraço, ou de assumir a tarefa do outro por uma noite, melhor ainda.",
+        ],
+        paragraphLink: { before: "Para a outra metade dessa conversa, leia também o ", linkText: "Conselho da semana: peça o que você precisa antes de esperar que adivinhem", href: "/blog/conselho-da-semana-peca-o-que-voce-precisa", after: "." },
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {

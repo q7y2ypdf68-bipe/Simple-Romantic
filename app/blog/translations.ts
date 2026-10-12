@@ -23,6 +23,7 @@ export const articleTranslations = [
   { pt: "primeiro-encontro-simples-ideias-para-conversar", es: "primera-cita-sencilla-ideas-para-conversar", en: "simple-first-date-conversation-ideas" },
   { pt: "tempo-de-qualidade-quando-os-dois-estao-cansados", es: "tiempo-de-calidad-cuando-los-dos-estais-cansados", en: "quality-time-when-you-are-both-tired" },
   { pt: "noite-romantica-em-casa-do-zero", es: "noche-romantica-en-casa-desde-cero", en: "romantic-night-at-home-from-scratch" },
+  { pt: "conselho-da-semana-agradeca-o-que-ja-virou-rotina", es: "consejo-semanal-agradece-lo-que-ya-es-rutina", en: "weekly-tip-thank-them-for-the-everyday" },
 ] as const;
 
 type Lang = "pt" | "es" | "en";

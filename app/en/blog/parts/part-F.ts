@@ -231,4 +231,55 @@ export const posts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "weekly-tip-thank-them-for-the-everyday",
+    title: "Weekly tip: thank them for what has become routine",
+    seoTitle: "How to show gratitude to your partner every day",
+    excerpt: "A two-minute practice to notice what your partner does every day and say thank you out loud, before it turns invisible.",
+    category: "TIP OF THE WEEK",
+    series: "CONSELHO DA SEMANA",
+    image: "/images/blog/26-agradeca-o-que-ja-e-rotina.webp",
+    imageAlt: "A couple cooking together in a kitchen at sunset, he offers her a spoonful of sauce to taste",
+    published: "October 13, 2026",
+    publishedIso: "2026-10-13",
+    readTime: "4 min read",
+    translationOf: "conselho-da-semana-agradeca-o-que-ja-virou-rotina",
+    intro: [
+      "The person who makes the coffee every morning, takes out the trash, or remembers everyone's appointments rarely hears a thank you. It's not a lack of love: whatever is constant ends up becoming invisible.",
+      "This Tuesday's tip is simple: pick one thing your partner does every day and thank them out loud, with detail.",
+    ],
+    sections: [
+      {
+        heading: "How to do the two-minute thank you",
+        items: [
+          "Choose something the other person does without being asked and without applause: dinner, folded laundry, a bill paid on time.",
+          "Say the whole sentence: what they did and what it changes in your day. For example: “thank you for having the coffee ready, I start my day lighter”.",
+          "Stop what you're doing and look at the person for those few seconds.",
+          "Don't add a “but” and don't ask for anything in return. The thank you stands on its own.",
+        ],
+      },
+      {
+        heading: "A sentence to get started",
+        paragraphs: [
+          "If you don't know how to begin, try: “there's something you do every day that I almost never thank you for. I want to thank you now”.",
+          "Thanking is not the same as general praise. Generic praise passes quickly. When you name the gesture, the person feels seen.",
+        ],
+      },
+      {
+        heading: "Why this changes the mood at home",
+        paragraphs: [
+          "Over time, daily chores turn into silent obligations, and whoever does them starts to feel that nobody notices. Saying thank you gives the routine a face again.",
+          "It works for the person thanking, too: looking for what your partner does well trains your eye for what is working, not only for what is missing.",
+        ],
+      },
+      {
+        heading: "This week's small commitment",
+        paragraphs: [
+          "Until Sunday, each of you thanks the other for one thing per day, always a different one. At the end of the week, tell each other which thank you felt best to hear.",
+          "If the thank you comes with a hug, or with taking over the other person's chore for one evening, even better.",
+        ],
+        paragraphLink: { before: "For the other half of this conversation, also read ", linkText: "Weekly tip: ask for what you need before expecting them to guess", href: "/en/blog/weekly-tip-ask-for-what-you-need", after: "." },
+      },
+    ],
+  },
 ];
