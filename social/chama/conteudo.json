@@ -32,5 +32,5 @@
   "es": {"pedir": ["Cómo pedir lo que echas de menos, sin que parezca un reproche", "Una fórmula sencilla en 4 pasos"], "gestos": ["¿Se ha enfriado? 7 pequeños gestos para reavivar la llama", "Un gesto al día durante una semana"], "relaxar": ["Relajarse primero: luz tenue, masaje y sin prisa", "Guion de una noche para dos"]},
   "en": {"pedir": ["How to ask for what you miss, without it sounding like a complaint", "A simple 4-step formula"], "gestos": ["Gone cold? 7 small gestures to rekindle the spark", "One gesture a day for a week"], "relaxar": ["Relaxing comes first: low light, massage and no rush", "A slow evening for two"]}
  },
- "cta": {"pt": "Link na bio →", "es": "Enlace en la bio →", "en": "Link in bio →"}
+ "cta": {"pt": "Link na bio", "es": "Enlace en la bio", "en": "Link in bio"}
 }

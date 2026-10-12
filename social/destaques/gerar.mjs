@@ -20,7 +20,7 @@ h2{font:500 94px/1.1 Georgia,serif;letter-spacing:-1px}h2 em{color:#ed3f78}
 p{font-size:50px;line-height:1.36;color:#6b3f59}
 ol{padding-left:52px;font-size:46px;line-height:1.4;color:#6b3f59}ol li{margin-top:18px}
 .chips{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}.chip{border:3px solid #f3c6d6;border-radius:99px;padding:14px 30px;font-size:30px;font-weight:700;background:#fff}
-.foot{position:absolute;bottom:56px;left:72px;right:72px;display:flex;justify-content:space-between;align-items:center;font-size:28px;color:#6b3f59}.btn{background:#ed3f78;color:#fff;border-radius:99px;padding:20px 38px;font-weight:700}`;
+.foot{position:absolute;bottom:56px;left:72px;right:72px;display:flex;justify-content:space-between;align-items:center;font-size:28px;color:#6b3f59}.btn{color:#ed3f78;font-weight:700}`;
 const slide = (w, h, inner, foot) => `<!doctype html><meta charset="utf-8"><style>${css(w, h)}</style><body><div class="heart">♥</div><div class="brand">simple <i>&amp; romantic</i></div>${inner}${foot ?? ""}</body>`;
 let chromium;
 for (const n of ["playwright", "playwright-core", "/home/claude/.npm-global/lib/node_modules/@playwright/mcp/node_modules/playwright/index.mjs"]) { try { ({ chromium } = await import(n)); break; } catch { /* tenta o próximo */ } }
@@ -31,13 +31,13 @@ const W = 1080, H = 1350, box = "position:absolute;left:72px;right:72px;top:190p
 const n = C.slides.length + 2, pad = (i) => String(i).padStart(2, "0");
 const cover = (w, h, foot) => slide(w, h, `<div style="${box}"><span class="k">${esc(C.kicker)}</span><h1 style="margin-top:44px">${rich(C.titulo)}</h1>${C.chips ? `<div class="chips">${C.chips.map((c) => `<span class="chip">${esc(c)}</span>`).join("")}</div>` : ""}<p style="margin-top:44px">${esc(C.sub)}</p></div>`, foot);
 await shot(cover(W, H, `<div class="foot"><span>simpleandromantic.com</span><span>1/${n}</span></div>`), W, H, `${id}-01.png`);
-await shot(cover(W, H, `<div class="foot"><span>${esc(C.rodapeFacebook ?? "simpleandromantic.com")}</span><span class="btn">${esc(C.botaoFacebook ?? "Veja no site →")}</span></div>`), W, H, `${id}-facebook.png`);
+await shot(cover(W, H, `<div class="foot"><span>${esc(C.rodapeFacebook ?? "simpleandromantic.com")}</span><span></span></div>`), W, H, `${id}-facebook.png`);
 for (let i = 0; i < C.slides.length; i++) {
   const s = C.slides[i];
   const body = s.lista ? `<ol>${s.lista.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>` : "";
   await shot(slide(W, H, `<div style="${box}"><span class="k">${esc(s.k)}</span><h2 style="margin-top:46px">${rich(s.t)}</h2>${s.s ? `<p style="margin-top:40px">${esc(s.s)}</p>` : ""}${body}</div>`, `<div class="foot"><span>simpleandromantic.com</span><span>${i + 2}/${n}</span></div>`), W, H, `${id}-${pad(i + 2)}.png`);
 }
-await shot(slide(W, H, `<div style="${box}"><span class="k">${esc(C.cta.k)}</span><h2 style="margin-top:50px">${rich(C.cta.t)}</h2><p style="margin-top:50px">${esc(C.cta.s)}</p><div class="btn" style="display:inline-block;margin-top:70px;font-size:36px;padding:28px 50px">${esc(C.cta.botao)}</div></div>`, `<div class="foot"><span>@simpleandromantic</span><span>${n}/${n}</span></div>`), W, H, `${id}-${pad(n)}.png`);
+await shot(slide(W, H, `<div style="${box}"><span class="k">${esc(C.cta.k)}</span><h2 style="margin-top:50px">${rich(C.cta.t)}</h2><p style="margin-top:50px">${esc(C.cta.s)}</p><div class="btn" style="display:inline-block;margin-top:70px;font-size:36px;padding:0">${esc(C.cta.botao)}</div></div>`, `<div class="foot"><span>@simpleandromantic</span><span>${n}/${n}</span></div>`), W, H, `${id}-${pad(n)}.png`);
 await shot(cover(1000, 1500, `<div class="foot"><span>simpleandromantic.com</span><span class="btn">${esc(C.botaoPin ?? "Veja no site")}</span></div>`), 1000, 1500, `${id}-pin.png`);
 await browser.close();
 console.log(`Arte gerada em ${out}: ${n} telas + facebook + pin`);
