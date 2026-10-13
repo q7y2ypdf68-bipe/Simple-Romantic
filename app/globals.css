@@ -250,6 +250,8 @@ footer>small,footer>div{font-size:14px;line-height:1.5}
 .article-body li{margin:0 0 14px;padding-left:8px}
 .article-body li::marker{color:var(--pink)}
 .article-cta{margin-top:85px;padding:50px;border-radius:28px;background:linear-gradient(135deg,#fff4da,#ffe6ef);text-align:left}
+.article-cta-guide{margin-top:60px}
+.article-cta-guide + .article-cta{margin-top:28px}
 .article-cta .eyebrow{font-size:12px}
 .article-cta h2{font-size:38px}
 .article-cta-actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:22px}

@@ -89,6 +89,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         {post.contentNotice && <aside className="article-content-notice" aria-label="Identificação do conteúdo"><strong>{post.contentNotice.label}</strong><p>{post.contentNotice.text}</p></aside>}
         {post.intro.map((paragraph) => <p className="article-intro" key={paragraph}>{paragraph}</p>)}
         {post.sections.map((section) => <section key={section.heading}><h2>{section.heading}</h2>{section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.paragraphLink && <p>{section.paragraphLink.before}<Link href={section.paragraphLink.href}>{section.paragraphLink.linkText}</Link>{section.paragraphLink.after}</p>}{section.afterParagraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>}</section>)}
+        <aside className="article-cta article-cta-guide" aria-label="Guia gratuito">
+          <p className="eyebrow">GUIA GRATUITO</p>
+          <h2>30 encontros simples para gastar pouco</h2>
+          <p>Receba o guia em PDF de graça, com ideias prontas para fazer a dois.</p>
+          <div className="article-cta-actions">
+            <Link className="button primary" href="/#guias">Quero receber o guia <span>→</span></Link>
+          </div>
+        </aside>
         <aside className="article-cta">
           <p className="eyebrow">TRANSFORME A IDEIA EM UM ENCONTRO</p>
           <h2>Quer um plano simples para viver a dois?</h2>
