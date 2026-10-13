@@ -14,6 +14,9 @@ type BrevoNotification = {
 
 const siteUrl = "https://simpleandromantic.com";
 
+// Brevo list "Simple & Romantic — Guia gratuito" (#7): receives every guide signup.
+const guideListId = 7;
+
 /**
  * Keeps the mailing provider behind a server-only boundary. The API key is
  * supplied as the BREVO_API_KEY runtime secret and is never sent to browsers.
@@ -31,7 +34,7 @@ export async function syncGuideSubscriberToBrevo(contact: BrevoContact) {
       "api-key": apiKey,
       "content-type": "application/json",
     },
-    body: JSON.stringify({ email: contact.email, updateEnabled: true }),
+    body: JSON.stringify({ email: contact.email, listIds: [guideListId], updateEnabled: true }),
   });
 
   if (!response.ok) {
