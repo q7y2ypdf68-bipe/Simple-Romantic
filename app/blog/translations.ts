@@ -25,6 +25,9 @@ export const articleTranslations = [
   { pt: "noite-romantica-em-casa-do-zero", es: "noche-romantica-en-casa-desde-cero", en: "romantic-night-at-home-from-scratch" },
   { pt: "conselho-da-semana-agradeca-o-que-ja-virou-rotina", es: "consejo-semanal-agradece-lo-que-ya-es-rutina", en: "weekly-tip-thank-them-for-the-everyday" },
   { pt: "conselho-da-semana-uma-musica-na-sala", es: "consejo-semanal-una-cancion-en-el-salon", en: "weekly-tip-one-song-in-the-living-room" },
+  { pt: "ideias-outono-a-dois-dias-frios", es: "otono-en-pareja-ideas-sencillas-dias-frios", en: "autumn-for-two-simple-ideas-cold-days" },
+  { pt: "conto-o-ultimo-eletrico", es: "cuento-el-ultimo-tranvia", en: "story-the-last-tram" },
+  { pt: "conto-a-receita-da-avo-lucia", es: "cuento-la-receta-de-la-abuela-lucia", en: "story-grandmother-lucias-recipe" },
 ] as const;
 
 type Lang = "pt" | "es" | "en";
