@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 A = {}
 A["pergunta"] = dict(
- date="2026-10-27", series="CONSELHO DA SEMANA", image="/images/blog/PENDENTE-pergunta.webp", kind="conselho",
+ date="2026-10-27", series="CONSELHO DA SEMANA", image="/images/blog/31-pergunta-nova.webp", kind="conselho",
  pt=dict(slug="conselho-da-semana-faca-uma-pergunta-que-ainda-nao-fez", title="Conselho da semana: faça uma pergunta que ainda não fez",
   seoTitle="Perguntas para fazer ao parceiro: o ritual da pergunta nova",
   excerpt="Depois de anos juntos, parece que já sabemos tudo. Um ritual de dez minutos: cada um faz ao outro uma pergunta que nunca fez, e escuta até o fim.",
-  category="CONSELHO DA SEMANA", alt="PENDENTE", pub="27 de outubro de 2026", rt="3 min de leitura",
+  category="CONSELHO DA SEMANA", alt="Casal sentado à mesa da cozinha, sorrindo e conversando frente a frente, à luz quente de uma cozinha ao entardecer", pub="27 de outubro de 2026", rt="3 min de leitura",
   intro=["Quanto mais tempo duas pessoas passam juntas, mais fácil é achar que já sabem tudo uma da outra. Só que as pessoas mudam, e as respostas também.","O conselho desta terça-feira é simples: faça ao seu par uma pergunta que você ainda não fez, e escute a resposta até o fim."],
   sections=[
    dict(h="Como fazer o ritual da pergunta nova", items=["Escolham um momento sem pressa: depois do jantar, num passeio ou antes de dormir.","Cada um pensa em uma pergunta que nunca fez ao outro. Pode ser sobre o passado, o presente ou o que ainda sonha fazer.","Quem responde fala sem ser interrompido. Quem ouviu só pode fazer uma pergunta de volta: \"e como foi isso para você?\".","Guardem os celulares. Dez minutos bastam."]),
@@ -15,7 +15,7 @@ A["pergunta"] = dict(
  es=dict(slug="consejo-semanal-haz-una-pregunta-que-aun-no-has-hecho", title="Consejo de la semana: haz una pregunta que aún no has hecho",
   seoTitle="Preguntas para hacer a tu pareja: el ritual de la pregunta nueva",
   excerpt="Después de años juntos, parece que ya lo sabemos todo. Un ritual de diez minutos: cada uno hace al otro una pregunta que nunca ha hecho y escucha hasta el final.",
-  category="CONSEJO SEMANAL", alt="PENDENTE", pub="27 de octubre de 2026", rt="3 min de lectura",
+  category="CONSEJO SEMANAL", alt="Pareja sentada a la mesa de la cocina, sonriendo y conversando cara a cara, con la luz cálida de una cocina al atardecer", pub="27 de octubre de 2026", rt="3 min de lectura",
   intro=["Cuanto más tiempo pasan juntas dos personas, más fácil es creer que ya lo saben todo la una de la otra. Pero las personas cambian, y las respuestas también.","El consejo de este martes es sencillo: haz a tu pareja una pregunta que aún no le has hecho y escucha la respuesta hasta el final."],
   sections=[
    dict(h="Cómo hacer el ritual de la pregunta nueva", items=["Elegid un momento sin prisa: después de cenar, en un paseo o antes de dormir.","Cada uno piensa en una pregunta que nunca ha hecho al otro. Puede ser sobre el pasado, el presente o lo que aún sueña hacer.","Quien responde habla sin que lo interrumpan. Quien escucha solo puede hacer una pregunta de vuelta: «¿y cómo fue eso para ti?».","Guardad los móviles. Diez minutos bastan."]),
@@ -25,7 +25,7 @@ A["pergunta"] = dict(
  en=dict(slug="weekly-tip-ask-a-question-you-havent-asked-yet", title="Weekly tip: ask a question you haven't asked yet",
   seoTitle="Questions to ask your partner: the new-question ritual",
   excerpt="After years together it feels like you know everything. A ten-minute ritual: each of you asks the other a question you've never asked, and listens to the end.",
-  category="TIP OF THE WEEK", alt="PENDENTE", pub="October 27, 2026", rt="3 min read",
+  category="TIP OF THE WEEK", alt="Couple seated at a kitchen table, smiling and talking face to face in the warm light of a kitchen at dusk", pub="October 27, 2026", rt="3 min read",
   intro=["The longer two people are together, the easier it is to think they already know everything about each other. But people change, and so do their answers.","This Tuesday's tip is simple: ask your partner a question you haven't asked yet, and listen to the answer all the way through."],
   sections=[
    dict(h="How to do the new-question ritual", items=["Pick an unhurried moment: after dinner, on a walk or before bed.","Each of you thinks of a question you have never asked the other. It can be about the past, the present or something you still dream of doing.","Whoever answers speaks without interruption. The listener may only ask one question back: \"and how was that for you?\".","Put the phones away. Ten minutes is enough."]),
@@ -34,11 +34,11 @@ A["pergunta"] = dict(
    dict(h="This week's small commitment", paragraphs=["Until Sunday, ask one new question a day, always a different one. At the end of the week, tell each other which answer surprised you most."], link=("For more question ideas, see also ","questions for couples to talk about","/en/blog/questions-for-couples-to-talk","."))]))
 
 A["noturno"] = dict(
- date="2026-10-29", series="IDEIAS E GUIAS", image="/images/blog/PENDENTE-noturno.webp", kind="ideias",
+ date="2026-10-29", series="IDEIAS E GUIAS", image="/images/blog/32-passeio-noturno.webp", kind="ideias",
  pt=dict(slug="ideias-passeio-noturno-a-dois", title="Passeio noturno a dois: 10 ideias simples para depois do jantar",
   seoTitle="10 ideias de passeio noturno para casais, simples e seguras",
   excerpt="Dez ideias para uma volta à noite sem gastar: luzes da cidade, um banco com vista, um café para dividir e conversas que só a noite tem.",
-  category="IDEIAS PARA CASAIS", alt="PENDENTE", pub="29 de outubro de 2026", rt="4 min de leitura",
+  category="IDEIAS PARA CASAIS", alt="Casal abraçado caminhando à noite por uma rua de pedra iluminada por candeeiros, com a cabeça dela no ombro dele", pub="29 de outubro de 2026", rt="4 min de leitura",
   intro=["Com os dias mais curtos, a noite chega cedo e a gente costuma trancar a porta e esquecer a cidade. Mas uma volta depois do jantar pode ser um dos encontros mais simples e mais bonitos da semana.","Estas dez ideias não custam quase nada e funcionam em qualquer cidade."],
   sections=[
    dict(h="Para caminhar", items=["Volta pelo bairro olhando só para o alto: janelas acesas, fachadas e telhados que você nunca notou.","Caminhada até um mirante ou praça com vista para as luzes da cidade.","Passeio pela orla ou por uma rua de comércio iluminada, sem entrar em nenhuma loja.","O jogo do próximo passo: a cada esquina, um dos dois escolhe a direção."]),
@@ -48,7 +48,7 @@ A["noturno"] = dict(
  es=dict(slug="ideas-paseo-nocturno-en-pareja", title="Paseo nocturno en pareja: 10 ideas sencillas para después de cenar",
   seoTitle="10 ideas de paseo nocturno para parejas, sencillas y seguras",
   excerpt="Diez ideas para dar una vuelta de noche sin gastar: luces de la ciudad, un banco con vistas, un café para compartir y conversaciones que solo tiene la noche.",
-  category="IDEAS PARA PAREJAS", alt="PENDENTE", pub="29 de octubre de 2026", rt="4 min de lectura",
+  category="IDEAS PARA PAREJAS", alt="Pareja abrazada caminando de noche por una calle empedrada iluminada por farolas, con la cabeza de ella en el hombro de él", pub="29 de octubre de 2026", rt="4 min de lectura",
   intro=["Con los días más cortos, la noche llega pronto y solemos cerrar la puerta y olvidarnos de la ciudad. Pero una vuelta después de cenar puede ser una de las citas más sencillas y bonitas de la semana.","Estas diez ideas cuestan casi nada y funcionan en cualquier ciudad."],
   sections=[
    dict(h="Para caminar", items=["Vuelta por el barrio mirando solo hacia arriba: ventanas encendidas, fachadas y tejados en los que nunca habíais reparado.","Paseo hasta un mirador o una plaza con vistas a las luces de la ciudad.","Paseo por el paseo marítimo o por una calle comercial iluminada, sin entrar en ninguna tienda.","El juego del siguiente paso: en cada esquina, uno de los dos elige la dirección."]),
@@ -58,7 +58,7 @@ A["noturno"] = dict(
  en=dict(slug="night-walk-for-two-simple-ideas", title="Night Walk for Two: 10 Simple Ideas for After Dinner",
   seoTitle="10 night-walk ideas for couples, simple and safe",
   excerpt="Ten ideas for an evening stroll that costs nothing: city lights, a bench with a view, one coffee to share and the kind of conversations only night brings.",
-  category="DATE IDEAS", alt="PENDENTE", pub="October 29, 2026", rt="4 min read",
+  category="DATE IDEAS", alt="Couple walking close at night down a cobblestone street lit by street lamps, her head on his shoulder", pub="October 29, 2026", rt="4 min read",
   intro=["With shorter days, night falls early and we tend to lock the door and forget the city. But a stroll after dinner can be one of the simplest and loveliest dates of the week.","These ten ideas cost almost nothing and work in any city."],
   sections=[
    dict(h="For walking", items=["A loop around the neighborhood looking only up: lit windows, facades and rooftops you never noticed.","A walk to a viewpoint or square overlooking the city lights.","A stroll along the waterfront or a lit shopping street, without going into a single shop.","The next-step game: at every corner, one of you chooses the direction."]),

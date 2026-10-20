@@ -28,6 +28,8 @@ export const articleTranslations = [
   { pt: "ideias-outono-a-dois-dias-frios", es: "otono-en-pareja-ideas-sencillas-dias-frios", en: "autumn-for-two-simple-ideas-cold-days" },
   { pt: "conto-o-ultimo-eletrico", es: "cuento-el-ultimo-tranvia", en: "story-the-last-tram" },
   { pt: "conto-a-receita-da-avo-lucia", es: "cuento-la-receta-de-la-abuela-lucia", en: "story-grandmother-lucias-recipe" },
+  { pt: "conselho-da-semana-faca-uma-pergunta-que-ainda-nao-fez", es: "consejo-semanal-haz-una-pregunta-que-aun-no-has-hecho", en: "weekly-tip-ask-a-question-you-havent-asked-yet" },
+  { pt: "ideias-passeio-noturno-a-dois", es: "ideas-paseo-nocturno-en-pareja", en: "night-walk-for-two-simple-ideas" },
 ] as const;
 
 type Lang = "pt" | "es" | "en";
