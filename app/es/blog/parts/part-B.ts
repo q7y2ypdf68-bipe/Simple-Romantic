@@ -314,4 +314,54 @@ export const posts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "consejo-semanal-una-cancion-en-el-salon",
+    title: "Consejo de la semana: una canción en el salón vale una cita",
+    seoTitle: "Bailar en casa con tu pareja: el ritual de una canción",
+    excerpt: "Un ritual de tres minutos: elegid una canción, apartad las pantallas y bailad en el salón, aunque no sepáis bailar. Una cita que cabe en cualquier martes.",
+    category: "CONSEJO SEMANAL",
+    series: "CONSELHO DA SEMANA",
+    image: "/images/blog/27-uma-musica-na-sala.webp",
+    imageAlt: "Una pareja bailando abrazada en el salón de casa, a la luz de una guirnalda de luces, ella con los ojos cerrados y la cabeza en el hombro de él",
+    published: "20 de octubre de 2026",
+    publishedIso: "2026-10-20",
+    readTime: "3 min de lectura",
+    translationOf: "conselho-da-semana-uma-musica-na-sala",
+    intro: [
+      "Hay una cita que cabe en tres minutos y no pide reserva, ropa nueva ni salir de casa: una canción, dos pares de pies y el salón.",
+      "El consejo de este martes es sencillo: elegid una canción y bailad juntos, aunque ninguno de los dos sepa bailar.",
+    ],
+    sections: [
+      {
+        heading: "Cómo hacer el ritual de una canción",
+        items: [
+          "Elegid la canción juntos. Puede ser la de vuestra primera cita, una antigua que los dos conozcáis o la que esté sonando ahora.",
+          "Dejad los móviles lejos. El sonido de la canción es lo único que puede llamar vuestra atención.",
+          "Abrazaos como queráis. No hace falta un paso marcado: balancearse de un lado a otro ya cuenta.",
+          "Quedaos hasta que acabe la canción. Si os entra la risa, mejor.",
+        ],
+      },
+      {
+        heading: "¿Y si no bailáis?",
+        paragraphs: [
+          "El objetivo no es bailar bien, es estar cerca sin prisa. Reírse de la propia torpeza también acerca.",
+          "Si uno de los dos todavía se siente incómodo, empezad por lo más simple: un abrazo largo con la música de fondo.",
+        ],
+      },
+      {
+        heading: "Por qué basta una canción",
+        paragraphs: [
+          "Una canción dura pocos minutos, así que es fácil decir que sí incluso en un día cansado. Estar cuerpo con cuerpo, sin pantalla y sin tarea, puede cambiar el ambiente de la casa.",
+          "Con el tiempo, la canción se vuelve un pequeño código de la pareja, una forma de decir: he parado mi día para estar contigo.",
+        ],
+      },
+      {
+        heading: "El pequeño compromiso de la semana",
+        paragraphs: [
+          "Hasta el domingo, bailad una canción al día, siempre una distinta. Al final de la semana, elegid tres que se hayan quedado en la memoria: pueden ser la banda sonora de vuestra próxima cita en casa.",
+        ],
+        paragraphLink: { before: "Si queréis convertirlo en una noche entera, mirad cómo ", linkText: "planear una noche romántica en casa desde cero", href: "/es/blog/noche-romantica-en-casa-desde-cero", after: "." },
+      },
+    ],
+  },
 ];

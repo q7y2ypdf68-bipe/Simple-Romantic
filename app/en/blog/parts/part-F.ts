@@ -282,4 +282,54 @@ export const posts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "weekly-tip-one-song-in-the-living-room",
+    title: "Weekly tip: one song in the living room is worth a date",
+    seoTitle: "Dancing at home with your partner: the one-song ritual",
+    excerpt: "A three-minute ritual: pick one song, put the screens away and dance in the living room, even if you can't dance. A date that fits any Tuesday.",
+    category: "TIP OF THE WEEK",
+    series: "CONSELHO DA SEMANA",
+    image: "/images/blog/27-uma-musica-na-sala.webp",
+    imageAlt: "A couple dancing in an embrace in their living room under string lights, she has her eyes closed and her head on his shoulder",
+    published: "October 20, 2026",
+    publishedIso: "2026-10-20",
+    readTime: "3 min read",
+    translationOf: "conselho-da-semana-uma-musica-na-sala",
+    intro: [
+      "There is a date that fits in three minutes and needs no reservation, no new outfit and no leaving home: one song, two pairs of feet and the living room.",
+      "This Tuesday's tip is simple: pick one song and dance together, even if neither of you knows how to dance.",
+    ],
+    sections: [
+      {
+        heading: "How to do the one-song ritual",
+        items: [
+          "Choose the song together. It can be the one from your first date, an old one you both know, or whatever is playing right now.",
+          "Keep your phones away. The sound of the music is the only thing allowed to grab your attention.",
+          "Hold each other however you like. No set steps are needed: swaying from side to side counts.",
+          "Stay until the song ends. If you feel like laughing, great.",
+        ],
+      },
+      {
+        heading: "What if you don't dance?",
+        paragraphs: [
+          "The goal is not to dance well, it is to be close without rushing. Laughing at your own clumsiness also brings you together.",
+          "If one of you still feels awkward, start with the simplest version: a long hug with the music in the background.",
+        ],
+      },
+      {
+        heading: "Why one song is enough",
+        paragraphs: [
+          "A song lasts only a few minutes, so it is easy to say yes even on a tired day. Being close to each other, with no screen and no task, can change the mood of the house.",
+          "Over time, the song becomes a small code between the two of you, a way of saying: I stopped my day to be with you.",
+        ],
+      },
+      {
+        heading: "This week's small commitment",
+        paragraphs: [
+          "Until Sunday, dance to one song a day, always a different one. At the end of the week, pick the three that stayed with you: they can become the soundtrack of your next date at home.",
+        ],
+        paragraphLink: { before: "If you want to turn it into a whole evening, see how to ", linkText: "plan a romantic night at home from scratch", href: "/en/blog/romantic-night-at-home-from-scratch", after: "." },
+      },
+    ],
+  },
 ];

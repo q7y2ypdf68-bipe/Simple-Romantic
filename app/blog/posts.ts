@@ -1106,6 +1106,55 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "conselho-da-semana-uma-musica-na-sala",
+    title: "Conselho da semana: uma música na sala vale um encontro",
+    seoTitle: "Dançar em casa com o parceiro: o ritual de uma música",
+    excerpt: "Um ritual de três minutos: escolham uma música, afastem as telas e dancem na sala, mesmo sem saber dançar. Um encontro que cabe em qualquer terça.",
+    category: "CONSELHO DA SEMANA",
+    series: "CONSELHO DA SEMANA",
+    image: "/images/blog/27-uma-musica-na-sala.webp",
+    imageAlt: "Casal dançando abraçado na sala de casa, à luz de um varal de luzinhas, ela de olhos fechados com a cabeça no ombro dele",
+    published: "20 de outubro de 2026",
+    publishedIso: "2026-10-20",
+    readTime: "3 min de leitura",
+    intro: [
+      "Existe um encontro que cabe em três minutos e não pede reserva, roupa nova nem sair de casa: uma música, dois pares de pés e a sala.",
+      "O conselho desta terça-feira é simples: escolham uma música e dancem juntos, mesmo que nenhum dos dois saiba dançar.",
+    ],
+    sections: [
+      {
+        heading: "Como fazer o ritual de uma música",
+        items: [
+          "Escolham a música juntos. Pode ser a do primeiro encontro, uma antiga que os dois conhecem ou a que estiver tocando agora.",
+          "Deixem os celulares longe. O som da música é a única coisa que pode chamar a atenção.",
+          "Abracem-se do jeito que quiserem. Não precisa de passo marcado: balançar de um lado para o outro já conta.",
+          "Fiquem até a música acabar. Se der vontade de rir, ótimo.",
+        ],
+      },
+      {
+        heading: "E se vocês não dançam?",
+        paragraphs: [
+          "O objetivo não é dançar bem, é ficar perto sem pressa. Rir do próprio desajeito também aproxima.",
+          "Se um dos dois ainda estiver sem graça, comecem pelo mais simples: um abraço longo com a música ao fundo.",
+        ],
+      },
+      {
+        heading: "Por que uma música basta",
+        paragraphs: [
+          "Uma música dura poucos minutos, então é fácil dizer sim até num dia cansado. Corpo perto do outro, sem tela e sem tarefa, pode mudar o clima da casa.",
+          "Com o tempo, a música vira um pequeno código do casal, um jeito de dizer: parei o meu dia para ficar com você.",
+        ],
+      },
+      {
+        heading: "O pequeno compromisso da semana",
+        paragraphs: [
+          "Até domingo, dancem uma música por dia, sempre uma diferente. No fim da semana, escolham três que ficaram na memória: elas podem virar a trilha do próximo encontro em casa.",
+        ],
+        paragraphLink: { before: "Se quiserem transformar isso em uma noite inteira, veja como ", linkText: "planejar uma noite romântica em casa, do zero", href: "/blog/noite-romantica-em-casa-do-zero", after: "." },
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {
