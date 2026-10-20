@@ -188,5 +188,65 @@
       "s": "Responda nos comentários: 1 = a do primeiro encontro · 2 = uma bem antiga · 3 = a que estiver tocando. Ou conte a sua.",
       "botao": "Responda 1, 2 ou 3 ↓"
     }
+  },
+  "conto-eletrico": {
+    "kicker": "CONTO DA SEMANA",
+    "titulo": "O último <em>elétrico</em>",
+    "sub": "Perderam o elétrico. Ela propôs voltar a pé, e a noite mudou.",
+    "botaoFacebook": "Ler o conto",
+    "botaoPin": "Ler o conto",
+    "slides": [
+      {
+        "k": "1",
+        "t": "Perderam o elétrico. <em>E riram.</em>",
+        "s": "Fazia muito tempo que os dois não corriam juntos para lugar nenhum."
+      },
+      {
+        "k": "2",
+        "t": "“São quarenta minutos a pé. <em>E a noite está boa.</em>”",
+        "s": "Ele guardou o celular no bolso e estendeu a mão."
+      },
+      {
+        "k": "3",
+        "t": "Pão quente, uma rua antiga e <em>planos de novo</em>",
+        "s": "Sentaram num degrau e começaram a falar do que ainda queriam fazer."
+      }
+    ],
+    "cta": {
+      "k": "CONTO COMPLETO",
+      "t": "Leia até o fim, <em>são 5 minutos</em>",
+      "s": "Conto fictício do Simple & Romantic.",
+      "botao": "Link na bio"
+    }
+  },
+  "conto-receita": {
+    "kicker": "CONTO DA SEMANA",
+    "titulo": "A receita da <em>avó Lúcia</em>",
+    "sub": "Um caderno antigo, um molho sem medidas e uma lembrança que voltou.",
+    "botaoFacebook": "Ler o conto",
+    "botaoPin": "Ler o conto",
+    "slides": [
+      {
+        "k": "1",
+        "t": "Um caderno antigo, <em>sem medidas</em>",
+        "s": "“Sal até ficar bom. Cozinhar até cheirar a casa.”"
+      },
+      {
+        "k": "2",
+        "t": "Ela tinha medo de <em>não ficar igual</em>",
+        "s": "Ele já estava separando o alho e a cebola."
+      },
+      {
+        "k": "3",
+        "t": "“Se não ficar bom, <em>ficou a conversa.</em>”",
+        "s": "Um molho, uma colher e uma tarde que valeu mais que a receita."
+      }
+    ],
+    "cta": {
+      "k": "CONTO COMPLETO",
+      "t": "Leia até o fim, <em>são 5 minutos</em>",
+      "s": "Conto fictício do Simple & Romantic.",
+      "botao": "Link na bio"
+    }
   }
 }
