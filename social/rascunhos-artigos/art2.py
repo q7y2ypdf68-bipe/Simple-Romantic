@@ -67,11 +67,11 @@ A["noturno"] = dict(
    dict(h="Simple precautions", paragraphs=["Choose busy, well-lit streets, tell someone you trust about your route and agree on a time to head home. Bring an extra jacket, a charged phone and your home address handy."], link=("See more tips in ","safety on dates and in public places","/en/blog/safe-dates-in-public-places","."))]))
 
 A["calendario"] = dict(
- date="2026-11-03", series="CONSELHO DA SEMANA", image="/images/blog/PENDENTE-calendario.webp", kind="conselho",
+ date="2026-11-03", series="CONSELHO DA SEMANA", image="/images/blog/33-conselho-calendario.webp", kind="conselho",
  pt=dict(slug="conselho-da-semana-o-dia-do-casal-no-calendario", title="Conselho da semana: marquem no calendário um dia só de vocês",
   seoTitle="Como marcar um dia fixo do casal no calendário",
   excerpt="O que está no calendário acontece. Escolham uma data por mês só para os dois, tratem como compromisso e protejam do resto da agenda.",
-  category="CONSELHO DA SEMANA", alt="PENDENTE", pub="3 de novembro de 2026", rt="3 min de leitura",
+  category="CONSELHO DA SEMANA", alt="Casal abraçado, de costas, olhando para um calendário de parede com um dia marcado em círculo", pub="3 de novembro de 2026", rt="3 min de leitura",
   intro=["Reuniões, consultas e aniversários de colegas têm data marcada. Um encontro a dois, quase nunca. E o que não está no calendário costuma ficar para depois.","O conselho desta terça-feira é simples: escolham agora uma data só de vocês e a marquem na agenda dos dois."],
   sections=[
    dict(h="Como marcar o dia do casal", items=["Abram o calendário juntos e escolham uma data nas próximas quatro semanas.","Registrem como um compromisso de verdade, com horário e um nome que só vocês entendam.","Combinem quem planeja desta vez. Na próxima, troquem.","Reservem pelo menos uma hora, com os celulares longe."]),
@@ -81,7 +81,7 @@ A["calendario"] = dict(
  es=dict(slug="consejo-semanal-el-dia-de-la-pareja-en-el-calendario", title="Consejo de la semana: marcad en el calendario un día solo vuestro",
   seoTitle="Cómo marcar un día fijo de pareja en el calendario",
   excerpt="Lo que está en el calendario sucede. Elegid una fecha al mes solo para los dos, tratadla como un compromiso y protegedla del resto de la agenda.",
-  category="CONSEJO SEMANAL", alt="PENDENTE", pub="3 de noviembre de 2026", rt="3 min de lectura",
+  category="CONSEJO SEMANAL", alt="Pareja abrazada, de espaldas, mirando un calendario de pared con un día marcado con un círculo", pub="3 de noviembre de 2026", rt="3 min de lectura",
   intro=["Las reuniones, las consultas y los cumpleaños de los compañeros tienen fecha marcada. Una cita de pareja, casi nunca. Y lo que no está en el calendario suele quedarse para después.","El consejo de este martes es sencillo: elegid ahora una fecha solo vuestra y marcadla en la agenda de los dos."],
   sections=[
    dict(h="Cómo marcar el día de la pareja", items=["Abrid el calendario juntos y elegid una fecha dentro de las próximas cuatro semanas.","Registradla como un compromiso de verdad, con hora y un nombre que solo entendáis vosotros.","Acordad quién planea esta vez. La próxima, cambiad.","Reservad al menos una hora, con los móviles lejos."]),
@@ -91,7 +91,7 @@ A["calendario"] = dict(
  en=dict(slug="weekly-tip-put-a-couple-day-on-the-calendar", title="Weekly tip: put a day just for the two of you on the calendar",
   seoTitle="How to schedule a regular couple day on the calendar",
   excerpt="What is on the calendar happens. Pick one date a month just for the two of you, treat it as a commitment and protect it from the rest of your schedule.",
-  category="TIP OF THE WEEK", alt="PENDENTE", pub="November 3, 2026", rt="3 min read",
+  category="TIP OF THE WEEK", alt="Couple hugging, seen from behind, looking at a wall calendar with one day circled", pub="November 3, 2026", rt="3 min read",
   intro=["Meetings, appointments and colleagues' birthdays all have a date. A date with your partner almost never does. And what isn't on the calendar usually gets pushed to later.","This Tuesday's tip is simple: pick a date just for the two of you right now and put it in both calendars."],
   sections=[
    dict(h="How to set the couple day", items=["Open the calendar together and pick a date within the next four weeks.","Enter it as a real commitment, with a time and a name only the two of you understand.","Agree who plans this time. Next time, swap.","Set aside at least an hour, phones out of reach."]),

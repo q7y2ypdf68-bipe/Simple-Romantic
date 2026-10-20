@@ -30,6 +30,7 @@ export const articleTranslations = [
   { pt: "conto-a-receita-da-avo-lucia", es: "cuento-la-receta-de-la-abuela-lucia", en: "story-grandmother-lucias-recipe" },
   { pt: "conselho-da-semana-faca-uma-pergunta-que-ainda-nao-fez", es: "consejo-semanal-haz-una-pregunta-que-aun-no-has-hecho", en: "weekly-tip-ask-a-question-you-havent-asked-yet" },
   { pt: "ideias-passeio-noturno-a-dois", es: "ideas-paseo-nocturno-en-pareja", en: "night-walk-for-two-simple-ideas" },
+  { pt: "conselho-da-semana-o-dia-do-casal-no-calendario", es: "consejo-semanal-el-dia-de-la-pareja-en-el-calendario", en: "weekly-tip-put-a-couple-day-on-the-calendar" },
 ] as const;
 
 type Lang = "pt" | "es" | "en";

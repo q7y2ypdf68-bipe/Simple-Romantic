@@ -1253,6 +1253,26 @@ export const blogPosts: BlogPost[] = [
       { heading: "Cuidados simples", paragraphs: ["Escolham ruas movimentadas e bem iluminadas, avisem alguém de confiança sobre o trajeto e combinem a hora de voltar. Levem um casaco extra, o celular carregado e o endereço de casa à mão."], paragraphLink: { before: "Veja mais dicas em ", linkText: "segurança em encontros e lugares públicos", href: "/blog/seguranca-em-encontros-lugares-publicos", after: "." } },
     ],
   },
+  {
+    slug: "conselho-da-semana-o-dia-do-casal-no-calendario",
+    title: "Conselho da semana: marquem no calendário um dia só de vocês",
+    seoTitle: "Como marcar um dia fixo do casal no calendário",
+    excerpt: "O que está no calendário acontece. Escolham uma data por mês só para os dois, tratem como compromisso e protejam do resto da agenda.",
+    category: "CONSELHO DA SEMANA",
+    series: "CONSELHO DA SEMANA",
+    image: "/images/blog/33-conselho-calendario.webp",
+    imageAlt: "Casal abraçado, de costas, olhando para um calendário de parede com um dia marcado em círculo",
+    published: "3 de novembro de 2026",
+    publishedIso: "2026-11-03",
+    readTime: "3 min de leitura",
+    intro: ["Reuniões, consultas e aniversários de colegas têm data marcada. Um encontro a dois, quase nunca. E o que não está no calendário costuma ficar para depois.", "O conselho desta terça-feira é simples: escolham agora uma data só de vocês e a marquem na agenda dos dois."],
+    sections: [
+      { heading: "Como marcar o dia do casal", items: ["Abram o calendário juntos e escolham uma data nas próximas quatro semanas.", "Registrem como um compromisso de verdade, com horário e um nome que só vocês entendam.", "Combinem quem planeja desta vez. Na próxima, troquem.", "Reservem pelo menos uma hora, com os celulares longe."] },
+      { heading: "Não precisa ser grande", paragraphs: ["O dia do casal não pede restaurante nem viagem. Pode ser um café na rua de trás, uma volta na praça ou um filme em casa. O que conta é que a data está guardada e os dois sabem que ela chega.", "Quem planeja pode deixar uma pista na véspera, como um bilhete ou uma mensagem curta. A expectativa já faz parte do encontro."] },
+      { heading: "E se um imprevisto aparecer?", paragraphs: ["Acontece. A regra é remarcar na mesma semana, nunca cancelar. Assim o compromisso não perde força e ninguém se sente deixado para depois."] },
+      { heading: "O pequeno compromisso da semana", paragraphs: ["Antes de domingo, marquem a data e escolham quem planeja. Só isso. O encontro vem depois."], paragraphLink: { before: "Para ter ideias de onde ir, veja ", linkText: "como sair da rotina a dois sem gastar muito", href: "/blog/como-sair-da-rotina-a-dois-sem-gastar-muito", after: "." } },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {
