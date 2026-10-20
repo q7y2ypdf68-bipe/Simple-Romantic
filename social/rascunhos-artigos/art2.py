@@ -1,0 +1,100 @@
+# -*- coding: utf-8 -*-
+A = {}
+A["pergunta"] = dict(
+ date="2026-10-27", series="CONSELHO DA SEMANA", image="/images/blog/PENDENTE-pergunta.webp", kind="conselho",
+ pt=dict(slug="conselho-da-semana-faca-uma-pergunta-que-ainda-nao-fez", title="Conselho da semana: faça uma pergunta que ainda não fez",
+  seoTitle="Perguntas para fazer ao parceiro: o ritual da pergunta nova",
+  excerpt="Depois de anos juntos, parece que já sabemos tudo. Um ritual de dez minutos: cada um faz ao outro uma pergunta que nunca fez, e escuta até o fim.",
+  category="CONSELHO DA SEMANA", alt="PENDENTE", pub="27 de outubro de 2026", rt="3 min de leitura",
+  intro=["Quanto mais tempo duas pessoas passam juntas, mais fácil é achar que já sabem tudo uma da outra. Só que as pessoas mudam, e as respostas também.","O conselho desta terça-feira é simples: faça ao seu par uma pergunta que você ainda não fez, e escute a resposta até o fim."],
+  sections=[
+   dict(h="Como fazer o ritual da pergunta nova", items=["Escolham um momento sem pressa: depois do jantar, num passeio ou antes de dormir.","Cada um pensa em uma pergunta que nunca fez ao outro. Pode ser sobre o passado, o presente ou o que ainda sonha fazer.","Quem responde fala sem ser interrompido. Quem ouviu só pode fazer uma pergunta de volta: \"e como foi isso para você?\".","Guardem os celulares. Dez minutos bastam."]),
+   dict(h="Exemplos para começar", items=["Qual foi a melhor tarde da sua infância?","O que você aprendeu este ano que não esperava?","Que lugar você gostaria de conhecer comigo, mesmo que seja perto de casa?","Qual lembrança nossa você escolheria reviver por um dia?"]),
+   dict(h="E se a resposta surpreender?", paragraphs=["Ótimo: era esse o ponto. Não precisa concordar, corrigir nem resolver nada. Ouvir com atenção já diz ao outro que ele continua interessante para você.","Se a pergunta parecer pesada demais, troquem por uma mais leve. O objetivo é conversar, não fazer uma entrevista."]),
+   dict(h="O pequeno compromisso da semana", paragraphs=["Até domingo, façam uma pergunta nova por dia, sempre diferente. No fim da semana, contem um ao outro qual resposta mais surpreendeu."], link=("Se quiserem mais ideias de perguntas, veja também ","perguntas para casais conversarem","/blog/perguntas-para-casais-conversarem","."))]),
+ es=dict(slug="consejo-semanal-haz-una-pregunta-que-aun-no-has-hecho", title="Consejo de la semana: haz una pregunta que aún no has hecho",
+  seoTitle="Preguntas para hacer a tu pareja: el ritual de la pregunta nueva",
+  excerpt="Después de años juntos, parece que ya lo sabemos todo. Un ritual de diez minutos: cada uno hace al otro una pregunta que nunca ha hecho y escucha hasta el final.",
+  category="CONSEJO SEMANAL", alt="PENDENTE", pub="27 de octubre de 2026", rt="3 min de lectura",
+  intro=["Cuanto más tiempo pasan juntas dos personas, más fácil es creer que ya lo saben todo la una de la otra. Pero las personas cambian, y las respuestas también.","El consejo de este martes es sencillo: haz a tu pareja una pregunta que aún no le has hecho y escucha la respuesta hasta el final."],
+  sections=[
+   dict(h="Cómo hacer el ritual de la pregunta nueva", items=["Elegid un momento sin prisa: después de cenar, en un paseo o antes de dormir.","Cada uno piensa en una pregunta que nunca ha hecho al otro. Puede ser sobre el pasado, el presente o lo que aún sueña hacer.","Quien responde habla sin que lo interrumpan. Quien escucha solo puede hacer una pregunta de vuelta: «¿y cómo fue eso para ti?».","Guardad los móviles. Diez minutos bastan."]),
+   dict(h="Ejemplos para empezar", items=["¿Cuál fue la mejor tarde de tu infancia?","¿Qué has aprendido este año que no esperabas?","¿Qué lugar te gustaría conocer conmigo, aunque esté cerca de casa?","¿Qué recuerdo nuestro elegirías revivir durante un día?"]),
+   dict(h="¿Y si la respuesta sorprende?", paragraphs=["Estupendo: ese era el punto. No hace falta estar de acuerdo, corregir ni resolver nada. Escuchar con atención ya le dice al otro que sigue siendo interesante para ti.","Si la pregunta resulta demasiado pesada, cambiadla por una más ligera. El objetivo es conversar, no hacer una entrevista."]),
+   dict(h="El pequeño compromiso de la semana", paragraphs=["Hasta el domingo, haced una pregunta nueva al día, siempre distinta. Al final de la semana, contaos qué respuesta os sorprendió más."], link=("Si queréis más ideas de preguntas, mirad también ","preguntas para que las parejas conversen","/es/blog/preguntas-para-parejas","."))]),
+ en=dict(slug="weekly-tip-ask-a-question-you-havent-asked-yet", title="Weekly tip: ask a question you haven't asked yet",
+  seoTitle="Questions to ask your partner: the new-question ritual",
+  excerpt="After years together it feels like you know everything. A ten-minute ritual: each of you asks the other a question you've never asked, and listens to the end.",
+  category="TIP OF THE WEEK", alt="PENDENTE", pub="October 27, 2026", rt="3 min read",
+  intro=["The longer two people are together, the easier it is to think they already know everything about each other. But people change, and so do their answers.","This Tuesday's tip is simple: ask your partner a question you haven't asked yet, and listen to the answer all the way through."],
+  sections=[
+   dict(h="How to do the new-question ritual", items=["Pick an unhurried moment: after dinner, on a walk or before bed.","Each of you thinks of a question you have never asked the other. It can be about the past, the present or something you still dream of doing.","Whoever answers speaks without interruption. The listener may only ask one question back: \"and how was that for you?\".","Put the phones away. Ten minutes is enough."]),
+   dict(h="Examples to start with", items=["What was the best afternoon of your childhood?","What did you learn this year that you didn't expect?","Where would you like to go with me, even if it's close to home?","Which memory of ours would you relive for a day?"]),
+   dict(h="What if the answer surprises you?", paragraphs=["Wonderful: that was the point. You don't have to agree, correct or solve anything. Listening closely already tells the other person they are still interesting to you.","If a question feels too heavy, swap it for a lighter one. The goal is a conversation, not an interview."]),
+   dict(h="This week's small commitment", paragraphs=["Until Sunday, ask one new question a day, always a different one. At the end of the week, tell each other which answer surprised you most."], link=("For more question ideas, see also ","questions for couples to talk about","/en/blog/questions-for-couples-to-talk","."))]))
+
+A["noturno"] = dict(
+ date="2026-10-29", series="IDEIAS E GUIAS", image="/images/blog/PENDENTE-noturno.webp", kind="ideias",
+ pt=dict(slug="ideias-passeio-noturno-a-dois", title="Passeio noturno a dois: 10 ideias simples para depois do jantar",
+  seoTitle="10 ideias de passeio noturno para casais, simples e seguras",
+  excerpt="Dez ideias para uma volta à noite sem gastar: luzes da cidade, um banco com vista, um café para dividir e conversas que só a noite tem.",
+  category="IDEIAS PARA CASAIS", alt="PENDENTE", pub="29 de outubro de 2026", rt="4 min de leitura",
+  intro=["Com os dias mais curtos, a noite chega cedo e a gente costuma trancar a porta e esquecer a cidade. Mas uma volta depois do jantar pode ser um dos encontros mais simples e mais bonitos da semana.","Estas dez ideias não custam quase nada e funcionam em qualquer cidade."],
+  sections=[
+   dict(h="Para caminhar", items=["Volta pelo bairro olhando só para o alto: janelas acesas, fachadas e telhados que você nunca notou.","Caminhada até um mirante ou praça com vista para as luzes da cidade.","Passeio pela orla ou por uma rua de comércio iluminada, sem entrar em nenhuma loja.","O jogo do próximo passo: a cada esquina, um dos dois escolhe a direção."]),
+   dict(h="Para parar um pouco", items=["Um banco com vista e uma garrafa térmica de chá ou chocolate quente.","Um café ou sobremesa para dividir em uma mesa de fora, de manta nos ombros.","Dez minutos de silêncio olhando o céu, para ver quantas estrelas ou luzes dá para contar."]),
+   dict(h="Para conversar", items=["Perguntas na penumbra: cada um conta uma lembrança de um lugar à noite.","Fotos de luzes: cada um fotografa o que achar mais bonito e depois mostram um ao outro.","Voltar para casa a pé por um caminho diferente do de sempre."]),
+   dict(h="Cuidados simples", paragraphs=["Escolham ruas movimentadas e bem iluminadas, avisem alguém de confiança sobre o trajeto e combinem a hora de voltar. Levem um casaco extra, o celular carregado e o endereço de casa à mão."], link=("Veja mais dicas em ","segurança em encontros e lugares públicos","/blog/seguranca-em-encontros-lugares-publicos","."))]),
+ es=dict(slug="ideas-paseo-nocturno-en-pareja", title="Paseo nocturno en pareja: 10 ideas sencillas para después de cenar",
+  seoTitle="10 ideas de paseo nocturno para parejas, sencillas y seguras",
+  excerpt="Diez ideas para dar una vuelta de noche sin gastar: luces de la ciudad, un banco con vistas, un café para compartir y conversaciones que solo tiene la noche.",
+  category="IDEAS PARA PAREJAS", alt="PENDENTE", pub="29 de octubre de 2026", rt="4 min de lectura",
+  intro=["Con los días más cortos, la noche llega pronto y solemos cerrar la puerta y olvidarnos de la ciudad. Pero una vuelta después de cenar puede ser una de las citas más sencillas y bonitas de la semana.","Estas diez ideas cuestan casi nada y funcionan en cualquier ciudad."],
+  sections=[
+   dict(h="Para caminar", items=["Vuelta por el barrio mirando solo hacia arriba: ventanas encendidas, fachadas y tejados en los que nunca habíais reparado.","Paseo hasta un mirador o una plaza con vistas a las luces de la ciudad.","Paseo por el paseo marítimo o por una calle comercial iluminada, sin entrar en ninguna tienda.","El juego del siguiente paso: en cada esquina, uno de los dos elige la dirección."]),
+   dict(h="Para parar un rato", items=["Un banco con vistas y un termo de té o chocolate caliente.","Un café o un postre para compartir en una mesa de fuera, con una manta sobre los hombros.","Diez minutos de silencio mirando el cielo, para ver cuántas estrellas o luces podéis contar."]),
+   dict(h="Para conversar", items=["Preguntas en penumbra: cada uno cuenta un recuerdo de un lugar de noche.","Fotos de luces: cada uno fotografía lo que le parezca más bonito y luego se lo enseña al otro.","Volver a casa andando por un camino distinto al de siempre."]),
+   dict(h="Cuidados sencillos", paragraphs=["Elegid calles con movimiento y bien iluminadas, avisad a alguien de confianza del recorrido y acordad la hora de volver. Llevad un abrigo extra, el móvil cargado y la dirección de casa a mano."], link=("Mirad más consejos en ","seguridad en citas y lugares públicos","/es/blog/seguridad-en-citas-en-lugares-publicos","."))]),
+ en=dict(slug="night-walk-for-two-simple-ideas", title="Night Walk for Two: 10 Simple Ideas for After Dinner",
+  seoTitle="10 night-walk ideas for couples, simple and safe",
+  excerpt="Ten ideas for an evening stroll that costs nothing: city lights, a bench with a view, one coffee to share and the kind of conversations only night brings.",
+  category="DATE IDEAS", alt="PENDENTE", pub="October 29, 2026", rt="4 min read",
+  intro=["With shorter days, night falls early and we tend to lock the door and forget the city. But a stroll after dinner can be one of the simplest and loveliest dates of the week.","These ten ideas cost almost nothing and work in any city."],
+  sections=[
+   dict(h="For walking", items=["A loop around the neighborhood looking only up: lit windows, facades and rooftops you never noticed.","A walk to a viewpoint or square overlooking the city lights.","A stroll along the waterfront or a lit shopping street, without going into a single shop.","The next-step game: at every corner, one of you chooses the direction."]),
+   dict(h="For pausing a while", items=["A bench with a view and a flask of tea or hot chocolate.","One coffee or dessert to share at an outdoor table, a blanket over your shoulders.","Ten minutes of silence looking at the sky, to see how many stars or lights you can count."]),
+   dict(h="For talking", items=["Questions in the half-light: each of you shares a memory of a place at night.","Photos of lights: each of you photographs what looks prettiest and then shows the other.","Walking home by a different route than usual."]),
+   dict(h="Simple precautions", paragraphs=["Choose busy, well-lit streets, tell someone you trust about your route and agree on a time to head home. Bring an extra jacket, a charged phone and your home address handy."], link=("See more tips in ","safety on dates and in public places","/en/blog/safe-dates-in-public-places","."))]))
+
+A["calendario"] = dict(
+ date="2026-11-03", series="CONSELHO DA SEMANA", image="/images/blog/PENDENTE-calendario.webp", kind="conselho",
+ pt=dict(slug="conselho-da-semana-o-dia-do-casal-no-calendario", title="Conselho da semana: marquem no calendário um dia só de vocês",
+  seoTitle="Como marcar um dia fixo do casal no calendário",
+  excerpt="O que está no calendário acontece. Escolham uma data por mês só para os dois, tratem como compromisso e protejam do resto da agenda.",
+  category="CONSELHO DA SEMANA", alt="PENDENTE", pub="3 de novembro de 2026", rt="3 min de leitura",
+  intro=["Reuniões, consultas e aniversários de colegas têm data marcada. Um encontro a dois, quase nunca. E o que não está no calendário costuma ficar para depois.","O conselho desta terça-feira é simples: escolham agora uma data só de vocês e a marquem na agenda dos dois."],
+  sections=[
+   dict(h="Como marcar o dia do casal", items=["Abram o calendário juntos e escolham uma data nas próximas quatro semanas.","Registrem como um compromisso de verdade, com horário e um nome que só vocês entendam.","Combinem quem planeja desta vez. Na próxima, troquem.","Reservem pelo menos uma hora, com os celulares longe."]),
+   dict(h="Não precisa ser grande", paragraphs=["O dia do casal não pede restaurante nem viagem. Pode ser um café na rua de trás, uma volta na praça ou um filme em casa. O que conta é que a data está guardada e os dois sabem que ela chega.","Quem planeja pode deixar uma pista na véspera, como um bilhete ou uma mensagem curta. A expectativa já faz parte do encontro."]),
+   dict(h="E se um imprevisto aparecer?", paragraphs=["Acontece. A regra é remarcar na mesma semana, nunca cancelar. Assim o compromisso não perde força e ninguém se sente deixado para depois."]),
+   dict(h="O pequeno compromisso da semana", paragraphs=["Antes de domingo, marquem a data e escolham quem planeja. Só isso. O encontro vem depois."], link=("Para ter ideias de onde ir, veja ","como sair da rotina a dois sem gastar muito","/blog/como-sair-da-rotina-a-dois-sem-gastar-muito","."))]),
+ es=dict(slug="consejo-semanal-el-dia-de-la-pareja-en-el-calendario", title="Consejo de la semana: marcad en el calendario un día solo vuestro",
+  seoTitle="Cómo marcar un día fijo de pareja en el calendario",
+  excerpt="Lo que está en el calendario sucede. Elegid una fecha al mes solo para los dos, tratadla como un compromiso y protegedla del resto de la agenda.",
+  category="CONSEJO SEMANAL", alt="PENDENTE", pub="3 de noviembre de 2026", rt="3 min de lectura",
+  intro=["Las reuniones, las consultas y los cumpleaños de los compañeros tienen fecha marcada. Una cita de pareja, casi nunca. Y lo que no está en el calendario suele quedarse para después.","El consejo de este martes es sencillo: elegid ahora una fecha solo vuestra y marcadla en la agenda de los dos."],
+  sections=[
+   dict(h="Cómo marcar el día de la pareja", items=["Abrid el calendario juntos y elegid una fecha dentro de las próximas cuatro semanas.","Registradla como un compromiso de verdad, con hora y un nombre que solo entendáis vosotros.","Acordad quién planea esta vez. La próxima, cambiad.","Reservad al menos una hora, con los móviles lejos."]),
+   dict(h="No hace falta que sea grande", paragraphs=["El día de la pareja no pide restaurante ni viaje. Puede ser un café en la calle de atrás, una vuelta por la plaza o una película en casa. Lo que cuenta es que la fecha está guardada y los dos saben que llega.","Quien planea puede dejar una pista la víspera, como una nota o un mensaje corto. La expectación ya forma parte de la cita."]),
+   dict(h="¿Y si surge un imprevisto?", paragraphs=["Pasa. La regla es reprogramar la misma semana, nunca cancelar. Así el compromiso no pierde fuerza y nadie se siente dejado para después."]),
+   dict(h="El pequeño compromiso de la semana", paragraphs=["Antes del domingo, marcad la fecha y elegid quién planea. Solo eso. La cita viene después."], link=("Para tener ideas de adónde ir, mirad ","cómo salir de la rutina en pareja sin gastar mucho","/es/blog/como-salir-de-la-rutina-en-pareja-sin-gastar-mucho","."))]),
+ en=dict(slug="weekly-tip-put-a-couple-day-on-the-calendar", title="Weekly tip: put a day just for the two of you on the calendar",
+  seoTitle="How to schedule a regular couple day on the calendar",
+  excerpt="What is on the calendar happens. Pick one date a month just for the two of you, treat it as a commitment and protect it from the rest of your schedule.",
+  category="TIP OF THE WEEK", alt="PENDENTE", pub="November 3, 2026", rt="3 min read",
+  intro=["Meetings, appointments and colleagues' birthdays all have a date. A date with your partner almost never does. And what isn't on the calendar usually gets pushed to later.","This Tuesday's tip is simple: pick a date just for the two of you right now and put it in both calendars."],
+  sections=[
+   dict(h="How to set the couple day", items=["Open the calendar together and pick a date within the next four weeks.","Enter it as a real commitment, with a time and a name only the two of you understand.","Agree who plans this time. Next time, swap.","Set aside at least an hour, phones out of reach."]),
+   dict(h="It doesn't have to be big", paragraphs=["A couple day doesn't call for a restaurant or a trip. It can be a coffee on the next street, a loop around the square or a movie at home. What matters is that the date is held and you both know it is coming.","Whoever plans can leave a clue the night before, like a note or a short message. The anticipation is already part of the date."]),
+   dict(h="What if something comes up?", paragraphs=["It happens. The rule is to reschedule within the same week, never to cancel. That way the commitment keeps its weight and nobody feels left for later."]),
+   dict(h="This week's small commitment", paragraphs=["Before Sunday, set the date and decide who plans. That's all. The date itself comes after."], link=("For ideas of where to go, see ","how to break the routine as a couple without spending much","/en/blog/break-the-routine-as-a-couple-on-a-budget","."))]))

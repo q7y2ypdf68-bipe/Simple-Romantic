@@ -248,5 +248,45 @@
       "s": "Conto fictício do Simple & Romantic.",
       "botao": "Link na bio"
     }
+  },
+  "horoscopo-2": {
+    "kicker": "HORÓSCOPO DO CASAL",
+    "titulo": "Touro + Escorpião: terra e água <em>dão vida</em>",
+    "chips": [
+      "Terra",
+      "+",
+      "Água"
+    ],
+    "sub": "Escolham os dois signos e recebam um clima do dia, uma ideia de encontro e um gesto.",
+    "botaoFacebook": "Faça o seu",
+    "botaoPin": "Faça o seu",
+    "slides": [
+      {
+        "k": "O CLIMA DO DIA",
+        "t": "Terra e água <em>dão vida</em>",
+        "s": "Um traz calma e constância, o outro traz intensidade. Hoje, deixem a calma do primeiro dar o ritmo e a intensidade do segundo dar o sentido."
+      },
+      {
+        "k": "A IDEIA DE ENCONTRO",
+        "t": "Uma noite de sopa, vela e conversa",
+        "s": "Cozinhar devagar já é metade do encontro.",
+        "lista": [
+          "Escolham uma sopa simples e cozinhem juntos.",
+          "Acendam uma vela ou um abajur e desliguem a televisão.",
+          "Cada um conta uma coisa que não contou na semana."
+        ]
+      },
+      {
+        "k": "O GESTO DO DIA",
+        "t": "Diga o que você admira nele ou nela",
+        "s": "Uma frase, sem “mas” depois."
+      }
+    ],
+    "cta": {
+      "k": "QUAL É O SEU PAR?",
+      "t": "Escolha os dois signos e <em>teste hoje</em>",
+      "s": "É só brincadeira: signo nenhum prevê o futuro de ninguém. A graça é ter um motivo para chegar mais perto.",
+      "botao": "Link na bio"
+    }
   }
 }
