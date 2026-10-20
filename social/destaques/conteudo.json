@@ -318,5 +318,40 @@
    "s": "O objetivo é presença, não produtividade. PDF grátis para baixar.",
    "botao": "Link na bio"
   }
+ },
+ "conselho-4": {
+  "kicker": "CONSELHO DA SEMANA",
+  "titulo": "Uma pergunta que você <em>ainda não fez</em>",
+  "sub": "Ritual de 10 minutos, sem celular.",
+  "botaoFacebook": "Leia no site",
+  "botaoPin": "Leia no site",
+  "slides": [
+   {
+    "k": "PASSO 1",
+    "t": "Cada um pensa em <em>uma pergunta nova</em>",
+    "s": "Algo que nunca perguntou ao outro: do passado, do presente ou de um sonho."
+   },
+   {
+    "k": "PASSO 2",
+    "t": "Quem responde <em>não é interrompido</em>",
+    "s": "Quem ouviu só pode perguntar de volta: \"e como foi isso para você?\""
+   },
+   {
+    "k": "4 PERGUNTAS PARA COMEÇAR",
+    "t": "Escolham <em>uma</em>",
+    "lista": [
+     "Qual foi a melhor tarde da sua infância?",
+     "O que você aprendeu este ano que não esperava?",
+     "Que lugar você gostaria de conhecer comigo?",
+     "Qual lembrança nossa você reviveria por um dia?"
+    ]
+   }
+  ],
+  "cta": {
+   "k": "SUA VEZ",
+   "t": "Qual você <em>faria primeiro?</em>",
+   "s": "Responda nos comentários: 1, 2, 3 ou 4. Ou conte a sua.",
+   "botao": "Responda 1, 2, 3 ou 4 ↓"
+  }
  }
 }
