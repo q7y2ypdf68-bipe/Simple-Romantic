@@ -12,10 +12,12 @@ import { getVisiblePostsLang } from "../blog/posts-db";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ casal?: string | string[] }> }): Promise<Metadata> {
-  return coupleMetadata("es", (await searchParams).casal);
+  const couple = coupleMetadata("es", (await searchParams).casal);
+  // Sem ?casal válido, vale a configuração própria do idioma (título, canonical, hreflang).
+  return Object.keys(couple).length ? couple : baseMetadata;
 }
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Simple & Romantic en español — Momentos sencillos, recuerdos bonitos",
   description: "Ideas asequibles, citas sencillas y pequeños gestos para parejas reales, en español de España.",
   alternates: { canonical: "/es", languages: { "pt-BR": "/", "es-ES": "/es", en: "/en", "x-default": "/" } },

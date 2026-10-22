@@ -12,10 +12,12 @@ import { getVisiblePostsLang } from "../blog/posts-db";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ casal?: string | string[] }> }): Promise<Metadata> {
-  return coupleMetadata("en", (await searchParams).casal);
+  const couple = coupleMetadata("en", (await searchParams).casal);
+  // Sem ?casal válido, vale a configuração própria do idioma (título, canonical, hreflang).
+  return Object.keys(couple).length ? couple : baseMetadata;
 }
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Simple & Romantic — Simple moments, beautiful memories",
   description: "Affordable date ideas, simple plans and small gestures for real couples.",
   alternates: { canonical: "/en", languages: { "pt-BR": "/", "es-ES": "/es", en: "/en", "x-default": "/" } },
