@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LanguageSetter } from "../../components/LanguageSetter";
 import { BlogFooterEn, BlogHeaderEn } from "../blog/BlogChromeEn";
-import { CoupleWheel, WHEEL_ITEMS } from "../../components/CoupleWheel";
+import { CoupleWheel } from "../../components/CoupleWheel";
+import { WHEEL_ITEMS } from "../../components/wheel-data";
 
 export const metadata: Metadata = {
   title: "Couple's Wheel | Fun challenges for two",

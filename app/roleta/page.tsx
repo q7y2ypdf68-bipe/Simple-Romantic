@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BlogFooter, BlogHeader } from "../blog/BlogChrome";
-import { CoupleWheel, WHEEL_ITEMS } from "../components/CoupleWheel";
+import { CoupleWheel } from "../components/CoupleWheel";
+import { WHEEL_ITEMS } from "../components/wheel-data";
 
 export const metadata: Metadata = {
   title: "Roleta do Casal | Desafios divertidos para dois",

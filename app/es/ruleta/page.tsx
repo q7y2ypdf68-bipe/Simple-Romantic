@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LanguageSetter } from "../../components/LanguageSetter";
 import { BlogFooterEs, BlogHeaderEs } from "../blog/BlogChromeEs";
-import { CoupleWheel, WHEEL_ITEMS } from "../../components/CoupleWheel";
+import { CoupleWheel } from "../../components/CoupleWheel";
+import { WHEEL_ITEMS } from "../../components/wheel-data";
 
 export const metadata: Metadata = {
   title: "Ruleta de pareja | Retos divertidos para dos",
