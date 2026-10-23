@@ -1463,3 +1463,4 @@ html[data-theme="dark"] .city-help .city-clear,html[data-theme="dark"] .city-hel
 .wheel-list li{display:grid;gap:4px;padding:16px 20px;border:1px solid var(--line);border-radius:16px;background:var(--cream);color:var(--ink)}
 .wheel-list li span{color:var(--muted);line-height:1.5}
 @media(prefers-reduced-motion:reduce){.wheel-svg{transition:none!important}}
+@media(min-width:1001px) and (max-width:1560px){.blog-site-header .brand-heart{width:52px;height:52px;border-radius:14px}.blog-site-header nav{gap:20px}}
