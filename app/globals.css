@@ -1440,4 +1440,4 @@ html[data-theme="dark"] .city-help .city-clear,html[data-theme="dark"] .city-hel
 /* Logotipo S&R no cabeçalho e no rodapé (substitui o coração de texto) */
 .site-header .brand-heart,.footer-brand .brand-heart{background:url(/images/logo/logo-sr-144.webp) center/cover no-repeat;border-radius:12px;color:transparent;font-size:0;line-height:0;transform:none;filter:none;box-shadow:0 4px 14px rgba(237,63,120,.28);flex:0 0 auto;width:50px;height:50px}
 @media(max-width:700px){.site-header .brand-heart,.footer-brand .brand-heart{width:41px;height:41px;border-radius:11px;flex:0 0 41px}}
-@media(min-width:1001px){.site-header .brand-heart{width:64px;height:64px;border-radius:16px}}
+@media(min-width:1001px){.site-header .brand-heart{width:60px;height:60px;border-radius:15px}.site-header .language,.site-header .language *{white-space:nowrap}.site-header .language{flex:0 0 auto}}
