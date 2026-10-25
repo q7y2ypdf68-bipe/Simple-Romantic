@@ -1479,3 +1479,4 @@ html body .online-guide.wheel-page .guide-hero{background:transparent}
 .wheel-page .guide-hero>p:not(.eyebrow){margin-top:18px}
 .wheel-page .wheel-section.section{padding-top:22px;padding-bottom:40px}
 @media(max-width:700px){.wheel-page .guide-hero.section{padding-top:30px}.wheel-page .wheel-section.section{padding-top:16px}}
+.wheel-stage{overflow-x:clip}
