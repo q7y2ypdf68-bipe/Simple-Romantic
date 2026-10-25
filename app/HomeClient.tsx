@@ -8,6 +8,7 @@ import { MobileMenu } from "./components/MobileMenu";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { IdeaFinder } from "./components/IdeaFinder";
 import { CoupleHoroscope } from "./components/CoupleHoroscope";
+import { HomeWheel } from "./components/HomeWheel";
 
 type Language = "pt" | "en";
 
@@ -289,6 +290,7 @@ export default function Home({ blogPosts }: { blogPosts: BlogPost[] }) {
 
       <IdeaFinder lang={language} />
       <CoupleHoroscope key={language} lang={language} />
+      <HomeWheel key={language} lang={language} />
 
       <section className="places section" id="lugares">
         <div className="section-heading split"><div><p className="eyebrow">{t.placesKicker}</p><h2>{t.placesTitle.split(/(?<=\.)\s+/).map((part: string) => <span key={part} style={{ display: "block" }}>{part}</span>)}</h2></div><p>{t.placesText}</p></div>

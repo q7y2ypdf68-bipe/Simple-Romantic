@@ -5,6 +5,7 @@ import Link from "next/link";
 import { LanguageSetter } from "../components/LanguageSetter";
 import { IdeaFinder } from "../components/IdeaFinder";
 import { CoupleHoroscope } from "../components/CoupleHoroscope";
+import { HomeWheel } from "../components/HomeWheel";
 import { MobileMenu } from "../components/MobileMenu";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { getVisiblePostsLang } from "../blog/posts-db";
@@ -34,6 +35,7 @@ export default async function EnglishHome() {
 
     <IdeaFinder lang="en" />
     <CoupleHoroscope lang="en" />
+    <HomeWheel lang="en" />
 
     <section className="section" id="empezar"><div className="section-heading centered"><p className="eyebrow">TO GET STARTED</p><h2>Three paths for this week</h2></div><div className="spanish-idea-grid"><article><span>01</span><h3>Go out without spending</h3><p>A walk, a blanket, something from home and a question worth a slow answer.</p><Link className="quiet-link" href="/en/#encontrar">Find a free idea →</Link></article><article><span>02</span><h3>Set something up today</h3><p>Spontaneous plans that need no booking and no weeks of planning.</p><Link className="quiet-link" href="/en/#encontrar">Pick a plan →</Link></article><article><span>03</span><h3>Reconnect</h3><p>Gestures and questions to leave autopilot and look at each other again.</p><Link className="quiet-link" href="/en/guide">Nurture the connection →</Link></article></div></section>
 

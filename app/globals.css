@@ -1464,3 +1464,11 @@ html[data-theme="dark"] .city-help .city-clear,html[data-theme="dark"] .city-hel
 .wheel-list li span{color:var(--muted);line-height:1.5}
 @media(prefers-reduced-motion:reduce){.wheel-svg{transition:none!important}}
 @media(min-width:1001px) and (max-width:1560px){.blog-site-header .brand-heart{width:52px;height:52px;border-radius:14px}.blog-site-header nav{gap:14px}.blog-site-header .header-actions{gap:8px}}
+
+/* Roleta na página inicial (contêiner próprio depois do horóscopo) */
+.wheel-home{display:grid;justify-items:center;gap:28px}
+.wheel-home .section-heading{margin-bottom:0}
+.wheel-hook{width:min(560px,100%);display:grid;justify-items:center;gap:10px;text-align:center;padding:22px;border:2px dashed var(--pink-dark);border-radius:24px;background:var(--cream);color:var(--ink)}
+.wheel-hook strong{font:600 clamp(22px,4.5vw,28px)/1.15 Georgia,serif;color:var(--pink-dark)}
+.wheel-hook p{margin:0;font-size:17px;line-height:1.5;color:var(--muted)}
+.wheel-hook .wheel-actions{margin-top:6px}

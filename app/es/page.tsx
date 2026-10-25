@@ -5,6 +5,7 @@ import Link from "next/link";
 import { LanguageSetter } from "../components/LanguageSetter";
 import { IdeaFinder } from "../components/IdeaFinder";
 import { CoupleHoroscope } from "../components/CoupleHoroscope";
+import { HomeWheel } from "../components/HomeWheel";
 import { MobileMenu } from "../components/MobileMenu";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { getVisiblePostsLang } from "../blog/posts-db";
@@ -34,6 +35,7 @@ export default async function SpanishHome() {
 
     <IdeaFinder lang="es" />
     <CoupleHoroscope lang="es" />
+    <HomeWheel lang="es" />
 
     <section className="section" id="empezar"><div className="section-heading centered"><p className="eyebrow">PARA EMPEZAR</p><h2>Tres caminos para esta semana</h2></div><div className="spanish-idea-grid"><article><span>01</span><h3>Salir sin gastar</h3><p>Un paseo, una manta, algo de casa y una pregunta que merezca una respuesta tranquila.</p><Link className="quiet-link" href="/es/blog/citas-romanticas-gratis-salir-de-la-rutina">Ver ideas gratuitas →</Link></article><article><span>02</span><h3>Preparar algo hoy</h3><p>Planes espontáneos que no requieren reserva ni semanas de organización.</p><Link className="quiet-link" href="/es/blog/cita-romantica-de-ultima-hora">Elegir un plan →</Link></article><article><span>03</span><h3>Volver a conectar</h3><p>Gestos y preguntas para dejar el piloto automático y volver a miraros.</p><Link className="quiet-link" href="/es/blog/como-reconectar-con-tu-pareja">Cuidar la conexión →</Link></article></div></section>
 
