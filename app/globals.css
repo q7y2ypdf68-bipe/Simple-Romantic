@@ -1474,3 +1474,4 @@ html[data-theme="dark"] .city-help .city-clear,html[data-theme="dark"] .city-hel
 .wheel-hook .wheel-actions{margin-top:6px}
 .wheel-result .eyebrow{letter-spacing:.06em;word-spacing:0}
 @media(min-width:900px){.wheel-home .section-heading{max-width:none}.wheel-home .section-heading p:not(.eyebrow){max-width:none;white-space:nowrap}}
+html body .online-guide.wheel-page .guide-hero{background:transparent}
