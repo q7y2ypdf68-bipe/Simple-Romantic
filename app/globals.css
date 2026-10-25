@@ -1502,3 +1502,24 @@ html body .online-guide.wheel-page .guide-hero{background:transparent}
 @media(max-width:1000px){.hero-copy{padding-top:40px;padding-bottom:40px}.hero-scene{min-height:420px}}
 @media(max-width:700px){.hero-copy{padding-top:30px;padding-bottom:36px}.hero-scene{min-height:360px}}
 @media(min-width:1001px){.hero-scene>img{object-position:100% center}}
+
+/* Celular: impede o iPhone/Brave de aumentar os textos por conta própria (quebrava o cabeçalho) */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media(max-width:700px){
+  /* Cabeçalho: nada pode passar da borda direita */
+  .site-header{gap:6px;padding-left:4vw;padding-right:3vw;overflow:hidden}
+  .site-header .brand{min-width:0;flex:1 1 auto;gap:8px}
+  .site-header .brand-name{min-width:0;white-space:nowrap}
+  .site-header .brand-name strong,.site-header .brand-name i{font-size:clamp(14px,4.4vw,19px)}
+  .site-header .header-actions{flex:0 0 auto;gap:4px}
+  .site-header .theme-toggle{width:36px;height:36px}
+  .site-header .mobile-menu button,.site-header .mobile-menu>*{max-width:40px}
+  /* Hero: menos vazio entre botões e selos; foto mais alta e cartão sem tapar os rostos */
+  .hero-actions{gap:14px;margin-top:26px}
+  .proof{margin-top:26px}
+  .hero-scene{min-height:440px}
+  .hero-scene>img{object-position:80% center}
+  .picnic-card{right:auto;left:5%;bottom:5%;width:min(210px,62vw);padding:14px 16px}
+  .picnic-card strong{font-size:17px;line-height:1.2}
+  .picnic-card small,.picnic-card span{font-size:10px;letter-spacing:.08em}
+}
