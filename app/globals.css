@@ -1480,3 +1480,17 @@ html body .online-guide.wheel-page .guide-hero{background:transparent}
 .wheel-page .wheel-section.section{padding-top:22px;padding-bottom:40px}
 @media(max-width:700px){.wheel-page .guide-hero.section{padding-top:30px}.wheel-page .wheel-section.section{padding-top:16px}}
 .wheel-stage{overflow-x:clip}
+
+/* Todo o site: textos mais próximos do conteúdo (menos espaço vazio entre títulos e o que vem abaixo) */
+.section{padding-top:72px;padding-bottom:72px}
+.section-heading{margin-bottom:26px}
+.guide-hero.section,.blog-hero.section,.shop-hero.section,.listening-hero.section{padding-top:56px;padding-bottom:44px}
+.legal-hero{padding:56px 7vw 40px}
+.guide-hero>p:not(.eyebrow){margin-top:22px}
+.guide-hero-actions{margin-top:26px}
+@media(max-width:700px){
+  .section{padding-top:48px;padding-bottom:48px}
+  .section-heading{margin-bottom:20px}
+  .guide-hero.section,.blog-hero.section,.shop-hero.section,.listening-hero.section{padding-top:36px;padding-bottom:32px}
+  .legal-hero{padding:40px 6vw 32px}
+}
