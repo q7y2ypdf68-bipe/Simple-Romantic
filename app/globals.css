@@ -1494,3 +1494,10 @@ html body .online-guide.wheel-page .guide-hero{background:transparent}
   .guide-hero.section,.blog-hero.section,.shop-hero.section,.listening-hero.section{padding-top:36px;padding-bottom:32px}
   .legal-hero{padding:40px 6vw 32px}
 }
+
+/* Home: menos espaço entre o cabeçalho e o primeiro texto do Hero */
+.hero{min-height:0}
+.hero-copy{padding-top:44px;padding-bottom:44px;justify-content:flex-start}
+.hero-scene{min-height:0}
+@media(max-width:1000px){.hero-copy{padding-top:40px;padding-bottom:40px}.hero-scene{min-height:420px}}
+@media(max-width:700px){.hero-copy{padding-top:30px;padding-bottom:36px}.hero-scene{min-height:360px}}
