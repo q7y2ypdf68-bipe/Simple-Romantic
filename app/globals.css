@@ -1530,3 +1530,13 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   .proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;font-size:12px}
   .proof span{display:flex;align-items:center;justify-content:center;text-align:center;padding:9px 6px;line-height:1.25;min-height:46px}
 }
+
+/* Celular: formulário "Encontrar uma ideia" mais compacto (opções em 2 colunas, menos altura) */
+@media(max-width:700px){
+  .finder-form{padding:16px 12px;gap:14px;border-radius:20px}
+  .finder-form strong,.finder-form legend{font-size:15px;line-height:1.25;margin-bottom:8px}
+  .finder-form strong span,.finder-form legend span{font-size:17px;margin-right:8px}
+  .choices{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .choices label span{min-height:38px;padding:5px 6px;font-size:14px;line-height:1.2;border-radius:10px}
+  .finder .section-heading.centered{margin-bottom:22px}
+}
