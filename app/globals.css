@@ -1475,3 +1475,7 @@ html[data-theme="dark"] .city-help .city-clear,html[data-theme="dark"] .city-hel
 .wheel-result .eyebrow{letter-spacing:.06em;word-spacing:0}
 @media(min-width:900px){.wheel-home .section-heading{max-width:none}.wheel-home .section-heading p:not(.eyebrow){max-width:none;white-space:nowrap}}
 html body .online-guide.wheel-page .guide-hero{background:transparent}
+.wheel-page .guide-hero.section{padding-top:44px;padding-bottom:6px}
+.wheel-page .guide-hero>p:not(.eyebrow){margin-top:18px}
+.wheel-page .wheel-section.section{padding-top:22px;padding-bottom:40px}
+@media(max-width:700px){.wheel-page .guide-hero.section{padding-top:30px}.wheel-page .wheel-section.section{padding-top:16px}}
