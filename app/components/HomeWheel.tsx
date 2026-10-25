@@ -31,7 +31,7 @@ export function HomeWheel({ lang }: { lang: Lang }) {
   return (
     <section className="wheel-home section" id="roleta">
       <div className="section-heading centered"><p className="eyebrow">{t.kicker}</p><h2>{t.title}</h2><p>{t.text}</p></div>
-      <CoupleWheel lang={lang} />
+      <CoupleWheel lang={lang} hideShare />
       <div className="wheel-hook">
         <strong>♥ {t.hookTitle}</strong>
         <p>{t.hook}</p>

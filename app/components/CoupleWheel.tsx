@@ -35,7 +35,7 @@ function randomIndex(avoid: number | null) {
   return pick;
 }
 
-export function CoupleWheel({ lang }: { lang: Lang }) {
+export function CoupleWheel({ lang, hideShare = false }: { lang: Lang; hideShare?: boolean }) {
   const items = ITEMS[lang];
   const tt = TEXT[lang];
   const [rotation, setRotation] = useState(0);
@@ -143,7 +143,7 @@ export function CoupleWheel({ lang }: { lang: Lang }) {
         )}
       </div>
 
-      {result !== null && !spinning && (
+      {result !== null && !spinning && !hideShare && (
         <div className="wheel-actions wheel-share">
           <button className="button secondary" type="button" onClick={() => whatsapp(result)} aria-label="WhatsApp">WhatsApp</button>
           {canShare && <button className="button secondary" type="button" onClick={() => share(result)}>{tt.share}</button>}

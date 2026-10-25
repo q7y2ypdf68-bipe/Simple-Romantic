@@ -1472,3 +1472,4 @@ html[data-theme="dark"] .city-help .city-clear,html[data-theme="dark"] .city-hel
 .wheel-hook strong{font:600 clamp(22px,4.5vw,28px)/1.15 Georgia,serif;color:var(--pink-dark)}
 .wheel-hook p{margin:0;font-size:17px;line-height:1.5;color:var(--muted)}
 .wheel-hook .wheel-actions{margin-top:6px}
+.wheel-result .eyebrow{letter-spacing:.06em;word-spacing:0}
