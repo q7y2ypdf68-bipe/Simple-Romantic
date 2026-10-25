@@ -35,7 +35,7 @@ function randomIndex(avoid: number | null) {
   return pick;
 }
 
-export function CoupleWheel({ lang, hideShare = false }: { lang: Lang; hideShare?: boolean }) {
+export function CoupleWheel({ lang, hideShare = false, readLink = true }: { lang: Lang; hideShare?: boolean; readLink?: boolean }) {
   const items = ITEMS[lang];
   const tt = TEXT[lang];
   const [rotation, setRotation] = useState(0);
@@ -52,7 +52,7 @@ export function CoupleWheel({ lang, hideShare = false }: { lang: Lang; hideShare
   useEffect(() => {
     setReduceMotion(!!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches);
     setCanShare(typeof navigator !== "undefined" && typeof navigator.share === "function");
-    try {
+    if (readLink) try {
       const wanted = Number(new URLSearchParams(window.location.search).get("d"));
       if (Number.isInteger(wanted) && wanted >= 0 && wanted < items.length) {
         setResult(wanted);
