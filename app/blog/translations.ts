@@ -31,6 +31,8 @@ export const articleTranslations = [
   { pt: "conselho-da-semana-faca-uma-pergunta-que-ainda-nao-fez", es: "consejo-semanal-haz-una-pregunta-que-aun-no-has-hecho", en: "weekly-tip-ask-a-question-you-havent-asked-yet" },
   { pt: "ideias-passeio-noturno-a-dois", es: "ideas-paseo-nocturno-en-pareja", en: "night-walk-for-two-simple-ideas" },
   { pt: "conselho-da-semana-o-dia-do-casal-no-calendario", es: "consejo-semanal-el-dia-de-la-pareja-en-el-calendario", en: "weekly-tip-put-a-couple-day-on-the-calendar" },
+  { pt: "conto-a-noite-em-que-acabou-a-luz", es: "cuento-la-noche-en-que-se-fue-la-luz", en: "story-the-night-the-lights-went-out" },
+  { pt: "conselho-da-semana-combinem-o-fim-de-semana-na-quinta", es: "consejo-semanal-acordad-el-fin-de-semana-el-jueves", en: "weekly-tip-plan-the-weekend-on-thursday" },
 ] as const;
 
 type Lang = "pt" | "es" | "en";
