@@ -388,5 +388,175 @@
       "s": "Conte nos comentários o dia da semana que combina com os dois.",
       "botao": "Conte aqui ↓"
     }
+  },
+  "horoscopo-3": {
+    "kicker": "HORÓSCOPO DO CASAL",
+    "titulo": "Gêmeos + Sagitário: ar e fogo <em>se avivam</em>",
+    "chips": [
+      "Ar",
+      "+",
+      "Fogo"
+    ],
+    "sub": "Escolham os dois signos e recebam um clima do dia, uma ideia de encontro e um gesto.",
+    "botaoFacebook": "Faça o seu",
+    "botaoPin": "Faça o seu",
+    "slides": [
+      {
+        "k": "O CLIMA DO DIA",
+        "t": "Ar e fogo <em>se avivam</em>",
+        "s": "Um traz curiosidade, o outro traz impulso. Hoje, deixem a curiosidade de um escolher a pergunta e o impulso do outro escolher o caminho."
+      },
+      {
+        "k": "A IDEIA DE ENCONTRO",
+        "t": "Um passeio sem mapa e três perguntas",
+        "s": "Sair sem destino já é meio encontro.",
+        "lista": [
+          "Escolham uma direção e caminhem sem consultar o celular.",
+          "A cada esquina, quem escolhe o caminho alterna.",
+          "Façam 3 perguntas que nunca fizeram um ao outro."
+        ]
+      },
+      {
+        "k": "O GESTO DO DIA",
+        "t": "Mande uma mensagem curta no meio do dia",
+        "s": "Só para dizer que lembrou. Sem pedir nada."
+      }
+    ],
+    "cta": {
+      "k": "QUAL É O SEU PAR?",
+      "t": "Escolha os dois signos e <em>teste hoje</em>",
+      "s": "É só brincadeira: signo nenhum prevê o futuro de ninguém. A graça é ter um motivo para chegar mais perto.",
+      "botao": "Link na bio"
+    }
+  },
+  "horoscopo-4": {
+    "kicker": "HORÓSCOPO DO CASAL",
+    "titulo": "Câncer + Peixes: água com água <em>acolhe</em>",
+    "chips": [
+      "Água",
+      "+",
+      "Água"
+    ],
+    "sub": "Escolham os dois signos e recebam um clima do dia, uma ideia de encontro e um gesto.",
+    "botaoFacebook": "Faça o seu",
+    "botaoPin": "Faça o seu",
+    "slides": [
+      {
+        "k": "O CLIMA DO DIA",
+        "t": "Água com água <em>acolhe</em>",
+        "s": "Os dois sentem muito e cuidam um do outro. Hoje, deixem que o silêncio também faça parte da conversa."
+      },
+      {
+        "k": "A IDEIA DE ENCONTRO",
+        "t": "Uma noite de filme antigo e cobertor",
+        "s": "O conforto também é um programa a dois.",
+        "lista": [
+          "Cada um indica um filme que viu na infância.",
+          "Escolham por sorteio e preparem algo quente para beber.",
+          "No fim, contem de qual cena mais gostaram e por quê."
+        ]
+      },
+      {
+        "k": "O GESTO DO DIA",
+        "t": "Peça um abraço de dez segundos",
+        "s": "Sem pressa e sem falar nada."
+      }
+    ],
+    "cta": {
+      "k": "QUAL É O SEU PAR?",
+      "t": "Escolha os dois signos e <em>teste hoje</em>",
+      "s": "É só brincadeira: signo nenhum prevê o futuro de ninguém. A graça é ter um motivo para chegar mais perto.",
+      "botao": "Link na bio"
+    }
+  },
+  "guia-30-c": {
+    "kicker": "GUIA GRATUITO",
+    "titulo": "30 encontros que <em>cabem no bolso</em>",
+    "sub": "Lugar, duração, o que levar, um pequeno detalhe e um plano B para cada um.",
+    "botaoFacebook": "Baixe grátis",
+    "botaoPin": "Baixe grátis",
+    "slides": [
+      {
+        "k": "EXEMPLO 1",
+        "t": "Montar uma playlist <em>da semana, a quatro mãos</em>",
+        "s": "Cada um escolhe uma música por dia e conta por que escolheu. No fim, vocês têm a trilha sonora de vocês."
+      },
+      {
+        "k": "EXEMPLO 2",
+        "t": "Ir a pé até o bairro vizinho, <em>sem plano</em>",
+        "s": "Escolham um café ou uma padaria que nunca visitaram e voltem por outro caminho."
+      },
+      {
+        "k": "EXEMPLO 3",
+        "t": "Escrever três coisas boas <em>do dia, um para o outro</em>",
+        "s": "À mesa, sem celular. Leva cinco minutos e muda a noite."
+      }
+    ],
+    "cta": {
+      "k": "PARA GUARDAR",
+      "t": "Escolham uma, <em>não as trinta</em>",
+      "s": "O objetivo é presença, não produtividade. PDF grátis para baixar.",
+      "botao": "Link na bio"
+    }
+  },
+  "lugares-4": {
+    "kicker": "LUGARES SIMPLES",
+    "titulo": "Três cantos da casa para um encontro <em>de verdade</em>",
+    "sub": "Nenhum custa nada. Todos pedem só que a televisão fique desligada.",
+    "botaoFacebook": "Ver mais lugares",
+    "botaoPin": "Ver mais lugares",
+    "slides": [
+      {
+        "k": "1",
+        "t": "A janela ou a varanda, <em>ao entardecer</em>",
+        "s": "Duas canecas, a luz baixando e a conversa sem pressa."
+      },
+      {
+        "k": "2",
+        "t": "A cozinha, com um prato <em>feito a dois</em>",
+        "s": "Um corta, o outro mexe. Troquem as tarefas na metade."
+      },
+      {
+        "k": "3",
+        "t": "O chão da sala, com uma manta",
+        "s": "Sem tela. Cada um escolhe uma lembrança para contar."
+      }
+    ],
+    "cta": {
+      "k": "MAIS IDEIAS",
+      "t": "Por lugar, por orçamento, <em>por tempo</em>",
+      "s": "No site, vocês escolhem e a gente monta o encontro.",
+      "botao": "Link na bio"
+    }
+  },
+  "guia-30-d": {
+    "kicker": "GUIA GRATUITO",
+    "titulo": "30 encontros que <em>cabem no bolso</em>",
+    "sub": "Lugar, duração, o que levar, um pequeno detalhe e um plano B para cada um.",
+    "botaoFacebook": "Baixe grátis",
+    "botaoPin": "Baixe grátis",
+    "slides": [
+      {
+        "k": "EXEMPLO 1",
+        "t": "Um jantar com <em>cardápio sorteado</em>",
+        "s": "Cada um escreve três pratos simples em papeizinhos. Sorteiem a entrada, o prato principal e a sobremesa."
+      },
+      {
+        "k": "EXEMPLO 2",
+        "t": "Cartas para abrir <em>daqui a um ano</em>",
+        "s": "Cada um escreve uma carta curta. Guardem num envelope e marquem a data no calendário."
+      },
+      {
+        "k": "EXEMPLO 3",
+        "t": "Assistir ao pôr do sol <em>de um lugar novo</em>",
+        "s": "Um banco de praça ou um mirante serve. Levem uma garrafa de água e fiquem até escurecer."
+      }
+    ],
+    "cta": {
+      "k": "PARA GUARDAR",
+      "t": "Escolham uma, <em>não as trinta</em>",
+      "s": "O objetivo é presença, não produtividade. PDF grátis para baixar.",
+      "botao": "Link na bio"
+    }
   }
 }
