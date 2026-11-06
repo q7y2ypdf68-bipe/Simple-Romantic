@@ -33,6 +33,10 @@ export const articleTranslations = [
   { pt: "conselho-da-semana-o-dia-do-casal-no-calendario", es: "consejo-semanal-el-dia-de-la-pareja-en-el-calendario", en: "weekly-tip-put-a-couple-day-on-the-calendar" },
   { pt: "conto-a-noite-em-que-acabou-a-luz", es: "cuento-la-noche-en-que-se-fue-la-luz", en: "story-the-night-the-lights-went-out" },
   { pt: "conselho-da-semana-combinem-o-fim-de-semana-na-quinta", es: "consejo-semanal-acordad-el-fin-de-semana-el-jueves", en: "weekly-tip-plan-the-weekend-on-thursday" },
+  { pt: "natal-a-dois-10-ideias-simples-e-baratas", es: "navidad-en-pareja-10-ideas-sencillas-y-economicas", en: "christmas-for-two-10-simple-budget-ideas" },
+  { pt: "conto-o-cartao-postal-que-chegou-atrasado", es: "cuento-la-postal-que-llego-tarde", en: "story-the-postcard-that-arrived-late" },
+  { pt: "conselho-da-semana-peca-o-que-precisa-sem-rodeios", es: "consejo-semanal-pide-lo-que-necesitas-sin-rodeos", en: "weekly-tip-ask-for-what-you-need-plainly" },
+  { pt: "presente-de-natal-barato-para-casal-12-ideias", es: "regalo-de-navidad-barato-para-pareja-12-ideas", en: "cheap-christmas-gift-for-couples-12-ideas" },
 ] as const;
 
 type Lang = "pt" | "es" | "en";
