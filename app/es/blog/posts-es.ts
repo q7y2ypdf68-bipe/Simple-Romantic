@@ -79,7 +79,7 @@ const baseEs: BlogPost[] = [
     slug: "citas-romanticas-gastando-poco",
     title: "15 ideas de citas románticas gastando poco",
     excerpt: "Planes sencillos y bonitos para salir de la rutina sin convertir el cariño en una factura alta.",
-    category: "IDEAS PARA PAREJAS", image: "/images/blog/02-gastando-pouco.webp", imageAlt: "Dos mujeres adultas compartiendo un tentempié en una plaza", published: "20 de julio de 2026", publishedIso: "2026-07-20", readTime: "7 min de lectura",
+    category: "IDEAS PARA PAREJAS", image: "/images/blog/41-gastando-pouco-sorvete.webp", imageAlt: "Pareja compartiendo un helado en un banco de la plaza al atardecer", published: "20 de julio de 2026", publishedIso: "2026-07-20", readTime: "7 min de lectura",
     intro: ["Una cita memorable no depende del precio del restaurante. Lo que permanece suele ser la sensación de haber sido recordado, escuchado y elegido.", "Escoged una idea que encaje con vuestra personalidad, tiempo y presupuesto."],
     sections: [
       { heading: "Planes asequibles", items: ["Atardecer en un parque o mirador.", "Pícnic con fruta y bocadillos preparados en casa.", "Café en un termo y paseo con vistas.", "Cocinar una receta nueva en pareja.", "Cine en casa con una entrada escrita a mano."] },
@@ -172,7 +172,7 @@ const baseEs: BlogPost[] = [
     slug: "preguntas-para-parejas",
     title: "25 preguntas para conversar con más presencia",
     excerpt: "Preguntas ligeras, afectivas y profundas para un paseo, un pícnic o una noche en casa.",
-    category: "CONVERSACIONES", image: "/images/blog/10-perguntas-conversa.webp", imageAlt: "Dos hombres adultos conversando junto al mar", published: "22 de julio de 2026", publishedIso: "2026-07-22", readTime: "8 min de lectura",
+    category: "CONVERSACIONES", image: "/images/blog/40-perguntas-conversa-beira-mar.webp", imageAlt: "Pareja conversando durante un paseo junto al mar", published: "22 de julio de 2026", publishedIso: "2026-07-22", readTime: "8 min de lectura",
     intro: ["Las buenas preguntas abren caminos hacia historias que la rutina no suele alcanzar. No son pruebas: elegid solo unas pocas y escuchad sin convertir cada respuesta en debate."],
     sections: [
       { heading: "Para empezar con ligereza", items: ["¿Qué pequeño momento te ha hecho sonreír?", "¿Qué lugar cercano te gustaría conocer?", "¿Qué canción encaja con nuestra etapa?", "¿Qué recuerdo nuestro mejora tu humor?", "¿Cómo sería una tarde perfecta y gratis?"] },
