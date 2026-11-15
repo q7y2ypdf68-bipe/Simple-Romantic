@@ -1,0 +1,20 @@
+[
+ {"id":"guia-18-11","foto":"social/banco-imagens/novas/002_cozinhando_juntos.jpg","pos":"50% 20%","kicker":"Guia grátis · PDF","titulo":"<b>30</b> encontros que <em>cabem no bolso</em>",
+  "slides":[
+   {"k":"Exemplo 1","t":"Um jantar com <em>cardápio sorteado</em>","s":"Cada um escreve três pratos simples em papeizinhos. Sorteiem a entrada, o prato principal e a sobremesa."},
+   {"k":"Exemplo 2","t":"Cartas para abrir <em>daqui a um ano</em>","s":"Cada um escreve uma carta curta. Guardem num envelope e marquem a data no calendário."},
+   {"k":"Exemplo 3","t":"O pôr do sol <em>de um lugar novo</em>","s":"Um banco de praça ou um mirante serve. Levem uma garrafa de água e fiquem até escurecer."}],
+  "cta":{"k":"Para guardar","t":"Escolham uma, <em>não as trinta</em>","s":"Cada ideia vem com lugar, duração, o que levar e um plano B. O PDF é grátis.","botao":"Link na bio"}},
+ {"id":"gerador-20-11","foto":"social/banco-imagens/novas/003_passeio_rua_antiga.jpg","pos":"50% 15%","kicker":"Para este fim de semana","titulo":"<b>3</b> ideias para uma tarde fora de casa, <em>gastando pouco</em>","fs":0.086,
+  "slides":[
+   {"k":"Ideia 1","t":"Tarde na livraria, com <em>leitura em voz alta</em>","s":"Cada um escolhe um livro e lê um trecho curto para o outro. Fechem com um café e uma lista do que querem ler."},
+   {"k":"Ideia 2","t":"Montar um álbum à mão, <em>sem tela</em>","s":"Reúnam fotos impressas, bilhetes e ingressos. Colem, escrevam uma legenda em cada página e deixem a última em branco."},
+   {"k":"Ideia 3","t":"Cuidar de um <em>jardim comunitário</em>","s":"Plantem ou reguem um canteiro juntos. Escolham uma planta para acompanhar e deem um nome a ela."}],
+  "cta":{"k":"Quer outras?","t":"Escolham o clima e recebam <em>3 ideias novas</em>","s":"Lugar, orçamento, tempo e ocasião: o gerador monta o encontro para vocês. É grátis.","botao":"Link na bio"}},
+ {"id":"horoscopo-21-11","foto":"social/banco-imagens/novas/004_noite_de_chuva_em_casa.jpg","pos":"50% 20%","kicker":"Horóscopo do casal · só diversão","titulo":"Câncer + Peixes: água com água <em>acolhe</em>","fs":0.09,
+  "slides":[
+   {"k":"O clima do dia","t":"Água com água <em>acolhe</em>","s":"Os dois sentem muito e cuidam um do outro. Hoje, deixem que o silêncio também faça parte da conversa."},
+   {"k":"A ideia de encontro","t":"Uma noite de filme antigo e cobertor","lista":["Cada um indica um filme que viu na infância.","Escolham por sorteio e preparem algo quente para beber.","No fim, contem de qual cena mais gostaram e por quê."]},
+   {"k":"O gesto do dia","t":"Peça um abraço de <em>dez segundos</em>","s":"Sem pressa e sem falar nada."}],
+  "cta":{"k":"Qual é o seu par?","t":"Escolha os dois signos e <em>teste hoje</em>","s":"É só brincadeira: signo nenhum prevê o futuro de ninguém. A graça é ter um motivo para chegar mais perto.","botao":"Link na bio"}}
+]
