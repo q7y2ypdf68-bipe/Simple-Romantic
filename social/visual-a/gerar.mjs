@@ -38,6 +38,7 @@ const shot = async (html, W, H, f) => { const p = await br.newPage({ viewport: {
 for (const it of JSON.parse(fs.readFileSync(spec, "utf8"))) {
   const fm = it.formatos ?? ["feed"]; const sl = [...(it.slides ?? []), ...(it.cta ? [it.cta] : [])]; const N = sl.length + 1;
   if (fm.includes("feed")) { await shot(capa(it, 1080, 1350, N > 1 ? `1/${N}` : undefined), 1080, 1350, `${it.id}-01.png`); for (const [i, s] of sl.entries()) await shot(slide(it, s, 1080, 1350, i + 2, N), 1080, 1350, `${it.id}-${String(i + 2).padStart(2, "0")}.png`); }
+  if (fm.includes("feed") && N > 1) await shot(capa(it, 1080, 1350), 1080, 1350, `${it.id}-fb.png`);
   if (fm.includes("pin")) await shot(capa({ ...it, titulo: it.tituloPin ?? it.titulo }, 1000, 1500), 1000, 1500, `${it.id}-pin.png`);
   if (fm.includes("reel")) await shot(capa(it, 1080, 1920, undefined, .14), 1080, 1920, `${it.id}-reel.png`);
 }
