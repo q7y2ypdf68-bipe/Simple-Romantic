@@ -102,7 +102,7 @@ const baseEs: BlogPost[] = [
     slug: "sorpresas-romanticas-sin-gastar",
     title: "12 sorpresas románticas que cuestan muy poco",
     excerpt: "Gestos pequeños para demostrar cariño y hacer que un día corriente resulte especial.",
-    category: "SORPRESAS SENCILLAS", image: "/images/blog/04-surpresas-simples.webp", imageAlt: "Dos hombres adultos intercambiando una nota cariñosa en casa", published: "20 de julio de 2026", publishedIso: "2026-07-20", readTime: "5 min de lectura",
+    category: "SORPRESAS SENCILLAS", image: "/images/blog/43-surpresas-bilhete-flores.webp", imageAlt: "Mujer leyendo una nota junto a unas flores silvestres mientras su marido sonríe detrás de ella", published: "20 de julio de 2026", publishedIso: "2026-07-20", readTime: "5 min de lectura",
     intro: ["Una sorpresa no tiene que ser un regalo caro. Sucede cuando la otra persona percibe intención: una nota, una canción o una tarea asumida para ofrecer descanso."],
     sections: [
       { heading: "Para un día corriente", items: ["Esconder una nota cerca del café.", "Enviar un recuerdo feliz.", "Preparar su bebida preferida.", "Crear una lista de cinco canciones.", "Asumir una tarea pesada.", "Elegir tres fotografías de vuestra historia."] },
